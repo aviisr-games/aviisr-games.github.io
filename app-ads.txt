@@ -1,0 +1,4 @@
+# app-ads.txt for Casino Games (com.aviisr.casinogames)
+# Authorized sellers of this app's ad inventory. The ad network lines are added from the
+# LevelPlay (ironSource) dashboard once the publisher account exists.
+contact=aviisr@gmail.com

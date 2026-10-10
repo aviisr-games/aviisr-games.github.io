@@ -167,3 +167,9 @@ xandr.com, 17779, RESELLER
 xandr.com, 7353, RESELLER
 zetaglobal.net, 525, RESELLER
 zmaticoo.com, 5135195, RESELLER
+
+# Google AdMob (Middle East 2030), added 2026-10-10.
+google.com, pub-2451365263828795, DIRECT, f08c47fec0942fa0
+
+# Moloco: none needed (direct demand only, no app-ads.txt).
+# InMobi: to be added from the InMobi dashboard (Inventory > app-ads.txt).

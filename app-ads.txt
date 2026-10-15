@@ -172,4 +172,5 @@ zmaticoo.com, 5135195, RESELLER
 google.com, pub-2451365263828795, DIRECT, f08c47fec0942fa0
 
 # Moloco: none needed (direct demand only, no app-ads.txt).
-# InMobi: to be added from the InMobi dashboard (Inventory > app-ads.txt).
+# InMobi (same publisher account as Middle East 2030), added 2026-10-15.
+inmobi.com, 5b47c8d4ced24952a985eeedc5e528fa, DIRECT, 83e75a7ae333ca9d

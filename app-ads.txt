@@ -191,3 +191,6 @@ pubmatic.com, 156931, RESELLER, 5d62403b186f2ace
 algorix.co, 54190, RESELLER, 5b394c12fea27a1d
 bidmachine.io, 100, RESELLER
 vidazoo.com, 6ab4e4454da99de3c4d515c9, RESELLER, b6ada874b4d7d0b2
+
+# Chartboost (Ninely + other apps on this Chartboost account), added 2026-10-20.
+chartboost.com, 6ad68dfef69489a05e0510f3, DIRECT

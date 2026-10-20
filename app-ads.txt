@@ -194,3 +194,6 @@ vidazoo.com, 6ab4e4454da99de3c4d515c9, RESELLER, b6ada874b4d7d0b2
 
 # Chartboost (Ninely + other apps on this Chartboost account), added 2026-10-20.
 chartboost.com, 6ad68dfef69489a05e0510f3, DIRECT
+
+# Bigo Ads (Ninely), added 2026-10-21.
+bigo.sg, cxq0lhhb6j, DIRECT

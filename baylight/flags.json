@@ -3,6 +3,7 @@
   "shifts_enabled": false,
   "banner_enabled": true,
   "interstitial_enabled": true,
+  "continue_enabled": true,
   "interstitial_interval": 3,
   "interstitial_interval_first_48h": 5,
   "min_version_code": 0,

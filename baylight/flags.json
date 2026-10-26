@@ -1,4 +1,11 @@
 {
   "season_id": "",
-  "shifts_enabled": false
+  "shifts_enabled": false,
+  "banner_enabled": true,
+  "interstitial_enabled": true,
+  "interstitial_interval": 3,
+  "interstitial_interval_first_48h": 5,
+  "min_version_code": 0,
+  "latest_version_code": 0,
+  "force_if_behind": 3
 }

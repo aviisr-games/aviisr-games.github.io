@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ninely - Sudoku challenge</title>
+<meta name="description" content="A friend challenged you to a Ninely Sudoku board. Beat their time.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<main>
+<section id="en">
+<h1>Ninely</h1>
+<p class="sub">A friend challenged you to a Sudoku board.</p>
+<p id="info"></p>
+<p><a id="open" href="#">Open in Ninely</a></p>
+<p>No Ninely yet? <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely">Get it on Google Play</a>. iPhone: coming soon.</p>
+</section>
+<section dir="rtl" lang="he">
+<p class="sub">חבר אתגר אותך בלוח סודוקו. <a id="open-he" href="#">פתחו ב-Ninely</a></p>
+</section>
+<section dir="rtl" lang="ar">
+<p class="sub">صديقك يتحداك في لوح سودوكو. <a id="open-ar" href="#">افتح في Ninely</a></p>
+</section>
+</main>
+<script>
+// Friend duel links (Ninely growth Phase 2): ?s=seed&d=difficulty(0-4)&t=seconds -> ninely://duel?... opens the app.
+(function () {
+  var q = new URLSearchParams(location.search);
+  var s = q.get('s'), d = q.get('d'), t = q.get('t');
+  if (!/^\d{1,10}$/.test(s || '') || !/^[0-4]$/.test(d || '') || !/^\d{1,6}$/.test(t || '')) {
+    document.getElementById('info').textContent = 'This challenge link is incomplete.';
+    return;
+  }
+  var names = ['Easy', 'Medium', 'Hard', 'Expert', 'Master'];
+  var secs = parseInt(t, 10), mm = Math.floor(secs / 60), ss = secs % 60;
+  document.getElementById('info').textContent = names[+d] + ' board, time to beat: ' + mm + ':' + (ss < 10 ? '0' : '') + ss;
+  var app = 'ninely://duel?s=' + s + '&d=' + d + '&t=' + t;
+  ['open', 'open-he', 'open-ar'].forEach(function (id) { document.getElementById(id).href = app; });
+  setTimeout(function () { location.href = app; }, 300);
+})();
+</script>
+</body>
+</html>

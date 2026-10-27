@@ -197,3 +197,6 @@ chartboost.com, 6ad68dfef69489a05e0510f3, DIRECT
 
 # Bigo Ads (Ninely), added 2026-10-21.
 bigo.sg, cxq0lhhb6j, DIRECT
+
+# Meta Audience Network (Middle East 2030), added 2026-10-27.
+facebook.com, 1130154406233768, DIRECT, c3e20eee3f780d68

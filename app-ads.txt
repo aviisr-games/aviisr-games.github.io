@@ -1,4 +1,4 @@
-# app-ads.txt for aviisr games apps (Baylight, Middle East 2030, Casino Games)
+# app-ads.txt for aviisr games apps (Ninely, Baylight, Middle East 2030, Casino Games)
 # Authorized sellers. Unity Ads list from the Unity dashboard (Organization settings > App-ads.txt), 2026-10-09.
 contact=aviisr@gmail.com
 

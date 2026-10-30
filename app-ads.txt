@@ -204,3 +204,6 @@ facebook.com, 1130154406233768, DIRECT, c3e20eee3f780d68
 # Unity Ads missing sellers (Unity app-ads.txt check, Middle East 2030), added 2026-10-28.
 monetrix.ai, 10761, RESELLER
 start.io, 131192070, RESELLER
+
+# Pangle (Baylight Android), added 2026-10-30.
+pangleglobal.com, 5045316, DIRECT

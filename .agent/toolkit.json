@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "files": [
+    ".agent/WORKFLOW.md",
+    ".agent/templates/AGENTS.md",
+    ".agent/templates/context.md",
+    ".agent/toolkit.json",
+    ".claude/agents/flow-checker.md",
+    ".claude/agents/workhorse.md",
+    ".claude/settings.json",
+    ".codex/agents/flow-checker.toml",
+    ".codex/agents/workhorse.toml",
+    ".codex/config.toml",
+    ".github/workflows/agent-workflow.yml",
+    "tools/agent_workflow.py",
+    "tools/test_agent_workflow.py"
+  ]
+}

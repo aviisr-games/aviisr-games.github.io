@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "apps": [
+    {
+      "path": ".",
+      "kind": "static",
+      "context": ".agent/context.md"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy - Morning Route</title>
@@ -23,7 +25,8 @@
   </style>
 </head>
 <body>
-  <h1>Privacy Policy: Morning Route</h1>
+  <nav class="lang"><a href="../">Morning Route</a> <a href="../../">All Games</a></nav>
+  <h1 data-i18n="navPrivacy">Privacy Policy: Morning Route</h1>
   <p><strong>Last updated:</strong> October 9, 2026</p>
   <p>This Privacy Policy explains how "Morning Route" (the "Game"), developed and published by Aviisr ("we", "us", or "our"), handles your information. Morning Route has no user accounts, no sign-in requirements, no chat functionality, and operates without custom remote game servers.</p>
 
@@ -56,7 +59,7 @@
   <p>Before any ad requests are made, players can manage their privacy preferences in the Game. When personalized advertising is declined, the Game signals our mediation partners to serve non-personalized ads.</p>
   <p>For details on how Unity Technologies processes information, please review their privacy policies:</p>
   <ul>
-    <li>Unity Privacy Policy: <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">https://unity.com/legal/game-player-and-app-user-privacy-policy</a></li>
+    <li>Unity Privacy Policy: <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener noreferrer">https://unity.com/legal/game-player-and-app-user-privacy-policy</a></li>
   </ul>
 
   <h2>3. In-App Purchases and Payments</h2>
@@ -87,10 +90,17 @@
 
   <h2>8. Contact Us</h2>
   <p>If you have any questions or feedback regarding this Privacy Policy, please contact us at:</p>
-  <p><strong>Email:</strong> <a href="mailto:aviisr@gmail.com">aviisr@gmail.com</a></p>
+  <p><strong>Email:</strong> <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
 
   <footer>
     <p>&copy; 2026 Aviisr Games. All rights reserved. | <a href="../">Back to Morning Route</a></p>
   </footer>
+  <script src="../../assets/i18n.js"></script>
+  <script>
+    AviisrI18n.init({
+      supported: ['en', 'he', 'ar', 'tr', 'de', 'fr', 'es', 'ja', 'ko', 'pt-BR', 'ru'],
+      defaultLang: 'en'
+    });
+  </script>
 </body>
 </html>

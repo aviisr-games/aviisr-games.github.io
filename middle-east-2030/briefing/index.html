@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Middle East 2030: Crisis Briefing Teaser</title>
+<meta name="description" content="Can you navigate 3 months as Prime Minister? Make critical geopolitical decisions and read tomorrow's front page.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google.com; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2451365263828795" crossorigin="anonymous"></script>
+<style>
+  body { background: #f5f0e3; color: #1a1a1a; font-family: Georgia, serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
+  h1 { color: #1a1a1a; font-size: 2rem; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; }
+  .newspaper-header { text-align: center; border-bottom: 3px double #1a1a1a; margin-bottom: 18px; padding-bottom: 8px; }
+  .newspaper-title { font-family: 'Times New Roman', serif; font-size: 2.4rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+  .newspaper-meta { font-size: 0.85rem; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4px 0; margin-top: 6px; display: flex; justify-content: space-between; }
+  .crisis-card { background: #fff; border: 1px solid #d4cbb8; border-radius: 4px; padding: 20px; box-shadow: 2px 2px 8px rgba(0,0,0,0.06); margin: 18px 0; }
+  .month-tag { font-family: sans-serif; font-size: 0.85rem; font-weight: bold; color: #7f1d1d; text-transform: uppercase; margin-bottom: 6px; }
+  .dilemma-title { font-size: 1.35rem; font-weight: bold; margin-bottom: 10px; }
+  .dilemma-desc { font-size: 1.05rem; line-height: 1.6; color: #2d3748; margin-bottom: 18px; }
+  .choice-btn { display: block; width: 100%; text-align: left; background: #faf8f5; border: 1px solid #1a1a1a; border-radius: 4px; padding: 12px 16px; margin-bottom: 10px; font-family: Georgia, serif; font-size: 1rem; cursor: pointer; transition: background 0.15s; }
+  [dir="rtl"] .choice-btn { text-align: right; }
+  .choice-btn:hover { background: #e8dfcf; }
+  .choice-impact { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+  .stats-bar { display: flex; justify-content: space-around; background: #e8dfcf; border: 1px solid #c9bfa8; border-radius: 4px; padding: 10px; margin-bottom: 16px; font-family: sans-serif; font-weight: bold; font-size: 0.95rem; }
+  .headline-result { font-family: 'Times New Roman', serif; font-size: 1.6rem; font-weight: bold; line-height: 1.25; margin: 12px 0; color: #1a1a1a; }
+  .store-banner { background: #1a1a1a; color: #fff; padding: 20px; border-radius: 6px; text-align: center; margin-top: 24px; }
+  .store-banner a { display: inline-block; background: #fff; color: #1a1a1a; padding: 8px 16px; border-radius: 4px; font-weight: bold; margin: 8px 6px; text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+<nav class="lang" style="margin-bottom: 12px;"><a href="../">Middle East 2030</a> <a href="../../">All Games</a></nav>
+
+<div class="newspaper-header">
+  <div class="newspaper-title">The Morning Edition</div>
+  <div class="newspaper-meta">
+    <span>Vol. XLVI No. 12</span>
+    <span data-i18n="metaDate">Jerusalem / Regional Desk · Crisis Simulation</span>
+    <span>3-Month Preview</span>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div>🏛️ <span data-i18n="statCoalition">Coalition</span>: <span id="val-coalition">65%</span></div>
+  <div>📈 <span data-i18n="statEconomy">Economy</span>: <span id="val-economy">60%</span></div>
+  <div>🕊️ <span data-i18n="statStability">Stability</span>: <span id="val-stability">55%</span></div>
+</div>
+
+<div id="game-container">
+  <div id="crisis-card" class="crisis-card">
+    <div id="month-tag" class="month-tag">Month 1 / 3</div>
+    <div id="dilemma-title" class="dilemma-title">Loading crisis...</div>
+    <div id="dilemma-desc" class="dilemma-desc"></div>
+    <div id="choices-container"></div>
+  </div>
+</div>
+
+<div id="result-container" style="display: none;" class="crisis-card">
+  <div class="month-tag" data-i18n="termSummary">Term Result · Special Front Page</div>
+  <div id="final-headline" class="headline-result">Government Holds On After Tumultuous 3 Months</div>
+  <p id="final-editorial" style="font-size: 1.05rem; line-height: 1.6; color: #374151;"></p>
+  
+  <div class="store-banner">
+    <h3 style="margin-bottom: 6px; color: #fff;" data-i18n="fullGameTitle">Govern a full multi-year term in Middle East 2030</h3>
+    <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="fullGameSub">8 playable capitals, dozens of crises, daily newspaper printouts and deep geopolitical simulation.</p>
+    <div>
+      <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030" target="_blank" rel="noopener noreferrer noreferrer">Get it on Google Play</a>
+      <a href="https://apps.apple.com/app/id6820597256" target="_blank" rel="noopener noreferrer noreferrer">Download on App Store</a>
+    </div>
+  </div>
+  
+  <div style="text-align: center; margin-top: 14px;">
+    <button type="button" id="replay-btn" class="choice-btn" style="display: inline-block; width: auto; font-family: sans-serif; font-weight: bold;" data-i18n="playAgain">↺ Try Another 3-Month Run</button>
+  </div>
+</div>
+
+<footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #71717a;">
+  <a href="../">Middle East 2030</a> · <a href="../privacy/">Privacy Policy</a> · <a href="../support/">Support</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
+</footer>
+</main>
+
+<script src="../../assets/i18n.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var translations = {
+    en: {
+      metaDate: "Regional Desk · Crisis Simulation",
+      statCoalition: "Coalition",
+      statEconomy: "Economy",
+      statStability: "Stability",
+      termSummary: "Term Result · Special Front Page",
+      fullGameTitle: "Govern a full term in Middle East 2030",
+      fullGameSub: "8 playable capitals, regional rivalries, and daily morning paper printouts.",
+      playAgain: "↺ Try Another 3-Month Run"
+    },
+    he: {
+      metaDate: "דסק אזורי · סימולציית משברים",
+      statCoalition: "קואליציה",
+      statEconomy: "כלכלה",
+      statStability: "יציבות",
+      termSummary: "סיכום קדנציה · עמוד ראשי מיוחד",
+      fullGameTitle: "נהלו קדנציה מלאה ב'מזרח התיכון 2030'",
+      fullGameSub: "8 ערי בירה לבחירה, עשרות משברים דיפלומטיים והדפסת שער עיתון מדי בוקר.",
+      playAgain: "↺ נסו קדנציה נוספת של 3 חודשים"
+    },
+    ar: {
+      metaDate: "مكتب إقليمي · محاكاة الأزمات",
+      statCoalition: "الائتلاف",
+      statEconomy: "الاقتصاد",
+      statStability: "الاستقرار",
+      termSummary: "نتائج الفترة · الصفحة الأولى الخاصة",
+      fullGameTitle: "قُد ولاية كاملة في 'الشرق الأوسط 2030'",
+      fullGameSub: "8 عواصم قابلة للعب، أزمات إقليمية، وصفحة أولى يومية مطبوعة.",
+      playAgain: "↺ خوض تجربة 3 أشهر أخرى"
+    }
+  };
+
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar', 'tr', 'de', 'fr', 'es', 'ja', 'ko', 'pt-BR', 'ru', 'nl', 'it', 'zh-TW'],
+    translations: translations,
+    defaultLang: 'en'
+  });
+
+  var crises = [
+    {
+      month: 1,
+      title: "Cross-Border Energy Pipeline Accord",
+      desc: "Neighbors propose an expedited joint natural gas & solar grid. Coalition hardliners demand sovereign control, while industrialists warn of rising brownouts.",
+      choices: [
+        { text: "Sign the regional energy treaty with security guarantees", dC: -5, dE: +12, dS: +8, headline: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW" },
+        { text: "Reject multilateral terms and fund emergency domestic coal/gas", dC: +8, dE: -8, dS: -4, headline: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS" }
+      ]
+    },
+    {
+      month: 2,
+      title: "Currency Pressure & Foreign Reserve Crisis",
+      desc: "Speculative currency runs threaten import prices on food and grain. The Central Bank requests immediate interest rate hikes and subsidy trimming.",
+      choices: [
+        { text: "Authorize aggressive rate hike and target emergency food vouchers", dC: -4, dE: +10, dS: -2, headline: "INTEREST RATES HIKED TO DEFEND CURRENCY AS SHOPS FEEL SQUEEZE" },
+        { text: "Cap retail prices and draw down sovereign wealth reserves", dC: +6, dE: -12, dS: +4, headline: "GOVERNMENT CAPS FOOD PRICES DRAWING ON STRATEGIC RESERVES" }
+      ]
+    },
+    {
+      month: 3,
+      title: "Diplomatic Summit on Maritime Boundaries",
+      desc: "A disputed offshore maritime corridor risks naval friction or an economic opening with rival maritime neighbors.",
+      choices: [
+        { text: "Negotiate shared exploration zones under neutral mediator arbitration", dC: -6, dE: +8, dS: +12, headline: "MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT" },
+        { text: "Deploy coast guard escorts and declare unilateral maritime boundary", dC: +10, dE: -6, dS: -10, headline: "NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS" }
+      ]
+    }
+  ];
+
+  var currentMonth = 0;
+  var stats = { coalition: 65, economy: 60, stability: 55 };
+  var history = [];
+
+  function updateStatsUI() {
+    document.getElementById('val-coalition').textContent = stats.coalition + '%';
+    document.getElementById('val-economy').textContent = stats.economy + '%';
+    document.getElementById('val-stability').textContent = stats.stability + '%';
+  }
+
+  function renderCurrentCrisis() {
+    if (currentMonth >= crises.length) {
+      showSummary();
+      return;
+    }
+
+    var c = crises[currentMonth];
+    document.getElementById('month-tag').textContent = 'Month ' + (currentMonth + 1) + ' of 3';
+    document.getElementById('dilemma-title').textContent = c.title;
+    document.getElementById('dilemma-desc').textContent = c.desc;
+
+    var container = document.getElementById('choices-container');
+    container.replaceChildren();
+
+    c.choices.forEach(function (choice) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'choice-btn';
+      btn.textContent = choice.text;
+
+      btn.addEventListener('click', function () {
+        stats.coalition = Math.max(10, Math.min(100, stats.coalition + choice.dC));
+        stats.economy = Math.max(10, Math.min(100, stats.economy + choice.dE));
+        stats.stability = Math.max(10, Math.min(100, stats.stability + choice.dS));
+        history.push(choice.headline);
+        updateStatsUI();
+        currentMonth++;
+        renderCurrentCrisis();
+      });
+
+      container.appendChild(btn);
+    });
+  }
+
+  function showSummary() {
+    document.getElementById('game-container').style.display = 'none';
+    var resEl = document.getElementById('result-container');
+    resEl.style.display = 'block';
+
+    var finalHeadline = history[history.length - 1] || "CABINET WEATHERS REGIONAL HEADWINDS";
+    document.getElementById('final-headline').textContent = finalHeadline;
+
+    var editorial = "After 90 turbulent days in the executive chair, your government closed the quarter with " +
+      stats.coalition + "% coalition cohesion, " + stats.economy + "% economic resilience, and " +
+      stats.stability + "% geopolitical stability. " +
+      (stats.stability > 60 ? "Diplomatic partners express confidence in regional de-escalation." : "Tensions remain elevated across borders, and parliamentary observers forecast early elections unless bold reforms follow.");
+    
+    document.getElementById('final-editorial').textContent = editorial;
+  }
+
+  document.getElementById('replay-btn').addEventListener('click', function () {
+    currentMonth = 0;
+    stats = { coalition: 65, economy: 60, stability: 55 };
+    history = [];
+    updateStatsUI();
+    document.getElementById('game-container').style.display = 'block';
+    document.getElementById('result-container').style.display = 'none';
+    renderCurrentCrisis();
+  });
+
+  renderCurrentCrisis();
+})();
+</script>
+</body>
+</html>

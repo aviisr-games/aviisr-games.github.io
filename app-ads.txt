@@ -1,6 +1,6 @@
 # app-ads.txt for aviisr games apps (Ninely, Baylight, Middle East 2030, Casino Games)
 # Authorized sellers. Unity Ads list from the Unity dashboard (Organization settings > App-ads.txt), 2026-10-09.
-contact=aviisr@gmail.com
+contact=aviisr@aviisrgames.com
 
 # LevelPlay / ironSource Ads
 ironsrc.com, 688473, DIRECT

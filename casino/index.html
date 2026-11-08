@@ -1,24 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Casino Games - Support</title>
 <meta name="description" content="Support for Casino Games: Blackjack, Texas Hold'em and Roulette with virtual chips.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Casino Games",
+  "description": "Blackjack with a strategy trainer, Texas Hold'em against computer players, and European or American Roulette with virtual chips.",
+  "url": "https://aviisrgames.com/casino/",
+  "genre": ["Card", "Casino"],
+  "gamePlatform": ["Android", "iOS"],
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android, iOS",
+  "inLanguage": ["en", "he", "ar", "zh-CN", "ja", "ko", "de", "fr", "es", "tr"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "aviisr-games", "email": "aviisr@aviisrgames.com" }
+}
+</script>
 </head>
 <body>
 <main>
-<nav class="lang"><a href="#en">English</a><a href="#he">עברית</a><a href="#ar">العربية</a> · <a href="../privacy.html">Privacy policy</a> · <a href="../">All Games</a></nav>
+<nav class="lang"><a href="#en">English</a><a href="#he">עברית</a><a href="#ar">العربية</a> · <a href="trainer/">Strategy Trainer</a> · <a href="../privacy.html">Privacy policy</a> · <a href="../">All Games</a></nav>
 
 <section id="en">
 <h1>Casino Games</h1>
-<p class="sub">Blackjack with a trainer, Texas Hold'em against computer players, and European or American Roulette.</p>
+<p class="sub" data-i18n="casinoDesc">Blackjack with a trainer, Texas Hold'em against computer players, and European or American Roulette.</p>
 <div class="card">
 <h2>Support</h2>
 <p>Found a problem, an inappropriate ad, or have an idea? Write to us:</p>
-<p class="mail"><a href="mailto:aviisr@gmail.com?subject=Casino%20Games%20support">aviisr@gmail.com</a></p>
+<p class="mail"><a href="mailto:aviisr@aviisrgames.com?subject=Casino%20Games%20support">aviisr@aviisrgames.com</a></p>
 <p>You can also use <b>Settings > Support</b> inside the game. It opens your email app with your phone's basic details filled in, which helps us fix problems faster.</p>
 </div>
 <h2>Questions</h2>
@@ -38,7 +56,7 @@
 <div class="card">
 <h2>תמיכה</h2>
 <p>מצאת בעיה, פרסומת לא ראויה, או יש לך רעיון? כתבו לנו:</p>
-<p class="mail"><a href="mailto:aviisr@gmail.com?subject=Casino%20Games%20support">aviisr@gmail.com</a></p>
+<p class="mail"><a href="mailto:aviisr@aviisrgames.com?subject=Casino%20Games%20support">aviisr@aviisrgames.com</a></p>
 <p>אפשר גם דרך <b>הגדרות > תמיכה</b> בתוך המשחק. זה פותח את אפליקציית המייל עם פרטי הטלפון הבסיסיים, כדי שנוכל לתקן בעיות מהר יותר.</p>
 </div>
 <h2>שאלות</h2>
@@ -58,7 +76,7 @@
 <div class="card">
 <h2>الدعم</h2>
 <p>وجدت مشكلة أو إعلاناً غير لائق أو لديك فكرة؟ راسلنا:</p>
-<p class="mail"><a href="mailto:aviisr@gmail.com?subject=Casino%20Games%20support">aviisr@gmail.com</a></p>
+<p class="mail"><a href="mailto:aviisr@aviisrgames.com?subject=Casino%20Games%20support">aviisr@aviisrgames.com</a></p>
 <p>يمكنك أيضاً استخدام <b>الإعدادات > الدعم</b> داخل اللعبة. يفتح ذلك تطبيق البريد مع معلومات أساسية عن هاتفك، مما يساعدنا على إصلاح المشاكل بسرعة.</p>
 </div>
 <h2>أسئلة</h2>
@@ -72,7 +90,14 @@
 <p>لا، يمكنك اللعب دون اتصال. الإعلانات تحتاج إلى اتصال.</p>
 </section>
 
-<footer>Casino Games · Virtual chips only, no cash value · <a href="../privacy.html">Privacy policy</a> · <a href="../">All Games</a></footer>
+<footer>Casino Games · Virtual chips only, no cash value · <a href="trainer/">Strategy Trainer</a> · <a href="../privacy.html">Privacy policy</a> · <a href="../">All Games</a></footer>
 </main>
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar', 'zh-CN', 'ja', 'ko', 'de', 'fr', 'es', 'tr'],
+    defaultLang: 'en'
+  });
+</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aviisr-games.github.io/sitemap.xml
+Sitemap: https://aviisrgames.com/sitemap.xml

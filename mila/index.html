@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>מילה - אנגלית לילדים (כיתות א'-ו') | תרגול מותאם אישית בבית</title>
   <meta name="description" content="מילה היא אפליקציה ללימוד ותרגול אנגלית לילדים דוברי עברית בכיתות א'-ו'. למידה מותאמת אישית, בלי פרסומות, בלי מנוי ובלי איסוף מידע.">
-  <link rel="canonical" href="https://aviisr-games.github.io/mila/">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+  <link rel="canonical" href="https://aviisrgames.com/mila/">
   
   <!-- Open Graph / WhatsApp Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aviisr-games.github.io/mila/">
+  <meta property="og:url" content="https://aviisrgames.com/mila/">
   <meta property="og:title" content="מילה - אנגלית לילדים (כיתות א'-ו')">
   <meta property="og:description" content="תרגול אנגלית בבית בקצב של כל ילד/ה. מילים, סיפורים והבנת הנקרא בעברית. בלי פרסומות, בלי מנוי והכל נשמר במכשיר.">
-  <meta property="og:image" content="https://aviisr-games.github.io/mila/assets/og-mila.png">
+  <meta property="og:image" content="https://aviisrgames.com/mila/assets/og-mila.png">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="500">
   <meta property="og:locale" content="he_IL">
@@ -21,11 +23,25 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="מילה - אנגלית לילדים">
   <meta name="twitter:description" content="לימוד אנגלית מותאם אישית לילדים בכיתות א'-ו'. בלי פרסומות ובלי מנוי.">
-  <meta name="twitter:image" content="https://aviisr-games.github.io/mila/assets/og-mila.png">
+  <meta name="twitter:image" content="https://aviisrgames.com/mila/assets/og-mila.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "מילה - אנגלית לילדים (Mila - English for Kids)",
+    "description": "English learning app for Hebrew-speaking children in grades 1–6. 100% offline, zero ads, no subscriptions, COPPA compliant.",
+    "url": "https://aviisrgames.com/mila/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "iOS, Android",
+    "inLanguage": ["he", "en"],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" },
+    "author": { "@type": "Organization", "name": "aviisr-games", "email": "aviisr@aviisrgames.com" }
+  }
+  </script>
 
   <style>
     :root {
@@ -413,12 +429,14 @@
     <div class="container nav-inner">
       <div class="brand">
         <img src="assets/icon.png" alt="לוגו מילה" width="42" height="42">
-        <span>מילה</span>
+        <span data-i18n="brandName">מילה</span>
       </div>
       <nav class="nav-links">
-        <a href="support/">תמיכה</a>
-        <a href="privacy/">פרטיות</a>
-        <a href="mailto:aviisr@gmail.com">יצירת קשר</a>
+        <nav class="lang" style="display:inline-block; margin-left: 10px;"></nav>
+        <a href="support/" data-i18n="navSupport">תמיכה</a>
+        <a href="privacy/" data-i18n="navPrivacy">פרטיות</a>
+        <a href="mailto:aviisr@aviisrgames.com" data-i18n="navContact">יצירת קשר</a>
+        <a href="../" data-i18n="navAllGames">כל המשחקים</a>
       </nav>
     </div>
   </header>
@@ -427,9 +445,9 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <div class="badge-pill">אנגלית מותאמת אישית לילדים · כיתות א'-ו'</div>
-        <h1>מילה — אנגלית לילדים</h1>
-        <p class="lead">לומדים אנגלית בבית בקצב אישי, בעברית, ובלי לחץ. תרגול אוצר מילים, צלילים, משפטים וסיפורים — כמה דקות ביום.</p>
+        <div class="badge-pill" data-i18n="heroBadge">אנגלית מותאמת אישית לילדים · כיתות א'-ו'</div>
+        <h1 data-i18n="milaHeroTitle">מילה — אנגלית לילדים</h1>
+        <p class="lead" data-i18n="milaHeroLead">לומדים אנגלית בבית בקצב אישי, בעברית, ובלי לחץ. תרגול אוצר מילים, צלילים, משפטים וסיפורים — כמה דקות ביום.</p>
         
         <div class="hero-badges">
           <a class="appstore-badge" href="https://apps.apple.com/app/mila-english-for-kids/id6738379495" aria-label="הורדה ב-App Store">
@@ -464,24 +482,24 @@
     <!-- Value Pillars -->
     <section>
       <div class="container">
-        <h2 class="section-title">בלי פרסומות, בלי מנוי ובלי חשבונות</h2>
-        <p class="section-sub">סביבת לימוד נקייה ושקטה, שנבנתה מתוך כבוד לזמן ולתשומת הלב של הילדים שלכם.</p>
+        <h2 class="section-title" data-i18n="pillarsTitle">בלי פרסומות, בלי מנוי ובלי חשבונות</h2>
+        <p class="section-sub" data-i18n="pillarsSub">סביבת לימוד נקייה ושקטה, שנבנתה מתוך כבוד לזמן ולתשומת הלב של הילדים שלכם.</p>
         
         <div class="pillars-grid">
           <div class="pillar-box">
             <span class="pillar-icon">🚫</span>
-            <h4>אפס פרסומות</h4>
-            <p>אין פרסומות קופצות, אין סרטוני שיווק, ואין לחץ להוריד אפליקציות אחרות. הלמידה רציפה ונטולת הסחות דעת.</p>
+            <h4 data-i18n="pil1Title">אפס פרסומות</h4>
+            <p data-i18n="pil1Desc">אין פרסומות קופצות, אין סרטוני שיווק, ואין לחץ להוריד אפליקציות אחרות. הלמידה רציפה ונטולת הסחות דעת.</p>
           </div>
           <div class="pillar-box">
             <span class="pillar-icon">🔒</span>
-            <h4>בלי מנוי חודשי</h4>
-            <p>לא צריך לזכור לבטל מנוי. מתחילים בחינם, ומי שרוצה את כל התוכן משלם פעם אחת בלבד ₪49.90 לכל החיים.</p>
+            <h4 data-i18n="pil2Title">בלי מנוי חודשי</h4>
+            <p data-i18n="pil2Desc">לא צריך לזכור לבטל מנוי. מתחילים בחינם, ומי שרוצה את כל התוכן משלם פעם אחת בלבד ₪49.90 לכל החיים.</p>
           </div>
           <div class="pillar-box">
             <span class="pillar-icon">🛡️</span>
-            <h4>הכל נשאר במכשיר</h4>
-            <p>אין הרשמה, אין צורך בכתובת אימייל או סיסמה. כל ההתקדמות והשמות נשמרים מקומית במכשיר שלכם בלבד.</p>
+            <h4 data-i18n="pil3Title">הכל נשאר במכשיר</h4>
+            <p data-i18n="pil3Desc">אין הרשמה, אין צורך בכתובת אימייל או סיסמה. כל ההתקדמות והשמות נשמרים מקומית במכשיר שלכם בלבד.</p>
           </div>
         </div>
       </div>
@@ -605,6 +623,32 @@
       </div>
     </section>
 
+    <!-- Printable Flashcards for Parents & Teachers -->
+    <section id="printables" style="background: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <h2 class="section-title" data-i18n="printTitle">כרטיסיות מילים להדפסה בבית (כיתות א'-ו')</h2>
+        <p class="section-sub" data-i18n="printSub">דפי עזר ותרגול מודפסים לחיזוק הקריאה ואוצר המילים לצד האפליקציה.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div class="card" style="margin: 0; text-align: center;">
+            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print1Title">🔤 אותיות וצלילים (א'-ב')</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print1Desc">26 אותיות ה-ABC עם צליל פותח, מילים ראשונות ותמונות לצביעה.</p>
+            <button type="button" onclick="window.print()" style="background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;" data-i18n="printBtn">🖨️ הדפסת דף תרגול</button>
+          </div>
+          <div class="card" style="margin: 0; text-align: center;">
+            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print2Title">🍎 אוצר מילים Pre-Band I (ג'-ד')</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print2Desc">כרטיסיות גזירה עם מילים בסיסיות, תרגום עברי ומשפטי הדגמה.</p>
+            <button type="button" onclick="window.print()" style="background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;" data-i18n="printBtn">🖨️ הדפסת כרטיסיות</button>
+          </div>
+          <div class="card" style="margin: 0; text-align: center;">
+            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print3Title">📚 סיפורים ותרגול Band I (ה'-ו')</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print3Desc">סיפורים קצרים לקריאה בקול עם שאלות הבנה ותרגול פעלים.</p>
+            <button type="button" onclick="window.print()" style="background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;" data-i18n="printBtn">🖨️ הדפסת סיפורים</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section>
       <div class="container">
@@ -637,7 +681,7 @@
 
         <div class="faq-item">
           <div class="faq-q">איך יוצרים קשר אם נתקלים בבעיה או שיש שאלה?</div>
-          <div class="faq-a">אנחנו שמחים תמיד לעזור! אפשר לשלוח אלינו מייל ישירות לכתובת <a href="mailto:aviisr@gmail.com">aviisr@gmail.com</a> או לבקר ב<a href="support/">עמוד התמיכה</a>.</div>
+          <div class="faq-a">אנחנו שמחים תמיד לעזור! אפשר לשלוח אלינו מייל ישירות לכתובת <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a> או לבקר ב<a href="support/">עמוד התמיכה</a>.</div>
         </div>
       </div>
     </section>
@@ -650,7 +694,7 @@
         <span>·</span>
         <a href="privacy/">מדיניות פרטיות</a>
         <span>·</span>
-        <a href="mailto:aviisr@gmail.com">aviisr@gmail.com</a>
+        <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>
       </div>
       <p>© aviisr-games. כל הזכויות שמורות.</p>
       <p class="non-affil">
@@ -659,5 +703,68 @@
     </div>
   </footer>
 
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({
+    supported: ['he', 'en'],
+    defaultLang: 'he',
+    translations: {
+      he: {
+        brandName: 'מילה',
+        navSupport: 'תמיכה',
+        navPrivacy: 'פרטיות',
+        navContact: 'יצירת קשר',
+        navAllGames: 'כל המשחקים',
+        heroBadge: "אנגלית מותאמת אישית לילדים · כיתות א'-ו'",
+        milaHeroTitle: 'מילה — אנגלית לילדים',
+        milaHeroLead: 'לומדים אנגלית בבית בקצב אישי, בעברית, ובלי לחץ. תרגול אוצר מילים, צלילים, משפטים וסיפורים — כמה דקות ביום.',
+        pillarsTitle: 'בלי פרסומות, בלי מנוי ובלי חשבונות',
+        pillarsSub: 'סביבת לימוד נקייה ושקטה, שנבנתה מתוך כבוד לזמן ולתשומת הלב של הילדים שלכם.',
+        pil1Title: 'אפס פרסומות',
+        pil1Desc: 'אין פרסומות קופצות, אין סרטוני שיווק, ואין לחץ להוריד אפליקציות אחרות. הלמידה רציפה ונטולת הסחות דעת.',
+        pil2Title: 'בלי מנוי חודשי',
+        pil2Desc: 'לא צריך לזכור לבטל מנוי. מתחילים בחינם, ומי שרוצה את כל התוכן משלם פעם אחת בלבד ₪49.90 לכל החיים.',
+        pil3Title: 'הכל נשאר במכשיר',
+        pil3Desc: 'אין הרשמה, אין צורך בכתובת אימייל או סיסמה. כל ההתקדמות והשמות נשמרים מקומית במכשיר שלכם בלבד.',
+        printTitle: "כרטיסיות מילים להדפסה בבית (כיתות א'-ו')",
+        printSub: 'דפי עזר ותרגול מודפסים לחיזוק הקריאה ואוצר המילים לצד האפליקציה.',
+        print1Title: "🔤 אותיות וצלילים (א'-ב')",
+        print1Desc: '26 אותיות ה-ABC עם צליל פותח, מילים ראשונות ותמונות לצביעה.',
+        print2Title: "🍎 אוצר מילים Pre-Band I (ג'-ד')",
+        print2Desc: 'כרטיסיות גזירה עם מילים בסיסיות, תרגום עברי ומשפטי הדגמה.',
+        print3Title: "📚 סיפורים ותרגול Band I (ה'-ו')",
+        print3Desc: 'סיפורים קצרים לקריאה בקול עם שאלות הבנה ותרגול פעלים.',
+        printBtn: '🖨️ הדפסת דף תרגול'
+      },
+      en: {
+        brandName: 'Mila (מילה)',
+        navSupport: 'Support',
+        navPrivacy: 'Privacy',
+        navContact: 'Contact',
+        navAllGames: 'All Games',
+        heroBadge: 'Personalized English for Kids · Grades 1–6',
+        milaHeroTitle: 'Mila — English for Kids',
+        milaHeroLead: 'Learn English at home at your own pace, with Hebrew guidance and zero pressure. Vocabulary, phonics, sentences, and illustrated stories in just a few minutes a day.',
+        pillarsTitle: 'No Ads, No Subscriptions, No Accounts',
+        pillarsSub: 'A calm, distraction-free learning environment built with respect for your child’s attention and privacy.',
+        pil1Title: 'Zero Ads',
+        pil1Desc: 'No pop-ups, no video ads, and no cross-promotions. Uninterrupted learning from start to finish.',
+        pil2Title: 'No Monthly Subscription',
+        pil2Desc: 'Start free with 20 words per grade and the ABC board. Unlock everything forever for a single one-time purchase of ₪49.90.',
+        pil3Title: '100% On-Device Privacy',
+        pil3Desc: 'No sign-up, email, or password required. All child profiles and learning progress stay strictly on your device.',
+        printTitle: 'Printable Vocabulary Flashcards (Grades 1–6)',
+        printSub: 'Free printable practice sheets for parents and teachers to reinforce reading alongside the app.',
+        print1Title: '🔤 ABC Letters & Phonics (Grades 1–2)',
+        print1Desc: 'All 26 letters with opening phonics sounds, first words, and coloring illustrations.',
+        print2Title: '🍎 Pre-Band I Flashcards (Grades 3–4)',
+        print2Desc: 'Cut-out vocabulary cards with core Ministry of Education words, Hebrew translation, and sample sentences.',
+        print3Title: '📚 Band I Stories & Reading (Grades 5–6)',
+        print3Desc: 'Short reading passages with comprehension questions and verb practice.',
+        printBtn: '🖨️ Print Practice Sheet'
+      }
+    }
+  });
+</script>
 </body>
 </html>

@@ -3,16 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>aviisr-games · Mobile Games Studio</title>
-<meta name="description" content="Official home of aviisr-games: thoughtful strategy, puzzle, and arcade mobile games for iOS and Android.">
+<title>aviisr-games · Small mobile games, made with care</title>
+<meta name="description" content="aviisr-games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Android now on Google Play; iPhone coming.">
 <meta name="google-site-verification" content="oh0yHwl6YiX3dvIZYH5wIyc5pM6vJMYK3q-frBAYXlY">
 <meta name="google-site-verification" content="oOOd1kEtVYr2Y1KLxcsYjZZEJLcLkjKQKhZO3RPxahU">
 <meta name="facebook-domain-verification" content="ujlw9q4t20ufpcquni2zjk27ozhi6c">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="google-adsense-account" content="ca-pub-2451365263828795">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/">
+<meta property="og:title" content="aviisr-games · Small mobile games, made with care">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aviisrgames.com/">
+<meta property="og:image" content="https://aviisrgames.com/assets/icons/ninely.webp">
+<meta property="og:description" content="Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
+<style>
+  .app-list { list-style: none; padding: 0; margin: 20px 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .app-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .app-head { display: flex; align-items: center; gap: 12px; }
+  .app-head img { width: 56px; height: 56px; border-radius: 13px; flex: none; }
+  .app-head h3 { margin: 0; font-size: 1.1rem; line-height: 1.3; }
+  .app-desc { color: var(--dim); margin: 0; font-size: 0.95rem; line-height: 1.5; flex-grow: 1; }
+  .app-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+  .app-more { font-size: 0.9rem; }
+  .platform-line { color: var(--dim); font-size: 0.95rem; margin: 0 0 6px; }
+  .soon { display: inline-block; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; color: var(--text); font-weight: 600; font-size: 0.92rem; }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -22,128 +40,91 @@
   "logo": "https://aviisrgames.com/favicon.svg",
   "email": "aviisr@aviisrgames.com",
   "sameAs": [
-    "https://play.google.com/store/apps/developer?id=aviisr-games",
-    "https://apps.apple.com/developer/avi-israeli/id1772412803"
+    "https://play.google.com/store/apps/developer?id=Aviisr"
   ]
 }
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"></nav>
 
 <header>
   <h1 data-i18n="heroTitle">aviisr-games</h1>
-  <p class="sub" data-i18n="heroSub">Independent mobile games studio. Strategy, puzzles, and arcade games crafted for iOS and Android.</p>
+  <p class="sub" data-i18n="heroSub2">Small mobile games, made with care. Five apps: Android now, iPhone coming.</p>
 </header>
 
-<!-- Interactive Web Playables Banner -->
-<div class="playables-banner">
-  <h2 style="margin-top: 0; color: var(--gold);" data-i18n="playablesTitle">🎮 Play In Your Browser</h2>
-  <p style="margin: 0; color: var(--dim);" data-i18n="playablesSub">Experience quick playable web teasers and trainers without installing an app:</p>
-  
-  <div class="playables-grid">
-    <div class="playable-item">
-      <h4>Ninely: Daily Sudoku</h4>
-      <p data-i18n="p1Desc">Solve today's puzzle with smart logic hints.</p>
-      <a class="pill-btn accent" href="ninely/play/" data-i18n="playNow">Play Daily Board</a>
-    </div>
-
-    <div class="playable-item">
-      <h4>Middle East 2030: Briefing</h4>
-      <p data-i18n="p2Desc">Navigate 3 months as Prime Minister.</p>
-      <a class="pill-btn accent" href="middle-east-2030/briefing/" data-i18n="playNow">Start Simulation</a>
-    </div>
-
-    <div class="playable-item">
-      <h4>Blackjack Strategy Trainer</h4>
-      <p data-i18n="p3Desc">Master basic casino odds and streak counts.</p>
-      <a class="pill-btn accent" href="casino/trainer/" data-i18n="playNow">Train Basic Strategy</a>
-    </div>
-  </div>
-</div>
-
-<!-- Games Showcase -->
 <h2 data-i18n="gamesTitle">Our Games</h2>
-<div class="games-grid">
-  <!-- 1. Ninely -->
-  <div class="game-card">
-    <div>
-      <h3>Ninely</h3>
-      <div class="game-desc" data-i18n="ninelyDesc">Minimalist number puzzle with smart hints that teach logic step-by-step. 18 languages, daily challenges & duels.</div>
-    </div>
-    <div class="game-links">
-      <a class="pill-btn" href="ninely/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="ninely/duel/">Duel Link</a>
-      <a class="pill-btn" href="ninely/privacy.html">Privacy</a>
-    </div>
-  </div>
+<p class="platform-line" data-i18n="platformLine">On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.</p>
 
-  <!-- 2. Middle East 2030 -->
-  <div class="game-card">
-    <div>
-      <h3>Middle East 2030</h3>
-      <div class="game-desc" data-i18n="me2030Desc">Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.</div>
+<ul class="app-list">
+  <li class="app-card">
+    <div class="app-head">
+      <img src="assets/icons/ninely.webp" alt="" width="56" height="56">
+      <h3>Ninely: Sudoku &amp; Logic Puzzle</h3>
     </div>
-    <div class="game-links">
-      <a class="pill-btn" href="middle-east-2030/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="middle-east-2030/support/">Support</a>
-      <a class="pill-btn" href="middle-east-2030/privacy/">Privacy</a>
+    <p class="app-desc" data-i18n="ninelyDesc">Sudoku that explains every move. Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
+    <div class="app-cta">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=ninely-home"><img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a>
+      <a href="ninely/play/" data-i18n="ninelyTry">Play today's puzzle in your browser</a>
     </div>
-  </div>
+    <a class="app-more" href="ninely/" data-i18n="moreAbout">About, help and privacy</a>
+  </li>
 
-  <!-- 3. Morning Paper Route -->
-  <div class="game-card">
-    <div>
-      <h3>Morning Paper Route</h3>
-      <div class="game-desc" data-i18n="mprDesc">Fast-paced 60 FPS arcade bicycle newspaper courier. Dodge barking dogs and traffic across 7 expanding neighborhoods.</div>
+  <li class="app-card">
+    <div class="app-head">
+      <img src="assets/icons/middle-east-2030.webp" alt="" width="56" height="56">
+      <h3>Middle East 2030: Politics Sim</h3>
     </div>
-    <div class="game-links">
-      <a class="pill-btn" href="paper-route/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="paper-route/privacy/">Privacy</a>
+    <p class="app-desc" data-i18n="me2030Desc">Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.</p>
+    <div class="app-cta">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=middle-east-2030-home"><img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a>
+      <a href="middle-east-2030/briefing/" data-i18n="meTry">Try the 3-month briefing in your browser</a>
     </div>
-  </div>
+    <a class="app-more" href="middle-east-2030/" data-i18n="moreAbout">About, help and privacy</a>
+  </li>
 
-  <!-- 4. Baylight -->
-  <div class="game-card">
-    <div>
-      <h3>Baylight: Sort &amp; Ship</h3>
-      <div class="game-desc" data-i18n="baylightDesc">A calm, satisfying one-thumb depot sorting puzzle. Stack three matching crates and ship your cargo trucks.</div>
+  <li class="app-card">
+    <div class="app-head">
+      <img src="assets/icons/baylight.webp" alt="" width="56" height="56">
+      <h3>Baylight: Truck Sort Puzzle</h3>
     </div>
-    <div class="game-links">
-      <a class="pill-btn" href="baylight/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="baylight/privacy.html">Privacy</a>
+    <p class="app-desc" data-i18n="baylightDesc">Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.</p>
+    <div class="app-cta">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=baylight-home"><img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a>
+      <a href="baylight/dock/" data-i18n="baylightTry">Load a dock in your browser</a>
     </div>
-  </div>
+    <a class="app-more" href="baylight/" data-i18n="moreAbout">About, help and privacy</a>
+  </li>
 
-  <!-- 5. Casino Games -->
-  <div class="game-card">
-    <div>
-      <h3>Casino Games</h3>
-      <div class="game-desc" data-i18n="casinoDesc">Blackjack with built-in strategy coach, Texas Hold’em against computer players, and European/American Roulette (strictly virtual chips).</div>
+  <li class="app-card">
+    <div class="app-head">
+      <img src="assets/icons/paper-route.webp" alt="" width="56" height="56">
+      <h3>Morning Paper Route: Bike Game</h3>
     </div>
-    <div class="game-links">
-      <a class="pill-btn" href="casino/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="support.html">Support</a>
-      <a class="pill-btn" href="privacy.html">Privacy</a>
+    <p class="app-desc" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
+    <div class="app-cta">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=paper-route-home"><img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a>
+      <a href="morning-route/preview/" data-i18n="mprTry">See the route preview</a>
     </div>
-  </div>
+    <a class="app-more" href="paper-route/" data-i18n="moreAbout">About, help and privacy</a>
+  </li>
 
-  <!-- 6. Mila -->
-  <div class="game-card">
-    <div>
-      <h3>מילה (Mila)</h3>
-      <div class="game-desc" data-i18n="milaDesc">English learning for Hebrew-speaking children (grades 1–6). 100% offline, zero ads, no subscriptions, fully COPPA compliant.</div>
+  <li class="app-card" lang="he" dir="rtl">
+    <div class="app-head">
+      <img src="assets/icons/mila.webp" alt="" width="56" height="56">
+      <h3>מילה · Mila</h3>
     </div>
-    <div class="game-links">
-      <a class="pill-btn" href="mila/" data-i18n="hubLink">Game Hub</a>
-      <a class="pill-btn" href="mila/support/">Support</a>
-      <a class="pill-btn" href="mila/privacy/">Privacy</a>
+    <p class="app-desc">אנגלית לילדים דוברי עברית בכיתות א׳–ו׳. בלי פרסומות, בלי חשבון, ושום מידע לא יוצא מהמכשיר.</p>
+    <div class="app-cta">
+      <span class="soon">בקרוב ב-App Store וב-Google Play</span>
+      <a href="mila/worksheets/">דפי עבודה להדפסה, בחינם</a>
     </div>
-  </div>
-</div>
+    <a class="app-more" href="mila/">מידע להורים</a>
+  </li>
+</ul>
 
-<!-- Studio Contact & Support -->
 <div class="card">
   <h2 style="margin-top: 0;" data-i18n="contactTitle">Studio Contact &amp; Support</h2>
   <p data-i18n="contactSub">Player inquiries, bug reports, ad privacy requests, or business correspondence:</p>
@@ -151,7 +132,7 @@
 </div>
 
 <footer>
-  <div>© aviisr-games · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a> · <a href="privacy.html">Privacy</a></div>
+  <div>© aviisr-games · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a></div>
 </footer>
 </main>
 
@@ -163,73 +144,54 @@
   var translations = {
     en: {
       heroTitle: "aviisr-games",
-      heroSub: "Independent mobile games studio. Strategy, puzzles, and arcade games crafted for iOS and Android.",
-      playablesTitle: "🎮 Play In Your Browser",
-      playablesSub: "Experience quick playable web teasers and trainers without installing an app:",
-      p1Desc: "Solve today's puzzle with smart logic hints.",
-      p2Desc: "Navigate 3 months as Prime Minister.",
-      p3Desc: "Master basic casino odds and streak counts.",
-      playNow: "Play Now",
+      heroSub2: "Small mobile games, made with care. Five apps: Android now, iPhone coming.",
       gamesTitle: "Our Games",
-      hubLink: "Game Hub",
-      ninelyDesc: "Minimalist number puzzle with smart hints that teach logic step-by-step. 18 languages, daily challenges & duels.",
-      me2030Desc: "Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.",
-      mprDesc: "Fast-paced 60 FPS arcade bicycle newspaper courier. Dodge barking dogs and traffic across 7 expanding neighborhoods.",
-      baylightDesc: "A calm, satisfying one-thumb depot sorting puzzle. Stack three matching crates and ship your cargo trucks.",
-      casinoDesc: "Blackjack with built-in strategy coach, Texas Hold’em against computer players, and European/American Roulette (strictly virtual chips).",
-      milaDesc: "English learning for Hebrew-speaking children (grades 1–6). 100% offline, zero ads, no subscriptions, fully COPPA compliant.",
+      platformLine: "On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.",
+      ninelyTry: "Play today's puzzle in your browser",
+      meTry: "Try the 3-month briefing in your browser",
+      baylightTry: "Load a dock in your browser",
+      mprTry: "See the route preview",
+      moreAbout: "About, help and privacy",
       contactTitle: "Studio Contact & Support",
       contactSub: "Player inquiries, bug reports, ad privacy requests, or business correspondence:"
     },
     he: {
       heroTitle: "aviisr-games",
-      heroSub: "סטודיו עצמאי למשחקי מובייל. אסטרטגיה, פאזלים וארקייד ל-iOS ו-Android.",
-      playablesTitle: "🎮 לשחק עכשיו בדפדפן",
-      playablesSub: "התנסו במשחקים קצרים ומאמנים ישירות בדפדפן, ללא צורך בהתקנה:",
-      p1Desc: "פתרו את הלוח היומי עם רמזים חכמים שמסבירים כל צעד.",
-      p2Desc: "נהלו 3 חודשים כראש ממשלה והדפיסו את העיתון.",
-      p3Desc: "תרגלו אסטרטגיה בסיסית וסיכויי בלאק ג'ק.",
-      playNow: "לשחק עכשיו",
+      heroSub2: "משחקי מובייל קטנים שנעשו באהבה. חמש אפליקציות: עכשיו ב-Android, ובקרוב ב-iPhone.",
       gamesTitle: "המשחקים שלנו",
-      hubLink: "עמוד המשחק",
-      ninelyDesc: "פאזל מספרים מינימליסטי עם רמזים חכמים. 18 שפות, אתגרים יומיים ודו-קרב חברים.",
-      me2030Desc: "סימולציית אסטרטגיה פוליטית לשנת 2030. 8 ערי בירה, קבלת החלטות וקריאת שער העיתון של מחר.",
-      mprDesc: "משחק ארקייד מהיר של שליח עיתונים על אופניים ב-60 FPS. התחמקו מכלבים ומכוניות ב-7 שכונות שונות.",
-      baylightDesc: "פאזל מיון רגוע ומהנה באגודל אחת. סדרו שלשות ארגזים זהים ושלחו את המשאיות ליעדן.",
-      casinoDesc: "בלאק ג'ק עם מאמן אסטרטגיה מובנה, טקסס הולדם מול המחשב, ורולטה אירופאית ואמריקאית (צ'יפים וירטואליים בלבד).",
-      milaDesc: "לימוד ותרגול אנגלית לילדים בכיתות א'-ו'. עובד מלא ללא אינטרנט, ללא פרסומות וללא מנוי.",
+      platformLine: "ב-iPhone? המשחקים שלנו עדיין לא ב-App Store. בינתיים אפשר לנסות את הגרסאות לדפדפן.",
+      ninelyTry: "לשחק בפאזל של היום בדפדפן",
+      meTry: "לנסות את התדריך בן 3 החודשים בדפדפן",
+      baylightTry: "לנסות רציף בדפדפן",
+      mprTry: "לראות תצוגה מקדימה של המסלול",
+      moreAbout: "מידע, עזרה ופרטיות",
       contactTitle: "יצירת קשר ותמיכה",
       contactSub: "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:"
     },
     ar: {
       heroTitle: "aviisr-games",
-      heroSub: "استوديو مستقل لألعاب الهواتف المحمولة. ألعاب استراتيجية، ألغاز وأركيد لنظامي iOS و Android.",
-      playablesTitle: "🎮 العب الآن في المتصفح",
-      playablesSub: "جرّب ألعاباً مصغرة ومدرّبات تفاعلية مباشرة في متصفحك دون الحاجة لتثبيت تطبيق:",
-      p1Desc: "حل لغز اليوم مع تلميحات منطقية ذكية.",
-      p2Desc: "قُد الحكومة لمدة 3 أشهر واطبع الصفحة الأولى.",
-      p3Desc: "أتقن استراتيجية البلاك جاك والاحتمالات الرياضية.",
-      playNow: "العب الآن",
+      heroSub2: "ألعاب صغيرة للهواتف مصنوعة بعناية. خمسة تطبيقات: على Android الآن، وقريباً على iPhone.",
       gamesTitle: "ألعابنا",
-      hubLink: "صفحة اللعبة",
-      ninelyDesc: "لغز أرقام أنيق مع تلميحات ذكية تشرح كل خطوة. 18 لغة وتحديات يومية.",
-      me2030Desc: "محاكاة استراتيجية سياسية عميقة لعام 2030. اختر من بين 8 عواصم إقليمية واقرأ صحيفة الغد.",
-      mprDesc: "لعبة أركيد سريعة لتوصيل الصحف بالدراجة الهوائية. تجنب الكلاب والسيارات عبر 7 أحياء.",
-      baylightDesc: "لغز فرز هادئ وممتع بإبهام واحد. رتّب 3 صناديق متطابقة وأرسل شاحنات الشحن.",
-      casinoDesc: "بلاك جاك مع مدرّب استراتيجية، تكساس هولدم ضد الكمبيوتر، وروليت أوروبية وأمريكية (رقاقات افتراضية فقط).",
-      milaDesc: "تعليم الإنجليزية للأطفال. يعمل دون اتصال بالإنترنت، بلا إعلانات وبلا اشتراكات.",
+      platformLine: "تستخدم iPhone؟ ألعابنا ليست على App Store بعد. جرّب نسخ المتصفح أدناه في الأثناء.",
+      ninelyTry: "العب لغز اليوم في المتصفح",
+      meTry: "جرّب الإحاطة لثلاثة أشهر في المتصفح",
+      baylightTry: "جرّب رصيفاً في المتصفح",
+      mprTry: "شاهد معاينة المسار",
+      moreAbout: "معلومات ومساعدة وخصوصية",
       contactTitle: "التواصل والدعم",
       contactSub: "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:"
     }
   };
 
   AviisrI18n.init({
-    supported: ['en', 'he', 'ar', 'es', 'fr', 'de', 'it', 'nl', 'pt-BR', 'tr', 'ru', 'ja', 'ko', 'zh-TW', 'zh-CN', 'sv', 'da', 'nb', 'fi'],
+    supported: ['en', 'he', 'ar'],
     translations: translations,
     defaultLang: 'en'
   });
+
 })();
 </script>
+<script src="/assets/play-badge.js"></script>
 <script src="/assets/count.js" defer></script>
 </body>
 </html>

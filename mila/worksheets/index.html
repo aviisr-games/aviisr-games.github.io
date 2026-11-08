@@ -302,10 +302,15 @@
       border: 1pt solid #000 !important;
     }
   }
+  /* Light page: dark links and focus ring (shared style.css assumes a dark background). */
+  nav.lang a, footer a, #inline-answer-key { color: #1d4ed8; }
+  .lang-switcher { background-color: #ffffff; color: #1e3a8a; border-color: #94a3b8; }
+  :focus-visible { outline-color: #1e3a8a; }
 </style>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">דילוג לתוכן</a>
+<main id="main">
 <nav class="lang no-print" style="margin-bottom: 12px;">
   <a href="../">דף הבית של מילה</a> · <a id="nav-answer-key" href="answer-key/?grade=3">דף תשובות למורים והורים</a> · <a href="../privacy/">פרטיות</a> · <a href="../../">כל המשחקים</a>
 </nav>
@@ -372,7 +377,7 @@
   <strong>בקרוב ב-App Store וב-Google Play</strong>
 </div>
 
-<footer class="no-print" style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #64748b;">
+<footer class="no-print" style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #475569;">
   <a href="../">מילה — דף הבית</a> · <a id="footer-answer-key" href="answer-key/?grade=3">דף תשובות</a> · <a href="../privacy/">מדיניות פרטיות</a> · <a href="../support/">תמיכה</a> · <a href="../../">AVIISR Games</a>
 </footer>
 </main>

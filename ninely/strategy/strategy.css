@@ -70,7 +70,7 @@
 
 .diagram-board {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(9, minmax(0, 1fr)); /* cells shrink on 320 px phones (WCAG 1.4.10) */
   gap: 1px;
   background: #064e3b;
   border: 3px solid #042719;
@@ -198,7 +198,7 @@
   margin: 16px 0;
 }
 
-.wrong-move-box h4 {
+.wrong-move-box h3, .wrong-move-box h4 {
   color: #fca5a5;
   margin: 0 0 6px;
   font-size: 1rem;
@@ -212,7 +212,7 @@
   margin: 16px 0;
 }
 
-.tip-box h4 {
+.tip-box h3, .tip-box h4 {
   color: #6ee7b7;
   margin: 0 0 6px;
   font-size: 1rem;
@@ -287,3 +287,5 @@
   text-decoration: none;
   transform: translateY(-2px);
 }
+
+.diagram-board .diagram-cell { min-width: 0; overflow: hidden; }

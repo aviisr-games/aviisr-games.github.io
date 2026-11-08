@@ -25,7 +25,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -118,13 +119,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 4 in R5C2</h4>
+        <h3>⚠️ The Tempting Wrong Move: Placing 4 in R5C2</h3>
         <p>R5C2 only has <code>&#123;1, 4&#125;</code>, and 4 looks like it could go there because nothing in Row 5, Column 2 or Box 4 blocks it yet.</p>
         <p><strong>Why this fails:</strong> A 4 in R5C2 removes 4 from R5C3 and R5C7. Column 7 is then forced to R2C7, which removes 4 from R2C3 and R2C9. Column 9 is forced to R1C9, which removes 4 from R1C3. Column 3 now has no cell left for a 4, an immediate contradiction!</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: Scan One Digit at a Time</h4>
+        <h3>💡 Solving Tip: Scan One Digit at a Time</h3>
         <p>Pick a digit and mark every column where it has only two or three candidate cells. If three of those columns use only three rows between them, you have a Swordfish. Repeat with rows in place of columns. In the Ninely engine, Swordfish is a Master-tier technique, the top of the hint ladder.</p>
       </div>
     </div>

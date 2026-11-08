@@ -42,10 +42,11 @@ a:hover { color: var(--gold-hover); text-decoration: underline; }
 /* Language Navigation & Switcher */
 nav.lang {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 18px;
-  gap: 12px;
+  gap: 6px 12px;
 }
 [dir="rtl"] nav.lang { justify-content: flex-start; }
 .lang-switcher {
@@ -57,7 +58,8 @@ nav.lang {
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  outline: none;
+  max-width: 100%;
+  background-color: var(--darker);
 }
 .lang-switcher option {
   background: var(--darker);
@@ -133,7 +135,7 @@ nav.lang {
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
-.playable-item h4 { margin: 0 0 6px; color: var(--gold); font-size: 1.05rem; }
+.playable-item h3, .playable-item h4 { margin: 0 0 6px; color: var(--gold); font-size: 1.05rem; }
 .playable-item p { font-size: 0.85rem; color: var(--dim); margin: 0 0 12px; }
 
 section + section { border-top: 1px solid rgba(255,255,255,.15); margin-top: 2.5rem; padding-top: 1rem; }
@@ -147,3 +149,32 @@ footer { color: var(--dim); font-size: .9rem; margin-top: 3rem; text-align: cent
   color: var(--dim, #a9b5ad);
   font-size: 0.9rem;
 }
+
+/* Keyboard focus: a ring that stays visible on gold buttons and dark backgrounds (WCAG 2.4.7, 1.4.11). */
+:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link: hidden until focused (WCAG 2.4.1). */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 100;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #042719;
+  font-weight: 700;
+}
+.skip-link:focus { top: 8px; }
+[dir="rtl"] .skip-link { left: auto; right: 8px; }
+
+/* Long words and URLs never force sideways scrolling on 320-375 px phones (WCAG 1.4.10). */
+main, footer, nav.lang { overflow-wrap: anywhere; }
+
+/* Store call to action on app hubs and playables (official badge + honest iPhone note). */
+.store-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 14px 0 18px; }
+.play-badge img { height: 58px; width: auto; display: block; } /* the official PNG includes its clear space */

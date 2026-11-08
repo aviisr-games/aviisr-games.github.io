@@ -45,6 +45,8 @@
 
   var AVIISR_STRINGS = {
     'en': {
+      iphoneSoon: 'Not on iPhone yet',
+      tryInBrowser: 'Play in your browser',
       heroTitle: 'aviisr-games',
       heroSub: 'Independent mobile games studio. Strategy, puzzles, and arcade games crafted for iOS and Android.',
       playablesTitle: '🎮 Play In Your Browser',
@@ -55,12 +57,12 @@
       playNow: 'Play Now',
       gamesTitle: 'Our Games',
       hubLink: 'Game Hub',
-      ninelyDesc: 'Minimalist number puzzle with smart hints that teach logic step-by-step. 18 languages, daily challenges & duels.',
+      ninelyDesc: 'Sudoku that explains every move. Smart Hints teach the logic step by step, with a new daily puzzle every day.',
       me2030Desc: "Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.",
-      mprDesc: 'Fast-paced 60 FPS arcade bicycle newspaper courier. Dodge barking dogs and traffic across 7 expanding neighborhoods.',
-      baylightDesc: 'A calm, satisfying one-thumb depot sorting puzzle. Stack three matching crates and ship your cargo trucks.',
+      mprDesc: 'Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.',
+      baylightDesc: 'Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.',
       casinoDesc: 'Blackjack with built-in strategy coach, Texas Hold’em against computer players, and European/American Roulette (strictly virtual chips).',
-      milaDesc: 'English learning for Hebrew-speaking children (grades 1–6). 100% offline, zero ads, no subscriptions, fully COPPA compliant.',
+      milaDesc: 'English for Hebrew-speaking children in grades 1–6. No ads, no accounts, and nothing leaves the device.',
       contactTitle: 'Studio Contact & Support',
       contactSub: 'Player inquiries, bug reports, ad privacy requests, or business correspondence:',
       navAllGames: 'All Games',
@@ -84,6 +86,8 @@
       actSplit: 'SPLIT'
     },
     'he': {
+      iphoneSoon: 'עדיין לא ב-iPhone',
+      tryInBrowser: 'לשחק בדפדפן',
       heroTitle: 'aviisr-games',
       heroSub: 'סטודיו עצמאי למשחקי מובייל. אסטרטגיה, פאזלים וארקייד ל-iOS ו-Android.',
       playablesTitle: '🎮 לשחק עכשיו בדפדפן',
@@ -94,12 +98,12 @@
       playNow: 'לשחק עכשיו',
       gamesTitle: 'המשחקים שלנו',
       hubLink: 'עמוד המשחק',
-      ninelyDesc: 'פאזל מספרים מינימליסטי עם רמזים חכמים. 18 שפות, אתגרים יומיים ודו-קרב חברים.',
+      ninelyDesc: 'סודוקו שמסביר כל צעד. רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.',
       me2030Desc: 'סימולציית אסטרטגיה פוליטית לשנת 2030. 8 ערי בירה, קבלת החלטות וקריאת שער העיתון של מחר.',
-      mprDesc: 'משחק ארקייד מהיר של שליח עיתונים על אופניים ב-60 FPS. התחמקו מכלבים ומכוניות ב-7 שכונות שונות.',
-      baylightDesc: 'פאזל מיון רגוע ומהנה באגודל אחת. סדרו שלשות ארגזים זהים ושלחו את המשאיות ליעדן.',
+      mprDesc: 'רכבו במסלול הבוקר, זרקו את העיתון ומסרו לפני הזריחה. משחק ארקייד באגודל אחת, בלי פרסומות כפויות באמצע רכיבה.',
+      baylightDesc: 'הקישו על רציף, ערמו שלושה זהים ושלחו את המשאית. פאזל מיון באגודל אחת בסבבים קצרים.',
       casinoDesc: "בלאק ג'ק עם מאמן אסטרטגיה מובנה, טקסס הולדם מול המחשב, ורולטה אירופאית ואמריקאית (צ'יפים וירטואליים בלבד).",
-      milaDesc: "לימוד ותרגול אנגלית לילדים בכיתות א'-ו'. עובד מלא ללא אינטרנט, ללא פרסומות וללא מנוי.",
+      milaDesc: 'אנגלית לילדים דוברי עברית בכיתות א׳–ו׳. בלי פרסומות, בלי חשבון, ושום מידע לא יוצא מהמכשיר.',
       contactTitle: 'יצירת קשר ותמיכה',
       contactSub: 'פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:',
       navAllGames: 'כל המשחקים',
@@ -123,6 +127,8 @@
       actSplit: 'פיצול (Split)'
     },
     'ar': {
+      iphoneSoon: 'ليست على iPhone بعد',
+      tryInBrowser: 'العب في المتصفح',
       heroTitle: 'aviisr-games',
       heroSub: 'استوديو مستقل لألعاب الهواتف المحمولة. ألعاب استراتيجية، ألغاز وأركيد لنظامي iOS و Android.',
       playablesTitle: '🎮 العب الآن في المتصفح',
@@ -133,12 +139,12 @@
       playNow: 'العب الآن',
       gamesTitle: 'ألعابنا',
       hubLink: 'صفحة اللعبة',
-      ninelyDesc: 'لغز أرقام أنيق مع تلميحات ذكية تشرح كل خطوة. 18 لغة وتحديات يومية.',
+      ninelyDesc: 'سودوكو يشرح كل خطوة. تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.',
       me2030Desc: 'محاكاة استراتيجية سياسية عميقة لعام 2030. اختر من بين 8 عواصم إقليمية واقرأ صحيفة الغد.',
-      mprDesc: 'لعبة أركيد سريعة لتوصيل الصحف بالدراجة الهوائية. تجنب الكلاب والسيارات عبر 7 أحياء.',
-      baylightDesc: 'لغز فرز هادئ وممتع بإبهام واحد. رتّب 3 صناديق متطابقة وأرسل شاحنات الشحن.',
+      mprDesc: 'انطلق في جولتك الصباحية، ارمِ الصحيفة وسلّمها قبل شروق الشمس. لعبة أركيد بالدراجة بإبهام واحد، بلا إعلانات إجبارية أثناء الجولة.',
+      baylightDesc: 'انقر على رصيف، كدّس ثلاثة متطابقة وأرسل الشاحنة. لغز فرز بإبهام واحد في جولات قصيرة.',
       casinoDesc: 'بلاك جاك مع مدرّب استراتيجية، تكساس هولدم ضد الكمبيوتر، وروليت أوروبية وأمريكية (رقاقات افتراضية فقط).',
-      milaDesc: 'تعليم الإنجليزية للأطفال. يعمل دون اتصال بالإنترنت، بلا إعلانات وبلا اشتراكات.',
+      milaDesc: 'الإنجليزية للأطفال الناطقين بالعبرية من الصف الأول إلى السادس. بلا إعلانات، بلا حسابات، ولا تخرج أي بيانات من الجهاز.',
       contactTitle: 'التواصل والدعم',
       contactSub: 'استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:',
       navAllGames: 'جميع الألعاب',
@@ -172,12 +178,8 @@
       playNow: 'Jugar ahora',
       gamesTitle: 'Nuestros Juegos',
       hubLink: 'Página del juego',
-      ninelyDesc: 'Puzle numérico minimalista con pistas inteligentes paso a paso. 18 idiomas, retos diarios y duelos.',
       me2030Desc: 'Simulación de estrategia política en 2030. Elige entre 8 capitales y lee la portada de mañana.',
-      mprDesc: 'Arcade de reparto de periódicos en bicicleta a 60 FPS por 7 vecindarios.',
-      baylightDesc: 'Puzle relajante de clasificación en almacén con un solo pulgar.',
       casinoDesc: 'Blackjack con entrenador de estrategia, Texas Hold’em y Ruleta (solo fichas virtuales).',
-      milaDesc: 'Aprendizaje de inglés para niños (100% sin conexión, sin anuncios ni suscripciones).',
       contactTitle: 'Contacto y Soporte',
       contactSub: 'Consultas de jugadores, reportes de errores o contacto comercial:',
       navAllGames: 'Todos los juegos',
@@ -211,12 +213,8 @@
       playNow: 'Jouer',
       gamesTitle: 'Nos Jeux',
       hubLink: 'Page du jeu',
-      ninelyDesc: 'Puzzle numérique minimaliste avec indices intelligents étape par étape en 18 langues.',
       me2030Desc: 'Simulation politique en 2030. Gouvernez l’une des 8 capitales et lisez la une du lendemain.',
-      mprDesc: 'Jeu d’arcade de livraison de journaux à vélo à 60 FPS dans 7 quartiers.',
-      baylightDesc: 'Puzzle apaisant de tri d’entrepôt à une main.',
       casinoDesc: 'Blackjack avec coach stratégique, Texas Hold’em et Roulette (jetons virtuels uniquement).',
-      milaDesc: 'Apprentissage de l’anglais pour enfants (100% hors ligne, sans publicité ni abonnement).',
       contactTitle: 'Contact et Assistance',
       contactSub: 'Questions des joueurs, signalements de bugs ou demandes professionnelles :',
       navAllGames: 'Tous les jeux',
@@ -250,12 +248,8 @@
       playNow: 'Jetzt spielen',
       gamesTitle: 'Unsere Spiele',
       hubLink: 'Spielseite',
-      ninelyDesc: 'Minimalistisches Zahlenrätsel mit Schritt-für-Schritt-Logikhinweisen in 18 Sprachen.',
       me2030Desc: 'Politische Strategiesimulation im Jahr 2030. Wähle aus 8 Hauptstädten und lies die Schlagzeile von morgen.',
-      mprDesc: 'Schnelles 60-FPS-Fahrrad-Zeitungsboten-Arcadespiel durch 7 Nachbarschaften.',
-      baylightDesc: 'Entspannendes Ein-Daumen-Lagersortierpuzzle.',
       casinoDesc: 'Blackjack mit Strategie-Trainer, Texas Hold’em und Roulette (rein virtuelle Chips).',
-      milaDesc: 'Englischlernen für Kinder (100% offline, werbefrei, kein Abo).',
       contactTitle: 'Kontakt & Support',
       contactSub: 'Spieleranfragen, Fehlermeldungen oder geschäftliche Korrespondenz:',
       navAllGames: 'Alle Spiele',
@@ -289,12 +283,8 @@
       playNow: 'Gioca ora',
       gamesTitle: 'I Nostri Giochi',
       hubLink: 'Pagina del gioco',
-      ninelyDesc: 'Puzzle numerico minimalista con suggerimenti intelligenti in 18 lingue.',
       me2030Desc: 'Simulazione di strategia politica nel 2030. Scegli tra 8 capitali e leggi la prima pagina di domani.',
-      mprDesc: 'Arcade di consegna giornali in bicicletta a 60 FPS in 7 quartieri.',
-      baylightDesc: 'Rilassante puzzle di smistamento casse con un solo pollice.',
       casinoDesc: 'Blackjack con allenatore, Texas Hold’em e Roulette (solo fiches virtuali).',
-      milaDesc: 'Inglese per bambini (100% offline, zero pubblicità, nessun abbonamento).',
       contactTitle: 'Contatti e Supporto',
       contactSub: 'Domande dei giocatori, segnalazioni di bug o richieste commerciali:',
       navAllGames: 'Tutti i giochi',
@@ -319,12 +309,8 @@
       playNow: 'Nu spelen',
       gamesTitle: 'Onze Games',
       hubLink: 'Gamepagina',
-      ninelyDesc: 'Minimalistische cijferpuzzel met slimme stap-voor-stap hints in 18 talen.',
       me2030Desc: 'Politieke strategiesimulatie in 2030. Kies uit 8 hoofdsteden en lees de voorpagina van morgen.',
-      mprDesc: 'Snelle 60 FPS krantenbezorger-arcadegame door 7 wijken.',
-      baylightDesc: 'Rustgevende sorteerpuzzel met één duim.',
       casinoDesc: 'Blackjack met strategietrainer, Texas Hold’em en Roulette (alleen virtuele fiches).',
-      milaDesc: 'Engels leren voor kinderen (100% offline, geen advertenties, geen abonnement).',
       contactTitle: 'Contact & Ondersteuning',
       contactSub: 'Spelersvragen, bugmeldingen of zakelijke correspondentie:',
       navAllGames: 'Alle games',
@@ -349,12 +335,8 @@
       playNow: 'Jogar agora',
       gamesTitle: 'Nossos Jogos',
       hubLink: 'Página do Jogo',
-      ninelyDesc: 'Quebra-cabeça numérico minimalista com dicas inteligentes em 18 idiomas.',
       me2030Desc: 'Simulação de estratégia política em 2030. Escolha entre 8 capitais e leia a manchete de amanhã.',
-      mprDesc: 'Arcade de entrega de jornais de bicicleta a 60 FPS por 7 bairros.',
-      baylightDesc: 'Quebra-cabeça relaxante de organização de caixas com um polegar.',
       casinoDesc: 'Blackjack com treinador de estratégia, Texas Hold’em e Roleta (apenas fichas virtuais).',
-      milaDesc: 'Inglês para crianças (100% offline, sem anúncios e sem assinatura).',
       contactTitle: 'Contato e Suporte',
       contactSub: 'Dúvidas de jogadores, relatos de bugs ou contato comercial:',
       navAllGames: 'Todos os jogos',
@@ -379,12 +361,8 @@
       playNow: 'Şimdi Oyna',
       gamesTitle: 'Oyunlarımız',
       hubLink: 'Oyun Sayfası',
-      ninelyDesc: 'Her adımı açıklayan akıllı ipuçlarına sahip minimalist sayı bulmacası. 18 dil desteği.',
       me2030Desc: '2030 yılında geçen derin politik strateji simülasyonu. 8 başkentten birini seçin ve yarının manşetini okuyun.',
-      mprDesc: '7 mahallede 60 FPS bisikletli gazete dağıtım arcade oyunu.',
-      baylightDesc: 'Tek parmakla oynanan sakinleştirici depo sıralama bulmacası.',
       casinoDesc: 'Strateji koçlu Blackjack, Texas Hold’em ve Rulet (yalnızca sanal çipler).',
-      milaDesc: 'Çocuklar için İngilizce öğrenimi (%100 çevrimdışı, reklamsız, aboneliksiz).',
       contactTitle: 'İletişim ve Destek',
       contactSub: 'Oyuncu soruları, hata bildirimleri veya iş yazışmaları:',
       navAllGames: 'Tüm Oyunlar',
@@ -418,12 +396,8 @@
       playNow: 'Играть',
       gamesTitle: 'Наши игры',
       hubLink: 'Страница игры',
-      ninelyDesc: 'Минималистичная числовая головоломка с пошаговыми подсказками на 18 языках.',
       me2030Desc: 'Политический симулятор 2030 года. Выберите одну из 8 столиц и прочитайте утреннюю газету.',
-      mprDesc: 'Динамичная аркада (60 FPS) о велокурьере, доставляющем утренние газеты по 7 районам.',
-      baylightDesc: 'Спокойная головоломка о сортировке ящиков на складе одним пальцем.',
       casinoDesc: 'Блэкджек с тренером стратегии, Техасский Холдем и Рулетка (только виртуальные фишки).',
-      milaDesc: 'Английский для детей (100% офлайн, без рекламы и подписок).',
       contactTitle: 'Контакты и поддержка',
       contactSub: 'Вопросы игроков, сообщения об ошибках и деловые запросы:',
       navAllGames: 'Все игры',
@@ -448,12 +422,8 @@
       playNow: '今すぐプレイ',
       gamesTitle: 'ゲーム一覧',
       hubLink: 'ゲーム詳細',
-      ninelyDesc: 'ステップごとに論理を教えるスマートヒント付き数字パズル。18言語対応、デイリー挑戦＆対戦。',
       me2030Desc: '2030年を舞台にした本格政治戦略シミュレーション。8つの首都から選び、明日の朝刊の一面を読もう。',
-      mprDesc: '60 FPSの爽快自転車新聞配達アーケード。7つの街で障害物をかわして配達しよう。',
-      baylightDesc: '片手で遊べる心地よい倉庫仕分けパズル。同じ木箱を3つ揃えてトラックを出荷しよう。',
       casinoDesc: '戦略コーチ付きブラックジャック、テキサスホールデム、ルーレット（完全仮想チップのみ）。',
-      milaDesc: '子ども向け英語学習アプリ（完全オフライン、広告なし、サブスクなし）。',
       contactTitle: 'お問い合わせ・サポート',
       contactSub: 'プレイヤーのお問い合わせ、バグ報告、ビジネス連絡先：',
       navAllGames: 'すべてのゲーム',
@@ -487,12 +457,8 @@
       playNow: '지금 플레이',
       gamesTitle: '출시 게임',
       hubLink: '게임 허브',
-      ninelyDesc: '단계별 논리를 알려주는 스마트 힌트 숫자 퍼즐. 18개 언어, 일일 챌린지 및 듀얼 지원.',
       me2030Desc: '2030년 배경의 정치 전략 시뮬레이션. 8개 수도를 선택해 통치하고 내일 아침 신문 1면을 확인하세요.',
-      mprDesc: '60 FPS 자전거 신문 배달 아케이드 게임. 7개 동네를 달리며 신문을 배달하세요.',
-      baylightDesc: '한 손으로 즐기는 차분한 창고 정리 퍼즐.',
       casinoDesc: '전략 코치가 포함된 블랙잭, 텍사스 홀덤, 룰렛 (가상 칩 전용).',
-      milaDesc: '어린이를 위한 영어 학습 앱 (100% 오프라인, 광고 없음, 구독 없음).',
       contactTitle: '문의 및 지원',
       contactSub: '플레이어 문의, 버그 제보 및 비즈니스 연락:',
       navAllGames: '전체 게임',
@@ -526,12 +492,8 @@
       playNow: '立即試玩',
       gamesTitle: '我們的遊戲',
       hubLink: '遊戲專頁',
-      ninelyDesc: '提供逐步邏輯教學提示的極簡數字益智遊戲。支援 18 種語言、每日挑戰與好友對戰。',
       me2030Desc: '以 2030 年為背景的深度政治策略模擬。從 8 個首都中選擇並閱讀明日早報頭版。',
-      mprDesc: '60 FPS 單車送報街機遊戲，穿梭於 7 個特色社區。',
-      baylightDesc: '單手即可暢玩的療癒系倉庫分類益智遊戲。',
       casinoDesc: '內建策略教練的 21 點、德州撲克與輪盤（純虛擬籌碼）。',
-      milaDesc: '兒童英語學習應用程式（100% 離線、零廣告、無訂閱）。',
       contactTitle: '聯絡與支援',
       contactSub: '玩家諮詢、問題回報或商務聯繫：',
       navAllGames: '所有遊戲',
@@ -556,12 +518,8 @@
       playNow: '立即开始',
       gamesTitle: '我们的游戏',
       hubLink: '游戏主页',
-      ninelyDesc: '配备分步逻辑智能提示的极简数字解谜游戏。支持 18 种语言、每日挑战与好友对战。',
       me2030Desc: '2030 年政治策略模拟游戏。从 8 个首都中选择，阅读明日头条新闻。',
-      mprDesc: '60 FPS 快节奏自行车送报街机游戏，穿越 7 个街区。',
-      baylightDesc: '轻松解压的单手仓库分拣解谜游戏。',
       casinoDesc: '内置策略教练的 21 点、德州扑克与轮盘（纯虚拟筹码）。',
-      milaDesc: '少儿英语学习应用（100% 离线、无广告、无订阅）。',
       contactTitle: '联系与支持',
       contactSub: '玩家咨询、错误反馈或商务合作：',
       navAllGames: '全部游戏',
@@ -592,12 +550,8 @@
       playNow: 'Spela nu',
       gamesTitle: 'Våra Spel',
       hubLink: 'Spelsida',
-      ninelyDesc: 'Minimalistiskt sifferpussel med smarta ledtrådar som lär ut logik steg för steg på 18 språk.',
       me2030Desc: 'Politisk strategisimulering år 2030. Välj bland 8 huvudstäder och läs morgondagens förstasida.',
-      mprDesc: 'Snabbt 60 FPS arkadspel som tidningsbud på cykel genom 7 kvarter.',
-      baylightDesc: 'Lugnt och tillfredsställande sorteringspussel med en tumme.',
       casinoDesc: 'Blackjack med strategicoach, Texas Hold’em och Roulette (endast virtuella marker).',
-      milaDesc: 'Engelska för barn (100% offline, inga annonser, ingen prenumeration).',
       contactTitle: 'Kontakt & Support',
       contactSub: 'Spelarfrågor, felrapporter eller affärskontakt:',
       navAllGames: 'Alla spel',
@@ -619,12 +573,8 @@
       playNow: 'Spil nu',
       gamesTitle: 'Vores Spil',
       hubLink: 'Spilside',
-      ninelyDesc: 'Minimalistisk talpuslespil med smarte hints, der lærer dig logik trin for trin på 18 sprog.',
       me2030Desc: 'Politisk strategisimulering i 2030. Vælg mellem 8 hovedstæder og læs morgendagens forside.',
-      mprDesc: 'Hurtigt 60 FPS cykel-avisbud arkadespil gennem 7 kvarterer.',
-      baylightDesc: 'Roligt sorteringspuslespil med én tommelfinger.',
       casinoDesc: 'Blackjack med strategisencoach, Texas Hold’em og Roulette (kun virtuelle jetoner).',
-      milaDesc: 'Engelsk for børn (100% offline, ingen reklamer, intet abonnement).',
       contactTitle: 'Kontakt & Support',
       contactSub: 'Spillerhenvendelser, fejlrapporter eller forretningskontakt:',
       navAllGames: 'Alle spil',
@@ -646,12 +596,8 @@
       playNow: 'Spill nå',
       gamesTitle: 'Våre Spill',
       hubLink: 'Spillside',
-      ninelyDesc: 'Minimalistisk tallpuslespill med smarte hint som lærer bort logikk trinn for trinn på 18 språk.',
       me2030Desc: 'Politisk strategisimulering i 2030. Velg blant 8 hovedsteder og les morgendagens forside.',
-      mprDesc: 'Raskt 60 FPS arkadespill som avisbud på sykkel gjennom 7 nabolag.',
-      baylightDesc: 'Rolig sorteringspuslespill med én tommel.',
       casinoDesc: 'Blackjack med strategitrener, Texas Hold’em og Roulette (kun virtuelle sjetonger).',
-      milaDesc: 'Engelsk for barn (100% frakoblet, ingen reklame, ingen abonnement).',
       contactTitle: 'Kontakt og brukerstøtte',
       contactSub: 'Spillerhenvendelser, feilrapporter eller forretningskontakt:',
       navAllGames: 'Alle spill',
@@ -673,12 +619,8 @@
       playNow: 'Pelaa nyt',
       gamesTitle: 'Pelimme',
       hubLink: 'Pelisivu',
-      ninelyDesc: 'Minimalistinen numeropulmapeli älykkäillä vaiheittaisilla vihjeillä 18 kielellä.',
       me2030Desc: 'Poliittinen strategiasimulaatio vuodelle 2030. Valitse 8 pääkaupungista ja lue huomisen etusivu.',
-      mprDesc: 'Nopeatempoinen 60 FPS pyörälähetti-arcadepeli 7 naapurustossa.',
-      baylightDesc: 'Rauhoittava yhden peukalon varastonlajittelupulma.',
       casinoDesc: 'Blackjack strategiavalmentajalla, Texas Hold’em ja Ruletti (vain virtuaalimerkkejä).',
-      milaDesc: 'Englannin oppimispeli lapsille (100% offline, ei mainoksia, ei tilausta).',
       contactTitle: 'Yhteystiedot ja tuki',
       contactSub: 'Pelaajakysymykset, vikailmoitukset ja yritysyhteydenotot:',
       navAllGames: 'Kaikki pelit',
@@ -694,7 +636,12 @@
   window.AVIISR_LANGS = AVIISR_LANGS;
   window.AVIISR_STRINGS = AVIISR_STRINGS;
 
-  function resolveLanguage(supported, defaultLang) {
+  // options.storageKey: where an explicit choice is remembered (default 'aviisr_lang', shared across hubs).
+  // options.useBrowserLanguage: false pins the page to defaultLang unless the visitor chose otherwise
+  // (used by Mila, a Hebrew parent page that must not flip to English on English-language phones).
+  function resolveLanguage(supported, defaultLang, options) {
+    options = options || {};
+    var storageKey = options.storageKey || 'aviisr_lang';
     // 1. URL query param: ?lang=xx
     try {
       var params = new URLSearchParams(window.location.search);
@@ -708,11 +655,12 @@
 
     // 3. Stored choice
     try {
-      var stored = localStorage.getItem('aviisr_lang');
+      var stored = localStorage.getItem(storageKey);
       if (stored && supported.indexOf(stored) !== -1) return stored;
     } catch (e) {}
 
     // 4. Browser navigator language
+    if (options.useBrowserLanguage === false) return defaultLang || 'en';
     try {
       var nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
       for (var i = 0; i < supported.length; i++) {
@@ -743,7 +691,7 @@
     document.documentElement.dir = dir;
 
     try {
-      localStorage.setItem('aviisr_lang', lang);
+      localStorage.setItem(options.storageKey || 'aviisr_lang', lang);
     } catch (e) {}
 
     // Synchronize select dropdowns if present
@@ -850,7 +798,7 @@
       var defaultLang = options.defaultLang || (supported.indexOf('he') !== -1 && supported[0] === 'he' ? 'he' : 'en');
       options.defaultLang = defaultLang;
 
-      var currentLang = resolveLanguage(supported, defaultLang);
+      var currentLang = resolveLanguage(supported, defaultLang, options);
       options.current = currentLang;
 
       // Mount switcher if container exists

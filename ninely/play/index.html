@@ -6,7 +6,7 @@
 <title>Ninely - Daily Web Sudoku & Smart Hints</title>
 <meta name="description" content="Play the free Ninely Daily Sudoku warmup with smart hints explaining each move. Available on iOS & Android.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; connect-src 'self'; object-src 'none'; base-uri 'self';">
 <link rel="stylesheet" href="../../style.css">
 <style>
   .play-container { max-width: 540px; margin: 0 auto; text-align: center; }
@@ -79,14 +79,14 @@
       <p style="margin: 8px 0 14px; color: #d1fae5;" data-i18n="practiseMore">Practise more techniques and master thousands of boards in the full Ninely app:</p>
       <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
         <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web&utm_medium=daily_win" target="_blank" rel="noopener noreferrer">Get on Google Play</a>
-        <a class="store-btn" href="https://apps.apple.com/app/id6824055538?ct=daily_win" target="_blank" rel="noopener noreferrer">Download on App Store</a>
+        <span class="store-note" data-i18n="iphoneSoon">Not on iPhone yet</span>
       </div>
     </div>
   </div>
 
   <div class="store-links">
     <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web&utm_medium=daily_footer" target="_blank" rel="noopener noreferrer">Get on Google Play</a>
-    <a class="store-btn" href="https://apps.apple.com/app/id6824055538?ct=daily_footer" target="_blank" rel="noopener noreferrer">Download on App Store</a>
+    <span class="store-note" data-i18n="iphoneSoon">Not on iPhone yet</span>
   </div>
 </div>
 
@@ -102,6 +102,7 @@
 
   var translations = {
     en: {
+      iphoneSoon: "Not on iPhone yet",
       badge: "Daily Sudoku Warmup",
       title: "Ninely: Daily Web Puzzle",
       sub: "Train your logic with smart hints. Clear the board in your browser, or download the full game for thousands of puzzles!",
@@ -113,6 +114,7 @@
       learnGuide: "Learn this technique ➔"
     },
     he: {
+      iphoneSoon: "עדיין לא ב-iPhone",
       badge: "חימום סודוקו יומי",
       title: "Ninely: פאזל יומי בדפדפן",
       sub: "אימון חשיבה עם רמזים חכמים שמסבירים כל צעד. פתרו בדפדפן או הורידו את המשחק המלא לאלפי לוחות נוספים!",
@@ -124,6 +126,7 @@
       learnGuide: "ללמוד את הטכניקה ➔"
     },
     ar: {
+      iphoneSoon: "ليست على iPhone بعد",
       badge: "لغز سودوكو اليومي",
       title: "Ninely: لغز الويب اليومي",
       sub: "درّب تفكيرك المنطقي مع تلميحات ذكية. حل اللوح في المتصفح أو نزّل التطبيق لآلاف الألغاز الإضافية!",
@@ -591,5 +594,6 @@
 
 })();
 </script>
+<script src="/assets/count.js" defer></script>
 </body>
 </html>

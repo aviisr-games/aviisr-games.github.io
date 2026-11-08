@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0f5b6d6",
+  "sourceFile": "src/lib/vocabulary.ts",
+  "gradeBand": "band-1-core-2",
+  "gradeLabelHe": "כיתה ה׳ (Band I Core II)",
+  "ministryCurriculum": "Israel Ministry of Education English Curriculum 2020",
+  "wordCount": 12,
+  "words": [
+    {
+      "id": "rabbit",
+      "english": "rabbit",
+      "hebrew": "ארנב",
+      "exampleSentence": "The white rabbit hops.",
+      "exampleSentenceHebrew": "הארנב הלבן מקפץ.",
+      "image": "🐰",
+      "category": "animals",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "snake",
+      "english": "snake",
+      "hebrew": "נחש",
+      "exampleSentence": "The snake is long.",
+      "exampleSentenceHebrew": "הנחש ארוך.",
+      "image": "🐍",
+      "category": "animals",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "candy",
+      "english": "candy",
+      "hebrew": "סוכרייה",
+      "exampleSentence": "Too much candy is bad for you.",
+      "exampleSentenceHebrew": "יותר מדי סוכריות זה לא בריא.",
+      "image": "🍬",
+      "category": "food",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "cookie",
+      "english": "cookie",
+      "hebrew": "עוגייה",
+      "exampleSentence": "Can I have a cookie?",
+      "exampleSentenceHebrew": "אפשר לקבל עוגייה?",
+      "image": "🍪",
+      "category": "food",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "soup",
+      "english": "soup",
+      "hebrew": "מרק",
+      "exampleSentence": "Mom makes chicken soup.",
+      "exampleSentenceHebrew": "אמא מכינה מרק עוף.",
+      "image": "🍲",
+      "category": "food",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "tomato",
+      "english": "tomato",
+      "hebrew": "עגבנייה",
+      "exampleSentence": "The tomato is red.",
+      "exampleSentenceHebrew": "העגבנייה אדומה.",
+      "image": "🍅",
+      "category": "food",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "shirt",
+      "english": "shirt",
+      "hebrew": "חולצה",
+      "exampleSentence": "Dan has a blue shirt.",
+      "exampleSentenceHebrew": "לדן יש חולצה כחולה.",
+      "image": "👕",
+      "category": "clothes",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "sock",
+      "english": "sock",
+      "hebrew": "גרב",
+      "exampleSentence": "Noa has one red sock.",
+      "exampleSentenceHebrew": "לנועה יש גרב אדום אחד.",
+      "image": "🧦",
+      "category": "clothes",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "glasses",
+      "english": "glasses",
+      "hebrew": "משקפיים",
+      "exampleSentence": "Grandpa wears glasses.",
+      "exampleSentenceHebrew": "סבא מרכיב משקפיים.",
+      "image": "👓",
+      "category": "clothes",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "camera",
+      "english": "camera",
+      "hebrew": "מצלמה",
+      "exampleSentence": "Alma has a new camera.",
+      "exampleSentenceHebrew": "לעלמא יש מצלמה חדשה.",
+      "image": "📷",
+      "category": "objects",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "key",
+      "english": "key",
+      "hebrew": "מפתח",
+      "exampleSentence": "Open the door with a key.",
+      "exampleSentenceHebrew": "פתחו את הדלת עם מפתח.",
+      "image": "🔑",
+      "category": "objects",
+      "band": "band-1-core-2"
+    },
+    {
+      "id": "ruler",
+      "english": "ruler",
+      "hebrew": "סרגל",
+      "exampleSentence": "Draw a line with a ruler.",
+      "exampleSentenceHebrew": "סרטטו קו עם סרגל.",
+      "image": "📏",
+      "category": "objects",
+      "band": "band-1-core-2"
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>דף תשובות: ערכת לימוד אנגלית לכיתה ג׳ | מילה (Mila)</title>
-<meta name="description" content="דף תשובות ופתרונות מלאים להורים ולמורים עבור ערכת התרגול של מילה (Mila) לכיתה ג׳ (Pre-Band I). פתרון תרגילי התאמה והשלמת משפטים.">
+<title>דף תשובות: ערכות לימוד אנגלית לכיתות ג׳-ה׳ | מילה (Mila)</title>
+<meta name="description" content="דף תשובות ופתרונות מלאים להורים ולמורים עבור ערכות התרגול של מילה (Mila) לכיתות ג׳, ד׳, ה׳ (Pre-Band I, Band I Core I & Core II). פתרון תרגילי התאמה והשלמת משפטים.">
 <link rel="canonical" href="https://aviisrgames.com/mila/worksheets/answer-key/">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
@@ -32,9 +32,20 @@
     margin-bottom: 8px;
   }
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    color: #1e3a8a;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    background: #eff6ff;
+    border-right: 4px solid #2563eb;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  h3 {
+    font-size: 1.15rem;
     color: #1e40af;
-    margin-top: 24px;
+    margin-top: 16px;
+    margin-bottom: 8px;
     border-bottom: 1px solid #e2e8f0;
     padding-bottom: 4px;
   }
@@ -57,6 +68,9 @@
     padding: 20px;
     margin: 18px 0;
   }
+  .grade-key-section {
+    margin: 24px 0 36px;
+  }
   .ans-table {
     width: 100%;
     border-collapse: collapse;
@@ -74,6 +88,41 @@
     font-weight: bold;
     color: #15803d;
   }
+
+  /* Grade switcher tabs */
+  .grade-switcher {
+    display: flex;
+    gap: 8px;
+    background: #e2e8f0;
+    padding: 6px;
+    border-radius: 8px;
+    margin: 16px 0 20px;
+    flex-wrap: wrap;
+  }
+  .grade-tab {
+    flex: 1;
+    min-width: 150px;
+    background: transparent;
+    border: none;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #475569;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+  .grade-tab:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+  }
+  .grade-tab.active, .grade-tab[aria-selected="true"] {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
   .btn-print {
     background: #2563eb;
     color: #fff;
@@ -100,9 +149,12 @@
     .no-print, nav, footer {
       display: none !important;
     }
-    .card-box {
+    .card-box, .grade-key-section {
       border: 1pt solid #000 !important;
       box-shadow: none !important;
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+      margin-bottom: 20px !important;
     }
     .ans-table th, .ans-table td {
       border: 1pt solid #000 !important;
@@ -113,88 +165,303 @@
 <body>
 <main>
 <nav class="lang no-print" style="margin-bottom: 12px;">
-  <a href="../">➔ חזרה לדף העבודה והכרטיסיות</a> · <a href="../../">דף הבית של מילה</a> · <a href="../../../">כל המשחקים</a>
+  <a id="link-back-worksheets" href="../?grade=3">➔ חזרה לדף העבודה והכרטיסיות</a> · <a href="../../">דף הבית של מילה</a> · <a href="../../../">כל המשחקים</a>
 </nav>
 
 <header>
   <h1>דף תשובות ופתרונות להורים ולמורים</h1>
-  <p class="sub">פתרון מלא ומדויק עבור ערכת התרגול לכיתה ג׳ (Pre-Band I).</p>
+  <p class="sub">פתרון מלא ומדויק עבור ערכות התרגול באנגלית (כיתות ג׳, ד׳, ה׳).</p>
 </header>
+
+<div class="grade-switcher no-print" role="tablist" aria-label="בחירת שכבת כיתה לתשובות">
+  <button type="button" role="tab" id="tab-key-all" class="grade-tab active" aria-selected="true" onclick="showKeyGrade('all', true)">הצג הכל (כל הכיתות)</button>
+  <button type="button" role="tab" id="tab-key-grade3" class="grade-tab" aria-selected="false" onclick="showKeyGrade('3', true)">כיתה ג׳ · Pre-Band I</button>
+  <button type="button" role="tab" id="tab-key-grade4" class="grade-tab" aria-selected="false" onclick="showKeyGrade('4', true)">כיתה ד׳ · Band I Core I</button>
+  <button type="button" role="tab" id="tab-key-grade5" class="grade-tab" aria-selected="false" onclick="showKeyGrade('5', true)">כיתה ה׳ · Band I Core II</button>
+</div>
 
 <div class="no-print" style="margin-bottom: 18px;">
   <button type="button" class="btn-print" onclick="window.print()">🖨️ הדפסת דף התשובות</button>
 </div>
 
-<section class="card-box" id="ans-matching">
-  <h2>פתרון חלק ב׳: תרגיל התאמת מילים</h2>
-  <table class="ans-table">
-    <thead>
-      <tr>
-        <th>מספר</th>
-        <th>מילה באנגלית</th>
-        <th>התאמה נכונה בעברית</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td><span class="bidi-eng" lang="en">dog</span> 🐶</td>
-        <td class="ans-correct">ג. כלב</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><span class="bidi-eng" lang="en">cat</span> 🐱</td>
-        <td class="ans-correct">ה. חתול</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><span class="bidi-eng" lang="en">sun</span> ☀️</td>
-        <td class="ans-correct">ב. שמש</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><span class="bidi-eng" lang="en">hen</span> 🐔</td>
-        <td class="ans-correct">ח. תרנגולת</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td><span class="bidi-eng" lang="en">pen</span> 🖊️</td>
-        <td class="ans-correct">ז. עט</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td><span class="bidi-eng" lang="en">bag</span> 🎒</td>
-        <td class="ans-correct">ד. תיק</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td><span class="bidi-eng" lang="en">hat</span> 🧢</td>
-        <td class="ans-correct">א. כובע</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td><span class="bidi-eng" lang="en">box</span> 📦</td>
-        <td class="ans-correct">ו. קופסה</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+<!-- ==================== GRADE 3 KEY ==================== -->
+<article class="grade-key-section" id="key-grade3">
+  <h2>כיתה ג׳ (Pre-Band I) — פתרון מלא</h2>
 
-<section class="card-box" id="ans-sentences">
-  <h2>פתרון חלק ג׳: השלמת משפטים</h2>
-  <ol style="padding-right: 20px; font-size: 1.05rem; line-height: 1.8;">
-    <li><span class="bidi-eng" lang="en">The hen has an <span class="ans-correct">egg</span>.</span> &nbsp; (לתרנגולת יש ביצה)</li>
-    <li><span class="bidi-eng" lang="en">The <span class="ans-correct">cat</span> sleeps in a box.</span> &nbsp; (החתול ישן בקופסה)</li>
-    <li><span class="bidi-eng" lang="en">Dan has a friendly <span class="ans-correct">dog</span>.</span> &nbsp; (לדן יש כלב ידידותי)</li>
-    <li><span class="bidi-eng" lang="en">Write with a blue <span class="ans-correct">pen</span>.</span> &nbsp; (כתבי עם עט כחול)</li>
-    <li><span class="bidi-eng" lang="en">The cat sleeps on my <span class="ans-correct">bed</span>.</span> &nbsp; (החתול ישן על המיטה שלי)</li>
-    <li><span class="bidi-eng" lang="en">The bus is very <span class="ans-correct">big</span>.</span> &nbsp; (האוטובוס גדול מאוד)</li>
-  </ol>
-</section>
+  <section class="card-box" id="ans-matching-grade3">
+    <h3>פתרון חלק ב׳: תרגיל התאמת מילים</h3>
+    <table class="ans-table">
+      <thead>
+        <tr>
+          <th>מספר</th>
+          <th>מילה באנגלית</th>
+          <th>התאמה נכונה בעברית</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="bidi-eng" lang="en">dog</span> 🐶</td>
+          <td class="ans-correct">ג. כלב</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="bidi-eng" lang="en">cat</span> 🐱</td>
+          <td class="ans-correct">ה. חתול</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="bidi-eng" lang="en">sun</span> ☀️</td>
+          <td class="ans-correct">ב. שמש</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="bidi-eng" lang="en">hen</span> 🐔</td>
+          <td class="ans-correct">ח. תרנגולת</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="bidi-eng" lang="en">pen</span> 🖊️</td>
+          <td class="ans-correct">ז. עט</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="bidi-eng" lang="en">bag</span> 🎒</td>
+          <td class="ans-correct">ד. תיק</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="bidi-eng" lang="en">hat</span> 🧢</td>
+          <td class="ans-correct">א. כובע</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="bidi-eng" lang="en">box</span> 📦</td>
+          <td class="ans-correct">ו. קופסה</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card-box" id="ans-sentences-grade3">
+    <h3>פתרון חלק ג׳: השלמת משפטים</h3>
+    <ol style="padding-right: 20px; font-size: 1.05rem; line-height: 1.8;">
+      <li><span class="bidi-eng" lang="en">The hen has an <span class="ans-correct">egg</span>.</span> &nbsp; (לתרנגולת יש ביצה)</li>
+      <li><span class="bidi-eng" lang="en">The <span class="ans-correct">cat</span> sleeps in a box.</span> &nbsp; (החתול ישן בקופסה)</li>
+      <li><span class="bidi-eng" lang="en">Dan has a friendly <span class="ans-correct">dog</span>.</span> &nbsp; (לדן יש כלב ידידותי)</li>
+      <li><span class="bidi-eng" lang="en">Write with a blue <span class="ans-correct">pen</span>.</span> &nbsp; (כתבי עם עט כחול)</li>
+      <li><span class="bidi-eng" lang="en">The cat sleeps on my <span class="ans-correct">bed</span>.</span> &nbsp; (החתול ישן על המיטה שלי)</li>
+      <li><span class="bidi-eng" lang="en">The bus is very <span class="ans-correct">big</span>.</span> &nbsp; (האוטובוס גדול מאוד)</li>
+    </ol>
+  </section>
+</article>
+
+<!-- ==================== GRADE 4 KEY ==================== -->
+<article class="grade-key-section" id="key-grade4">
+  <h2>כיתה ד׳ (Band I Core I) — פתרון מלא</h2>
+
+  <section class="card-box" id="ans-matching-grade4">
+    <h3>פתרון חלק ב׳: תרגיל התאמת מילים</h3>
+    <table class="ans-table">
+      <thead>
+        <tr>
+          <th>מספר</th>
+          <th>מילה באנגלית</th>
+          <th>התאמה נכונה בעברית</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="bidi-eng" lang="en">happy</span> 😊</td>
+          <td class="ans-correct">ד. שמח/ה</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="bidi-eng" lang="en">cold</span> ❄️</td>
+          <td class="ans-correct">ו. קר</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="bidi-eng" lang="en">fish</span> 🐟</td>
+          <td class="ans-correct">ב. דג</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="bidi-eng" lang="en">book</span> 📖</td>
+          <td class="ans-correct">א. ספר</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="bidi-eng" lang="en">girl</span> 👧</td>
+          <td class="ans-correct">ח. ילדה</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="bidi-eng" lang="en">ball</span> ⚽</td>
+          <td class="ans-correct">ז. כדור</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="bidi-eng" lang="en">car</span> 🚗</td>
+          <td class="ans-correct">ג. מכונית</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="bidi-eng" lang="en">apple</span> 🍎</td>
+          <td class="ans-correct">ה. תפוח</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card-box" id="ans-sentences-grade4">
+    <h3>פתרון חלק ג׳: השלמת משפטים</h3>
+    <ol style="padding-right: 20px; font-size: 1.05rem; line-height: 1.8;">
+      <li><span class="bidi-eng" lang="en">The <span class="ans-correct">fish</span> can swim.</span> &nbsp; (הדג יודע לשחות)</li>
+      <li><span class="bidi-eng" lang="en">Dan is very <span class="ans-correct">happy</span>.</span> &nbsp; (דן שמח מאוד)</li>
+      <li><span class="bidi-eng" lang="en">Dad has a fast <span class="ans-correct">car</span>.</span> &nbsp; (לאבא יש מכונית מהירה)</li>
+      <li><span class="bidi-eng" lang="en">The ice cream is <span class="ans-correct">cold</span>.</span> &nbsp; (הגלידה קרה)</li>
+      <li><span class="bidi-eng" lang="en">The boy plays with a <span class="ans-correct">ball</span>.</span> &nbsp; (הילד משחק עם כדור)</li>
+      <li><span class="bidi-eng" lang="en">My <span class="ans-correct">shoe</span> is black.</span> &nbsp; (הנעל שלי שחורה)</li>
+    </ol>
+  </section>
+</article>
+
+<!-- ==================== GRADE 5 KEY ==================== -->
+<article class="grade-key-section" id="key-grade5">
+  <h2>כיתה ה׳ (Band I Core II) — פתרון מלא</h2>
+
+  <section class="card-box" id="ans-matching-grade5">
+    <h3>פתרון חלק ב׳: תרגיל התאמת מילים</h3>
+    <table class="ans-table">
+      <thead>
+        <tr>
+          <th>מספר</th>
+          <th>מילה באנגלית</th>
+          <th>התאמה נכונה בעברית</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="bidi-eng" lang="en">rabbit</span> 🐰</td>
+          <td class="ans-correct">ד. ארנב</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="bidi-eng" lang="en">snake</span> 🐍</td>
+          <td class="ans-correct">ב. נחש</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="bidi-eng" lang="en">candy</span> 🍬</td>
+          <td class="ans-correct">ח. סוכרייה</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="bidi-eng" lang="en">cookie</span> 🍪</td>
+          <td class="ans-correct">א. עוגייה</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="bidi-eng" lang="en">soup</span> 🍲</td>
+          <td class="ans-correct">ו. מרק</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="bidi-eng" lang="en">tomato</span> 🍅</td>
+          <td class="ans-correct">ה. עגבנייה</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="bidi-eng" lang="en">shirt</span> 👕</td>
+          <td class="ans-correct">ג. חולצה</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="bidi-eng" lang="en">sock</span> 🧦</td>
+          <td class="ans-correct">ז. גרב</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card-box" id="ans-sentences-grade5">
+    <h3>פתרון חלק ג׳: השלמת משפטים</h3>
+    <ol style="padding-right: 20px; font-size: 1.05rem; line-height: 1.8;">
+      <li><span class="bidi-eng" lang="en">The white <span class="ans-correct">rabbit</span> hops.</span> &nbsp; (הארנב הלבן מקפץ)</li>
+      <li><span class="bidi-eng" lang="en">The <span class="ans-correct">snake</span> is long.</span> &nbsp; (הנחש ארוך)</li>
+      <li><span class="bidi-eng" lang="en">Mom makes chicken <span class="ans-correct">soup</span>.</span> &nbsp; (אמא מכינה מרק עוף)</li>
+      <li><span class="bidi-eng" lang="en">Grandpa wears <span class="ans-correct">glasses</span>.</span> &nbsp; (סבא מרכיב משקפיים)</li>
+      <li><span class="bidi-eng" lang="en">Alma has a new <span class="ans-correct">camera</span>.</span> &nbsp; (לעלמא יש מצלמה חדשה)</li>
+      <li><span class="bidi-eng" lang="en">Draw a line with a <span class="ans-correct">ruler</span>.</span> &nbsp; (סרטטו קו עם סרגל)</li>
+    </ol>
+  </section>
+</article>
 
 <footer class="no-print" style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #64748b;">
   <a href="../">דף התרגול והכרטיסיות</a> · <a href="../../">מילה — דף ראשי</a> · <a href="../../privacy/">מדיניות פרטיות</a> · <a href="../../../">AVIISR Games</a>
 </footer>
 </main>
+
+<script>
+function showKeyGrade(target, updateUrl) {
+  var valid = ['all', '3', '4', '5'];
+  if (valid.indexOf(target) === -1) target = 'all';
+
+  var tabMap = {
+    'all': 'tab-key-all',
+    '3': 'tab-key-grade3',
+    '4': 'tab-key-grade4',
+    '5': 'tab-key-grade5'
+  };
+
+  Object.keys(tabMap).forEach(function(key) {
+    var tab = document.getElementById(tabMap[key]);
+    if (tab) {
+      var active = (key === target);
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    }
+  });
+
+  ['3', '4', '5'].forEach(function(g) {
+    var sec = document.getElementById('key-grade' + g);
+    if (sec) {
+      if (target === 'all' || target === g) {
+        sec.style.display = 'block';
+      } else {
+        sec.style.display = 'none';
+      }
+    }
+  });
+
+  var backLink = document.getElementById('link-back-worksheets');
+  if (backLink) {
+    backLink.href = (target === 'all') ? '../' : ('../?grade=' + target);
+  }
+
+  if (updateUrl && window.history && window.history.replaceState) {
+    var url = new URL(window.location);
+    if (target === 'all') {
+      url.searchParams.delete('grade');
+    } else {
+      url.searchParams.set('grade', target);
+    }
+    window.history.replaceState({}, '', url);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  var params = new URLSearchParams(window.location.search);
+  var g = params.get('grade');
+  if (['3', '4', '5'].indexOf(g) !== -1) {
+    showKeyGrade(g, false);
+  } else {
+    showKeyGrade('all', false);
+  }
+});
+</script>
 </body>
 </html>

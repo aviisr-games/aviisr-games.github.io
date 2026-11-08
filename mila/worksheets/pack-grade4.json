@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0f5b6d6",
+  "sourceFile": "src/lib/vocabulary.ts",
+  "gradeBand": "band-1-core-1",
+  "gradeLabelHe": "כיתה ד׳ (Band I Core I)",
+  "ministryCurriculum": "Israel Ministry of Education English Curriculum 2020",
+  "wordCount": 12,
+  "words": [
+    {
+      "id": "happy",
+      "english": "happy",
+      "hebrew": "שמח/ה",
+      "exampleSentence": "Dan is very happy.",
+      "exampleSentenceHebrew": "דן שמח מאוד.",
+      "image": "😊",
+      "category": "emotions",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "cold",
+      "english": "cold",
+      "hebrew": "קר",
+      "exampleSentence": "The ice cream is cold.",
+      "exampleSentenceHebrew": "הגלידה קרה.",
+      "image": "❄️",
+      "category": "adjectives",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "fish",
+      "english": "fish",
+      "hebrew": "דג",
+      "exampleSentence": "The fish can swim.",
+      "exampleSentenceHebrew": "הדג יודע לשחות.",
+      "image": "🐟",
+      "category": "animals",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "book",
+      "english": "book",
+      "hebrew": "ספר",
+      "exampleSentence": "Read an English book.",
+      "exampleSentenceHebrew": "קראי ספר באנגלית.",
+      "image": "📖",
+      "category": "objects",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "girl",
+      "english": "girl",
+      "hebrew": "ילדה",
+      "exampleSentence": "The girl is happy.",
+      "exampleSentenceHebrew": "הילדה שמחה.",
+      "image": "👧",
+      "category": "people",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "ball",
+      "english": "ball",
+      "hebrew": "כדור",
+      "exampleSentence": "The boy plays with a ball.",
+      "exampleSentenceHebrew": "הילד משחק עם כדור.",
+      "image": "⚽",
+      "category": "objects",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "car",
+      "english": "car",
+      "hebrew": "מכונית",
+      "exampleSentence": "Dad has a fast car.",
+      "exampleSentenceHebrew": "לאבא יש מכונית מהירה.",
+      "image": "🚗",
+      "category": "vehicles",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "apple",
+      "english": "apple",
+      "hebrew": "תפוח",
+      "exampleSentence": "The red apple is sweet.",
+      "exampleSentenceHebrew": "התפוח האדום מתוק.",
+      "image": "🍎",
+      "category": "food",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "small",
+      "english": "small",
+      "hebrew": "קטן",
+      "exampleSentence": "The egg is small.",
+      "exampleSentenceHebrew": "הביצה קטנה.",
+      "image": "🐭",
+      "category": "adjectives",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "shoe",
+      "english": "shoe",
+      "hebrew": "נעל",
+      "exampleSentence": "My shoe is black.",
+      "exampleSentenceHebrew": "הנעל שלי שחורה.",
+      "image": "👟",
+      "category": "clothes",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "dress",
+      "english": "dress",
+      "hebrew": "שמלה",
+      "exampleSentence": "Alma has a pink dress.",
+      "exampleSentenceHebrew": "לעלמא יש שמלה ורודה.",
+      "image": "👗",
+      "category": "clothes",
+      "band": "band-1-core-1"
+    },
+    {
+      "id": "coat",
+      "english": "coat",
+      "hebrew": "מעיל",
+      "exampleSentence": "Wear a coat. It is cold.",
+      "exampleSentenceHebrew": "לבשו מעיל. קר בחוץ.",
+      "image": "🧥",
+      "category": "clothes",
+      "band": "band-1-core-1"
+    }
+  ]
+}

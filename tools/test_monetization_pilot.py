@@ -150,7 +150,7 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertGreaterEqual(solutions, 2, "Legacy generator must reproduce >=2 solutions on seed 20261101")
 
     def test_daily_pack_uniqueness_and_hints(self):
-        """Verifies all 30 days and fallback in daily-pack.json have exactly 1 valid solution and localized hints."""
+        """Verifies all 90 days and fallback in daily-pack.json have exactly 1 valid solution and localized hints."""
         pack_path = ROOT / 'ninely/play/daily-pack.json'
         self.assertTrue(pack_path.exists(), "daily-pack.json must exist")
         data = json.loads(pack_path.read_text(encoding='utf-8'))
@@ -159,7 +159,7 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertEqual(data.get('sourceCommit'), '4fa5c68')
         self.assertIn('fallback', data)
         self.assertIn('days', data)
-        self.assertEqual(len(data['days']), 30, "Must contain exactly 30 dated puzzle days")
+        self.assertEqual(len(data['days']), 90, "Must contain exactly 90 dated puzzle days")
 
         # Test fallback
         fb = data['fallback']
@@ -372,6 +372,52 @@ class MonetizationPilotTests(unittest.TestCase):
                     f"Board in {g.parent.name} must be completable to a valid Sudoku solution"
                 )
 
+    def test_wave2_stepper_initial_load_polish(self):
+        """Verify Wave 2 strategy guides (naked-pairs, hidden-pairs, x-wing) initialize at Step 2 with enabled controls."""
+        wave2_guides = [
+            ROOT / 'ninely/strategy/naked-pairs/index.html',
+            ROOT / 'ninely/strategy/hidden-pairs/index.html',
+            ROOT / 'ninely/strategy/x-wing/index.html',
+        ]
+        for g in wave2_guides:
+            content = g.read_text(encoding='utf-8')
+            self.assertRegex(content, r'var\s+currentStep\s*=\s*2;', f"{g.parent.name} must initialize currentStep to 2")
+            self.assertIn('stepText.textContent = steps[1].text', content, f"{g.parent.name} must set initial stepText to steps[1].text")
+            self.assertIn('prevBtn.disabled = false;', content, f"{g.parent.name} must enable prev button on load")
+            self.assertIn('nextBtn.disabled = false;', content, f"{g.parent.name} must enable next button on load")
+            # Verify static HTML contains Step 2 indicator
+            self.assertIn('Step 2 of 3:', content, f"{g.parent.name} static HTML must describe Step 2")
+            # Verify static interactive board contains elimination candidate markers
+            self.assertIn('cand-num elim', content, f"{g.parent.name} static HTML must retain elimination markers for Step 2")
+            self.assertIn('cand-num keep', content, f"{g.parent.name} static HTML must retain keep markers for Step 2")
+
+    def test_daily_pack_90_days_tier_progression(self):
+        """Verify 90-day pack progression: Easy (days 0-29, 36 holes), Medium (days 30-59, 46 holes), Hard (days 60-89, 52 holes)."""
+        pack_path = ROOT / 'ninely/play/daily-pack.json'
+        data = json.loads(pack_path.read_text(encoding='utf-8'))
+        days = list(data['days'].keys())
+        self.assertEqual(len(days), 90)
+        self.assertEqual(days[0], '2026-11-08')
+        self.assertEqual(days[-1], '2027-02-05')
+
+        for idx, date_key in enumerate(days):
+            entry = data['days'][date_key]
+            givens = [int(c) for c in entry['puzzle']]
+            holes = 81 - len([c for c in givens if c != 0])
+            if idx < 30:
+                self.assertEqual(entry['difficulty'], 'Easy', f"Day {date_key} (index {idx}) must be Easy")
+                self.assertEqual(holes, 36, f"Day {date_key} (index {idx}) must have 36 holes")
+            elif idx < 60:
+                self.assertEqual(entry['difficulty'], 'Medium', f"Day {date_key} (index {idx}) must be Medium")
+                self.assertEqual(holes, 46, f"Day {date_key} (index {idx}) must have 46 holes")
+            else:
+                self.assertEqual(entry['difficulty'], 'Hard', f"Day {date_key} (index {idx}) must be Hard")
+                self.assertEqual(holes, 52, f"Day {date_key} (index {idx}) must have 52 holes")
+
+            self.assertIn('hint_en', entry, f"Day {date_key} must have hint_en")
+            self.assertIn('hint_he', entry, f"Day {date_key} must have hint_he")
+            self.assertIn('hint_ar', entry, f"Day {date_key} must have hint_ar")
+
     def test_sitemap_urls_preserved_and_expanded(self):
         """Verify sitemap contains all original URLs plus all 6 strategy URLs."""
         sitemap = (ROOT / 'sitemap.xml').read_text(encoding='utf-8')
@@ -502,27 +548,42 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn("'../guide/#path-' + pathCode", briefing_html)
 
     def test_slice4_mila_parent_pack(self):
-        """Verify Slice 4 Mila Grade 3 parent pack, flashcards, answer key, and COPPA print audit."""
-        pack_path = ROOT / 'mila/worksheets/pack-grade3.json'
+        """Verify Slice 4 Mila Grade 3-5 parent packs, grade tabs, flashcards, answer keys, and COPPA print audit."""
         sheet_path = ROOT / 'mila/worksheets/index.html'
         key_path = ROOT / 'mila/worksheets/answer-key/index.html'
-
-        self.assertTrue(pack_path.exists(), "pack-grade3.json must exist")
         self.assertTrue(sheet_path.exists(), "worksheets/index.html must exist")
         self.assertTrue(key_path.exists(), "worksheets/answer-key/index.html must exist")
 
-        pack = json.loads(pack_path.read_text(encoding='utf-8'))
-        self.assertEqual(pack.get('schemaVersion'), 1)
-        self.assertEqual(pack.get('sourceCommit'), '0f5b6d6')
-        self.assertEqual(pack.get('gradeBand'), 'pre-band-1')
-        self.assertEqual(len(pack['words']), 12)
-
-        # Cross check words against vocabulary.ts in english-learning repo
         vocab_ts = Path('/Users/aviisraeli/Documents/Claude/english-learning/src/lib/vocabulary.ts').read_text(encoding='utf-8')
-        for w in pack['words']:
-            self.assertEqual(w['band'], 'pre-band-1')
-            self.assertIn(f"id: '{w['id']}'", vocab_ts)
-            self.assertIn(f"english: '{w['english']}'", vocab_ts)
+
+        grade_specs = [
+            ('pack-grade3.json', 'pre-band-1', ['dog', 'cat', 'hen', 'sun', 'pen', 'bag', 'hat', 'box', 'egg', 'bed', 'boy', 'big']),
+            ('pack-grade4.json', 'band-1-core-1', ['happy', 'cold', 'fish', 'book', 'girl', 'ball', 'car', 'apple', 'small', 'shoe', 'dress', 'coat']),
+            ('pack-grade5.json', 'band-1-core-2', ['rabbit', 'snake', 'candy', 'cookie', 'soup', 'tomato', 'shirt', 'sock', 'glasses', 'camera', 'key', 'ruler']),
+        ]
+
+        for fname, expected_band, expected_words in grade_specs:
+            pack_file = ROOT / 'mila/worksheets' / fname
+            self.assertTrue(pack_file.exists(), f"{fname} must exist")
+            pack = json.loads(pack_file.read_text(encoding='utf-8'))
+            self.assertEqual(pack.get('schemaVersion'), 1)
+            self.assertEqual(pack.get('sourceCommit'), '0f5b6d6')
+            self.assertEqual(pack.get('gradeBand'), expected_band)
+            self.assertEqual(len(pack['words']), 12)
+            actual_ids = [w['id'] for w in pack['words']]
+            self.assertEqual(actual_ids, expected_words, f"Word list mismatch in {fname}")
+
+            # Cross check words against vocabulary.ts in english-learning repo
+            for w in pack['words']:
+                self.assertEqual(w['band'], expected_band)
+                self.assertIn(f"id: '{w['id']}'", vocab_ts)
+                self.assertIn(f"english: '{w['english']}'", vocab_ts)
+
+        # Backwards compatibility pack.json check
+        compat_pack = ROOT / 'mila/worksheets/pack.json'
+        self.assertTrue(compat_pack.exists(), "pack.json backwards-compatibility copy must exist")
+        g3_pack = json.loads((ROOT / 'mila/worksheets/pack-grade3.json').read_text(encoding='utf-8'))
+        self.assertEqual(json.loads(compat_pack.read_text(encoding='utf-8')), g3_pack)
 
         sheet_html = sheet_path.read_text(encoding='utf-8')
         key_html = key_path.read_text(encoding='utf-8')
@@ -532,6 +593,21 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('@media print', sheet_html)
         self.assertIn('@media print', key_html)
         self.assertIn('answer-key/', sheet_html)
+
+        # Verify grade switcher tabs in worksheets/index.html
+        self.assertIn('role="tablist"', sheet_html)
+        self.assertIn('id="tab-grade3"', sheet_html)
+        self.assertIn('id="tab-grade4"', sheet_html)
+        self.assertIn('id="tab-grade5"', sheet_html)
+
+        # Verify answer key tabs and sections in answer-key/index.html
+        self.assertIn('id="key-grade3"', key_html)
+        self.assertIn('id="key-grade4"', key_html)
+        self.assertIn('id="key-grade5"', key_html)
+        self.assertIn('id="tab-key-grade3"', key_html)
+        self.assertIn('id="tab-key-grade4"', key_html)
+        self.assertIn('id="tab-key-grade5"', key_html)
+        self.assertIn('id="tab-key-all"', key_html)
 
         # Verify zero third-party scripts, fonts, analytics, or ads
         for h in [sheet_html, key_html]:

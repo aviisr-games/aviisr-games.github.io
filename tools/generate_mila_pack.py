@@ -1,31 +1,63 @@
 #!/usr/bin/env python3
 """Build-time vocabulary pack exporter for Mila: English for Kids.
 
-Extracts approved Pre-Band I (Grade 3) vocabulary from local repository:
+Extracts approved Ministry of Education vocabulary from local repository:
 /Users/aviisraeli/Documents/Claude/english-learning (commit 0f5b6d6)
+
+Generates:
+- pack-grade3.json (Pre-Band I, Grade 3)
+- pack-grade4.json (Band I Core I, Grade 4)
+- pack-grade5.json (Band I Core II, Grade 5)
+- pack.json (copy of Grade 3 pack for backwards compatibility)
 """
 
 import json
 from pathlib import Path
 import re
+import shutil
 
 MILA_REPO = Path('/Users/aviisraeli/Documents/Claude/english-learning')
 VOCAB_FILE = MILA_REPO / 'src/lib/vocabulary.ts'
-OUT_PACK = Path(__file__).resolve().parent.parent / 'mila/worksheets/pack-grade3.json'
+OUT_DIR = Path(__file__).resolve().parent.parent / 'mila/worksheets'
 
-TARGET_IDS = [
-    'dog', 'cat', 'hen', 'sun',
-    'pen', 'bag', 'hat', 'box',
-    'egg', 'bed', 'boy', 'big'
+GRADES_CONFIG = [
+    {
+        'grade': 3,
+        'filename': 'pack-grade3.json',
+        'band': 'pre-band-1',
+        'labelHe': 'כיתה ג׳ (Pre-Band I)',
+        'target_ids': [
+            'dog', 'cat', 'hen', 'sun',
+            'pen', 'bag', 'hat', 'box',
+            'egg', 'bed', 'boy', 'big'
+        ]
+    },
+    {
+        'grade': 4,
+        'filename': 'pack-grade4.json',
+        'band': 'band-1-core-1',
+        'labelHe': 'כיתה ד׳ (Band I Core I)',
+        'target_ids': [
+            'happy', 'cold', 'fish', 'book',
+            'girl', 'ball', 'car', 'apple',
+            'small', 'shoe', 'dress', 'coat'
+        ]
+    },
+    {
+        'grade': 5,
+        'filename': 'pack-grade5.json',
+        'band': 'band-1-core-2',
+        'labelHe': 'כיתה ה׳ (Band I Core II)',
+        'target_ids': [
+            'rabbit', 'snake', 'candy', 'cookie',
+            'soup', 'tomato', 'shirt', 'sock',
+            'glasses', 'camera', 'key', 'ruler'
+        ]
+    }
 ]
 
-def main():
-    if not VOCAB_FILE.exists():
-        raise FileNotFoundError(f"Vocabulary source not found: {VOCAB_FILE}")
 
-    content = VOCAB_FILE.read_text(encoding='utf-8')
-
-    # Regex to extract Word objects
+def parse_vocabulary(content: str):
     pattern = re.compile(
         r'\{\s*id:\s*[\'\"]([^\'\"]+)[\'\"],\s*'
         r'english:\s*[\'\"]([^\'\"]+)[\'\"],\s*'
@@ -51,30 +83,47 @@ def main():
             'category': cat,
             'band': band
         }
+    return found_words
 
-    words_list = []
-    for tid in TARGET_IDS:
-        if tid not in found_words:
-            raise KeyError(f"Word '{tid}' not found in vocabulary.ts")
-        w = found_words[tid]
-        if w['band'] != 'pre-band-1':
-            raise ValueError(f"Word '{tid}' has band '{w['band']}', expected 'pre-band-1'")
-        words_list.append(w)
 
-    pack = {
-        'schemaVersion': 1,
-        'sourceCommit': '0f5b6d6',
-        'sourceFile': 'src/lib/vocabulary.ts',
-        'gradeBand': 'pre-band-1',
-        'gradeLabelHe': 'כיתה ג׳ (Pre-Band I)',
-        'ministryCurriculum': 'Israel Ministry of Education English Curriculum 2020',
-        'wordCount': len(words_list),
-        'words': words_list
-    }
+def main():
+    if not VOCAB_FILE.exists():
+        raise FileNotFoundError(f"Vocabulary source not found: {VOCAB_FILE}")
 
-    OUT_PACK.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PACK.write_text(json.dumps(pack, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(f"Exported {len(words_list)} words to {OUT_PACK}")
+    content = VOCAB_FILE.read_text(encoding='utf-8')
+    found_words = parse_vocabulary(content)
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    for cfg in GRADES_CONFIG:
+        words_list = []
+        for tid in cfg['target_ids']:
+            if tid not in found_words:
+                raise KeyError(f"Word '{tid}' not found in vocabulary.ts")
+            w = found_words[tid]
+            if w['band'] != cfg['band']:
+                raise ValueError(f"Word '{tid}' has band '{w['band']}', expected '{cfg['band']}'")
+            words_list.append(w)
+
+        pack = {
+            'schemaVersion': 1,
+            'sourceCommit': '0f5b6d6',
+            'sourceFile': 'src/lib/vocabulary.ts',
+            'gradeBand': cfg['band'],
+            'gradeLabelHe': cfg['labelHe'],
+            'ministryCurriculum': 'Israel Ministry of Education English Curriculum 2020',
+            'wordCount': len(words_list),
+            'words': words_list
+        }
+
+        out_path = OUT_DIR / cfg['filename']
+        out_path.write_text(json.dumps(pack, ensure_ascii=False, indent=2), encoding='utf-8')
+        print(f"Exported {len(words_list)} words to {out_path}")
+
+    # For backwards compatibility, copy pack-grade3.json to pack.json
+    shutil.copyfile(OUT_DIR / 'pack-grade3.json', OUT_DIR / 'pack.json')
+    print(f"Copied pack-grade3.json to {OUT_DIR / 'pack.json'}")
+
 
 if __name__ == '__main__':
     main()

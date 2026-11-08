@@ -109,9 +109,9 @@
         </div>
 
         <div class="step-controls">
-          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
-          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 3 eliminated from R8C9, leaving 6</span>
-          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+          <button type="button" id="prev-step" class="step-btn">◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 2 of 3: {3, 4} form a Naked Pair along Row 8, locking both digits into those two cells</span>
+          <button type="button" id="next-step" class="step-btn">Next ▶</button>
         </div>
       </div>
 
@@ -160,7 +160,7 @@
 <script>
 (function() {
   'use strict';
-  var currentStep = 3;
+  var currentStep = 2;
   var target = document.getElementById('target-cell');
   var prevBtn = document.getElementById('prev-step');
   var nextBtn = document.getElementById('next-step');
@@ -198,7 +198,11 @@
     nextBtn.disabled = (currentStep === steps.length);
   }
 
+  // Initialize stepper state for Step 2
+  stepText.textContent = steps[1].text;
   prevBtn.disabled = false;
+  nextBtn.disabled = false;
+
   prevBtn.addEventListener('click', function() {
     if (currentStep > 1) { currentStep--; update(); }
   });

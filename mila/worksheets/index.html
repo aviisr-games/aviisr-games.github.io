@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ערכת לימוד אנגלית לכיתה ג׳: כרטיסיות ודפי עבודה להדפסה | מילה (Mila)</title>
-<meta name="description" content="ערכת תרגול מודפסת בעברית ואנגלית לתלמידי כיתה ג׳ (Pre-Band I לפי תוכנית הלימודים של משרד החינוך). 12 כרטיסיות גזירה, תרגילי התאמה והשלמת משפטים ללא מסכים.">
+<title id="doc-title">ערכת לימוד אנגלית לכיתות ג׳-ה׳: כרטיסיות ודפי עבודה להדפסה | מילה (Mila)</title>
+<meta name="description" content="ערכת תרגול מודפסת בעברית ואנגלית לתלמידי כיתות ג׳, ד׳, ה׳ (Pre-Band I, Band I Core I & Core II). כרטיסיות גזירה, תרגילי התאמה והשלמת משפטים ללא מסכים.">
 <link rel="canonical" href="https://aviisrgames.com/mila/worksheets/">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
@@ -14,11 +14,11 @@
 {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "name": "ערכת לימוד אנגלית לכיתה ג׳: כרטיסיות ודפי עבודה להדפסה",
-  "description": "דפי עבודה וכרטיסיות גזירה מודפסות ללימוד אוצר מילים ראשוני באנגלית לכיתה ג׳ (Pre-Band I) מבית מילה: אנגלית לילדים.",
+  "name": "ערכת לימוד אנגלית לכיתות ג׳-ה׳: כרטיסיות ודפי עבודה להדפסה",
+  "description": "דפי עבודה וכרטיסיות גזירה מודפסות ללימוד אוצר מילים באנגלית לכיתות ג׳ עד ה׳ מבית מילה: אנגלית לילדים.",
   "url": "https://aviisrgames.com/mila/worksheets/",
   "inLanguage": ["he", "en"],
-  "educationalLevel": "Grade 3 / כיתה ג׳",
+  "educationalLevel": ["Grade 3 / כיתה ג׳", "Grade 4 / כיתה ד׳", "Grade 5 / כיתה ה׳"],
   "learningResourceType": "Worksheet",
   "author": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
   "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" }
@@ -77,6 +77,41 @@
     font-size: 0.95rem;
     margin-bottom: 20px;
   }
+
+  /* Grade switcher tabs */
+  .grade-switcher {
+    display: flex;
+    gap: 8px;
+    background: #e2e8f0;
+    padding: 6px;
+    border-radius: 8px;
+    margin: 16px 0 20px;
+    flex-wrap: wrap;
+  }
+  .grade-tab {
+    flex: 1;
+    min-width: 170px;
+    background: transparent;
+    border: none;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #475569;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+  .grade-tab:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+  }
+  .grade-tab.active, .grade-tab[aria-selected="true"] {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
   .print-controls {
     display: flex;
     gap: 12px;
@@ -272,28 +307,34 @@
 <body>
 <main>
 <nav class="lang no-print" style="margin-bottom: 12px;">
-  <a href="../">דף הבית של מילה</a> · <a href="answer-key/">דף תשובות למורים והורים</a> · <a href="../privacy/">פרטיות</a> · <a href="../../">כל המשחקים</a>
+  <a href="../">דף הבית של מילה</a> · <a id="nav-answer-key" href="answer-key/?grade=3">דף תשובות למורים והורים</a> · <a href="../privacy/">פרטיות</a> · <a href="../../">כל המשחקים</a>
 </nav>
 
 <header>
-  <h1>מילה (Mila) — ערכת לימוד אנגלית לכיתה ג׳</h1>
-  <p class="sub">12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים ראשוני באנגלית ללא מסכים.</p>
+  <h1 id="header-title">מילה (Mila) — ערכת לימוד אנגלית לכיתה ג׳</h1>
+  <p class="sub" id="header-sub">12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים ראשוני באנגלית ללא מסכים.</p>
 </header>
 
-<div class="meta-box">
-  <strong>התאמה לתוכנית הלימודים:</strong> מבוסס על רשימת המילים הרשמית <em>Pre-Band I</em> של משרד החינוך (תוכנית הלימודים באנגלית 2020) עבור תלמידי כיתה ג׳. הערכה כוללת מילות CVC בסיסיות, תרגום מדויק לעברית ומשפטי דוגמה.
+<div class="grade-switcher no-print" role="tablist" aria-label="בחירת שכבת כיתה">
+  <button type="button" role="tab" id="tab-grade3" class="grade-tab active" aria-selected="true" onclick="setGrade(3, true)">כיתה ג׳ · Pre-Band I</button>
+  <button type="button" role="tab" id="tab-grade4" class="grade-tab" aria-selected="false" onclick="setGrade(4, true)">כיתה ד׳ · Band I Core I</button>
+  <button type="button" role="tab" id="tab-grade5" class="grade-tab" aria-selected="false" onclick="setGrade(5, true)">כיתה ה׳ · Band I Core II</button>
+</div>
+
+<div class="meta-box" id="meta-curriculum">
+  <strong>התאמה לתוכנית הלימודים:</strong> <span id="meta-curriculum-content">מבוסס על רשימת המילים הרשמית <em>Pre-Band I</em> של משרד החינוך (תוכנית הלימודים באנגלית 2020) עבור תלמידי כיתה ג׳. הערכה כוללת מילות CVC בסיסיות, תרגום מדויק לעברית ומשפטי דוגמה.</span>
 </div>
 
 <div class="print-controls no-print">
   <button type="button" class="btn-print" onclick="window.print()">🖨️ הדפסת הערכה (A4 / Letter)</button>
-  <a class="btn-key" href="answer-key/">לדף התשובות המלא ➔</a>
+  <a class="btn-key" id="link-answer-key" href="answer-key/?grade=3">לדף התשובות המלא ➔</a>
 </div>
 
 <section id="flashcards-section">
   <h2>חלק א׳: 12 כרטיסיות מילים לגזירה ולשינון (Flashcards)</h2>
   <p style="font-size: 0.95rem; color: #475569;">גזרו לאורך הקווים המקווקוים. מומלץ להסתיר את התרגום לעברית ולנחש לפי המילה והאיור.</p>
 
-  <div class="cards-grid">
+  <div class="cards-grid" id="cards-grid">
     <!-- Card 1 -->
     <div class="flashcard">
       <div class="flashcard-emoji">🐶</div>
@@ -393,7 +434,7 @@
         <th style="width: 45%;">תרגום בעברית (Hebrew)</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="match-table-body">
       <tr>
         <td>1. <span class="bidi-eng" lang="en">dog</span> 🐶</td>
         <td style="text-align: center;">⚪</td>
@@ -442,7 +483,7 @@
   <h2>חלק ג׳: השלמת משפטים (Sentence Completion)</h2>
   <p>בחרו מילה מתאימה ממחסן המילים והשלימו את המשפטים הבאים:</p>
 
-  <div class="word-bank">
+  <div class="word-bank" id="word-bank">
     מחסן מילים: &nbsp;
     <span class="bidi-eng" lang="en">dog</span> &nbsp;·&nbsp;
     <span class="bidi-eng" lang="en">cat</span> &nbsp;·&nbsp;
@@ -452,27 +493,29 @@
     <span class="bidi-eng" lang="en">big</span>
   </div>
 
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">1. The hen has an <span class="blank-line"></span>.</span> &nbsp; (לתרנגולת יש ביצה)
-  </div>
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">2. The <span class="blank-line"></span> sleeps in a box.</span> &nbsp; (החתול ישן בקופסה)
-  </div>
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">3. Dan has a friendly <span class="blank-line"></span>.</span> &nbsp; (לדן יש כלב ידידותי)
-  </div>
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">4. Write with a blue <span class="blank-line"></span>.</span> &nbsp; (כתבי עם עט כחול)
-  </div>
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">5. The cat sleeps on my <span class="blank-line"></span>.</span> &nbsp; (החתול ישן על המיטה שלי)
-  </div>
-  <div class="sentence-item">
-    <span class="bidi-eng" lang="en">6. The bus is very <span class="blank-line"></span>.</span> &nbsp; (האוטובוס גדול מאוד)
+  <div id="sentence-list">
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">1. The hen has an <span class="blank-line"></span>.</span> &nbsp; (לתרנגולת יש ביצה)
+    </div>
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">2. The <span class="blank-line"></span> sleeps in a box.</span> &nbsp; (החתול ישן בקופסה)
+    </div>
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">3. Dan has a friendly <span class="blank-line"></span>.</span> &nbsp; (לדן יש כלב ידידותי)
+    </div>
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">4. Write with a blue <span class="blank-line"></span>.</span> &nbsp; (כתבי עם עט כחול)
+    </div>
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">5. The cat sleeps on my <span class="blank-line"></span>.</span> &nbsp; (החתול ישן על המיטה שלי)
+    </div>
+    <div class="sentence-item">
+      <span class="bidi-eng" lang="en">6. The bus is very <span class="blank-line"></span>.</span> &nbsp; (האוטובוס גדול מאוד)
+    </div>
   </div>
 
   <div class="no-print" style="margin-top: 18px; font-size: 0.95rem;">
-    💡 <em>התשובות המלאות מופיעות בנפרד ב<a href="answer-key/">דף התשובות להורים ולמורים</a>.</em>
+    💡 <em>התשובות המלאות מופיעות בנפרד ב<a id="inline-answer-key" href="answer-key/?grade=3">דף התשובות להורים ולמורים</a>.</em>
   </div>
 </section>
 
@@ -483,8 +526,212 @@
 </div>
 
 <footer class="no-print" style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #64748b;">
-  <a href="../">מילה — דף הבית</a> · <a href="answer-key/">דף תשובות</a> · <a href="../privacy/">מדיניות פרטיות</a> · <a href="../support/">תמיכה</a> · <a href="../../">AVIISR Games</a>
+  <a href="../">מילה — דף הבית</a> · <a id="footer-answer-key" href="answer-key/?grade=3">דף תשובות</a> · <a href="../privacy/">מדיניות פרטיות</a> · <a href="../support/">תמיכה</a> · <a href="../../">AVIISR Games</a>
 </footer>
 </main>
+
+<script>
+var GRADE_DATA = {
+  3: {
+    grade: 3,
+    title: "מילה (Mila) — ערכת לימוד אנגלית לכיתה ג׳",
+    sub: "12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים ראשוני באנגלית ללא מסכים.",
+    curriculum: "מבוסס על רשימת המילים הרשמית <em>Pre-Band I</em> של משרד החינוך (תוכנית הלימודים באנגלית 2020) עבור תלמידי כיתה ג׳. הערכה כוללת מילות CVC בסיסיות, תרגום מדויק לעברית ומשפטי דוגמה.",
+    words: [
+      { id: "dog", english: "dog", hebrew: "כלב", exampleSentence: "Dan has a friendly dog.", exampleSentenceHebrew: "לדן יש כלב ידידותי.", image: "🐶" },
+      { id: "cat", english: "cat", hebrew: "חתול", exampleSentence: "The cat sleeps in a box.", exampleSentenceHebrew: "החתול ישן בקופסה.", image: "🐱" },
+      { id: "hen", english: "hen", hebrew: "תרנגולת", exampleSentence: "The hen has an egg.", exampleSentenceHebrew: "לתרנגולת יש ביצה.", image: "🐔" },
+      { id: "sun", english: "sun", hebrew: "שמש", exampleSentence: "The sun is hot.", exampleSentenceHebrew: "השמש חמה.", image: "☀️" },
+      { id: "pen", english: "pen", hebrew: "עט", exampleSentence: "Write with a blue pen.", exampleSentenceHebrew: "כתבי עם עט כחול.", image: "🖊️" },
+      { id: "bag", english: "bag", hebrew: "תיק", exampleSentence: "Alma has a pink bag.", exampleSentenceHebrew: "לעלמא יש תיק ורוד.", image: "🎒" },
+      { id: "hat", english: "hat", hebrew: "כובע", exampleSentence: "Dan has a red hat.", exampleSentenceHebrew: "לדן יש כובע אדום.", image: "🧢" },
+      { id: "box", english: "box", hebrew: "קופסה", exampleSentence: "A cat is in the box.", exampleSentenceHebrew: "חתול נמצא בתוך הקופסה.", image: "📦" },
+      { id: "egg", english: "egg", hebrew: "ביצה", exampleSentence: "The hen has an egg.", exampleSentenceHebrew: "לתרנגולת יש ביצה.", image: "🥚" },
+      { id: "bed", english: "bed", hebrew: "מיטה", exampleSentence: "The cat sleeps on my bed.", exampleSentenceHebrew: "החתול ישן על המיטה שלי.", image: "🛏️" },
+      { id: "boy", english: "boy", hebrew: "ילד", exampleSentence: "The boy has a ball.", exampleSentenceHebrew: "לילד יש כדור.", image: "👦" },
+      { id: "big", english: "big", hebrew: "גדול", exampleSentence: "The bus is very big.", exampleSentenceHebrew: "האוטובוס גדול מאוד.", image: "🐘" }
+    ],
+    matching: [
+      { num: 1, eng: "dog", emoji: "🐶", hebLetter: "א", hebText: "כובע" },
+      { num: 2, eng: "cat", emoji: "🐱", hebLetter: "ב", hebText: "שמש" },
+      { num: 3, eng: "sun", emoji: "☀️", hebLetter: "ג", hebText: "כלב" },
+      { num: 4, eng: "hen", emoji: "🐔", hebLetter: "ד", hebText: "תיק" },
+      { num: 5, eng: "pen", emoji: "🖊️", hebLetter: "ה", hebText: "חתול" },
+      { num: 6, eng: "bag", emoji: "🎒", hebLetter: "ו", hebText: "קופסה" },
+      { num: 7, eng: "hat", emoji: "🧢", hebLetter: "ז", hebText: "עט" },
+      { num: 8, eng: "box", emoji: "📦", hebLetter: "ח", hebText: "תרנגולת" }
+    ],
+    wordBank: ["dog", "cat", "pen", "egg", "bed", "big"],
+    sentences: [
+      { num: 1, engPre: "The hen has an ", engPost: ".", hebHint: "לתרנגולת יש ביצה" },
+      { num: 2, engPre: "The ", engPost: " sleeps in a box.", hebHint: "החתול ישן בקופסה" },
+      { num: 3, engPre: "Dan has a friendly ", engPost: ".", hebHint: "לדן יש כלב ידידותי" },
+      { num: 4, engPre: "Write with a blue ", engPost: ".", hebHint: "כתבי עם עט כחול" },
+      { num: 5, engPre: "The cat sleeps on my ", engPost: ".", hebHint: "החתול ישן על המיטה שלי" },
+      { num: 6, engPre: "The bus is very ", engPost: ".", hebHint: "האוטובוס גדול מאוד" }
+    ]
+  },
+  4: {
+    grade: 4,
+    title: "מילה (Mila) — ערכת לימוד אנגלית לכיתה ד׳",
+    sub: "12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים (Band I Core I) ללא מסכים.",
+    curriculum: "מבוסס על רשימת המילים הרשמית <em>Band I Core I</em> של משרד החינוך (תוכנית הלימודים באנגלית 2020) עבור תלמידי כיתה ד׳. הערכה כוללת שמות עצם, תארים ופעלים בסיסיים, תרגום מדויק לעברית ומשפטי דוגמה.",
+    words: [
+      { id: "happy", english: "happy", hebrew: "שמח/ה", exampleSentence: "Dan is very happy.", exampleSentenceHebrew: "דן שמח מאוד.", image: "😊" },
+      { id: "cold", english: "cold", hebrew: "קר", exampleSentence: "The ice cream is cold.", exampleSentenceHebrew: "הגלידה קרה.", image: "❄️" },
+      { id: "fish", english: "fish", hebrew: "דג", exampleSentence: "The fish can swim.", exampleSentenceHebrew: "הדג יודע לשחות.", image: "🐟" },
+      { id: "book", english: "book", hebrew: "ספר", exampleSentence: "Read an English book.", exampleSentenceHebrew: "קראי ספר באנגלית.", image: "📖" },
+      { id: "girl", english: "girl", hebrew: "ילדה", exampleSentence: "The girl is happy.", exampleSentenceHebrew: "הילדה שמחה.", image: "👧" },
+      { id: "ball", english: "ball", hebrew: "כדור", exampleSentence: "The boy plays with a ball.", exampleSentenceHebrew: "הילד משחק עם כדור.", image: "⚽" },
+      { id: "car", english: "car", hebrew: "מכונית", exampleSentence: "Dad has a fast car.", exampleSentenceHebrew: "לאבא יש מכונית מהירה.", image: "🚗" },
+      { id: "apple", english: "apple", hebrew: "תפוח", exampleSentence: "The red apple is sweet.", exampleSentenceHebrew: "התפוח האדום מתוק.", image: "🍎" },
+      { id: "small", english: "small", hebrew: "קטן", exampleSentence: "The egg is small.", exampleSentenceHebrew: "הביצה קטנה.", image: "🐭" },
+      { id: "shoe", english: "shoe", hebrew: "נעל", exampleSentence: "My shoe is black.", exampleSentenceHebrew: "הנעל שלי שחורה.", image: "👟" },
+      { id: "dress", english: "dress", hebrew: "שמלה", exampleSentence: "Alma has a pink dress.", exampleSentenceHebrew: "לעלמא יש שמלה ורודה.", image: "👗" },
+      { id: "coat", english: "coat", hebrew: "מעיל", exampleSentence: "Wear a coat. It is cold.", exampleSentenceHebrew: "לבשו מעיל. קר בחוץ.", image: "🧥" }
+    ],
+    matching: [
+      { num: 1, eng: "happy", emoji: "😊", hebLetter: "א", hebText: "ספר" },
+      { num: 2, eng: "cold", emoji: "❄️", hebLetter: "ב", hebText: "דג" },
+      { num: 3, eng: "fish", emoji: "🐟", hebLetter: "ג", hebText: "מכונית" },
+      { num: 4, eng: "book", emoji: "📖", hebLetter: "ד", hebText: "שמח/ה" },
+      { num: 5, eng: "girl", emoji: "👧", hebLetter: "ה", hebText: "תפוח" },
+      { num: 6, eng: "ball", emoji: "⚽", hebLetter: "ו", hebText: "קר" },
+      { num: 7, eng: "car", emoji: "🚗", hebLetter: "ז", hebText: "כדור" },
+      { num: 8, eng: "apple", emoji: "🍎", hebLetter: "ח", hebText: "ילדה" }
+    ],
+    wordBank: ["happy", "cold", "fish", "ball", "car", "shoe"],
+    sentences: [
+      { num: 1, engPre: "The ", engPost: " can swim.", hebHint: "הדג יודע לשחות" },
+      { num: 2, engPre: "Dan is very ", engPost: ".", hebHint: "דן שמח מאוד" },
+      { num: 3, engPre: "Dad has a fast ", engPost: ".", hebHint: "לאבא יש מכונית מהירה" },
+      { num: 4, engPre: "The ice cream is ", engPost: ".", hebHint: "הגלידה קרה" },
+      { num: 5, engPre: "The boy plays with a ", engPost: ".", hebHint: "הילד משחק עם כדור" },
+      { num: 6, engPre: "My ", engPost: " is black.", hebHint: "הנעל שלי שחורה" }
+    ]
+  },
+  5: {
+    grade: 5,
+    title: "מילה (Mila) — ערכת לימוד אנגלית לכיתה ה׳",
+    sub: "12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים (Band I Core II) ללא מסכים.",
+    curriculum: "מבוסס על רשימת המילים הרשמית <em>Band I Core II</em> של משרד החינוך (תוכנית הלימודים באנגלית 2020) עבור תלמידי כיתה ה׳. הערכה כוללת שמות עצם, תארים ומאכלים מורחבים, תרגום מדויק לעברית ומשפטי דוגמה.",
+    words: [
+      { id: "rabbit", english: "rabbit", hebrew: "ארנב", exampleSentence: "The white rabbit hops.", exampleSentenceHebrew: "הארנב הלבן מקפץ.", image: "🐰" },
+      { id: "snake", english: "snake", hebrew: "נחש", exampleSentence: "The snake is long.", exampleSentenceHebrew: "הנחש ארוך.", image: "🐍" },
+      { id: "candy", english: "candy", hebrew: "סוכרייה", exampleSentence: "Too much candy is bad for you.", exampleSentenceHebrew: "יותר מדי סוכריות זה לא בריא.", image: "🍬" },
+      { id: "cookie", english: "cookie", hebrew: "עוגייה", exampleSentence: "Can I have a cookie?", exampleSentenceHebrew: "אפשר לקבל עוגייה?", image: "🍪" },
+      { id: "soup", english: "soup", hebrew: "מרק", exampleSentence: "Mom makes chicken soup.", exampleSentenceHebrew: "אמא מכינה מרק עוף.", image: "🍲" },
+      { id: "tomato", english: "tomato", hebrew: "עגבנייה", exampleSentence: "The tomato is red.", exampleSentenceHebrew: "העגבנייה אדומה.", image: "🍅" },
+      { id: "shirt", english: "shirt", hebrew: "חולצה", exampleSentence: "Dan has a blue shirt.", exampleSentenceHebrew: "לדן יש חולצה כחולה.", image: "👕" },
+      { id: "sock", english: "sock", hebrew: "גרב", exampleSentence: "Noa has one red sock.", exampleSentenceHebrew: "לנועה יש גרב אדום אחד.", image: "🧦" },
+      { id: "glasses", english: "glasses", hebrew: "משקפיים", exampleSentence: "Grandpa wears glasses.", exampleSentenceHebrew: "סבא מרכיב משקפיים.", image: "👓" },
+      { id: "camera", english: "camera", hebrew: "מצלמה", exampleSentence: "Alma has a new camera.", exampleSentenceHebrew: "לעלמא יש מצלמה חדשה.", image: "📷" },
+      { id: "key", english: "key", hebrew: "מפתח", exampleSentence: "Open the door with a key.", exampleSentenceHebrew: "פתחו את הדלת עם מפתח.", image: "🔑" },
+      { id: "ruler", english: "ruler", hebrew: "סרגל", exampleSentence: "Draw a line with a ruler.", exampleSentenceHebrew: "סרטטו קו עם סרגל.", image: "📏" }
+    ],
+    matching: [
+      { num: 1, eng: "rabbit", emoji: "🐰", hebLetter: "א", hebText: "עוגייה" },
+      { num: 2, eng: "snake", emoji: "🐍", hebLetter: "ב", hebText: "נחש" },
+      { num: 3, eng: "candy", emoji: "🍬", hebLetter: "ג", hebText: "חולצה" },
+      { num: 4, eng: "cookie", emoji: "🍪", hebLetter: "ד", hebText: "ארנב" },
+      { num: 5, eng: "soup", emoji: "🍲", hebLetter: "ה", hebText: "עגבנייה" },
+      { num: 6, eng: "tomato", emoji: "🍅", hebLetter: "ו", hebText: "מרק" },
+      { num: 7, eng: "shirt", emoji: "👕", hebLetter: "ז", hebText: "גרב" },
+      { num: 8, eng: "sock", emoji: "🧦", hebLetter: "ח", hebText: "סוכרייה" }
+    ],
+    wordBank: ["rabbit", "snake", "soup", "glasses", "camera", "ruler"],
+    sentences: [
+      { num: 1, engPre: "The white ", engPost: " hops.", hebHint: "הארנב הלבן מקפץ" },
+      { num: 2, engPre: "The ", engPost: " is long.", hebHint: "הנחש ארוך" },
+      { num: 3, engPre: "Mom makes chicken ", engPost: ".", hebHint: "אמא מכינה מרק עוף" },
+      { num: 4, engPre: "Grandpa wears ", engPost: ".", hebHint: "סבא מרכיב משקפיים" },
+      { num: 5, engPre: "Alma has a new ", engPost: ".", hebHint: "לעלמא יש מצלמה חדשה" },
+      { num: 6, engPre: "Draw a line with a ", engPost: ".", hebHint: "סרטטו קו עם סרגל" }
+    ]
+  }
+};
+
+function setGrade(grade, updateUrl) {
+  var data = GRADE_DATA[grade] || GRADE_DATA[3];
+
+  [3, 4, 5].forEach(function(g) {
+    var tab = document.getElementById('tab-grade' + g);
+    if (tab) {
+      var active = (g === data.grade);
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    }
+  });
+
+  var titleEl = document.getElementById('header-title');
+  if (titleEl) titleEl.textContent = data.title;
+  var subEl = document.getElementById('header-sub');
+  if (subEl) subEl.textContent = data.sub;
+  var metaEl = document.getElementById('meta-curriculum-content');
+  if (metaEl) metaEl.innerHTML = data.curriculum;
+
+  var linkKey = document.getElementById('link-answer-key');
+  if (linkKey) linkKey.href = 'answer-key/?grade=' + data.grade;
+  var navKey = document.getElementById('nav-answer-key');
+  if (navKey) navKey.href = 'answer-key/?grade=' + data.grade;
+  var footKey = document.getElementById('footer-answer-key');
+  if (footKey) footKey.href = 'answer-key/?grade=' + data.grade;
+  var inlineKey = document.getElementById('inline-answer-key');
+  if (inlineKey) inlineKey.href = 'answer-key/?grade=' + data.grade;
+
+  var flashGrid = document.getElementById('cards-grid');
+  if (flashGrid) {
+    flashGrid.innerHTML = data.words.map(function(w) {
+      return '<div class="flashcard">' +
+        '<div class="flashcard-emoji">' + w.image + '</div>' +
+        '<div class="flashcard-word"><span class="bidi-eng" lang="en">' + w.english + '</span></div>' +
+        '<div class="flashcard-trans">' + w.hebrew + '</div>' +
+        '<div class="flashcard-sentence"><span class="bidi-eng" lang="en">' + w.exampleSentence + '</span><br>' + w.exampleSentenceHebrew + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  var matchTbody = document.getElementById('match-table-body');
+  if (matchTbody) {
+    matchTbody.innerHTML = data.matching.map(function(m) {
+      return '<tr>' +
+        '<td>' + m.num + '. <span class="bidi-eng" lang="en">' + m.eng + '</span> ' + m.emoji + '</td>' +
+        '<td style="text-align: center;">⚪</td>' +
+        '<td>' + m.hebLetter + '. ' + m.hebText + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  var wordBankEl = document.getElementById('word-bank');
+  if (wordBankEl) {
+    wordBankEl.innerHTML = 'מחסן מילים: &nbsp;' + data.wordBank.map(function(w) {
+      return '<span class="bidi-eng" lang="en">' + w + '</span>';
+    }).join(' &nbsp;·&nbsp; ');
+  }
+
+  var sentenceList = document.getElementById('sentence-list');
+  if (sentenceList) {
+    sentenceList.innerHTML = data.sentences.map(function(s) {
+      return '<div class="sentence-item">' +
+        '<span class="bidi-eng" lang="en">' + s.num + '. ' + s.engPre + '<span class="blank-line"></span>' + s.engPost + '</span> &nbsp; (' + s.hebHint + ')' +
+      '</div>';
+    }).join('');
+  }
+
+  if (updateUrl && window.history && window.history.replaceState) {
+    var url = new URL(window.location);
+    url.searchParams.set('grade', data.grade);
+    window.history.replaceState({}, '', url);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  var params = new URLSearchParams(window.location.search);
+  var gParam = parseInt(params.get('grade'), 10);
+  if ([3, 4, 5].indexOf(gParam) !== -1) {
+    setGrade(gParam, false);
+  }
+});
+</script>
 </body>
 </html>

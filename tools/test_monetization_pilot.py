@@ -40,6 +40,37 @@ def count_sudoku_solutions(board_list, limit=2):
     return sols
 
 
+def read_mila_vocabulary():
+    """vocabulary.ts at the packs' pinned commit, or None when no english-learning clone is present
+    (set MILA_REPO; defaults to ~/Repos/english-learning)."""
+    import os
+    import subprocess
+    repo = Path(os.environ.get('MILA_REPO', str(Path.home() / 'Repos/english-learning'))).expanduser()
+    try:
+        return subprocess.run(['git', '-C', str(repo), 'show', '0f5b6d6:src/lib/vocabulary.ts'],
+                              check=True, capture_output=True, text=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def export_baylight_source(commit):
+    """Baylight Tools/ and levels.txt at `commit`, exported to a temp dir, or None when no clone is
+    present (set BAYLIGHT_REPO; defaults to ~/Repos/baylight)."""
+    import os
+    import subprocess
+    import tempfile
+    repo = Path(os.environ.get('BAYLIGHT_REPO', str(Path.home() / 'Repos/baylight'))).expanduser()
+    out = Path(tempfile.mkdtemp(prefix='baylight-src-'))
+    try:
+        archive = subprocess.run(['git', '-C', str(repo), 'archive', commit, 'Tools/baylight_rules.py',
+                                  'Assets/_Project/Resources/Levels/levels.txt'],
+                                 check=True, capture_output=True).stdout
+        subprocess.run(['tar', '-x', '-C', str(out)], input=archive, check=True)
+        return out
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
 class DiagramBoardParser(HTMLParser):
     """Extracts the 81 cells of #interactive-board from a strategy guide HTML file, including candidate notes."""
 
@@ -304,6 +335,8 @@ class MonetizationPilotTests(unittest.TestCase):
             ROOT / 'ninely/strategy/naked-pairs/index.html',
             ROOT / 'ninely/strategy/hidden-pairs/index.html',
             ROOT / 'ninely/strategy/x-wing/index.html',
+            ROOT / 'ninely/strategy/naked-triples/index.html',
+            ROOT / 'ninely/strategy/swordfish/index.html',
         ]
         for g in guides:
             self.assertTrue(g.exists(), f"Guide {g} must exist")
@@ -378,6 +411,8 @@ class MonetizationPilotTests(unittest.TestCase):
             ROOT / 'ninely/strategy/naked-pairs/index.html',
             ROOT / 'ninely/strategy/hidden-pairs/index.html',
             ROOT / 'ninely/strategy/x-wing/index.html',
+            ROOT / 'ninely/strategy/naked-triples/index.html',
+            ROOT / 'ninely/strategy/swordfish/index.html',
         ]
         for g in wave2_guides:
             content = g.read_text(encoding='utf-8')
@@ -391,8 +426,107 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertIn('cand-num elim', content, f"{g.parent.name} static HTML must retain elimination markers for Step 2")
             self.assertIn('cand-num keep', content, f"{g.parent.name} static HTML must retain keep markers for Step 2")
 
+    def test_wave3_patterns_hold_on_plain_candidates(self):
+        """Naked Triple and Swordfish boards: unique solution, the pattern holds on givens-only candidates,
+        and the step-3 digit is the target cell's solution digit."""
+        def parse(slug):
+            content = (ROOT / f'ninely/strategy/{slug}/index.html').read_text(encoding='utf-8')
+            parser = DiagramBoardParser()
+            parser.feed(content)
+            return content, parser.cells
+
+        def cands(cells, i):
+            r, c = divmod(i, 9)
+            br, bc = (r // 3) * 3, (c // 3) * 3
+            used = {cells[r * 9 + k] for k in range(9)} | {cells[k * 9 + c] for k in range(9)} | \
+                   {cells[(br + k // 3) * 9 + bc + k % 3] for k in range(9)}
+            return set() if cells[i] else set(range(1, 10)) - used
+
+        def solve(cells):
+            board = list(cells)
+            def bt(idx):
+                while idx < 81 and board[idx]:
+                    idx += 1
+                if idx == 81:
+                    return True
+                for d in sorted(cands(board, idx)):
+                    board[idx] = d
+                    if bt(idx + 1):
+                        return True
+                    board[idx] = 0
+                return False
+            self.assertTrue(bt(0))
+            return board
+
+        cell = lambda r, c: (r - 1) * 9 + (c - 1)
+
+        # Naked Triple: Row 1 cells R1C2, R1C4, R1C9 hold only {1, 2, 3}; R1C8 {2, 8} -> 8
+        content, cells = parse('naked-triples')
+        self.assertEqual(count_sudoku_solutions(cells, 2), 1, "naked-triples board must have a unique solution")
+        triple = [cell(1, 2), cell(1, 4), cell(1, 9)]
+        self.assertEqual(set().union(*(cands(cells, i) for i in triple)), {1, 2, 3})
+        for i in range(3):
+            for j in range(i + 1, 3):
+                self.assertGreater(len(cands(cells, triple[i]) | cands(cells, triple[j])), 2, "must not reduce to a pair")
+        self.assertEqual(cands(cells, cell(1, 8)), {2, 8})
+        self.assertEqual(solve(cells)[cell(1, 8)], 8)
+        self.assertIn("html: '8'", content)
+
+        # Swordfish on 4: Cols 3, 7, 9 confine 4 to Rows 1, 2, 5; R5C2 {1, 4} -> 1
+        content, cells = parse('swordfish')
+        self.assertEqual(count_sudoku_solutions(cells, 2), 1, "swordfish board must have a unique solution")
+        base = {3: [1, 2, 5], 7: [2, 5], 9: [1, 2]}
+        for c, rows in base.items():
+            self.assertEqual([r for r in range(1, 10) if 4 in cands(cells, cell(r, c))], rows)
+        for a, b in ((3, 7), (3, 9), (7, 9)):
+            self.assertEqual(len(set(base[a]) | set(base[b])), 3, "must not reduce to an X-Wing")
+        self.assertEqual(cands(cells, cell(5, 2)), {1, 4})
+        self.assertEqual(solve(cells)[cell(5, 2)], 1)
+        self.assertIn("html: '1'", content)
+
+        hub = (ROOT / 'ninely/strategy/index.html').read_text(encoding='utf-8')
+        self.assertIn('href="naked-triples/"', hub)
+        self.assertIn('href="swordfish/"', hub)
+
+    def test_play_hint_deep_links_to_strategy_guides(self):
+        """#hint-box renders a localized "Learn this technique" link mapped from the hint technique to an
+        existing /ninely/strategy/<slug>/ guide (or the hub when no guide exists)."""
+        html = (ROOT / 'ninely/play/index.html').read_text(encoding='utf-8')
+        m = re.search(r'var TECHNIQUE_GUIDES = \{(.*?)\};', html, re.DOTALL)
+        self.assertIsNotNone(m)
+        mapping = dict(re.findall(r'(\w+): \'([a-z-]+)\'', m.group(1)))
+        expected = {
+            'FullHouse': 'naked-singles', 'NakedSingle': 'naked-singles', 'HiddenSingle': 'hidden-singles',
+            'PointingPair': 'locked-candidates', 'BoxLine': 'locked-candidates', 'BoxLineReduction': 'locked-candidates',
+            'NakedPair': 'naked-pairs', 'HiddenPair': 'hidden-pairs', 'NakedTriple': 'naked-triples',
+            'XWing': 'x-wing', 'Swordfish': 'swordfish',
+        }
+        self.assertEqual(mapping, expected)
+        for slug in set(mapping.values()):
+            self.assertTrue((ROOT / f'ninely/strategy/{slug}/index.html').exists(), f"missing guide for {slug}")
+        self.assertIn('learnGuide: "Learn this technique ➔"', html)
+        self.assertIn("guideLink.href = techSlug ? '../strategy/' + techSlug + '/' : '../strategy/';", html)
+        self.assertIn('hintBox.appendChild(guideLink);', html)
+        # Every technique the daily pack can emit has a guide.
+        pack = json.loads((ROOT / 'ninely/play/daily-pack.json').read_text(encoding='utf-8'))
+        for entry in list(pack['days'].values()) + [pack['fallback']]:
+            self.assertIn(entry['hint']['technique'], mapping)
+            self.assertIn(entry['hardestTechnique'], mapping)
+
+    # Mirrors Ninely.SudokuEngine (aviisr-games/Ninely @ 4fa5c68, the pack's sourceCommit):
+    # SudokuGenerator.ClueRange and SmartHintSolver.DifficultyFor. TryGenerate only accepts a board
+    # whose graded tier equals the requested tier, so hardestTechnique must map back to its tier.
+    ENGINE_CLUE_RANGE = {'Easy': (36, 42), 'Medium': (32, 35), 'Hard': (28, 31)}
+    ENGINE_TIER_TECHNIQUES = {
+        'Easy': {'FullHouse', 'HiddenSingle'},
+        'Medium': {'NakedSingle'},
+        'Hard': {'NakedPair', 'HiddenPair'},
+    }
+
     def test_daily_pack_90_days_tier_progression(self):
-        """Verify 90-day pack progression: Easy (days 0-29, 36 holes), Medium (days 30-59, 46 holes), Hard (days 60-89, 52 holes)."""
+        """90-day pack from SudokuGenerator.TryGenerate: Easy (0-29), Medium (30-59), Hard (60-89),
+        clue counts inside ClueRange, engine-graded technique per tier, 180-degree symmetric clues,
+        givens consistent with a valid solution, unique solution."""
         pack_path = ROOT / 'ninely/play/daily-pack.json'
         data = json.loads(pack_path.read_text(encoding='utf-8'))
         days = list(data['days'].keys())
@@ -402,17 +536,32 @@ class MonetizationPilotTests(unittest.TestCase):
 
         for idx, date_key in enumerate(days):
             entry = data['days'][date_key]
-            givens = [int(c) for c in entry['puzzle']]
-            holes = 81 - len([c for c in givens if c != 0])
-            if idx < 30:
-                self.assertEqual(entry['difficulty'], 'Easy', f"Day {date_key} (index {idx}) must be Easy")
-                self.assertEqual(holes, 36, f"Day {date_key} (index {idx}) must have 36 holes")
-            elif idx < 60:
-                self.assertEqual(entry['difficulty'], 'Medium', f"Day {date_key} (index {idx}) must be Medium")
-                self.assertEqual(holes, 46, f"Day {date_key} (index {idx}) must have 46 holes")
-            else:
-                self.assertEqual(entry['difficulty'], 'Hard', f"Day {date_key} (index {idx}) must be Hard")
-                self.assertEqual(holes, 52, f"Day {date_key} (index {idx}) must have 52 holes")
+            expected = 'Easy' if idx < 30 else 'Medium' if idx < 60 else 'Hard'
+            self.assertEqual(entry['difficulty'], expected, f"Day {date_key} (index {idx}) must be {expected}")
+
+            puzzle, solution = entry['puzzle'], entry['solution']
+            self.assertEqual(len(puzzle), 81)
+            self.assertEqual(len(solution), 81)
+            clues = sum(1 for c in puzzle if c != '0')
+            self.assertEqual(entry['clueCount'], clues, f"Day {date_key} clueCount must match the givens")
+            lo, hi = self.ENGINE_CLUE_RANGE[expected]
+            self.assertTrue(lo <= clues <= hi, f"Day {date_key}: {clues} clues outside {expected} range {lo}..{hi}")
+            self.assertIn(entry['hardestTechnique'], self.ENGINE_TIER_TECHNIQUES[expected],
+                          f"Day {date_key}: {entry['hardestTechnique']} is not a {expected} technique")
+
+            for i in range(81):
+                self.assertEqual(puzzle[i] == '0', puzzle[80 - i] == '0',
+                                 f"Day {date_key}: clues must be 180-degree rotationally symmetric (cell {i})")
+                if puzzle[i] != '0':
+                    self.assertEqual(puzzle[i], solution[i], f"Day {date_key}: given {i} disagrees with solution")
+            sol = [int(c) for c in solution]
+            units = [[r * 9 + c for c in range(9)] for r in range(9)] + \
+                    [[r * 9 + c for r in range(9)] for c in range(9)] + \
+                    [[(br * 3 + r) * 9 + bc * 3 + c for r in range(3) for c in range(3)]
+                     for br in range(3) for bc in range(3)]
+            for unit in units:
+                self.assertEqual(sorted(sol[i] for i in unit), list(range(1, 10)), f"Day {date_key}: invalid solution")
+            self.assertEqual(count_sudoku_solutions([int(c) for c in puzzle], 2), 1, f"Day {date_key} must be unique")
 
             self.assertIn('hint_en', entry, f"Day {date_key} must have hint_en")
             self.assertIn('hint_he', entry, f"Day {date_key} must have hint_he")
@@ -434,6 +583,8 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/ninely/strategy/naked-pairs/',
             'https://aviisrgames.com/ninely/strategy/hidden-pairs/',
             'https://aviisrgames.com/ninely/strategy/x-wing/',
+            'https://aviisrgames.com/ninely/strategy/naked-triples/',
+            'https://aviisrgames.com/ninely/strategy/swordfish/',
             'https://aviisrgames.com/middle-east-2030/',
             'https://aviisrgames.com/middle-east-2030/briefing/',
             'https://aviisrgames.com/middle-east-2030/guide/',
@@ -554,7 +705,7 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertTrue(sheet_path.exists(), "worksheets/index.html must exist")
         self.assertTrue(key_path.exists(), "worksheets/answer-key/index.html must exist")
 
-        vocab_ts = Path('/Users/aviisraeli/Documents/Claude/english-learning/src/lib/vocabulary.ts').read_text(encoding='utf-8')
+        vocab_ts = read_mila_vocabulary()
 
         grade_specs = [
             ('pack-grade3.json', 'pre-band-1', ['dog', 'cat', 'hen', 'sun', 'pen', 'bag', 'hat', 'box', 'egg', 'bed', 'boy', 'big']),
@@ -573,11 +724,12 @@ class MonetizationPilotTests(unittest.TestCase):
             actual_ids = [w['id'] for w in pack['words']]
             self.assertEqual(actual_ids, expected_words, f"Word list mismatch in {fname}")
 
-            # Cross check words against vocabulary.ts in english-learning repo
+            # Cross check words against vocabulary.ts in english-learning repo (when a clone is available)
             for w in pack['words']:
                 self.assertEqual(w['band'], expected_band)
-                self.assertIn(f"id: '{w['id']}'", vocab_ts)
-                self.assertIn(f"english: '{w['english']}'", vocab_ts)
+                if vocab_ts is not None:
+                    self.assertIn(f"id: '{w['id']}'", vocab_ts)
+                    self.assertIn(f"english: '{w['english']}'", vocab_ts)
 
         # Backwards compatibility pack.json check
         compat_pack = ROOT / 'mila/worksheets/pack.json'
@@ -627,6 +779,73 @@ class MonetizationPilotTests(unittest.TestCase):
         mila_landing = (ROOT / 'mila/index.html').read_text(encoding='utf-8')
         self.assertNotIn('onclick="window.print()"', mila_landing, "Landing page must link to worksheets/ instead of calling window.print()")
 
+    def test_mila_worksheet_and_answer_key_in_sync_with_packs(self):
+        """pack-grade{3,4,5}.json are self-contained (words, matching, wordBank, sentences); GRADE_DATA,
+        the static Grade 3 markup and the answer key all agree with them (Grade 3 -> 4 -> 3 is a DOM no-op)."""
+        import sys
+        sys.path.insert(0, str(ROOT / 'tools'))
+        import generate_mila_pack as gen
+
+        sheet_html = (ROOT / 'mila/worksheets/index.html').read_text(encoding='utf-8')
+        key_html = (ROOT / 'mila/worksheets/answer-key/index.html').read_text(encoding='utf-8')
+        m = re.search(r'var GRADE_DATA = (\{.*?\n\});\n', sheet_html, re.DOTALL)
+        self.assertIsNotNone(m, "GRADE_DATA must be a JSON literal")
+        grade_data = json.loads(m.group(1))
+        cfg_by_grade = {c['grade']: c for c in gen.GRADES_CONFIG}
+
+        for g in (3, 4, 5):
+            pack = json.loads((ROOT / f'mila/worksheets/pack-grade{g}.json').read_text(encoding='utf-8'))
+            for key in ('words', 'matching', 'wordBank', 'sentences'):
+                self.assertIn(key, pack, f"pack-grade{g}.json must export {key}")
+            self.assertEqual(len(pack['matching']), 8)
+            self.assertEqual(len(pack['sentences']), 6)
+            self.assertEqual(grade_data[str(g)], gen.grade_data_entry(cfg_by_grade[g], pack),
+                             f"GRADE_DATA[{g}] must match pack-grade{g}.json")
+
+            words = {w['english']: w for w in pack['words']}
+            for s in pack['sentences']:
+                w = words[s['answer']]
+                self.assertEqual(s['engPre'] + s['answer'] + s['engPost'], w['exampleSentence'])
+                self.assertIn(s['answer'], pack['wordBank'])
+
+            # Answer key: matching answers and sentence answers per grade
+            section = key_html[key_html.index(f'id="key-grade{g}"'):]
+            section = section[:section.index('</article>')]
+            rows = re.findall(r'<td><span class="bidi-eng" lang="en">([^<]+)</span> ([^<]+)</td>\s*'
+                              r'<td class="ans-correct">([^.]+)\. ([^<]+)</td>', section)
+            self.assertEqual(rows, [(mm['eng'], mm['emoji'], mm['answerLetter'], mm['answerText'])
+                                    for mm in pack['matching']], f"Answer key grade {g} matching drifted")
+            items = re.findall(r'<li><span class="bidi-eng" lang="en">(.*?)<span class="ans-correct">([^<]+)</span>'
+                               r'(.*?)</span> &nbsp; \(([^)]+)\)</li>', section)
+            self.assertEqual(items, [(s['engPre'], s['answer'], s['engPost'], s['hebHint'])
+                                     for s in pack['sentences']], f"Answer key grade {g} sentences drifted")
+
+        # Defect C: print border only on .card-box (no nested double border on the grade wrapper)
+        print_css = key_html[key_html.index('@media print'):key_html.index('</style>')]
+        self.assertRegex(print_css, r'\.card-box \{\s*border: 1pt solid #000 !important;')
+        self.assertNotRegex(print_css, r'\.grade-key-section[^{]*\{[^}]*border: 1pt')
+        self.assertIn('break-before: page', print_css)
+        self.assertIn('sec.hidden = !show', key_html)
+
+        # Static Grade 3 markup is exactly what setGrade(3) renders, so tab switching changes nothing.
+        g3 = grade_data['3']
+        for opening, closing, render in gen.STATIC_SLOTS:
+            self.assertIn(opening + render(g3), sheet_html, f"Static Grade 3 markup drifted at {opening}")
+        self.assertEqual(gen.render_worksheet(sheet_html, grade_data), sheet_html,
+                         "Re-rendering the worksheet from the packs must be a no-op")
+        # setGrade() must use the same templates as the generator's renderers.
+        for fragment in [
+            "'<div class=\"flashcard-sentence\"><span class=\"bidi-eng\" lang=\"en\">' + w.exampleSentence + '</span><br>' + w.exampleSentenceHebrew + '</div>'",
+            "'<td>' + m.num + '. <span class=\"bidi-eng\" lang=\"en\">' + m.eng + '</span> ' + m.emoji + '</td>'",
+            "'<td>' + m.hebLetter + '. ' + m.hebText + '</td>'",
+            "'מחסן מילים: &nbsp;' + data.wordBank.map(",
+            "}).join(' &nbsp;·&nbsp; ')",
+            "'<span class=\"bidi-eng\" lang=\"en\">' + s.num + '. ' + s.engPre + '<span class=\"blank-line\"></span>' + s.engPost + '</span> &nbsp; (' + s.hebHint + ')'",
+        ]:
+            self.assertIn(fragment, sheet_html)
+        self.assertNotRegex(sheet_html[:sheet_html.index('<script>')], '[\u05B0-\u05C7]',
+                            "Static Grade 3 must use the same unvocalized Hebrew as the packs")
+
     def test_slice5a_baylight_dock_prototype(self):
         """Verify Slice 5A Baylight solver-verified dock prototype, move sequence replay, and rules fidelity."""
         fixtures_path = ROOT / 'tools/baylight_fixtures.json'
@@ -636,20 +855,24 @@ class MonetizationPilotTests(unittest.TestCase):
 
         import sys
         import warnings
-        sys.path.append('/Volumes/MacMiniDev/projects/baylight/Tools')
-        import baylight_rules
 
         fixtures = json.loads(fixtures_path.read_text(encoding='utf-8'))
         self.assertEqual(fixtures.get('sourceCommit'), 'ca07a94')
         levels = fixtures['levels']
         self.assertEqual(len(levels), 2)
 
-        levels_path = '/Volumes/MacMiniDev/projects/baylight/Assets/_Project/Resources/Levels/levels.txt'
-        with warnings.catch_warnings():
-            warnings.simplefilter('ignore', ResourceWarning)
-            all_levels = baylight_rules.parse(levels_path)
+        # Rules replay against baylight_rules.py + levels.txt at the fixtures' pinned commit (needs a clone).
+        src = export_baylight_source('ca07a94')
+        all_levels = []
+        baylight_rules = None
+        if src is not None:
+            sys.path.insert(0, str(src / 'Tools'))
+            import baylight_rules
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore', ResourceWarning)
+                all_levels = baylight_rules.parse(str(src / 'Assets/_Project/Resources/Levels/levels.txt'))
 
-        for lvl_fix in levels:
+        for lvl_fix in (levels if baylight_rules is not None else []):
             lvl_id = lvl_fix['id']
             lvl = next(l for l in all_levels if l['id'] == lvl_id)
             st = baylight_rules.start(lvl)

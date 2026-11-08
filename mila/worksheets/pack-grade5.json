@@ -127,5 +127,131 @@
       "category": "objects",
       "band": "band-1-core-2"
     }
+  ],
+  "matching": [
+    {
+      "num": 1,
+      "eng": "rabbit",
+      "emoji": "🐰",
+      "hebLetter": "א",
+      "hebText": "עוגייה",
+      "answerLetter": "ד",
+      "answerText": "ארנב"
+    },
+    {
+      "num": 2,
+      "eng": "snake",
+      "emoji": "🐍",
+      "hebLetter": "ב",
+      "hebText": "נחש",
+      "answerLetter": "ב",
+      "answerText": "נחש"
+    },
+    {
+      "num": 3,
+      "eng": "candy",
+      "emoji": "🍬",
+      "hebLetter": "ג",
+      "hebText": "חולצה",
+      "answerLetter": "ח",
+      "answerText": "סוכרייה"
+    },
+    {
+      "num": 4,
+      "eng": "cookie",
+      "emoji": "🍪",
+      "hebLetter": "ד",
+      "hebText": "ארנב",
+      "answerLetter": "א",
+      "answerText": "עוגייה"
+    },
+    {
+      "num": 5,
+      "eng": "soup",
+      "emoji": "🍲",
+      "hebLetter": "ה",
+      "hebText": "עגבנייה",
+      "answerLetter": "ו",
+      "answerText": "מרק"
+    },
+    {
+      "num": 6,
+      "eng": "tomato",
+      "emoji": "🍅",
+      "hebLetter": "ו",
+      "hebText": "מרק",
+      "answerLetter": "ה",
+      "answerText": "עגבנייה"
+    },
+    {
+      "num": 7,
+      "eng": "shirt",
+      "emoji": "👕",
+      "hebLetter": "ז",
+      "hebText": "גרב",
+      "answerLetter": "ג",
+      "answerText": "חולצה"
+    },
+    {
+      "num": 8,
+      "eng": "sock",
+      "emoji": "🧦",
+      "hebLetter": "ח",
+      "hebText": "סוכרייה",
+      "answerLetter": "ז",
+      "answerText": "גרב"
+    }
+  ],
+  "wordBank": [
+    "rabbit",
+    "snake",
+    "soup",
+    "glasses",
+    "camera",
+    "ruler"
+  ],
+  "sentences": [
+    {
+      "num": 1,
+      "answer": "rabbit",
+      "engPre": "The white ",
+      "engPost": " hops.",
+      "hebHint": "הארנב הלבן מקפץ"
+    },
+    {
+      "num": 2,
+      "answer": "snake",
+      "engPre": "The ",
+      "engPost": " is long.",
+      "hebHint": "הנחש ארוך"
+    },
+    {
+      "num": 3,
+      "answer": "soup",
+      "engPre": "Mom makes chicken ",
+      "engPost": ".",
+      "hebHint": "אמא מכינה מרק עוף"
+    },
+    {
+      "num": 4,
+      "answer": "glasses",
+      "engPre": "Grandpa wears ",
+      "engPost": ".",
+      "hebHint": "סבא מרכיב משקפיים"
+    },
+    {
+      "num": 5,
+      "answer": "camera",
+      "engPre": "Alma has a new ",
+      "engPost": ".",
+      "hebHint": "לעלמא יש מצלמה חדשה"
+    },
+    {
+      "num": 6,
+      "answer": "ruler",
+      "engPre": "Draw a line with a ",
+      "engPost": ".",
+      "hebHint": "סרטטו קו עם סרגל"
+    }
   ]
 }

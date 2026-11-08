@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swordfish Technique in Sudoku: Three-Line Fish Guide | Ninely</title>
+<meta name="description" content="Master the Swordfish Sudoku strategy. Learn how a candidate locked into three columns and three rows eliminates it across those rows. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/swordfish/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Swordfish Technique in Sudoku: Three-Line Fish Guide",
+  "description": "Learn how the Swordfish pattern, an X-Wing stretched across three columns and three rows, eliminates a candidate from the rest of the cover rows.",
+  "url": "https://aviisrgames.com/ninely/strategy/swordfish/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Swordfish Technique in Sudoku: Three-Line Fish Guide</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Swordfish?</h2>
+      <p>A <strong>Swordfish</strong> is an <a href="../x-wing/">X-Wing</a> stretched across <em>three</em> lines. It is the next member of the &ldquo;Fish&rdquo; family.</p>
+      <p>When a candidate digit appears in <em>two or three cells</em> in each of three columns, and all of those cells sit in <em>the same three rows</em>:</p>
+      <ol>
+        <li>Each of the three columns must place that digit once, so the three columns place three copies of it.</li>
+        <li>All three copies must land in the same three rows, one per row.</li>
+        <li>So each of those three rows gets its copy from inside the three columns.</li>
+        <li>Therefore, that digit <strong>cannot appear anywhere else</strong> in those three rows! (Swap rows and columns and the same logic works the other way.)</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Swordfish on Digit 4 Eliminates 4 from Cell R5C2</h2>
+      <p>Follow candidate <strong>4</strong> down <strong>Column 3</strong>, <strong>Column 7</strong> and <strong>Column 9</strong>:</p>
+      <ul>
+        <li><strong>Column 3:</strong> 4 can only go in <strong>R1C3</strong>, <strong>R2C3</strong> or <strong>R5C3</strong>.</li>
+        <li><strong>Column 7:</strong> 4 can only go in <strong>R2C7</strong> or <strong>R5C7</strong>.</li>
+        <li><strong>Column 9:</strong> 4 can only go in <strong>R1C9</strong> or <strong>R2C9</strong>.</li>
+        <li><strong>The Three-Row Lock:</strong> Every candidate sits in Row 1, 2 or 5. Each column needs one 4, and no row can hold two, so the three 4s fill Rows 1, 2 and 5 exactly once each, all inside Columns 3, 7 and 9. No two columns form an X-Wing on their own, so all three are needed.</li>
+        <li><strong>Target Elimination at R5C2:</strong> Cell <strong>Row 5, Column 2 (R5C2)</strong> has candidates <code>&#123;1, 4&#125;</code>. Row 5's 4 is already claimed by the Swordfish, so <strong>candidate 4 is eliminated from R5C2</strong>, leaving <strong>1</strong> as a Naked Single!</li>
+        <li><strong>Bonus eliminations:</strong> R1C1 and R1C2 in Row 1 also lose their 4.</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Swordfish on 4: Cols 3, 7 &amp; 9 (Rows 1, 2 &amp; 5)</div>
+          <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num">5</span><span class="cand-num">6</span><span class="cand-num">7</span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R5C2 (4 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; margin:0 auto; border-radius:6px;"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num">5</span><span class="cand-num">6</span><span class="cand-num">7</span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <!-- Row 5 -->
+          <div class="diagram-cell fixed">7</div><div id="target-cell" class="diagram-cell danger"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">9</div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn">◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 2 of 3: The Swordfish locks the three 4s of Rows 1, 2 and 5 inside Cols 3, 7 and 9</span>
+          <button type="button" id="next-step" class="step-btn">Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Columns 3, 7 and 9, candidate 4 is restricted to Rows 1, 2 and 5. This Swordfish eliminates candidate 4 from R5C2, leaving 1.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 4 in R5C2</h4>
+        <p>R5C2 only has <code>&#123;1, 4&#125;</code>, and 4 looks like it could go there because nothing in Row 5, Column 2 or Box 4 blocks it yet.</p>
+        <p><strong>Why this fails:</strong> A 4 in R5C2 removes 4 from R5C3 and R5C7. Column 7 is then forced to R2C7, which removes 4 from R2C3 and R2C9. Column 9 is forced to R1C9, which removes 4 from R1C3. Column 3 now has no cell left for a 4, an immediate contradiction!</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: Scan One Digit at a Time</h4>
+        <p>Pick a digit and mark every column where it has only two or three candidate cells. If three of those columns use only three rows between them, you have a Swordfish. Repeat with rows in place of columns. In the Ninely engine, Swordfish is a Master-tier technique, the top of the hint ladder.</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Master Advanced Sudoku?</h3>
+      <p>Hunt for fish patterns on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Single Reserved Ad Slot Container -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../naked-singles/">Naked Singles Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 2;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: In Col 3, Col 7 and Col 9, candidate 4 appears only in Rows 1, 2 and 5",
+      html: '<div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: The Swordfish locks the three 4s of Rows 1, 2 and 5 inside Cols 3, 7 and 9",
+      html: '<div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Candidate 4 eliminated from R5C2, leaving 1 as a Naked Single",
+      html: '1',
+      cls: "fixed highlight"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  // Initialize stepper state for Step 2
+  stepText.textContent = steps[1].text;
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

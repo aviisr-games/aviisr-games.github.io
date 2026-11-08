@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naked Triples in Sudoku: Three-Cell Candidate Lock Guide | Ninely</title>
+<meta name="description" content="Learn the Naked Triple Sudoku technique. See how three cells sharing three candidates lock those digits and eliminate them from the rest of the unit. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/naked-triples/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Naked Triples in Sudoku: Three-Cell Candidate Lock Guide",
+  "description": "Learn how three cells in one unit that together hold only three candidates lock those digits and remove them from every other cell in the unit.",
+  "url": "https://aviisrgames.com/ninely/strategy/naked-triples/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Naked Triples in Sudoku: Three-Cell Candidate Lock Guide</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Naked Triple?</h2>
+      <p>A <strong>Naked Triple</strong> is the three-cell big brother of the <a href="../naked-pairs/">Naked Pair</a>. It appears when <em>three cells in the same unit</em> (row, column, or 3&times;3 box) contain, between them, <em>only three different candidates</em>.</p>
+      <ol>
+        <li>Each of the three cells can only take one of those three digits.</li>
+        <li>Three cells, three digits: all three digits must be used up by exactly these cells.</li>
+        <li>The cells do not need all three candidates each. <code>&#123;1, 3&#125;</code>, <code>&#123;1, 2, 3&#125;</code> and <code>&#123;2, 3&#125;</code> still form a valid triple.</li>
+        <li>Therefore, those three digits <strong>cannot appear anywhere else</strong> in that unit!</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Naked Triple in Row 1 Eliminates 2 from Cell R1C8</h2>
+      <p>Look at the empty cells of <strong>Row 1</strong> on the board below:</p>
+      <ul>
+        <li><strong>The three locked cells:</strong> <strong>R1C2</strong> holds <code>&#123;1, 3&#125;</code>, <strong>R1C4</strong> holds <code>&#123;1, 2, 3&#125;</code>, and <strong>R1C9</strong> holds <code>&#123;2, 3&#125;</code>. Together they use only the digits <strong>1, 2 and 3</strong>.</li>
+        <li><strong>No smaller lock:</strong> No two of these cells share just two digits, so this is a true triple, not a hidden Naked Pair.</li>
+        <li><strong>The Triple Lock:</strong> Row 1 needs a 1, a 2 and a 3, and these three cells can hold nothing else. So 1, 2 and 3 are claimed by R1C2, R1C4 and R1C9.</li>
+        <li><strong>Target Elimination at R1C8:</strong> Cell <strong>Row 1, Column 8 (R1C8)</strong> has candidates <code>&#123;2, 8&#125;</code>. Because the triple claims Row 1's 2, <strong>candidate 2 is eliminated from R1C8</strong>, leaving <strong>8</strong> as a Naked Single!</li>
+        <li><strong>Bonus elimination:</strong> R1C3 <code>&#123;3, 7, 8&#125;</code> also loses its 3.</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Naked Triple in Row 1: {1, 2, 3}</div>
+          <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R1C8 (2 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; margin:0 auto; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num elim">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num"></span></div></div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell "><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">7</span><span class="cand-num keep">8</span><span class="cand-num"></span></div></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num keep">1</span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">4</div><div id="target-cell" class="diagram-cell danger"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num elim">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num"></span></div></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">8</div>
+          <!-- Row 5 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn">◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 2 of 3: The triple claims 1, 2 and 3, so 2 is eliminated from R1C8</span>
+          <button type="button" id="next-step" class="step-btn">Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Row 1, cells R1C2 {1, 3}, R1C4 {1, 2, 3} and R1C9 {2, 3} form a Naked Triple on 1, 2 and 3. This eliminates 2 from R1C8, leaving 8.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 2 in R1C8</h4>
+        <p>R1C8 has just two candidates <code>&#123;2, 8&#125;</code>, so a quick guess of <code>2</code> looks harmless.</p>
+        <p><strong>Why this fails:</strong> Placing <code>2</code> in R1C8 removes 2 from R1C4 and R1C9. R1C9 is left with only <code>3</code>, so R1C2 must take <code>1</code>. Now R1C4 needs a 1 or a 3, and both are already used in Row 1. The cell has no legal digit, an immediate contradiction!</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: Count Cells, Not Candidates</h4>
+        <p>When a unit has many two- and three-candidate cells, pick any three of them and write the union of their candidates. If the union has exactly three digits, you have a Naked Triple. Don't wait for three identical <code>&#123;a, b, c&#125;</code> cells: mixed pairs and triples are far more common. In the Ninely engine, a Naked Triple is an Expert-tier technique.</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Master Advanced Sudoku?</h3>
+      <p>Put three-cell locks to work on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Single Reserved Ad Slot Container -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../swordfish/">Swordfish Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 2;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: R1C2, R1C4 and R1C9 together hold only the digits 1, 2 and 3",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: The triple claims 1, 2 and 3, so 2 is eliminated from R1C8",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num elim">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: R1C8 is left with 8 as a Naked Single",
+      html: '8',
+      cls: "fixed highlight"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  // Initialize stepper state for Step 2
+  stepText.textContent = steps[1].text;
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

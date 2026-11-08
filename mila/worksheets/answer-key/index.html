@@ -149,12 +149,26 @@
     .no-print, nav, footer {
       display: none !important;
     }
-    .card-box, .grade-key-section {
+    .card-box {
       border: 1pt solid #000 !important;
       box-shadow: none !important;
       break-inside: avoid !important;
       page-break-inside: avoid !important;
       margin-bottom: 20px !important;
+    }
+    .grade-key-section {
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+    }
+    .grade-key-section h2 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    /* Printing all grades: each grade key starts on its own page. */
+    .grade-key-section:not([hidden]) ~ .grade-key-section:not([hidden]) {
+      break-before: page;
+      page-break-before: always;
     }
     .ans-table th, .ans-table td {
       border: 1pt solid #000 !important;
@@ -429,11 +443,9 @@ function showKeyGrade(target, updateUrl) {
   ['3', '4', '5'].forEach(function(g) {
     var sec = document.getElementById('key-grade' + g);
     if (sec) {
-      if (target === 'all' || target === g) {
-        sec.style.display = 'block';
-      } else {
-        sec.style.display = 'none';
-      }
+      var show = (target === 'all' || target === g);
+      sec.style.display = show ? 'block' : 'none';
+      sec.hidden = !show; // print CSS breaks pages only between visible grade keys
     }
   });
 

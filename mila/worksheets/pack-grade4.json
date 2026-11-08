@@ -127,5 +127,131 @@
       "category": "clothes",
       "band": "band-1-core-1"
     }
+  ],
+  "matching": [
+    {
+      "num": 1,
+      "eng": "happy",
+      "emoji": "😊",
+      "hebLetter": "א",
+      "hebText": "ספר",
+      "answerLetter": "ד",
+      "answerText": "שמח/ה"
+    },
+    {
+      "num": 2,
+      "eng": "cold",
+      "emoji": "❄️",
+      "hebLetter": "ב",
+      "hebText": "דג",
+      "answerLetter": "ו",
+      "answerText": "קר"
+    },
+    {
+      "num": 3,
+      "eng": "fish",
+      "emoji": "🐟",
+      "hebLetter": "ג",
+      "hebText": "מכונית",
+      "answerLetter": "ב",
+      "answerText": "דג"
+    },
+    {
+      "num": 4,
+      "eng": "book",
+      "emoji": "📖",
+      "hebLetter": "ד",
+      "hebText": "שמח/ה",
+      "answerLetter": "א",
+      "answerText": "ספר"
+    },
+    {
+      "num": 5,
+      "eng": "girl",
+      "emoji": "👧",
+      "hebLetter": "ה",
+      "hebText": "תפוח",
+      "answerLetter": "ח",
+      "answerText": "ילדה"
+    },
+    {
+      "num": 6,
+      "eng": "ball",
+      "emoji": "⚽",
+      "hebLetter": "ו",
+      "hebText": "קר",
+      "answerLetter": "ז",
+      "answerText": "כדור"
+    },
+    {
+      "num": 7,
+      "eng": "car",
+      "emoji": "🚗",
+      "hebLetter": "ז",
+      "hebText": "כדור",
+      "answerLetter": "ג",
+      "answerText": "מכונית"
+    },
+    {
+      "num": 8,
+      "eng": "apple",
+      "emoji": "🍎",
+      "hebLetter": "ח",
+      "hebText": "ילדה",
+      "answerLetter": "ה",
+      "answerText": "תפוח"
+    }
+  ],
+  "wordBank": [
+    "happy",
+    "cold",
+    "fish",
+    "ball",
+    "car",
+    "shoe"
+  ],
+  "sentences": [
+    {
+      "num": 1,
+      "answer": "fish",
+      "engPre": "The ",
+      "engPost": " can swim.",
+      "hebHint": "הדג יודע לשחות"
+    },
+    {
+      "num": 2,
+      "answer": "happy",
+      "engPre": "Dan is very ",
+      "engPost": ".",
+      "hebHint": "דן שמח מאוד"
+    },
+    {
+      "num": 3,
+      "answer": "car",
+      "engPre": "Dad has a fast ",
+      "engPost": ".",
+      "hebHint": "לאבא יש מכונית מהירה"
+    },
+    {
+      "num": 4,
+      "answer": "cold",
+      "engPre": "The ice cream is ",
+      "engPost": ".",
+      "hebHint": "הגלידה קרה"
+    },
+    {
+      "num": 5,
+      "answer": "ball",
+      "engPre": "The boy plays with a ",
+      "engPost": ".",
+      "hebHint": "הילד משחק עם כדור"
+    },
+    {
+      "num": 6,
+      "answer": "shoe",
+      "engPre": "My ",
+      "engPost": " is black.",
+      "hebHint": "הנעל שלי שחורה"
+    }
   ]
 }

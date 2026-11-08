@@ -1,8 +1,21 @@
 # Claude Handoff: Audit of Gemini 3.8 Work & Remaining Roadmap
 
 **Last Updated:** 2026-11-08  
-**Latest Commit on `main`:** `fc3e4d9` (`feat(phase-3): multi-grade Mila printable packs, 90-day Ninely pack & Wave 2 stepper polish`)  
-**Automated Verification Suite:** `python3 -m unittest discover -s tools -p "test_*.py" -v` (21 tests) & `python3 tools/agent_workflow.py check`
+**Latest Phase:** Phase 3 remediation + Wave 3 (this commit, on top of `995da2f`)  
+**Automated Verification Suite:** `python3 -m unittest discover -s tools -p "test_*.py" -v` (24 tests) & `python3 tools/agent_workflow.py check`
+
+---
+
+## 0. Status (2026-11-08, Claude): Section 2 Fixed, Section 3 Items 1-2 Done
+
+- **Defect A fixed.** `tools/pack_generator/Program.cs` now calls `SudokuGenerator.TryGenerate` (seed search upward from the date seed; `seed` in the pack is the seed that produced the board). Regenerated with Ninely `4fa5c68` (the recorded `sourceCommit`): `dotnet run --project tools/pack_generator/pack_generator.csproj -p:NinelyEngineDir=<Ninely>/Assets/_Project/Scripts/SudokuEngine ninely/play/daily-pack.json 90`. All 90 boards: 180-degree symmetric, clues inside `ClueRange`, unique. `golden_duel_fixtures.json` came out byte-identical.
+- **Correction to the tier table in Defect A below.** The engine's `SmartHintSolver.DifficultyFor` (Ninely `4fa5c68` and current `main`) is: Easy = `FullHouse`/`HiddenSingle`, Medium = `NakedSingle`, Hard = `NakedPair`/`HiddenPair`, Expert = `PointingPair`/`NakedTriple`, Master = `XWing`/`Swordfish`. `TryGenerate` enforces `graded.Difficulty == tier`, so the pack follows the engine and the test asserts the engine mapping (Medium days are `NakedSingle`, Hard days `NakedPair`/`HiddenPair`).
+- **Defect B fixed.** `tools/generate_mila_pack.py` reads `vocabulary.ts` at `0f5b6d6` via `git show` (`MILA_REPO`, default `~/Repos/english-learning`), exports `matching`/`wordBank`/`sentences` into `pack-grade{3,4,5}.json`, and renders `GRADE_DATA` (now a JSON literal) plus the static Grade 3 markup with the same templates as `setGrade()`. Browser check: Grade 3 -> 4 -> 3 leaves an identical DOM. `GRADE_DATA` content is unchanged; static Grade 3 lost the nikkud and two drifted translations.
+- **Defect C fixed.** Print border/`break-inside` only on `.card-box`; grade keys page-break only between visible keys (`showKeyGrade` now also sets `hidden`).
+- **Wave 3 shipped.** `/ninely/strategy/naked-triples/` (Row 1 triple {1,2,3}, R1C8 -> 8) and `/ninely/strategy/swordfish/` (digit 4, Cols 3/7/9 x Rows 1/2/5, R5C2 -> 1). Both boards have unique solutions and the patterns hold on givens-only candidates (asserted in `test_wave3_patterns_hold_on_plain_candidates`). Hub cards 7-8 and sitemap updated.
+- **Hint deep-link.** `#hint-box` link label is "Learn this technique ➔" (en/he/ar) via `TECHNIQUE_GUIDES` (all engine techniques; unknown -> Strategy Hub).
+- **Tests no longer need `/Volumes/MacMiniDev`.** Mila and Baylight checks read their pinned commits from local clones (`MILA_REPO`, `BAYLIGHT_REPO`, default `~/Repos/...`).
+- **Still open (Section 3 item 3):** human print-preview pass and ad sign-off. `ADS_ENABLED` stays `false`.
 
 ---
 

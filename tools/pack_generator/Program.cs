@@ -133,63 +133,28 @@ namespace PackGenerator
             return hintData;
         }
 
-        static SudokuPuzzle GenerateDailyPuzzle(int seed, int targetHoles, DifficultyLevel diffLevel, SmartHintSolver solver)
+        /// <summary>
+        /// Daily puzzle via the shipping engine: SudokuGenerator.TryGenerate digs 180-degree symmetric
+        /// clue pairs inside ClueRange(tier) and only accepts boards the SmartHintSolver fully solves at
+        /// exactly that tier. Seeds are searched upward until one succeeds and the solution is unique.
+        /// </summary>
+        static SudokuPuzzle GenerateDailyPuzzle(SudokuGenerator generator, int seed, DifficultyLevel diffLevel)
         {
-            int attemptSeed = seed;
-            while (true)
+            for (int attemptSeed = seed; attemptSeed < seed + 10000; attemptSeed++)
             {
-                var rng = new Random(attemptSeed);
-                int[] solution = SudokuGenerator.GenerateSolvedGrid(rng);
-                int[] puzzle = (int[])solution.Clone();
-
-                var indices = new List<int>(81);
-                for (int c = 0; c < 81; c++) indices.Add(c);
-                for (int i = indices.Count - 1; i > 0; i--)
-                {
-                    int j = rng.Next(i + 1);
-                    (indices[i], indices[j]) = (indices[j], indices[i]);
-                }
-
-                int holesDug = 0;
-                foreach (int idx in indices)
-                {
-                    int val = puzzle[idx];
-                    puzzle[idx] = 0;
-                    if (SudokuGenerator.CountSolutions(puzzle, 2) == 1)
-                    {
-                        holesDug++;
-                        if (holesDug == targetHoles) break;
-                    }
-                    else
-                    {
-                        puzzle[idx] = val;
-                    }
-                }
-
-                if (holesDug == targetHoles && SudokuGenerator.CountSolutions(puzzle, 2) == 1)
-                {
-                    var hint = solver.FindNextStep(puzzle, teaching: true) ?? solver.FindNextStep(puzzle, teaching: false);
-                    if (hint != null)
-                    {
-                        var graded = solver.Solve(puzzle);
-                        return new SudokuPuzzle
-                        {
-                            Givens = SudokuGrid.Format(puzzle),
-                            Solution = SudokuGrid.Format(solution),
-                            Difficulty = diffLevel,
-                            HardestTechnique = graded.HardestTechnique,
-                            ClueCount = 81 - targetHoles,
-                            Seed = seed
-                        };
-                    }
-                }
-                attemptSeed++;
+                if (!generator.TryGenerate(diffLevel, attemptSeed, out var p) || p == null) continue;
+                int[] givens = new int[81];
+                for (int c = 0; c < 81; c++) givens[c] = p.Givens[c] - '0';
+                if (SudokuGenerator.CountSolutions(givens, 2) != 1) continue;
+                return p;
             }
+            throw new InvalidOperationException($"No {diffLevel} puzzle found for seed {seed}");
         }
 
         static void Main(string[] args)
         {
             var solver = new SmartHintSolver();
+            var generator = new SudokuGenerator();
 
             var pack = new Dictionary<string, object>();
             pack["sourceCommit"] = "4fa5c68";
@@ -208,25 +173,11 @@ namespace PackGenerator
                 string dateKey = curDate.ToString("yyyy-MM-dd");
                 int seed = int.Parse(curDate.ToString("yyyyMMdd"));
 
-                int targetHoles;
-                DifficultyLevel diffLevel;
-                if (i < 30)
-                {
-                    targetHoles = 36;
-                    diffLevel = DifficultyLevel.Easy;
-                }
-                else if (i < 60)
-                {
-                    targetHoles = 46;
-                    diffLevel = DifficultyLevel.Medium;
-                }
-                else
-                {
-                    targetHoles = 52;
-                    diffLevel = DifficultyLevel.Hard;
-                }
+                DifficultyLevel diffLevel = i < 30 ? DifficultyLevel.Easy
+                    : i < 60 ? DifficultyLevel.Medium
+                    : DifficultyLevel.Hard;
 
-                SudokuPuzzle puzzle = GenerateDailyPuzzle(seed, targetHoles, diffLevel, solver);
+                SudokuPuzzle puzzle = GenerateDailyPuzzle(generator, seed, diffLevel);
 
                 int[] grid = new int[81];
                 for (int c = 0; c < 81; c++) grid[c] = puzzle.Givens[c] - '0';
@@ -235,7 +186,7 @@ namespace PackGenerator
 
                 var dayEntry = new Dictionary<string, object>();
                 dayEntry["date"] = dateKey;
-                dayEntry["seed"] = seed;
+                dayEntry["seed"] = puzzle.Seed;
                 dayEntry["difficulty"] = puzzle.Difficulty.ToString();
                 dayEntry["puzzle"] = puzzle.Givens;
                 dayEntry["solution"] = puzzle.Solution;
@@ -251,7 +202,6 @@ namespace PackGenerator
 
             pack["days"] = days;
 
-            var generator = new SudokuGenerator();
             SudokuPuzzle fallbackPuzzle = null;
             if (generator.TryGenerate(DifficultyLevel.Medium, 100001, out var fb))
             {

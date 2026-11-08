@@ -4,8 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- Ninely engine source (aviisr-games/Ninely at the pack's sourceCommit). Override with -p:NinelyEngineDir=... -->
+    <NinelyEngineDir Condition="'$(NinelyEngineDir)' == ''">/Volumes/MacMiniDev/projects/Ninely-latest/Assets/_Project/Scripts/SudokuEngine</NinelyEngineDir>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="/Volumes/MacMiniDev/projects/Ninely-latest/Assets/_Project/Scripts/SudokuEngine/*.cs" />
+    <Compile Include="$(NinelyEngineDir)/*.cs" />
   </ItemGroup>
 </Project>

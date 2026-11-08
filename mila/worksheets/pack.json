@@ -127,5 +127,131 @@
       "category": "adjectives",
       "band": "pre-band-1"
     }
+  ],
+  "matching": [
+    {
+      "num": 1,
+      "eng": "dog",
+      "emoji": "🐶",
+      "hebLetter": "א",
+      "hebText": "כובע",
+      "answerLetter": "ג",
+      "answerText": "כלב"
+    },
+    {
+      "num": 2,
+      "eng": "cat",
+      "emoji": "🐱",
+      "hebLetter": "ב",
+      "hebText": "שמש",
+      "answerLetter": "ה",
+      "answerText": "חתול"
+    },
+    {
+      "num": 3,
+      "eng": "sun",
+      "emoji": "☀️",
+      "hebLetter": "ג",
+      "hebText": "כלב",
+      "answerLetter": "ב",
+      "answerText": "שמש"
+    },
+    {
+      "num": 4,
+      "eng": "hen",
+      "emoji": "🐔",
+      "hebLetter": "ד",
+      "hebText": "תיק",
+      "answerLetter": "ח",
+      "answerText": "תרנגולת"
+    },
+    {
+      "num": 5,
+      "eng": "pen",
+      "emoji": "🖊️",
+      "hebLetter": "ה",
+      "hebText": "חתול",
+      "answerLetter": "ז",
+      "answerText": "עט"
+    },
+    {
+      "num": 6,
+      "eng": "bag",
+      "emoji": "🎒",
+      "hebLetter": "ו",
+      "hebText": "קופסה",
+      "answerLetter": "ד",
+      "answerText": "תיק"
+    },
+    {
+      "num": 7,
+      "eng": "hat",
+      "emoji": "🧢",
+      "hebLetter": "ז",
+      "hebText": "עט",
+      "answerLetter": "א",
+      "answerText": "כובע"
+    },
+    {
+      "num": 8,
+      "eng": "box",
+      "emoji": "📦",
+      "hebLetter": "ח",
+      "hebText": "תרנגולת",
+      "answerLetter": "ו",
+      "answerText": "קופסה"
+    }
+  ],
+  "wordBank": [
+    "dog",
+    "cat",
+    "pen",
+    "egg",
+    "bed",
+    "big"
+  ],
+  "sentences": [
+    {
+      "num": 1,
+      "answer": "egg",
+      "engPre": "The hen has an ",
+      "engPost": ".",
+      "hebHint": "לתרנגולת יש ביצה"
+    },
+    {
+      "num": 2,
+      "answer": "cat",
+      "engPre": "The ",
+      "engPost": " sleeps in a box.",
+      "hebHint": "החתול ישן בקופסה"
+    },
+    {
+      "num": 3,
+      "answer": "dog",
+      "engPre": "Dan has a friendly ",
+      "engPost": ".",
+      "hebHint": "לדן יש כלב ידידותי"
+    },
+    {
+      "num": 4,
+      "answer": "pen",
+      "engPre": "Write with a blue ",
+      "engPost": ".",
+      "hebHint": "כתבי עם עט כחול"
+    },
+    {
+      "num": 5,
+      "answer": "bed",
+      "engPre": "The cat sleeps on my ",
+      "engPost": ".",
+      "hebHint": "החתול ישן על המיטה שלי"
+    },
+    {
+      "num": 6,
+      "answer": "big",
+      "engPre": "The bus is very ",
+      "engPost": ".",
+      "hebHint": "האוטובוס גדול מאוד"
+    }
   ]
 }

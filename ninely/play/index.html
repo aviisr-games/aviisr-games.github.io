@@ -110,7 +110,7 @@
       erase: "⌫",
       won: "Board cleared in",
       practiseMore: "Practise more techniques and master thousands of boards in the full Ninely app:",
-      learnGuide: "Read the step-by-step Strategy Guide ➔"
+      learnGuide: "Learn this technique ➔"
     },
     he: {
       badge: "חימום סודוקו יומי",
@@ -121,7 +121,7 @@
       erase: "⌫ מחק",
       won: "הלוח הושלם תוך",
       practiseMore: "תרגלו טכניקות מתקדמות באפליקציית Ninely המלאה:",
-      learnGuide: "למדריך הטכניקה המלא ➔"
+      learnGuide: "ללמוד את הטכניקה ➔"
     },
     ar: {
       badge: "لغز سودوكو اليومي",
@@ -132,7 +132,7 @@
       erase: "⌫ مسح",
       won: "تم حل اللوح في",
       practiseMore: "تدرّب على المزيد من التقنيات في تطبيق Ninely الكامل:",
-      learnGuide: "اقرأ دليل الاستراتيجية خطوة بخطوة ➔"
+      learnGuide: "تعلّم هذه التقنية ➔"
     }
   };
 
@@ -392,6 +392,22 @@
     return 0;
   }
 
+  // Smart Hint technique (Ninely.SudokuEngine LogicTechnique names) -> /ninely/strategy/<slug>/ guide.
+  // Techniques without a dedicated guide link to the Strategy Hub.
+  var TECHNIQUE_GUIDES = {
+    FullHouse: 'naked-singles',
+    NakedSingle: 'naked-singles',
+    HiddenSingle: 'hidden-singles',
+    PointingPair: 'locked-candidates',
+    BoxLine: 'locked-candidates',
+    BoxLineReduction: 'locked-candidates',
+    NakedPair: 'naked-pairs',
+    HiddenPair: 'hidden-pairs',
+    NakedTriple: 'naked-triples',
+    XWing: 'x-wing',
+    Swordfish: 'swordfish'
+  };
+
   function computeDynamicSmartHint(board) {
     // 1. If the initial solver-exported hint target is still empty (or wrong), use it first
     var packHint = activePuzzle.hint;
@@ -518,9 +534,7 @@
 
     updateConflicts();
 
-    var techSlug = 'hidden-singles';
-    if (hint.technique === 'NakedSingle') techSlug = 'naked-singles';
-    else if (hint.technique === 'PointingPair' || hint.technique === 'BoxLine') techSlug = 'locked-candidates';
+    var techSlug = TECHNIQUE_GUIDES[hint.technique];
 
     var lang = getActiveLang();
     var explText = (hint.explanation && (hint.explanation[lang] || hint.explanation.en)) ||
@@ -541,7 +555,8 @@
 
       var guideLink = document.createElement('a');
       guideLink.className = 'hint-link';
-      guideLink.href = '../strategy/' + techSlug + '/';
+      guideLink.href = techSlug ? '../strategy/' + techSlug + '/' : '../strategy/';
+      if (techSlug) guideLink.setAttribute('data-technique', hint.technique);
       guideLink.textContent = (translations[lang] && translations[lang].learnGuide) || translations.en.learnGuide;
       hintBox.appendChild(guideLink);
     }

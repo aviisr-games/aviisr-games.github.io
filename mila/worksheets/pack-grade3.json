@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0f5b6d6",
+  "sourceFile": "src/lib/vocabulary.ts",
+  "gradeBand": "pre-band-1",
+  "gradeLabelHe": "כיתה ג׳ (Pre-Band I)",
+  "ministryCurriculum": "Israel Ministry of Education English Curriculum 2020",
+  "wordCount": 12,
+  "words": [
+    {
+      "id": "dog",
+      "english": "dog",
+      "hebrew": "כלב",
+      "exampleSentence": "Dan has a friendly dog.",
+      "exampleSentenceHebrew": "לדן יש כלב ידידותי.",
+      "image": "🐶",
+      "category": "animals",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "cat",
+      "english": "cat",
+      "hebrew": "חתול",
+      "exampleSentence": "The cat sleeps in a box.",
+      "exampleSentenceHebrew": "החתול ישן בקופסה.",
+      "image": "🐱",
+      "category": "animals",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "hen",
+      "english": "hen",
+      "hebrew": "תרנגולת",
+      "exampleSentence": "The hen has an egg.",
+      "exampleSentenceHebrew": "לתרנגולת יש ביצה.",
+      "image": "🐔",
+      "category": "animals",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "sun",
+      "english": "sun",
+      "hebrew": "שמש",
+      "exampleSentence": "The sun is hot.",
+      "exampleSentenceHebrew": "השמש חמה.",
+      "image": "☀️",
+      "category": "nature",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "pen",
+      "english": "pen",
+      "hebrew": "עט",
+      "exampleSentence": "Write with a blue pen.",
+      "exampleSentenceHebrew": "כתבי עם עט כחול.",
+      "image": "🖊️",
+      "category": "objects",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "bag",
+      "english": "bag",
+      "hebrew": "תיק",
+      "exampleSentence": "Alma has a pink bag.",
+      "exampleSentenceHebrew": "לעלמא יש תיק ורוד.",
+      "image": "🎒",
+      "category": "objects",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "hat",
+      "english": "hat",
+      "hebrew": "כובע",
+      "exampleSentence": "Dan has a red hat.",
+      "exampleSentenceHebrew": "לדן יש כובע אדום.",
+      "image": "🧢",
+      "category": "objects",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "box",
+      "english": "box",
+      "hebrew": "קופסה",
+      "exampleSentence": "A cat is in the box.",
+      "exampleSentenceHebrew": "חתול נמצא בתוך הקופסה.",
+      "image": "📦",
+      "category": "objects",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "egg",
+      "english": "egg",
+      "hebrew": "ביצה",
+      "exampleSentence": "The hen has an egg.",
+      "exampleSentenceHebrew": "לתרנגולת יש ביצה.",
+      "image": "🥚",
+      "category": "food",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "bed",
+      "english": "bed",
+      "hebrew": "מיטה",
+      "exampleSentence": "The cat sleeps on my bed.",
+      "exampleSentenceHebrew": "החתול ישן על המיטה שלי.",
+      "image": "🛏️",
+      "category": "objects",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "boy",
+      "english": "boy",
+      "hebrew": "ילד",
+      "exampleSentence": "The boy has a ball.",
+      "exampleSentenceHebrew": "לילד יש כדור.",
+      "image": "👦",
+      "category": "people",
+      "band": "pre-band-1"
+    },
+    {
+      "id": "big",
+      "english": "big",
+      "hebrew": "גדול",
+      "exampleSentence": "The bus is very big.",
+      "exampleSentenceHebrew": "האוטובוס גדול מאוד.",
+      "image": "🐘",
+      "category": "adjectives",
+      "band": "pre-band-1"
+    }
+  ]
+}

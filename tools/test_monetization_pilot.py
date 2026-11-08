@@ -328,6 +328,12 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/middle-east-2030/briefing/',
             'https://aviisrgames.com/middle-east-2030/guide/',
             'https://aviisrgames.com/mila/',
+            'https://aviisrgames.com/mila/worksheets/',
+            'https://aviisrgames.com/mila/worksheets/answer-key/',
+            'https://aviisrgames.com/baylight/',
+            'https://aviisrgames.com/baylight/dock/',
+            'https://aviisrgames.com/morning-route/',
+            'https://aviisrgames.com/morning-route/preview/',
             'https://aviisrgames.com/casino/',
             'https://aviisrgames.com/privacy.html',
             'https://aviisrgames.com/support.html'
@@ -389,6 +395,134 @@ class MonetizationPilotTests(unittest.TestCase):
 
         # 5. Briefing links each outcome to ../guide/#path-<code>
         self.assertIn("'../guide/#path-' + pathCode", briefing_html)
+
+    def test_slice4_mila_parent_pack(self):
+        """Verify Slice 4 Mila Grade 3 parent pack, flashcards, answer key, and COPPA print audit."""
+        pack_path = ROOT / 'mila/worksheets/pack-grade3.json'
+        sheet_path = ROOT / 'mila/worksheets/index.html'
+        key_path = ROOT / 'mila/worksheets/answer-key/index.html'
+
+        self.assertTrue(pack_path.exists(), "pack-grade3.json must exist")
+        self.assertTrue(sheet_path.exists(), "worksheets/index.html must exist")
+        self.assertTrue(key_path.exists(), "worksheets/answer-key/index.html must exist")
+
+        pack = json.loads(pack_path.read_text(encoding='utf-8'))
+        self.assertEqual(pack.get('schemaVersion'), 1)
+        self.assertEqual(pack.get('sourceCommit'), '0f5b6d6')
+        self.assertEqual(pack.get('gradeBand'), 'pre-band-1')
+        self.assertEqual(len(pack['words']), 12)
+
+        # Cross check words against vocabulary.ts in english-learning repo
+        vocab_ts = Path('/Users/aviisraeli/Documents/Claude/english-learning/src/lib/vocabulary.ts').read_text(encoding='utf-8')
+        for w in pack['words']:
+            self.assertEqual(w['band'], 'pre-band-1')
+            self.assertIn(f"id: '{w['id']}'", vocab_ts)
+            self.assertIn(f"english: '{w['english']}'", vocab_ts)
+
+        sheet_html = sheet_path.read_text(encoding='utf-8')
+        key_html = key_path.read_text(encoding='utf-8')
+
+        # Check bidi isolation, @media print, and answer key link
+        self.assertIn('unicode-bidi: isolate', sheet_html)
+        self.assertIn('@media print', sheet_html)
+        self.assertIn('@media print', key_html)
+        self.assertIn('answer-key/', sheet_html)
+
+        # Verify zero third-party scripts, fonts, analytics, or ads
+        for h in [sheet_html, key_html]:
+            self.assertNotIn('fonts.googleapis.com', h)
+            self.assertNotIn('fonts.gstatic.com', h)
+            self.assertNotIn('adsbygoogle', h)
+            self.assertNotIn('gtag', h)
+            self.assertNotIn('doubleclick', h)
+
+        # Untagged store link with referrerpolicy
+        self.assertIn('referrerpolicy="no-referrer"', sheet_html)
+        self.assertNotIn('utm_', sheet_html)
+
+    def test_slice5a_baylight_dock_prototype(self):
+        """Verify Slice 5A Baylight solver-verified dock prototype, move sequence replay, and rules fidelity."""
+        fixtures_path = ROOT / 'tools/baylight_fixtures.json'
+        dock_path = ROOT / 'baylight/dock/index.html'
+        self.assertTrue(fixtures_path.exists(), "baylight_fixtures.json must exist")
+        self.assertTrue(dock_path.exists(), "baylight/dock/index.html must exist")
+
+        import sys
+        sys.path.append('/Volumes/MacMiniDev/projects/baylight/Tools')
+        import baylight_rules
+
+        fixtures = json.loads(fixtures_path.read_text(encoding='utf-8'))
+        self.assertEqual(fixtures.get('sourceCommit'), 'ca07a94')
+        levels = fixtures['levels']
+        self.assertEqual(len(levels), 2)
+
+        levels_path = '/Volumes/MacMiniDev/projects/baylight/Assets/_Project/Resources/Levels/levels.txt'
+        all_levels = baylight_rules.parse(levels_path)
+
+        for lvl_fix in levels:
+            lvl_id = lvl_fix['id']
+            lvl = next(l for l in all_levels if l['id'] == lvl_id)
+            st = baylight_rules.start(lvl)
+            moves = lvl_fix['solutionMoves']
+            for m in moves:
+                act = ('bay', m['target']) if m['action'] == 'bay' else ('pallet',)
+                # Find matching move in baylight_rules.moves
+                next_st = None
+                for a, ns in baylight_rules.moves(lvl, st):
+                    if a == act:
+                        next_st = ns
+                        break
+                self.assertIsNotNone(next_st, f"Move {act} must be legal in level {lvl_id} at i={st.i}")
+                st = next_st
+
+            self.assertTrue(baylight_rules.won(lvl, st), f"Level {lvl_id} must reach won state after replay")
+            self.assertEqual(st.i, len(lvl['belt']))
+            self.assertEqual(len(st.pallet), 0)
+            self.assertTrue(all(n == 0 for _, n in st.bays))
+
+        dock_html = dock_path.read_text(encoding='utf-8')
+        self.assertIn("default-src 'self'", dock_html)
+        self.assertNotIn('adsbygoogle', dock_html)
+        self.assertIn('SYMBOLS', dock_html)
+        self.assertIn('prefers-reduced-motion', dock_html)
+
+    def test_slice5b_morning_route_preview_and_canonicalization(self):
+        """Verify Slice 5B Morning Route map preview, throw prototype, hazard counter-moves, and canonicalization."""
+        preview_path = ROOT / 'morning-route/preview/index.html'
+        mr_path = ROOT / 'morning-route/index.html'
+        pr_path = ROOT / 'paper-route/index.html'
+
+        self.assertTrue(preview_path.exists(), "morning-route/preview/index.html must exist")
+        self.assertTrue(mr_path.exists(), "morning-route/index.html must exist")
+        self.assertTrue(pr_path.exists(), "paper-route/index.html must exist")
+
+        preview_html = preview_path.read_text(encoding='utf-8')
+        mr_html = mr_path.read_text(encoding='utf-8')
+        pr_html = pr_path.read_text(encoding='utf-8')
+
+        # Canonical links and self-only CSP
+        for h in [preview_html, mr_html, pr_html]:
+            self.assertIn("default-src 'self'", h)
+            self.assertNotIn("pagead2.googlesyndication.com", h)
+            self.assertNotIn("fonts.googleapis.com", h)
+            self.assertIn('<link rel="canonical"', h)
+
+        # Cross links
+        self.assertIn('href="preview/"', mr_html)
+        self.assertIn('href="../morning-route/preview/"', pr_html)
+
+        # 7 days and 6 hazards
+        for d in range(1, 8):
+            self.assertIn(f'Day {d}', preview_html)
+        for hazard in ['Bins', 'Pedestrians', 'Chasing Dogs', 'Reversing Cars', 'Drones', 'Skaters']:
+            self.assertIn(hazard, preview_html)
+
+        # Throw timing zones and reduced motion step controls
+        self.assertIn('zone-porch', preview_html)
+        self.assertIn('zone-mailbox', preview_html)
+        self.assertIn('zone-window', preview_html)
+        self.assertIn('btn-step-frame', preview_html)
+        self.assertIn('prefers-reduced-motion', preview_html)
 
 
 if __name__ == '__main__':

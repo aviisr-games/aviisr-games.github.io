@@ -1,4 +1,4 @@
-# aviisr-games.github.io agent guidance
+# aviisrgames.com agent guidance
 
 <!-- aviisr-agent-workflow:v1 -->
 ## Agent execution standard

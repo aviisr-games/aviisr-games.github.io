@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ca07a94",
+  "sourceRepo": "https://github.com/aviisr-games/baylight",
+  "levels": [
+    {
+      "id": 5,
+      "name": "Dock 5",
+      "subtitle": "Locked Bay Opening",
+      "bays": 3,
+      "locked": 1,
+      "unlock_after": 1,
+      "pallet": 0,
+      "belt": "BYBBRYGRGYRG",
+      "tip": "A new truck opens after a ship",
+      "moveCount": 12,
+      "solutionMoves": [
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 1,
+            "bays": [
+              [
+                "B",
+                1
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 1,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 2,
+            "bays": [
+              [
+                "B",
+                1
+              ],
+              [
+                "Y",
+                1
+              ]
+            ],
+            "locked": 1,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 3,
+            "bays": [
+              [
+                "B",
+                2
+              ],
+              [
+                "Y",
+                1
+              ]
+            ],
+            "locked": 1,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 4,
+            "bays": [
+              [
+                null,
+                0
+              ],
+              [
+                "Y",
+                1
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 5,
+            "bays": [
+              [
+                "R",
+                1
+              ],
+              [
+                "Y",
+                1
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 6,
+            "bays": [
+              [
+                "R",
+                1
+              ],
+              [
+                "Y",
+                2
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 7,
+            "bays": [
+              [
+                "R",
+                1
+              ],
+              [
+                "Y",
+                2
+              ],
+              [
+                "G",
+                1
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 8,
+            "bays": [
+              [
+                "R",
+                2
+              ],
+              [
+                "Y",
+                2
+              ],
+              [
+                "G",
+                1
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 9,
+            "bays": [
+              [
+                "R",
+                2
+              ],
+              [
+                "Y",
+                2
+              ],
+              [
+                "G",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 10,
+            "bays": [
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "G",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 2,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 11,
+            "bays": [
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "G",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 3,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 12,
+            "bays": [
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 4,
+            "pallet": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Dock 6",
+      "subtitle": "Pallet Parking Strategy",
+      "bays": 4,
+      "locked": 0,
+      "unlock_after": 0,
+      "pallet": 1,
+      "belt": "YYRRGBBPPBYGPRG",
+      "tip": "No truck fits? Park it on the pallet",
+      "moveCount": 15,
+      "solutionMoves": [
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 1,
+            "bays": [
+              [
+                "Y",
+                1
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 2,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 3,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                1
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 4,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": []
+          }
+        },
+        {
+          "action": "pallet",
+          "target": null,
+          "afterState": {
+            "i": 5,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 6,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 7,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                "B",
+                2
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 3,
+          "afterState": {
+            "i": 8,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                "B",
+                2
+              ],
+              [
+                "P",
+                1
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 3,
+          "afterState": {
+            "i": 9,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                "B",
+                2
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 0,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 10,
+            "bays": [
+              [
+                "Y",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 1,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 11,
+            "bays": [
+              [
+                null,
+                0
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 2,
+            "pallet": [
+              "G"
+            ]
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 12,
+            "bays": [
+              [
+                "G",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 2,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 2,
+          "afterState": {
+            "i": 13,
+            "bays": [
+              [
+                "G",
+                2
+              ],
+              [
+                "R",
+                2
+              ],
+              [
+                "P",
+                1
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 2,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 1,
+          "afterState": {
+            "i": 14,
+            "bays": [
+              [
+                "G",
+                2
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                "P",
+                1
+              ],
+              [
+                "P",
+                2
+              ]
+            ],
+            "locked": 0,
+            "ships": 3,
+            "pallet": []
+          }
+        },
+        {
+          "action": "bay",
+          "target": 0,
+          "afterState": {
+            "i": 15,
+            "bays": [
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ],
+              [
+                null,
+                0
+              ]
+            ],
+            "locked": 0,
+            "ships": 5,
+            "pallet": []
+          }
+        }
+      ]
+    }
+  ]
+}

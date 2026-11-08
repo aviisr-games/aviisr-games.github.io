@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baylight: Sort &amp; Ship — Interactive Dock Puzzle Prototype</title>
+<meta name="description" content="Play the interactive Baylight depot sorting puzzle in your browser. Stack 3 of a kind to ship trucks, unlock blocked lanes, and use the pallet.">
+<link rel="canonical" href="https://aviisrgames.com/baylight/dock/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Baylight: Interactive Dock Sorting Prototype",
+  "description": "Browser playable depot sorting puzzle prototype from Baylight: Sort & Ship. Solver-verified levels with blocked lanes and pallet parking.",
+  "url": "https://aviisrgames.com/baylight/dock/",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "aviisr-games", "email": "aviisr@aviisrgames.com" }
+}
+</script>
+<style>
+  :root {
+    --dock-bg: #0f172a;
+    --dock-surface: #1e293b;
+    --dock-card: #273549;
+    --dock-border: #475569;
+    --c-blue: #2563eb;
+    --c-yellow: #eab308;
+    --c-red: #dc2626;
+    --c-green: #16a34a;
+    --c-purple: #9333ea;
+    --c-orange: #ea580c;
+  }
+  body {
+    background: var(--dock-bg);
+    color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  h1 {
+    font-size: 1.85rem;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 8px;
+  }
+  .sub {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  .notice-box {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid #38bdf8;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: #e0f2fe;
+  }
+  .dock-card {
+    background: var(--dock-surface);
+    border: 1px solid var(--dock-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  }
+  .dock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--dock-border);
+    padding-bottom: 12px;
+  }
+  .level-picker button {
+    background: #334155;
+    color: #f8fafc;
+    border: 1px solid var(--dock-border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .level-picker button.active {
+    background: #38bdf8;
+    color: #0f172a;
+    border-color: #38bdf8;
+  }
+  .stats-strip {
+    display: flex;
+    gap: 16px;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    font-weight: bold;
+  }
+
+  /* Conveyor Belt */
+  .belt-section {
+    background: #090d16;
+    border: 2px solid #334155;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .belt-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+  }
+  .belt-queue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: 60px;
+    overflow-x: auto;
+    padding: 4px 0;
+  }
+  .parcel {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    position: relative;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .parcel.front {
+    transform: scale(1.15);
+    outline: 3px solid #facc15;
+    outline-offset: 2px;
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.6);
+  }
+  .parcel-sym {
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+  .c-B { background: var(--c-blue); border: 2px solid #60a5fa; }
+  .c-Y { background: var(--c-yellow); border: 2px solid #fef08a; color: #000; }
+  .c-R { background: var(--c-red); border: 2px solid #f87171; }
+  .c-G { background: var(--c-green); border: 2px solid #4ade80; }
+  .c-P { background: var(--c-purple); border: 2px solid #c084fc; }
+  .c-O { background: var(--c-orange); border: 2px solid #fb923c; }
+
+  /* Dock Bays Area */
+  .bays-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .bay-cell {
+    background: #1e293b;
+    border: 2px solid #475569;
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .bay-cell:hover:not(.locked) {
+    border-color: #38bdf8;
+    background: #28374d;
+    transform: translateY(-2px);
+  }
+  .bay-cell.locked {
+    background: #0f172a;
+    border-style: dashed;
+    border-color: #64748b;
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+  .bay-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #94a3b8;
+  }
+  .bay-stack {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
+    margin: 8px 0;
+    min-height: 70px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .bay-indicator {
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  /* Pallet Spot */
+  .pallet-container {
+    background: #1b2434;
+    border: 2px dashed #f59e0b;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .pallet-container:hover {
+    background: #25334a;
+  }
+  .pallet-info {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #fbbf24;
+  }
+  .pallet-slot {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Control Panel */
+  .dock-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .btn-dock {
+    background: #334155;
+    color: #f8fafc;
+    border: 1px solid var(--dock-border);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-dock:hover:not(:disabled) {
+    background: #475569;
+  }
+  .btn-dock:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: #0284c7;
+    border-color: #38bdf8;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #0369a1;
+  }
+
+  /* Status message */
+  .status-banner {
+    background: #0f172a;
+    border-left: 4px solid #38bdf8;
+    padding: 10px 14px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    min-height: 24px;
+  }
+  .win-banner {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: #22c55e;
+    color: #86efac;
+    font-weight: bold;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+<nav class="lang" style="margin-bottom: 12px;">
+  <a href="../">Baylight Home</a> · <a href="../privacy.html">Privacy</a> · <a href="../../">All Games</a>
+</nav>
+
+<header>
+  <h1>Baylight: Sort &amp; Ship</h1>
+  <p class="sub">Depot Sorting Puzzle — Interactive Web Prototype</p>
+</header>
+
+<div class="notice-box">
+  ℹ️ <strong>Development Notice:</strong> <em>Baylight</em> is currently in closed test builds for iOS and Android. This lightweight interactive prototype runs the pure C# depot rules directly in your browser. All puzzle levels and move sequences are solver-verified.
+</div>
+
+<article class="dock-card">
+  <div class="dock-header">
+    <div class="level-picker" role="group" aria-label="Select Level">
+      <button type="button" id="btn-lvl-5" class="active">Dock 5 (Locked Lane)</button>
+      <button type="button" id="btn-lvl-6">Dock 6 (Pallet Decision)</button>
+    </div>
+    <div class="stats-strip">
+      <span>🚚 Shipped: <span id="stat-ships">0</span></span>
+      <span>📦 On Belt: <span id="stat-belt">0</span></span>
+    </div>
+  </div>
+
+  <div id="tip-text" style="font-size: 0.95rem; color: #38bdf8; margin-bottom: 12px; font-weight: bold;"></div>
+
+  <!-- Conveyor Belt -->
+  <div class="belt-section">
+    <div class="belt-label">Conveyor Belt (Front Parcel Plays ➔)</div>
+    <div id="belt-display" class="belt-queue"></div>
+  </div>
+
+  <!-- Pallet Section (if level has pallet) -->
+  <div id="pallet-section" class="pallet-container" style="display: none;" role="button" tabindex="0" aria-label="Pallet Parking Spot (Press P)">
+    <div class="pallet-info">
+      🅿️ Pallet Parking (<span id="pallet-count">0</span>/<span id="pallet-max">1</span>)
+      <div style="font-size: 0.78rem; color: #94a3b8; font-weight: normal;">Park front parcel here. Pulls into matching bay automatically!</div>
+    </div>
+    <div id="pallet-slot" class="pallet-slot"></div>
+  </div>
+
+  <!-- Bays Grid -->
+  <div id="bays-display" class="bays-grid"></div>
+
+  <!-- Status / Win Banner -->
+  <div id="status-banner" class="status-banner" aria-live="polite">
+    Select an empty bay or a bay matching the front parcel's color.
+  </div>
+
+  <!-- Interactive Controls -->
+  <div class="dock-controls">
+    <button type="button" id="btn-step-solver" class="btn-dock btn-primary">▶ Step Solver Move</button>
+    <button type="button" id="btn-replay-all" class="btn-dock">⏩ Replay Full Sequence</button>
+    <button type="button" id="btn-undo" class="btn-dock">↶ Undo</button>
+    <button type="button" id="btn-reset" class="btn-dock">↺ Reset Dock</button>
+  </div>
+</article>
+
+<section class="dock-card" style="font-size: 0.95rem;">
+  <h2 style="font-size: 1.25rem; color: #38bdf8; margin-top: 0;">How to Play the Depot Puzzle</h2>
+  <ul>
+    <li><strong>Only the front parcel on the conveyor belt plays:</strong> Tap any open dock bay (or press keys <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>) that is either empty or holds that same color.</li>
+    <li><strong>3 of a kind ships the truck:</strong> The 3rd parcel completes the load and ships the truck, immediately clearing the bay.</li>
+    <li><strong>Locked Lanes (Dock 5):</strong> Certain docks feature locked bays (<code>🔒</code>) that open only after you successfully ship your first truck.</li>
+    <li><strong>The Pallet (Dock 6):</strong> When no bay has room, park the front parcel on the pallet (press <code>P</code>). Whenever a bay of that color is placed or freed, the parked parcel jumps in automatically!</li>
+    <li><strong>Colorblind Symbols:</strong> Blue <code>[≡]</code>, Yellow <code>[●]</code>, Red <code>[✚]</code>, Green <code>[◎]</code>, Purple <code>[╱]</code>, Orange <code>[■]</code>.</li>
+  </ul>
+
+  <noscript>
+    <div style="background: #334155; padding: 12px; border-radius: 6px; margin-top: 14px;">
+      <strong>Static View:</strong> JavaScript is required for the interactive prototype. Below is the solver-verified winning move sequence:
+      <ul>
+        <li><strong>Dock 5 (12 moves):</strong> Bay 0 (B), Bay 1 (Y), Bay 0 (B), Bay 0 (B - Ships!), Bay 0 (R), Bay 1 (Y), Bay 2 (G), Bay 0 (R), Bay 2 (G), Bay 1 (Y - Ships!), Bay 0 (R - Ships!), Bay 0 (G - Ships!).</li>
+        <li><strong>Dock 6 (15 moves):</strong> Bay 0 (Y), Bay 0 (Y), Bay 1 (R), Bay 1 (R), Pallet (G), Bay 2 (B), Bay 2 (B), Bay 3 (P), Bay 3 (P), Bay 2 (B - Ships!), Bay 0 (Y - Ships!), Bay 0 (G - Pulls Pallet G!), Bay 2 (P), Bay 1 (R - Ships!), Bay 0 (Finish!).</li>
+      </ul>
+    </div>
+  </noscript>
+</section>
+
+<footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #64748b;">
+  <a href="../">Baylight Home</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  var SYMBOLS = {
+    'B': '≡',
+    'Y': '●',
+    'R': '✚',
+    'G': '◎',
+    'P': '╱',
+    'O': '■'
+  };
+
+  var LEVELS = {
+    5: {
+      id: 5,
+      bays: 3,
+      locked: 1,
+      unlock_after: 1,
+      pallet: 0,
+      belt: "BYBBRYGRGYRG",
+      tip: "A new truck opens after a ship",
+      moves: [
+        { action: "bay", target: 0 },
+        { action: "bay", target: 1 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 1 },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 1 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 0 }
+      ]
+    },
+    6: {
+      id: 6,
+      bays: 4,
+      locked: 0,
+      unlock_after: 0,
+      pallet: 1,
+      belt: "YYRRGBBPPBYGPRG",
+      tip: "No truck fits? Park it on the pallet",
+      moves: [
+        { action: "bay", target: 0 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 1 },
+        { action: "bay", target: 1 },
+        { action: "pallet", target: null },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 3 },
+        { action: "bay", target: 3 },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 0 },
+        { action: "bay", target: 2 },
+        { action: "bay", target: 1 },
+        { action: "bay", target: 0 }
+      ]
+    }
+  };
+
+  var currentLevelId = 5;
+  var state = null;
+  var history = [];
+
+  function cloneState(s) {
+    return {
+      i: s.i,
+      bays: s.bays.map(function(b) { return [b[0], b[1]]; }),
+      locked: s.locked,
+      ships: s.ships,
+      pallet: s.pallet.slice()
+    };
+  }
+
+  function initLevel(lvlId) {
+    currentLevelId = lvlId;
+    var lvl = LEVELS[lvlId];
+    var openBaysCount = lvl.bays - lvl.locked;
+    var initialBays = [];
+    for (var k = 0; k < openBaysCount; k++) {
+      initialBays.push([null, 0]);
+    }
+    state = {
+      i: 0,
+      bays: initialBays,
+      locked: lvl.locked,
+      ships: 0,
+      pallet: []
+    };
+    history = [];
+    document.getElementById('btn-lvl-5').classList.toggle('active', lvlId === 5);
+    document.getElementById('btn-lvl-6').classList.toggle('active', lvlId === 6);
+    document.getElementById('tip-text').textContent = "💡 " + lvl.tip;
+    var palletSection = document.getElementById('pallet-section');
+    palletSection.style.display = lvl.pallet > 0 ? 'flex' : 'none';
+    document.getElementById('pallet-max').textContent = lvl.pallet;
+    render();
+  }
+
+  function shipAndPull(lvl, st) {
+    var changed = true;
+    while (changed) {
+      changed = false;
+      for (var k = 0; k < st.bays.length; k++) {
+        if (st.bays[k][1] === 3) {
+          st.bays[k] = [null, 0];
+          st.ships++;
+          if (st.locked > 0 && st.ships >= lvl.unlock_after) {
+            st.bays.push([null, 0]);
+            st.locked--;
+          }
+          changed = true;
+        }
+      }
+      for (var j = 0; j < st.pallet.length; j++) {
+        var c = st.pallet[j];
+        var matchingIdx = -1;
+        for (var b = 0; b < st.bays.length; b++) {
+          if (st.bays[b][0] === c && st.bays[b][1] < 3) {
+            matchingIdx = b;
+            break;
+          }
+        }
+        if (matchingIdx !== -1) {
+          st.bays[matchingIdx][1]++;
+          st.pallet.splice(j, 1);
+          changed = true;
+          break;
+        }
+      }
+    }
+  }
+
+  function finishBelt(lvl, st) {
+    while (true) {
+      var pair = null;
+      for (var i = 0; i < st.bays.length; i++) {
+        for (var j = 0; j < st.bays.length; j++) {
+          if (i !== j && st.bays[i][0] !== null && st.bays[i][0] === st.bays[j][0] && st.bays[i][1] > 0 && st.bays[i][1] <= st.bays[j][1] && st.bays[j][1] < 3) {
+            pair = [i, j];
+            break;
+          }
+        }
+        if (pair) break;
+      }
+      if (pair) {
+        var fromIdx = pair[0];
+        var toIdx = pair[1];
+        var col = st.bays[fromIdx][0];
+        var n = st.bays[fromIdx][1] - 1;
+        st.bays[fromIdx] = [n > 0 ? col : null, n];
+        st.bays[toIdx][1]++;
+      } else if (st.pallet.length > 0) {
+        var emptyIdx = -1;
+        for (var k = 0; k < st.bays.length; k++) {
+          if (st.bays[k][1] === 0) {
+            emptyIdx = k;
+            break;
+          }
+        }
+        if (emptyIdx !== -1) {
+          st.bays[emptyIdx] = [st.pallet[0], 1];
+          st.pallet.shift();
+        } else {
+          break;
+        }
+      } else {
+        break;
+      }
+      shipAndPull(lvl, st);
+    }
+  }
+
+  function isWon() {
+    var lvl = LEVELS[currentLevelId];
+    if (state.i < lvl.belt.length) return false;
+    for (var k = 0; k < state.bays.length; k++) {
+      if (state.bays[k][1] > 0) return false;
+    }
+    return state.pallet.length === 0;
+  }
+
+  function executeMove(action, target) {
+    var lvl = LEVELS[currentLevelId];
+    if (state.i >= lvl.belt.length) return;
+    var frontColor = lvl.belt[state.i];
+
+    history.push(cloneState(state));
+
+    if (action === 'bay') {
+      var b = state.bays[target];
+      if (!b || (b[0] !== null && b[0] !== frontColor) || b[1] >= 3) {
+        history.pop();
+        return;
+      }
+      state.bays[target] = [frontColor, b[1] + 1];
+      state.i++;
+      shipAndPull(lvl, state);
+      if (state.i >= lvl.belt.length) finishBelt(lvl, state);
+    } else if (action === 'pallet') {
+      if (state.pallet.length >= lvl.pallet) {
+        history.pop();
+        return;
+      }
+      state.pallet.push(frontColor);
+      state.i++;
+      shipAndPull(lvl, state);
+      if (state.i >= lvl.belt.length) finishBelt(lvl, state);
+    }
+    render();
+  }
+
+  function render() {
+    var lvl = LEVELS[currentLevelId];
+    document.getElementById('stat-ships').textContent = state.ships;
+    document.getElementById('stat-belt').textContent = Math.max(0, lvl.belt.length - state.i);
+
+    // Render belt
+    var beltEl = document.getElementById('belt-display');
+    beltEl.replaceChildren();
+    if (state.i >= lvl.belt.length) {
+      var emptyMsg = document.createElement('div');
+      emptyMsg.style.color = '#94a3b8';
+      emptyMsg.style.fontStyle = 'italic';
+      emptyMsg.textContent = 'Conveyor belt empty!';
+      beltEl.appendChild(emptyMsg);
+    } else {
+      for (var idx = state.i; idx < Math.min(lvl.belt.length, state.i + 6); idx++) {
+        var c = lvl.belt[idx];
+        var p = document.createElement('div');
+        p.className = 'parcel c-' + c + (idx === state.i ? ' front' : '');
+        var mainTxt = document.createElement('div');
+        mainTxt.textContent = c;
+        var symTxt = document.createElement('div');
+        symTxt.className = 'parcel-sym';
+        symTxt.textContent = SYMBOLS[c] || '';
+        p.appendChild(mainTxt);
+        p.appendChild(symTxt);
+        beltEl.appendChild(p);
+      }
+      if (state.i + 6 < lvl.belt.length) {
+        var moreEl = document.createElement('div');
+        moreEl.style.color = '#94a3b8';
+        moreEl.style.fontSize = '0.9rem';
+        moreEl.textContent = '+' + (lvl.belt.length - state.i - 6) + ' more';
+        beltEl.appendChild(moreEl);
+      }
+    }
+
+    // Render Pallet
+    var palletSection = document.getElementById('pallet-section');
+    if (lvl.pallet > 0) {
+      document.getElementById('pallet-count').textContent = state.pallet.length;
+      var pSlot = document.getElementById('pallet-slot');
+      pSlot.replaceChildren();
+      state.pallet.forEach(function(c) {
+        var p = document.createElement('div');
+        p.className = 'parcel c-' + c;
+        p.style.width = '38px';
+        p.style.height = '38px';
+        p.style.fontSize = '0.9rem';
+        p.textContent = c;
+        pSlot.appendChild(p);
+      });
+      palletSection.onclick = function() {
+        if (state.i < lvl.belt.length && state.pallet.length < lvl.pallet) {
+          executeMove('pallet', null);
+        }
+      };
+    }
+
+    // Render Bays
+    var baysEl = document.getElementById('bays-display');
+    baysEl.replaceChildren();
+
+    state.bays.forEach(function(bay, k) {
+      var cell = document.createElement('div');
+      cell.className = 'bay-cell';
+      cell.setAttribute('role', 'button');
+      cell.setAttribute('tabindex', '0');
+      cell.setAttribute('aria-label', 'Bay ' + (k + 1) + (bay[0] ? ': ' + bay[1] + ' ' + bay[0] : ': Empty'));
+
+      var name = document.createElement('div');
+      name.className = 'bay-name';
+      name.textContent = 'Bay ' + (k + 1) + ' [' + (k + 1) + ']';
+
+      var stack = document.createElement('div');
+      stack.className = 'bay-stack';
+      for (var s = 0; s < bay[1]; s++) {
+        var sp = document.createElement('div');
+        sp.className = 'parcel c-' + bay[0];
+        sp.style.width = '38px';
+        sp.style.height = '24px';
+        sp.style.borderRadius = '4px';
+        sp.style.fontSize = '0.75rem';
+        sp.textContent = bay[0];
+        stack.appendChild(sp);
+      }
+
+      var ind = document.createElement('div');
+      ind.className = 'bay-indicator';
+      ind.textContent = bay[0] ? (bay[1] + '/3 ' + bay[0]) : 'Empty';
+
+      cell.appendChild(name);
+      cell.appendChild(stack);
+      cell.appendChild(ind);
+
+      cell.onclick = function() {
+        executeMove('bay', k);
+      };
+      cell.onkeydown = function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          executeMove('bay', k);
+        }
+      };
+      baysEl.appendChild(cell);
+    });
+
+    for (var l = 0; l < state.locked; l++) {
+      var lockedCell = document.createElement('div');
+      lockedCell.className = 'bay-cell locked';
+      lockedCell.innerHTML = '<div class="bay-name">🔒 Locked Lane</div>' +
+        '<div style="font-size:1.8rem; margin:16px 0;">🔒</div>' +
+        '<div class="bay-indicator">Opens after 1 ship</div>';
+      baysEl.appendChild(lockedCell);
+    }
+
+    // Status banner
+    var banner = document.getElementById('status-banner');
+    if (isWon()) {
+      banner.className = 'status-banner win-banner';
+      banner.textContent = '🎉 DOCK CLEARED! All parcels shipped successfully.';
+    } else {
+      banner.className = 'status-banner';
+      if (state.i < lvl.belt.length) {
+        var fColor = lvl.belt[state.i];
+        banner.textContent = 'Front parcel: ' + fColor + ' (' + (SYMBOLS[fColor] || '') + '). Tap a matching or empty bay (or press 1-' + state.bays.length + ').';
+      } else {
+        banner.textContent = 'Belt finished. Board clearing...';
+      }
+    }
+
+    document.getElementById('btn-undo').disabled = (history.length === 0);
+  }
+
+  // Controls
+  document.getElementById('btn-lvl-5').addEventListener('click', function() { initLevel(5); });
+  document.getElementById('btn-lvl-6').addEventListener('click', function() { initLevel(6); });
+  document.getElementById('btn-undo').addEventListener('click', function() {
+    if (history.length > 0) {
+      state = history.pop();
+      render();
+    }
+  });
+  document.getElementById('btn-reset').addEventListener('click', function() { initLevel(currentLevelId); });
+
+  document.getElementById('btn-step-solver').addEventListener('click', function() {
+    var lvl = LEVELS[currentLevelId];
+    if (state.i >= lvl.moves.length) return;
+    var nextMove = lvl.moves[state.i];
+    executeMove(nextMove.action, nextMove.target);
+  });
+
+  document.getElementById('btn-replay-all').addEventListener('click', function() {
+    initLevel(currentLevelId);
+    var lvl = LEVELS[currentLevelId];
+    var stepIdx = 0;
+    var timer = setInterval(function() {
+      if (stepIdx < lvl.moves.length) {
+        executeMove(lvl.moves[stepIdx].action, lvl.moves[stepIdx].target);
+        stepIdx++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 280);
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key >= '1' && e.key <= '4') {
+      var idx = parseInt(e.key, 10) - 1;
+      if (idx < state.bays.length) executeMove('bay', idx);
+    } else if (e.key === 'p' || e.key === 'P') {
+      executeMove('pallet', null);
+    } else if (e.key === 'u' || e.key === 'U') {
+      if (history.length > 0) { state = history.pop(); render(); }
+    } else if (e.key === 'r' || e.key === 'R') {
+      initLevel(currentLevelId);
+    }
+  });
+
+  initLevel(5);
+})();
+</script>
+</body>
+</html>

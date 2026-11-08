@@ -181,3 +181,9 @@ main, footer, nav.lang { overflow-wrap: anywhere; }
 
 /* Text for screen readers only (e.g. which app a repeated link belongs to). */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Desktop-to-phone handoff: scan the QR code to open this app page on a phone. Desktop only. */
+.qr-handoff { display: none; align-items: center; gap: 14px; margin: 4px 0 18px; padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg); max-width: 460px; }
+.qr-handoff img { width: 112px; height: 112px; border-radius: 6px; flex: none; }
+.qr-handoff p { margin: 0; color: var(--dim); font-size: 0.95rem; }
+@media (min-width: 900px) and (hover: hover) { .qr-handoff { display: flex; } }

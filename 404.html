@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · aviisr-games</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .nf-list { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .nf-list a { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg); }
+  .nf-list img { width: 44px; height: 44px; border-radius: 10px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<nav class="lang"></nav>
+<h1 data-i18n="nfTitle">Page not found</h1>
+<p class="sub" data-i18n="nfSub">This page doesn't exist or has moved. Here is everything we make:</p>
+
+<ul class="nf-list">
+  <li><a href="/ninely/"><img src="/assets/icons/ninely.webp" alt="" width="44" height="44">Ninely: Sudoku &amp; Logic Puzzle</a></li>
+  <li><a href="/middle-east-2030/"><img src="/assets/icons/middle-east-2030.webp" alt="" width="44" height="44">Middle East 2030: Politics Sim</a></li>
+  <li><a href="/baylight/"><img src="/assets/icons/baylight.webp" alt="" width="44" height="44">Baylight: Truck Sort Puzzle</a></li>
+  <li><a href="/paper-route/"><img src="/assets/icons/paper-route.webp" alt="" width="44" height="44">Morning Paper Route: Bike Game</a></li>
+  <li lang="he" dir="rtl"><a href="/mila/"><img src="/assets/icons/mila.webp" alt="" width="44" height="44">מילה · Mila</a></li>
+</ul>
+
+<p><a href="/" data-i18n="nfHome">All games</a> · <a href="/support/" data-i18n="navSupport">Support</a> · <a href="/privacy/" data-i18n="navPrivacy">Privacy Policy</a></p>
+</main>
+<script src="/assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar'],
+    defaultLang: 'en',
+    translations: {
+      en: { nfTitle: 'Page not found', nfSub: "This page doesn't exist or has moved. Here is everything we make:", nfHome: 'All games' },
+      he: { nfTitle: 'הדף לא נמצא', nfSub: 'הדף הזה לא קיים או שהועבר. הנה כל מה שאנחנו עושים:', nfHome: 'כל המשחקים' },
+      ar: { nfTitle: 'الصفحة غير موجودة', nfSub: 'هذه الصفحة غير موجودة أو تم نقلها. إليك كل ما نصنعه:', nfHome: 'كل الألعاب' }
+    }
+  });
+</script>
+<script src="/assets/count.js" defer></script>
+</body>
+</html>

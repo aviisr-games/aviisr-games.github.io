@@ -32,6 +32,29 @@ HEB_LETTERS = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח']
 
 GRADES_CONFIG = [
     {
+        'grade': 2,
+        'title': 'מילה (Mila) — ערכת לימוד אנגלית לכיתות א׳–ב׳',
+        'sub': '12 כרטיסיות גזירה ודפי עבודה מודפסים להיכרות ראשונה עם מילים ואותיות באנגלית, ללא מסכים.',
+        'curriculum': 'מבוסס על אוצר המילים הראשוני של אפליקציית מילה לכיתות א׳–ב׳ (שלב טרום-קריאה, לא רשימה של משרד החינוך). מילים מוחשיות עם תמונה ותרגום לעברית, ותרגיל אות ראשונה. מומלץ לעבוד יחד עם הורה.',
+        'filename': 'pack-grade2.json',
+        'band': 'early',
+        'labelHe': 'כיתות א׳–ב׳ (Early)',
+        'curriculumSource': 'Mila early vocabulary for grades 1-2 (pre-reading); not a Ministry of Education list',
+        'target_ids': [
+            'cow', 'pig', 'duck', 'frog',
+            'lion', 'bee', 'moon', 'tree',
+            'kite', 'house', 'nose', 'red'
+        ],
+        'matching_left': ['cow', 'pig', 'duck', 'frog', 'lion', 'bee', 'moon', 'tree'],
+        'matching_right': ['frog', 'moon', 'cow', 'bee', 'tree', 'duck', 'lion', 'pig'],
+        # Part C for pre-readers: write the first letter of each pictured word.
+        'part_c': 'first_letter',
+        'part_c_title': 'חלק ג׳: האות הראשונה (First Letter)',
+        'part_c_instr': 'הסתכלו על התמונה, אמרו את המילה בקול וכתבו את האות הראשונה שלה באנגלית:',
+        'word_bank': None,
+        'sentence_ids': ['cow', 'pig', 'duck', 'kite', 'house', 'nose']
+    },
+    {
         'grade': 3,
         'title': 'מילה (Mila) — ערכת לימוד אנגלית לכיתה ג׳',
         'sub': '12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים ראשוני באנגלית ללא מסכים.',
@@ -141,7 +164,31 @@ def build_matching(cfg, words):
     ]
 
 
+def word_bank(cfg, words):
+    """Word bank for Part C: listed words, or (first-letter mode) the answer letters in alphabetical order."""
+    if cfg.get('part_c') == 'first_letter':
+        by_id = {w['id']: w for w in words}
+        return sorted(by_id[wid]['english'][0] for wid in cfg['sentence_ids'])
+    return list(cfg['word_bank'])
+
+
+def build_first_letter(cfg, words):
+    by_id = {w['id']: w for w in words}
+    return [
+        {
+            'num': i + 1,
+            'answer': by_id[wid]['english'][0],
+            'engPre': '',
+            'engPost': by_id[wid]['english'][1:],
+            'hebHint': by_id[wid]['hebrew'] + ' ' + by_id[wid]['image'],
+        }
+        for i, wid in enumerate(cfg['sentence_ids'])
+    ]
+
+
 def build_sentences(cfg, words):
+    if cfg.get('part_c') == 'first_letter':
+        return build_first_letter(cfg, words)
     by_id = {w['id']: w for w in words}
     out = []
     for i, wid in enumerate(cfg['sentence_ids']):
@@ -183,8 +230,8 @@ def render_matching(matching):
         for m in matching)
 
 
-def render_word_bank(bank):
-    return 'מחסן מילים: &nbsp;' + ' &nbsp;·&nbsp; '.join(
+def render_word_bank(bank, label='מחסן מילים'):
+    return label + ': &nbsp;' + ' &nbsp;·&nbsp; '.join(
         f'<span class="bidi-eng" lang="en">{w}</span>' for w in bank)
 
 
@@ -200,8 +247,10 @@ STATIC_SLOTS = [
     # (opening tag, closing lookahead, renderer)
     ('<div class="cards-grid" id="cards-grid">', r'</div>\s*</section>', lambda g: render_cards(g['words'])),
     ('<tbody id="match-table-body">', r'</tbody>', lambda g: render_matching(g['matching'])),
-    ('<div class="word-bank" id="word-bank">', r'</div>', lambda g: render_word_bank(g['wordBank'])),
+    ('<div class="word-bank" id="word-bank">', r'</div>', lambda g: render_word_bank(g['wordBank'], g['bankLabel'])),
     ('<div id="sentence-list">', r'</div>\s*<div class="no-print"', lambda g: render_sentences(g['sentences'])),
+    ('<h2 id="part-c-title">', r'</h2>', lambda g: g['partCTitle']),
+    ('<p id="part-c-instr">', r'</p>', lambda g: g['partCInstr']),
 ]
 
 
@@ -216,6 +265,9 @@ def grade_data_entry(cfg, pack):
         'matching': [{k: m[k] for k in ('num', 'eng', 'emoji', 'hebLetter', 'hebText')} for m in pack['matching']],
         'wordBank': pack['wordBank'],
         'sentences': [{k: s[k] for k in ('num', 'engPre', 'engPost', 'hebHint')} for s in pack['sentences']],
+        'bankLabel': 'מחסן אותיות' if cfg.get('part_c') == 'first_letter' else 'מחסן מילים',
+        'partCTitle': cfg.get('part_c_title', 'חלק ג׳: השלמת משפטים (Sentence Completion)'),
+        'partCInstr': cfg.get('part_c_instr', 'בחרו מילה מתאימה ממחסן המילים והשלימו את המשפטים הבאים:'),
     }
 
 
@@ -234,6 +286,65 @@ def render_worksheet(html, grade_data):
     return html
 
 
+ANSWER_KEY_HTML = OUT_DIR / 'answer-key/index.html'
+KEY_BEGIN = '<!-- GENERATED GRADE 2 KEY: BEGIN (tools/generate_mila_pack.py) -->'
+KEY_END = '<!-- GENERATED GRADE 2 KEY: END -->'
+
+
+def render_key_section(cfg, pack):
+    """Answer-key article for a generated grade, in the same markup as the hand-written grade 3-5 keys."""
+    g = cfg['grade']
+    rows = ''.join(
+        f'''        <tr>
+          <td>{m['num']}</td>
+          <td><span class="bidi-eng" lang="en">{m['eng']}</span> {m['emoji']}</td>
+          <td class="ans-correct">{m['answerLetter']}. {m['answerText']}</td>
+        </tr>
+''' for m in pack['matching'])
+    items = ''.join(
+        f'''      <li><span class="bidi-eng" lang="en">{x['engPre']}<span class="ans-correct">{x['answer']}</span>{x['engPost']}</span> &nbsp; ({x['hebHint']})</li>
+''' for x in pack['sentences'])
+    part_c = cfg.get('part_c_title', 'חלק ג׳: השלמת משפטים').split(' (')[0].replace('חלק ג׳: ', '')
+    return f'''{KEY_BEGIN}
+<article class="grade-key-section" id="key-grade{g}">
+  <h2>{cfg['labelHe']} — פתרון מלא</h2>
+
+  <section class="card-box" id="ans-matching-grade{g}">
+    <h3>פתרון חלק ב׳: תרגיל התאמת מילים</h3>
+    <table class="ans-table">
+      <thead>
+        <tr>
+          <th>מספר</th>
+          <th>מילה באנגלית</th>
+          <th>התאמה נכונה בעברית</th>
+        </tr>
+      </thead>
+      <tbody>
+{rows}      </tbody>
+    </table>
+  </section>
+
+  <section class="card-box" id="ans-sentences-grade{g}">
+    <h3>פתרון חלק ג׳: {part_c}</h3>
+    <ol style="padding-right: 20px; font-size: 1.05rem; line-height: 1.8;">
+{items}    </ol>
+  </section>
+</article>
+{KEY_END}'''
+
+
+def render_answer_key(html, cfg, pack):
+    block = render_key_section(cfg, pack)
+    if KEY_BEGIN in html:
+        start = html.index(KEY_BEGIN)
+        end = html.index(KEY_END) + len(KEY_END)
+        return html[:start] + block + html[end:]
+    anchor = '<!-- ==================== GRADE 3 KEY ==================== -->'
+    if anchor not in html:
+        raise ValueError('answer key anchor not found')
+    return html.replace(anchor, block + '\n\n' + anchor, 1)
+
+
 def read_vocabulary():
     return subprocess.run(
         ['git', '-C', str(MILA_REPO), 'show', f'{SOURCE_COMMIT}:{SOURCE_FILE}'],
@@ -246,6 +357,7 @@ def main():
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     grade_data = {}
+    generated_keys = []
 
     for cfg in GRADES_CONFIG:
         words_list = []
@@ -258,6 +370,8 @@ def main():
             words_list.append(w)
         ids = set(cfg['target_ids'])
         for key in ('matching_left', 'word_bank', 'sentence_ids'):
+            if cfg[key] is None:
+                continue
             if not set(cfg[key]) <= ids:
                 raise ValueError(f"Grade {cfg['grade']} {key} uses words outside the pack")
 
@@ -267,11 +381,11 @@ def main():
             'sourceFile': SOURCE_FILE,
             'gradeBand': cfg['band'],
             'gradeLabelHe': cfg['labelHe'],
-            'ministryCurriculum': 'Israel Ministry of Education English Curriculum 2020',
+            'ministryCurriculum': cfg.get('curriculumSource', 'Israel Ministry of Education English Curriculum 2020'),
             'wordCount': len(words_list),
             'words': words_list,
             'matching': build_matching(cfg, words_list),
-            'wordBank': [w for w in cfg['word_bank']],
+            'wordBank': word_bank(cfg, words_list),
             'sentences': build_sentences(cfg, words_list),
         }
 
@@ -280,6 +394,8 @@ def main():
         print(f"Exported {len(words_list)} words, {len(pack['matching'])} matches, "
               f"{len(pack['sentences'])} sentences to {out_path}")
         grade_data[str(cfg['grade'])] = grade_data_entry(cfg, pack)
+        if cfg.get('part_c') == 'first_letter':
+            generated_keys.append((cfg, pack))
 
     # For backwards compatibility, copy pack-grade3.json to pack.json
     shutil.copyfile(OUT_DIR / 'pack-grade3.json', OUT_DIR / 'pack.json')
@@ -288,6 +404,12 @@ def main():
     html = WORKSHEET_HTML.read_text(encoding='utf-8')
     WORKSHEET_HTML.write_text(render_worksheet(html, grade_data), encoding='utf-8')
     print(f"Rendered GRADE_DATA and static Grade 3 markup into {WORKSHEET_HTML}")
+
+    key_html = ANSWER_KEY_HTML.read_text(encoding='utf-8')
+    for cfg, pack in generated_keys:
+        key_html = render_answer_key(key_html, cfg, pack)
+    ANSWER_KEY_HTML.write_text(key_html, encoding='utf-8')
+    print(f"Rendered {len(generated_keys)} generated answer-key section(s) into {ANSWER_KEY_HTML}")
 
 
 if __name__ == '__main__':

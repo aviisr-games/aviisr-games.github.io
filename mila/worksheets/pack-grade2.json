@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0f5b6d6",
+  "sourceFile": "src/lib/vocabulary.ts",
+  "gradeBand": "early",
+  "gradeLabelHe": "כיתות א׳–ב׳ (Early)",
+  "ministryCurriculum": "Mila early vocabulary for grades 1-2 (pre-reading); not a Ministry of Education list",
+  "wordCount": 12,
+  "words": [
+    {
+      "id": "cow",
+      "english": "cow",
+      "hebrew": "פרה",
+      "exampleSentence": "The cow gives milk.",
+      "exampleSentenceHebrew": "הפרה נותנת חלב.",
+      "image": "🐄",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "pig",
+      "english": "pig",
+      "hebrew": "חזיר",
+      "exampleSentence": "The pig is pink.",
+      "exampleSentenceHebrew": "החזיר ורוד.",
+      "image": "🐷",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "duck",
+      "english": "duck",
+      "hebrew": "ברווז",
+      "exampleSentence": "The duck can swim.",
+      "exampleSentenceHebrew": "הברווז יודע לשחות.",
+      "image": "🦆",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "frog",
+      "english": "frog",
+      "hebrew": "צפרדע",
+      "exampleSentence": "The frog can jump.",
+      "exampleSentenceHebrew": "הצפרדע יודעת לקפוץ.",
+      "image": "🐸",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "lion",
+      "english": "lion",
+      "hebrew": "אריה",
+      "exampleSentence": "The lion is big.",
+      "exampleSentenceHebrew": "האריה גדול.",
+      "image": "🦁",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "bee",
+      "english": "bee",
+      "hebrew": "דבורה",
+      "exampleSentence": "The bee is on the flower.",
+      "exampleSentenceHebrew": "הדבורה על הפרח.",
+      "image": "🐝",
+      "category": "animals",
+      "band": "early"
+    },
+    {
+      "id": "moon",
+      "english": "moon",
+      "hebrew": "ירח",
+      "exampleSentence": "We see the moon at night.",
+      "exampleSentenceHebrew": "אנחנו רואים את הירח בלילה.",
+      "image": "🌙",
+      "category": "nature",
+      "band": "early"
+    },
+    {
+      "id": "tree",
+      "english": "tree",
+      "hebrew": "עץ",
+      "exampleSentence": "The bird is in the tree.",
+      "exampleSentenceHebrew": "הציפור על העץ.",
+      "image": "🌳",
+      "category": "nature",
+      "band": "early"
+    },
+    {
+      "id": "kite",
+      "english": "kite",
+      "hebrew": "עפיפון",
+      "exampleSentence": "My kite is in the sky.",
+      "exampleSentenceHebrew": "העפיפון שלי בשמיים.",
+      "image": "🪁",
+      "category": "objects",
+      "band": "early"
+    },
+    {
+      "id": "house",
+      "english": "house",
+      "hebrew": "בית",
+      "exampleSentence": "This is my house.",
+      "exampleSentenceHebrew": "זה הבית שלי.",
+      "image": "🏠",
+      "category": "objects",
+      "band": "early"
+    },
+    {
+      "id": "nose",
+      "english": "nose",
+      "hebrew": "אף",
+      "exampleSentence": "The dog has a black nose.",
+      "exampleSentenceHebrew": "לכלב יש אף שחור.",
+      "image": "👃",
+      "category": "body",
+      "band": "early"
+    },
+    {
+      "id": "red",
+      "english": "red",
+      "hebrew": "אדום/ה",
+      "exampleSentence": "The apple is red.",
+      "exampleSentenceHebrew": "התפוח אדום.",
+      "image": "🔴",
+      "category": "colors",
+      "band": "early"
+    }
+  ],
+  "matching": [
+    {
+      "num": 1,
+      "eng": "cow",
+      "emoji": "🐄",
+      "hebLetter": "א",
+      "hebText": "צפרדע",
+      "answerLetter": "ג",
+      "answerText": "פרה"
+    },
+    {
+      "num": 2,
+      "eng": "pig",
+      "emoji": "🐷",
+      "hebLetter": "ב",
+      "hebText": "ירח",
+      "answerLetter": "ח",
+      "answerText": "חזיר"
+    },
+    {
+      "num": 3,
+      "eng": "duck",
+      "emoji": "🦆",
+      "hebLetter": "ג",
+      "hebText": "פרה",
+      "answerLetter": "ו",
+      "answerText": "ברווז"
+    },
+    {
+      "num": 4,
+      "eng": "frog",
+      "emoji": "🐸",
+      "hebLetter": "ד",
+      "hebText": "דבורה",
+      "answerLetter": "א",
+      "answerText": "צפרדע"
+    },
+    {
+      "num": 5,
+      "eng": "lion",
+      "emoji": "🦁",
+      "hebLetter": "ה",
+      "hebText": "עץ",
+      "answerLetter": "ז",
+      "answerText": "אריה"
+    },
+    {
+      "num": 6,
+      "eng": "bee",
+      "emoji": "🐝",
+      "hebLetter": "ו",
+      "hebText": "ברווז",
+      "answerLetter": "ד",
+      "answerText": "דבורה"
+    },
+    {
+      "num": 7,
+      "eng": "moon",
+      "emoji": "🌙",
+      "hebLetter": "ז",
+      "hebText": "אריה",
+      "answerLetter": "ב",
+      "answerText": "ירח"
+    },
+    {
+      "num": 8,
+      "eng": "tree",
+      "emoji": "🌳",
+      "hebLetter": "ח",
+      "hebText": "חזיר",
+      "answerLetter": "ה",
+      "answerText": "עץ"
+    }
+  ],
+  "wordBank": [
+    "c",
+    "d",
+    "h",
+    "k",
+    "n",
+    "p"
+  ],
+  "sentences": [
+    {
+      "num": 1,
+      "answer": "c",
+      "engPre": "",
+      "engPost": "ow",
+      "hebHint": "פרה 🐄"
+    },
+    {
+      "num": 2,
+      "answer": "p",
+      "engPre": "",
+      "engPost": "ig",
+      "hebHint": "חזיר 🐷"
+    },
+    {
+      "num": 3,
+      "answer": "d",
+      "engPre": "",
+      "engPost": "uck",
+      "hebHint": "ברווז 🦆"
+    },
+    {
+      "num": 4,
+      "answer": "k",
+      "engPre": "",
+      "engPost": "ite",
+      "hebHint": "עפיפון 🪁"
+    },
+    {
+      "num": 5,
+      "answer": "h",
+      "engPre": "",
+      "engPost": "ouse",
+      "hebHint": "בית 🏠"
+    },
+    {
+      "num": 6,
+      "answer": "n",
+      "engPre": "",
+      "engPost": "ose",
+      "hebHint": "אף 👃"
+    }
+  ]
+}

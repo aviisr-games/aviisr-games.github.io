@@ -128,3 +128,23 @@ class LinkNameTests(unittest.TestCase):
             self.assertEqual(set(re.findall(r'(\w+): \'', block)), techniques, lang)
         self.assertIn('techniqueName(hint.technique, lang)', html)
         self.assertNotIn("(hint.technique || 'Smart Hint')", html)
+
+
+class SiteChecksTests(unittest.TestCase):
+
+    def test_store_names_on_site_are_consistent(self):
+        import check_store_listings as cl
+        self.assertEqual(cl.site_problems(), [])
+
+    def test_404_page_is_allowlisted_and_not_in_sitemap(self):
+        html = (ROOT / '404.html').read_text(encoding='utf-8')
+        self.assertIn('name="robots" content="noindex"', html)
+        for href in re.findall(r'href="(/[^"]*)"', html):
+            self.assertTrue(allowed(href.lstrip('/') or '/'), href)
+        self.assertNotIn('404', sm.render())
+
+    def test_qr_codes_point_at_their_hub(self):
+        for slug in ('ninely', 'middle-east-2030', 'baylight', 'paper-route'):
+            hub = (ROOT / slug / 'index.html').read_text(encoding='utf-8')
+            self.assertIn(f'src="/assets/qr/{slug}.svg"', hub)
+            self.assertTrue((ROOT / 'assets/qr' / f'{slug}.svg').exists())

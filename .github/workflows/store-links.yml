@@ -1,4 +1,4 @@
-name: store-links
+name: store-links-and-names
 on:
   schedule:
     - cron: '0 6 * * 1'   # Mondays 06:00 UTC
@@ -7,6 +7,7 @@ on:
     paths:
       - '**.html'
       - 'tools/check_store_links.py'
+      - 'tools/check_store_listings.py'
 permissions:
   contents: read
 jobs:
@@ -19,3 +20,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 tools/check_store_links.py
+      - run: python3 tools/check_store_listings.py

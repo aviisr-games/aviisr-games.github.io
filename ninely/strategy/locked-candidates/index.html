@@ -30,7 +30,7 @@
 <div class="guide-container">
   <article class="guide-main">
     <header>
-      <h1>Locked Candidates in Sudoku: Pointing Pairs & Box-Line Reductions</h1>
+      <h1>Locked Candidates in Sudoku: Pointing Pairs &amp; Box-Line Reductions</h1>
       <div class="guide-meta">
         By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
       </div>
@@ -47,62 +47,92 @@
     </div>
 
     <div class="guide-section">
-      <h2>Worked Example: Pointing Pair in Box 2</h2>
-      <p>Look at Box 2 (top middle, Rows 1–3, Columns 4–6). Suppose digit <strong>7</strong> can only appear in <strong>Row 2, Column 4</strong> and <strong>Row 2, Column 5</strong>.</p>
+      <h2>Worked Example: Pointing Pair of 7s in Box 2 Eliminates 7 at R2C7</h2>
+      <p>Look at <strong>Box 2</strong> (top-middle, Rows 1–3, Columns 4–6) on the board below. Box 2 already contains <code>1, 2, 3, 4, 5, 8</code> and is missing <code>{6, 7, 9}</code> across three empty cells (<code>R1C5</code>, <code>R2C4</code>, and <code>R2C5</code>):</p>
       <ul>
-        <li>Because 7 must go into one of these two cells to satisfy Box 2, <strong>7 is locked into Row 2</strong>.</li>
-        <li>Now trace Row 2 across into neighboring Box 3 (top right). Any pencil mark for 7 in Box 3 along Row 2 (e.g. at R2C8 or R2C9) is <strong>eliminated</strong>!</li>
-        <li>Removing 7 from R2C8 instantly turns R2C8 into a Naked Single (e.g. placing 3)!</li>
+        <li><strong>Row 1 (R1C5):</strong> Blocked from holding <code>7</code> by the given <code>7</code> at <strong>Row 1, Column 2 (R1C2)</strong>.</li>
+        <li><strong>Row 2 (R2C4 and R2C5):</strong> Neither Column 4 nor Column 5 contains a <code>7</code> yet, so inside Box 2, candidate <strong>7 is restricted strictly to R2C4 and R2C5</strong> (a <em>Pointing Pair</em> along Row 2).</li>
+        <li><strong>Elimination in Box 3 (R2C7):</strong> Follow Row 2 rightwards into Box 3. Cell <strong>Row 2, Column 7 (R2C7)</strong> sees <code>1, 2, 3, 4, 5, 6, 8</code> in its peers, leaving candidates <code>{7, 9}</code>. Because Box 2 claims Row 2's <code>7</code>, <strong>candidate 7 is eliminated from R2C7</strong>, leaving <strong>9</strong> as the sole survivor!</li>
       </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Pointing Pair (R2C4 &amp; R2C5)</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">6</span>
+                <span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num">9</span>
+              </div>
+            </div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num">9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R2C7 (7 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; margin:0 auto; border-radius:6px;">
+            <div class="candidates-grid">
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              <span class="cand-num elim">7</span><span class="cand-num"></span><span class="cand-num keep">9</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="board-wrapper">
         <div id="interactive-board" class="diagram-board">
-          <!-- Row 1 -->
-          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
-          <!-- Row 2: Pointing pair at Col 4 & 5, danger at Col 8 -->
-          <div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell highlight">7?</div><div class="diagram-cell highlight">7?</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div id="target-cell" class="diagram-cell danger">⍉ 7</div><div class="diagram-cell"></div>
+          <!-- Row 1 (Blocker 7 at R1C2) -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell fixed highlight">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">8</div>
+          <!-- Row 2: Pointing pair at Col 4 & 5, Target elimination at Col 7 -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num">9</span></div></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num">9</span></div></div><div class="diagram-cell fixed">8</div><div id="target-cell" class="diagram-cell danger"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">7</span><span class="cand-num"></span><span class="cand-num keep">9</span></div></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">2</div>
           <!-- Row 3 -->
-          <div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div>
-          <!-- Row 4-9 context -->
-          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
-          <div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div>
-          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
-          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
-          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
-          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
+          <div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">3</div>
+          <!-- Row 5 -->
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">1</div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">6</div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">5</div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
         </div>
 
         <div class="step-controls">
           <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
-          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 7 eliminated from R2C8</span>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 7 eliminated from R2C7, leaving 9</span>
           <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
         </div>
       </div>
 
       <noscript>
-        <p><em>(Static View: In Box 2, 7 can only sit in Row 2. Thus R2C8 cannot be 7, eliminating candidate 7 from Row 2 outside Box 2.)</em></p>
+        <p><em>(Static View: In Box 2, candidate 7 can only sit in Row 2 at R2C4 or R2C5. Thus R2C7 in Box 3 cannot be 7, leaving 9.)</em></p>
       </noscript>
-    </div>
-
-    <!-- Mobile ad slot -->
-    <div class="ad-slot-container ad-inline">
-      <span class="ad-label">Advertisements</span>
-      <div class="ad-placeholder">
-        <span>Sponsored Content</span>
-        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
-      </div>
     </div>
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 7 in R2C8</h4>
-        <p>A player who notices that Row 2 needs a 7 might place it casually in R2C8 without checking Box 2.</p>
-        <p><strong>Why this fails:</strong> Placing 7 in R2C8 means that Row 2 inside Box 2 cannot contain 7. But in Box 2, <em>Row 2 was the only line with candidate 7 remaining!</em> Now Box 2 has zero valid cells for 7, immediately corrupting the game. In Ninely, Smart Hints reveal this locked alignment and explain the elimination step before you get trapped.</p>
+        <h4>⚠️ The Tempting Wrong Move: Placing 7 in R2C7</h4>
+        <p>A player inspecting only Box 3 and Column 7 sees that <code>R2C7</code> has only two candidates <code>{7, 9}</code> and might guess <code>7</code> in R2C7.</p>
+        <p><strong>Why this fails:</strong> Placing <code>7</code> in R2C7 eliminates <code>7</code> from both <code>R2C4</code> and <code>R2C5</code> along Row 2. Because <code>R1C5</code> is already blocked by <code>R1C2 = 7</code> and Row 3 in Box 2 is completely full, Box 2 is left with <em>zero</em> legal cells for <code>7</code>! In Ninely, Smart Hints reveal this Pointing Pair elimination before you make an unsolvable guess.</p>
       </div>
 
       <div class="tip-box">
         <h4>💡 Solving Tip: The Box-to-Line Scan</h4>
-        <p>When you finish placing simple singles and hit your first roadblock, scan each 3×3 box one by one. Check if the remaining candidates for any number line up in the same horizontal row or vertical column. If they do, project that line into neighboring boxes and cross off candidates!</p>
+        <p>When you finish placing simple singles and hit a roadblock, scan each 3×3 box one digit at a time. Check if all remaining candidates for that digit align in the same horizontal row or vertical column. Whenever they do, project that line into neighboring boxes and cross off candidates!</p>
       </div>
     </div>
 
@@ -113,11 +143,11 @@
     </div>
   </article>
 
-  <!-- Desktop Rail Ad Slot -->
+  <!-- Single Reserved Ad Slot Container -->
   <aside class="ad-rail">
     <div class="ad-slot-container">
       <span class="ad-label">Advertisements</span>
-      <div class="ad-placeholder" style="min-height: 400px;">
+      <div class="ad-placeholder">
         <span>Sponsored Content</span>
         <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
       </div>
@@ -142,15 +172,30 @@
   if (!prevBtn || !nextBtn || !target) return;
 
   var steps = [
-    { num: 1, text: "Step 1 of 3: Look at Box 2. Candidates for 7 are locked strictly in Row 2.", val: "7?", cls: "highlight" },
-    { num: 2, text: "Step 2 of 3: Follow Row 2 rightwards into Box 3.", val: "7?", cls: "highlight" },
-    { num: 3, text: "Step 3 of 3: Candidate 7 eliminated from R2C8 (Locked Candidates Pointing Pair)", val: "⍉ 7", cls: "danger" }
+    {
+      num: 1,
+      text: "Step 1 of 3: Cell R2C7 in Box 3 has candidates {7, 9}",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">7</span><span class="cand-num"></span><span class="cand-num">9</span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: In Box 2, candidate 7 is locked into Row 2 (R2C4 & R2C5 Pointing Pair)",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">7</span><span class="cand-num"></span><span class="cand-num keep">9</span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Candidate 7 eliminated from R2C7, leaving 9",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">7</span><span class="cand-num"></span><span class="cand-num keep">9</span></div>',
+      cls: "danger"
+    }
   ];
 
   function update() {
     var s = steps[currentStep - 1];
     stepText.textContent = s.text;
-    target.textContent = s.val;
+    target.innerHTML = s.html;
     target.className = "diagram-cell " + s.cls;
     prevBtn.disabled = (currentStep === 1);
     nextBtn.disabled = (currentStep === steps.length);

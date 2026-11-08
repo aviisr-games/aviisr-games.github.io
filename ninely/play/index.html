@@ -12,7 +12,7 @@
   .play-container { max-width: 540px; margin: 0 auto; text-align: center; }
   .badge-pill { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 12px; font-size: 0.9rem; }
   .date-pill { display: inline-block; background: rgba(242, 201, 76, 0.15); color: var(--gold); border: 1px solid rgba(242, 201, 76, 0.3); padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; }
-  .sudoku-board { display: grid; grid-template-columns: repeat(9, 1fr); gap: 1px; background: #334155; border: 3px solid #0f172a; border-radius: 8px; margin: 16px auto; max-width: 360px; aspect-ratio: 1; padding: 2px; }
+  .sudoku-board { display: grid; grid-template-columns: repeat(9, 1fr); gap: 1px; background: #334155; border: 3px solid #0f172a; border-radius: 8px; margin: 16px auto; max-width: 360px; aspect-ratio: 1; padding: 2px; direction: ltr; }
   .sudoku-cell { background: #1e293b; color: #f8fafc; font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.1s; }
   .sudoku-cell:hover { background: #334155; }
   .sudoku-cell.selected { background: #0284c7; color: #fff; }
@@ -24,7 +24,7 @@
   .sudoku-cell:nth-child(9n) { border-right: none; }
   .sudoku-cell:nth-child(n+19):nth-child(-n+27),
   .sudoku-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #64748b; }
-  .numpad { display: flex; justify-content: center; gap: 6px; margin: 14px auto; flex-wrap: wrap; max-width: 360px; }
+  .numpad { display: flex; justify-content: center; gap: 6px; margin: 14px auto; flex-wrap: wrap; max-width: 360px; direction: ltr; }
   .num-btn { background: #334155; color: #fff; border: 1px solid #475569; border-radius: 6px; font-size: 1.15rem; font-weight: bold; padding: 10px 14px; cursor: pointer; min-width: 34px; }
   .num-btn:hover { background: #0284c7; }
   .action-btn { background: #f59e0b; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; padding: 10px 18px; cursor: pointer; margin: 6px 4px; font-size: 0.95rem; }
@@ -109,7 +109,8 @@
       restart: "↺ Restart",
       erase: "⌫",
       won: "Board cleared in",
-      practiseMore: "Practise more techniques and master thousands of boards in the full Ninely app:"
+      practiseMore: "Practise more techniques and master thousands of boards in the full Ninely app:",
+      learnGuide: "Read the step-by-step Strategy Guide ➔"
     },
     he: {
       badge: "חימום סודוקו יומי",
@@ -119,7 +120,8 @@
       restart: "↺ התחלה מחדש",
       erase: "⌫ מחק",
       won: "הלוח הושלם תוך",
-      practiseMore: "תרגלו טכניקות מתקדמות באפליקציית Ninely המלאה:"
+      practiseMore: "תרגלו טכניקות מתקדמות באפליקציית Ninely המלאה:",
+      learnGuide: "למדריך הטכניקה המלא ➔"
     },
     ar: {
       badge: "لغز سودوكو اليومي",
@@ -129,7 +131,8 @@
       restart: "↺ إعادة البدء",
       erase: "⌫ مسح",
       won: "تم حل اللوح في",
-      practiseMore: "تدرّب على المزيد من التقنيات في تطبيق Ninely الكامل:"
+      practiseMore: "تدرّب على المزيد من التقنيات في تطبيق Ninely الكامل:",
+      learnGuide: "اقرأ دليل الاستراتيجية خطوة بخطوة ➔"
     }
   };
 
@@ -139,22 +142,29 @@
     defaultLang: 'en'
   });
 
-  // Evergreen practice fallback puzzle (strictly 1 solution, verified by native engine)
+  // Evergreen practice fallback puzzle (strictly 1 unique solution, exported from Ninely.SudokuEngine commit 4fa5c68)
   var fallbackPackEntry = {
     id: "practice-fallback",
     difficulty: "Medium",
-    puzzle: "000800109070060040000000000000000000000000000000000000000000000040060070901008000",
-    solution: "234857169875169243196234857312475698457698312689312475723541986548963721961728534",
+    puzzle: "007000902500027010200001700690018000001302800000650097002800009040170003905000400",
+    solution: "417583962569427318283961754694718235751392846328654197132845679846179523975236481",
     hint: {
-      targetRow: 1,
-      targetCol: 0,
-      targetDigit: 9,
+      targetRow: 5,
+      targetCol: 1,
+      targetDigit: 2,
       technique: "HiddenSingle",
       localizationKey: "HINT_HIDDEN_SINGLE_BOX",
-      highlights: [{row: 1, col: 0}]
+      explanation: {
+        en: "In box 4, 2 can't go in any other cell because of the 2s that cross it. This is the only place left for it!",
+        he: "בריבוע 4, המספר 2 לא יכול להופיע בשאר המשבצות בגלל חסימות בשורות ובעמודות החוצות. לכן זו המשבצת היחידה שנותרה עבורו!",
+        ar: "في المربع 4، لا يمكن وضع الرقم 2 في الخانات الأخرى بسبب الأرقام 2 المتقاطعة. لذا هذه هي الخانة الوحيدة المتبقية له!"
+      },
+      highlights: [{row: 6, col: 2}, {row: 2, col: 0}, {row: 4, col: 5}]
     }
   };
 
+  var loadedPackData = null;
+  var currentDateKey = "";
   var activePuzzle = fallbackPackEntry;
   var puzzleGivens = [];
   var currentBoard = [];
@@ -173,6 +183,11 @@
     return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
   }
 
+  function getActiveLang() {
+    var l = document.documentElement.lang || 'en';
+    return (l === 'he' || l === 'ar') ? l : 'en';
+  }
+
   function startTimer() {
     if (timerInterval) clearInterval(timerInterval);
     secondsElapsed = 0;
@@ -183,6 +198,21 @@
       secondsElapsed++;
       var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
       if (timerEl) timerEl.textContent = pad(m) + ':' + pad(s);
+
+      // Midnight rollover check every 15 seconds if board is untouched
+      if (secondsElapsed % 15 === 0) {
+        var nowKey = getTodayKey();
+        if (currentDateKey && nowKey !== currentDateKey && loadedPackData && loadedPackData.days && loadedPackData.days[nowKey]) {
+          var isUntouched = true;
+          for (var i = 0; i < 81; i++) {
+            if (currentBoard[i] !== puzzleGivens[i]) { isUntouched = false; break; }
+          }
+          if (isUntouched) {
+            currentDateKey = nowKey;
+            setupBoard(loadedPackData.days[nowKey], true);
+          }
+        }
+      }
     }, 1000);
   }
 
@@ -250,7 +280,6 @@
   }
 
   function updateConflicts() {
-    // Check conflicts per cell: duplicate digit in same row, column, or 3x3 box
     for (var i = 0; i < 81; i++) {
       cells[i].classList.remove('conflict');
     }
@@ -262,19 +291,16 @@
       var br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
       var hasConflict = false;
 
-      // Row check
       for (var col = 0; col < 9; col++) {
         var o1 = r * 9 + col;
         if (o1 !== idx && currentBoard[o1] === val) { hasConflict = true; break; }
       }
-      // Col check
       if (!hasConflict) {
         for (var row = 0; row < 9; row++) {
           var o2 = row * 9 + c;
           if (o2 !== idx && currentBoard[o2] === val) { hasConflict = true; break; }
         }
       }
-      // Box check
       if (!hasConflict) {
         for (var bi = 0; bi < 9; bi++) {
           var o3 = (br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3));
@@ -299,13 +325,11 @@
   }
 
   function checkWin() {
-    // Check complete and valid
     for (var i = 0; i < 81; i++) {
       if (currentBoard[i] < 1 || currentBoard[i] > 9) return;
       if (puzzleGivens[i] !== 0 && currentBoard[i] !== puzzleGivens[i]) return;
     }
 
-    // Validate rows, cols, boxes
     for (var r = 0; r < 9; r++) {
       var rowMask = 0;
       for (var c = 0; c < 9; c++) {
@@ -332,7 +356,6 @@
       }
     }
 
-    // Win condition met!
     gameWon = true;
     if (timerInterval) clearInterval(timerInterval);
     var winBox = document.getElementById('win-box');
@@ -340,6 +363,116 @@
     var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
     if (winTime) winTime.textContent = pad(m) + ':' + pad(s);
     if (winBox) winBox.style.display = 'block';
+  }
+
+  // Dynamic in-browser SmartHint solver (Naked Single & Hidden Single in Box/Row/Col)
+  function candidatesForCell(board, idx) {
+    if (board[idx] !== 0) return 0;
+    var r = Math.floor(idx / 9), c = idx % 9;
+    var br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+    var mask = 0x3FE; // bits 1..9
+    for (var i = 0; i < 9; i++) {
+      mask &= ~(1 << board[r * 9 + i]);
+      mask &= ~(1 << board[i * 9 + c]);
+      mask &= ~(1 << board[(br + Math.floor(i / 3)) * 9 + (bc + (i % 3))]);
+    }
+    return mask;
+  }
+
+  function bitCount(m) {
+    var c = 0;
+    while (m) { m &= (m - 1); c++; }
+    return c;
+  }
+
+  function singleDigitFromMask(m) {
+    for (var d = 1; d <= 9; d++) {
+      if (m === (1 << d)) return d;
+    }
+    return 0;
+  }
+
+  function computeDynamicSmartHint(board) {
+    // 1. If the initial solver-exported hint target is still empty (or wrong), use it first
+    var packHint = activePuzzle.hint;
+    if (packHint) {
+      var pIdx = packHint.targetRow * 9 + packHint.targetCol;
+      if (board[pIdx] === 0) {
+        return packHint;
+      }
+    }
+
+    var cand = new Array(81);
+    for (var i = 0; i < 81; i++) cand[i] = candidatesForCell(board, i);
+
+    // 2. Check Naked Singles on current board
+    for (var idx = 0; idx < 81; idx++) {
+      if (board[idx] === 0 && bitCount(cand[idx]) === 1) {
+        var d = singleDigitFromMask(cand[idx]);
+        var r = Math.floor(idx / 9), c = idx % 9;
+        return {
+          targetRow: r,
+          targetCol: c,
+          targetDigit: d,
+          technique: "NakedSingle",
+          explanation: {
+            en: "Row " + (r + 1) + ", column " + (c + 1) + ": every number except " + d + " already appears in this cell's row, column or box.",
+            he: "שורה " + (r + 1) + ", עמודה " + (c + 1) + ": כל המספרים מלבד " + d + " כבר מופיעים בשורה, בעמודה או בריבוע של המשבצת הזו.",
+            ar: "الصف " + (r + 1) + "، العمود " + (c + 1) + ": كل الأرقام ما عدا " + d + " موجودة بالفعل في صف هذه الخانة أو عمودها أو مربعها."
+          },
+          highlights: []
+        };
+      }
+    }
+
+    // 3. Check Hidden Singles in 3x3 Boxes
+    for (var b = 0; b < 9; b++) {
+      var br = Math.floor(b / 3) * 3, bc = (b % 3) * 3;
+      for (var dig = 1; dig <= 9; dig++) {
+        var count = 0, lastIdx = -1;
+        for (var bi = 0; bi < 9; bi++) {
+          var cellIdx = (br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3));
+          if ((cand[cellIdx] & (1 << dig)) !== 0) { count++; lastIdx = cellIdx; }
+        }
+        if (count === 1) {
+          var hr = Math.floor(lastIdx / 9), hc = lastIdx % 9;
+          return {
+            targetRow: hr,
+            targetCol: hc,
+            targetDigit: dig,
+            technique: "HiddenSingle",
+            explanation: {
+              en: "In box " + (b + 1) + ", " + dig + " can't go in any other cell because of the " + dig + "s that cross it. This is the only place left for it!",
+              he: "בריבוע " + (b + 1) + ", המספר " + dig + " לא יכול להופיע בשאר המשבצות בגלל חסימות בשורות ובעמודות החוצות. לכן זו המשבצת היחידה שנותרה עבורו!",
+              ar: "في المربع " + (b + 1) + "، لا يمكن وضع الرقم " + dig + " في الخانات الأخرى بسبب الأرقام " + dig + " المتقاطعة. لذا هذه هي الخانة الوحيدة المتبقية له!"
+            },
+            highlights: []
+          };
+        }
+      }
+    }
+
+    // 4. Fallback to next unsolved cell from verified solution
+    var solStr = activePuzzle.solution || "";
+    for (var sIdx = 0; sIdx < 81; sIdx++) {
+      var solDigit = parseInt(solStr.charAt(sIdx), 10) || 0;
+      if (solDigit > 0 && board[sIdx] !== solDigit) {
+        var sr = Math.floor(sIdx / 9), sc = sIdx % 9;
+        return {
+          targetRow: sr,
+          targetCol: sc,
+          targetDigit: solDigit,
+          technique: activePuzzle.hardestTechnique || "HiddenSingle",
+          explanation: {
+            en: "Row " + (sr + 1) + ", column " + (sc + 1) + ": candidate elimination locks " + solDigit + " into this cell.",
+            he: "שורה " + (sr + 1) + ", עמודה " + (sc + 1) + ": צמצום אפשרויות נועל את המספר " + solDigit + " במשבצת הזו.",
+            ar: "الصف " + (sr + 1) + "، العمود " + (sc + 1) + ": استبعاد الاحتمالات يثبت الرقم " + solDigit + " في هذه الخانة."
+          },
+          highlights: []
+        };
+      }
+    }
+    return null;
   }
 
   document.querySelectorAll('.num-btn').forEach(function (btn) {
@@ -360,15 +493,9 @@
   document.getElementById('hint-btn').addEventListener('click', function () {
     if (gameWon) return;
     clearHighlights();
-    var hint = activePuzzle.hint;
+    var hint = computeDynamicSmartHint(currentBoard);
     var hintBox = document.getElementById('hint-box');
-    if (!hint) {
-      if (hintBox) {
-        hintBox.style.display = 'block';
-        hintBox.textContent = 'Smart Hint: Look for single row/column candidates!';
-      }
-      return;
-    }
+    if (!hint) return;
 
     var r = hint.targetRow, c = hint.targetCol, val = hint.targetDigit;
     var targetIdx = r * 9 + c;
@@ -395,24 +522,27 @@
     if (hint.technique === 'NakedSingle') techSlug = 'naked-singles';
     else if (hint.technique === 'PointingPair' || hint.technique === 'BoxLine') techSlug = 'locked-candidates';
 
+    var lang = getActiveLang();
+    var explText = (hint.explanation && (hint.explanation[lang] || hint.explanation.en)) ||
+      ('Row ' + (r + 1) + ', column ' + (c + 1) + ' is ' + val + '.');
+
     if (hintBox) {
       hintBox.style.display = 'block';
       hintBox.replaceChildren();
       var title = document.createElement('span');
       title.className = 'hint-tech';
-      title.textContent = '💡 Smart Hint: ' + (hint.technique || 'Logic Deduction') + ' placed ' + val + ' at row ' + (r + 1) + ', column ' + (c + 1);
+      title.textContent = '💡 ' + (hint.technique || 'Smart Hint') + ' → ' + val + ' (R' + (r + 1) + 'C' + (c + 1) + ')';
       hintBox.appendChild(title);
 
       var desc = document.createElement('p');
       desc.style.margin = '4px 0 6px';
-      desc.textContent = 'In the full Ninely app, Smart Hints analyze candidates step-by-step to show why this number is locked.';
+      desc.textContent = explText;
       hintBox.appendChild(desc);
 
       var guideLink = document.createElement('a');
       guideLink.className = 'hint-link';
       guideLink.href = '../strategy/' + techSlug + '/';
-      guideLink.target = '_blank';
-      guideLink.textContent = 'Learn how to spot ' + hint.technique + ' in our Strategy Guide ➔';
+      guideLink.textContent = (translations[lang] && translations[lang].learnGuide) || translations.en.learnGuide;
       hintBox.appendChild(guideLink);
     }
 
@@ -423,16 +553,16 @@
     setupBoard(activePuzzle, activePuzzle.date !== undefined);
   });
 
-  // Load daily pack
-  var todayKey = getTodayKey();
+  currentDateKey = getTodayKey();
   fetch('daily-pack.json')
     .then(function (res) {
       if (!res.ok) throw new Error('Failed to fetch daily-pack.json: ' + res.status);
       return res.json();
     })
     .then(function (data) {
-      if (data && data.days && data.days[todayKey]) {
-        setupBoard(data.days[todayKey], true);
+      loadedPackData = data;
+      if (data && data.days && data.days[currentDateKey]) {
+        setupBoard(data.days[currentDateKey], true);
       } else if (data && data.fallback) {
         setupBoard(data.fallback, false);
       } else {

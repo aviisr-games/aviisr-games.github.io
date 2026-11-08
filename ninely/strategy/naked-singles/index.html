@@ -44,37 +44,56 @@
 
     <div class="guide-section">
       <h2>Worked Example: Cell Row 5, Column 5</h2>
-      <p>Consider the central cell at <strong>Row 5, Column 5</strong> (center of the board). Let us examine every intersecting unit:</p>
+      <p>Consider the central cell at <strong>Row 5, Column 5 (R5C5)</strong> in the classic 30-clue puzzle below. Let us examine every intersecting unit that shares a peer relationship with R5C5:</p>
       <ul>
-        <li><strong>Row 5 contains:</strong> 1, 2, 3, 4, 6, 8, 9</li>
-        <li><strong>Column 5 contains:</strong> 2, 3, 4, 6, 7, 8</li>
-        <li><strong>Center 3×3 Box contains:</strong> 2, 3, 4, 6, 8, 9</li>
+        <li><strong>Row 5 contains:</strong> <code>1, 3, 4, 8</code> (at R5C9, R5C6, R5C1, and R5C4)</li>
+        <li><strong>Column 5 contains:</strong> <code>1, 2, 6, 7, 8, 9</code> (at R8C5, R6C5, R4C5, R1C5, R9C5, and R2C5)</li>
+        <li><strong>Center 3×3 Box (Box 5) contains:</strong> <code>2, 3, 6, 8</code> (at R6C5, R5C6, R4C5, and R5C4)</li>
       </ul>
-      <p>Now count through digits 1 to 9 for the target cell:</p>
-      <p><code>1</code> (blocked by row), <code>2</code> (blocked by box), <code>3</code> (blocked by row), <code>4</code> (blocked by col), <code>6</code> (blocked by box), <code>7</code> (blocked by col), <code>8</code> (blocked by row), <code>9</code> (blocked by box).</p>
-      <p><strong>The only surviving digit is 5!</strong></p>
+      <p>Now check each candidate digit from 1 to 9 for <strong>R5C5</strong>:</p>
+      <p><code>1</code> (blocked by Row 5 &amp; Col 5), <code>2</code> (blocked by Col 5 &amp; Box 5), <code>3</code> (blocked by Row 5 &amp; Box 5), <code>4</code> (blocked by Row 5), <code>6</code> (blocked by Col 5 &amp; Box 5), <code>7</code> (blocked by Col 5), <code>8</code> (blocked by Row 5, Col 5 &amp; Box 5), <code>9</code> (blocked by Col 5).</p>
+      <p><strong>The only surviving candidate is 5!</strong></p>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Before (Peer Elimination at R5C5)</div>
+          <div class="diagram-cell highlight" style="width:64px; height:64px; margin:0 auto; border-radius:6px;">
+            <div class="candidates-grid">
+              <span class="cand-num elim">1</span><span class="cand-num elim">2</span><span class="cand-num elim">3</span>
+              <span class="cand-num elim">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span>
+              <span class="cand-num elim">7</span><span class="cand-num elim">8</span><span class="cand-num elim">9</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">After (Resolved Naked Single)</div>
+          <div class="diagram-cell target" style="width:64px; height:64px; margin:0 auto; border-radius:6px; font-size:1.5rem;">5</div>
+        </div>
+      </div>
 
       <!-- Static representation readable with JS disabled -->
       <div class="board-wrapper">
         <div id="interactive-board" class="diagram-board">
           <!-- Row 1 -->
-          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
           <!-- Row 2 -->
-          <div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed highlight">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
           <!-- Row 3 -->
           <div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
           <!-- Row 4 -->
-          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
           <!-- Row 5 (Target at Col 5) -->
-          <div class="diagram-cell fixed">4</div><div class="diagram-cell highlight"></div><div class="diagram-cell highlight"></div><div class="diagram-cell fixed">8</div><div id="target-cell" class="diagram-cell target">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell highlight"></div><div class="diagram-cell highlight"></div><div class="diagram-cell fixed">1</div>
+          <div class="diagram-cell fixed highlight">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">8</div><div id="target-cell" class="diagram-cell target">5</div><div class="diagram-cell fixed highlight">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">1</div>
           <!-- Row 6 -->
-          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
           <!-- Row 7 -->
           <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
           <!-- Row 8 -->
-          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed highlight">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
           <!-- Row 9 -->
-          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed highlight">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
         </div>
 
         <div class="step-controls">
@@ -85,29 +104,20 @@
       </div>
 
       <noscript>
-        <p><em>(Static View: All 8 peers are populated, leaving 5 as the only remaining candidate for R5C5.)</em></p>
+        <p><em>(Static View: Peers in Row 5, Column 5, and Box 5 eliminate 1, 2, 3, 4, 6, 7, 8, and 9, leaving 5 as the only candidate for R5C5.)</em></p>
       </noscript>
-    </div>
-
-    <!-- Mobile ad slot -->
-    <div class="ad-slot-container ad-inline">
-      <span class="ad-label">Advertisements</span>
-      <div class="ad-placeholder">
-        <span>Sponsored Content</span>
-        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
-      </div>
     </div>
 
     <div class="guide-section">
       <div class="wrong-move-box">
         <h4>⚠️ The Tempting Wrong Move: Guessing 7 in R5C5</h4>
-        <p>A player without complete pencil marks might see that 7 is missing in Row 5 and hurriedly place 7 in the center cell (R5C5).</p>
-        <p><strong>Why this fails:</strong> Column 5 already has a 7 in Row 1! Placing 7 in R5C5 creates an illegal duplicate in Column 5. Later in the solve, Row 9 will have no legal placement for its 7. In Ninely, Smart Hints will alert you to the row and column collisions before you commit the error.</p>
+        <p>A player scanning only Row 5 (`4, 8, 3, 1`) might notice that `7` is missing from Row 5 and Box 5, and hurriedly place `7` in the center cell (R5C5).</p>
+        <p><strong>Why this fails:</strong> Column 5 already contains a given `7` at the top (`R1C5`)! Placing `7` in R5C5 creates an immediate collision in Column 5. In Ninely, Smart Hints check all three intersecting units simultaneously so you never overlook a vertical blocker.</p>
       </div>
 
       <div class="tip-box">
         <h4>💡 Solving Tip: The "Rule of 8"</h4>
-        <p>Whenever a row and column cross at a cell that shares a crowded 3×3 box, count the distinct numbers in all three units. If they sum to 8 distinct digits, you have found a Naked Single!</p>
+        <p>Whenever a row and column cross at a cell that shares a crowded 3×3 box, count the distinct numbers across all three units. If they cover 8 distinct digits, that intersection is guaranteed to be a Naked Single!</p>
       </div>
     </div>
 
@@ -118,11 +128,11 @@
     </div>
   </article>
 
-  <!-- Desktop Rail Ad Slot -->
+  <!-- Single Reserved Ad Slot Container -->
   <aside class="ad-rail">
     <div class="ad-slot-container">
       <span class="ad-label">Advertisements</span>
-      <div class="ad-placeholder" style="min-height: 400px;">
+      <div class="ad-placeholder">
         <span>Sponsored Content</span>
         <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
       </div>
@@ -138,7 +148,6 @@
 <script>
 (function() {
   'use strict';
-  // Progressive step-through for the interactive board
   var currentStep = 3;
   var target = document.getElementById('target-cell');
   var prevBtn = document.getElementById('prev-step');
@@ -148,15 +157,30 @@
   if (!prevBtn || !nextBtn || !target) return;
 
   var steps = [
-    { num: 1, text: "Step 1 of 3: Inspect empty cell at Row 5, Column 5", val: "", cls: "highlight" },
-    { num: 2, text: "Step 2 of 3: 8 peer digits (1,2,3,4,6,7,8,9) cross this cell", val: "·5·", cls: "highlight" },
-    { num: 3, text: "Step 3 of 3: Digit 5 is the sole survivor (Naked Single)", val: "5", cls: "target" }
+    {
+      num: 1,
+      text: "Step 1 of 3: Inspect empty cell at Row 5, Column 5 (candidates 1–9)",
+      html: '<div class="candidates-grid"><span class="cand-num">1</span><span class="cand-num">2</span><span class="cand-num">3</span><span class="cand-num">4</span><span class="cand-num">5</span><span class="cand-num">6</span><span class="cand-num">7</span><span class="cand-num">8</span><span class="cand-num">9</span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: Row 5 (1,3,4,8), Col 5 (1,2,6,7,8,9) & Box 5 eliminate 8 digits",
+      html: '<div class="candidates-grid"><span class="cand-num elim">1</span><span class="cand-num elim">2</span><span class="cand-num elim">3</span><span class="cand-num elim">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span><span class="cand-num elim">7</span><span class="cand-num elim">8</span><span class="cand-num elim">9</span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Digit 5 is the sole survivor (Naked Single)",
+      html: "5",
+      cls: "target"
+    }
   ];
 
   function update() {
     var s = steps[currentStep - 1];
     stepText.textContent = s.text;
-    target.textContent = s.val;
+    target.innerHTML = s.html;
     target.className = "diagram-cell " + s.cls;
     prevBtn.disabled = (currentStep === 1);
     nextBtn.disabled = (currentStep === steps.length);

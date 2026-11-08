@@ -251,20 +251,7 @@
 }
 
 .ad-rail {
-  position: sticky;
-  top: 24px;
-}
-
-@media (max-width: 899px) {
-  .ad-rail {
-    display: none;
-  }
-}
-
-@media (min-width: 900px) {
-  .ad-inline {
-    display: none;
-  }
+  position: static;
 }
 
 /* Practice CTA bar */

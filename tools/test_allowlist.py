@@ -93,3 +93,38 @@ class AllowlistTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class LinkNameTests(unittest.TestCase):
+    """Screen-reader link lists must tell repeated links apart (WCAG 2.4.4)."""
+
+    def test_every_play_badge_names_its_app(self):
+        import glob
+        files = ['index.html'] + [f for d in sm.ALLOWED_PREFIXES for f in glob.glob(str(ROOT / d / '**/*.html'), recursive=True)]
+        count = 0
+        for f in files:
+            html = Path(f if f.startswith('/') else ROOT / f).read_text(encoding='utf-8')
+            for img in re.findall(r'<img data-play-badge[^>]*>', html):
+                count += 1
+                app = re.search(r'data-app="([^"]+)"', img)
+                self.assertIsNotNone(app, f"badge without data-app in {f}")
+                self.assertIn(f'alt="Get it on Google Play: {app.group(1)}"', img, f)
+        self.assertGreaterEqual(count, 10)
+
+    def test_homepage_more_links_carry_a_hidden_app_name(self):
+        html = (ROOT / 'index.html').read_text(encoding='utf-8')
+        mores = re.findall(r'<a class="app-more"[^>]*>(.*?)</a>', html, re.S)
+        self.assertEqual(len(mores), 5)
+        for m in mores:
+            self.assertIn('class="sr-only"', m)
+
+    def test_ninely_hint_titles_use_readable_names_in_all_languages(self):
+        html = (ROOT / 'ninely/play/index.html').read_text(encoding='utf-8')
+        guides = re.search(r'var TECHNIQUE_GUIDES = \{(.*?)\};', html, re.S).group(1)
+        techniques = set(re.findall(r'(\w+): \'', guides))
+        names = re.search(r'var TECHNIQUE_NAMES = \{(.*?)\n  \};', html, re.S).group(1)
+        for lang in ('en', 'he', 'ar'):
+            block = re.search(lang + r': \{(.*?)\}', names, re.S).group(1)
+            self.assertEqual(set(re.findall(r'(\w+): \'', block)), techniques, lang)
+        self.assertIn('techniqueName(hint.technique, lang)', html)
+        self.assertNotIn("(hint.technique || 'Smart Hint')", html)

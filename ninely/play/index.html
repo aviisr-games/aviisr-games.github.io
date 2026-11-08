@@ -418,6 +418,24 @@
     Swordfish: 'swordfish'
   };
 
+  // Readable technique names for the hint title (engine identifiers are not shown to players).
+  var TECHNIQUE_NAMES = {
+    en: { FullHouse: 'Full house', NakedSingle: 'Naked single', HiddenSingle: 'Hidden single', PointingPair: 'Pointing pair',
+          BoxLine: 'Box-line reduction', BoxLineReduction: 'Box-line reduction', NakedPair: 'Naked pair', HiddenPair: 'Hidden pair',
+          NakedTriple: 'Naked triple', XWing: 'X-Wing', Swordfish: 'Swordfish' },
+    he: { FullHouse: 'משבצת אחרונה', NakedSingle: 'יחיד גלוי', HiddenSingle: 'יחיד נסתר', PointingPair: 'זוג מצביע',
+          BoxLine: 'צמצום ריבוע-קו', BoxLineReduction: 'צמצום ריבוע-קו', NakedPair: 'זוג גלוי', HiddenPair: 'זוג נסתר',
+          NakedTriple: 'שלשה גלויה', XWing: 'X-Wing', Swordfish: 'Swordfish' },
+    ar: { FullHouse: 'الخانة الأخيرة', NakedSingle: 'مفرد مكشوف', HiddenSingle: 'مفرد مخفي', PointingPair: 'زوج مُشير',
+          BoxLine: 'اختزال مربع-خط', BoxLineReduction: 'اختزال مربع-خط', NakedPair: 'زوج مكشوف', HiddenPair: 'زوج مخفي',
+          NakedTriple: 'ثلاثية مكشوفة', XWing: 'X-Wing', Swordfish: 'Swordfish' }
+  };
+  var SMART_HINT_LABEL = { en: 'Smart Hint', he: 'רמז חכם', ar: 'تلميح ذكي' };
+  function techniqueName(technique, lang) {
+    var table = TECHNIQUE_NAMES[lang] || TECHNIQUE_NAMES.en;
+    return table[technique] || TECHNIQUE_NAMES.en[technique] || SMART_HINT_LABEL[lang] || SMART_HINT_LABEL.en;
+  }
+
   function computeDynamicSmartHint(board) {
     // 1. If the initial solver-exported hint target is still empty (or wrong), use it first
     var packHint = activePuzzle.hint;
@@ -555,7 +573,7 @@
       hintBox.replaceChildren();
       var title = document.createElement('span');
       title.className = 'hint-tech';
-      title.textContent = '💡 ' + (hint.technique || 'Smart Hint') + ' → ' + val + ' (R' + (r + 1) + 'C' + (c + 1) + ')';
+      title.textContent = '💡 ' + techniqueName(hint.technique, lang) + ' → ' + val + ' (R' + (r + 1) + 'C' + (c + 1) + ')';
       hintBox.appendChild(title);
 
       var desc = document.createElement('p');

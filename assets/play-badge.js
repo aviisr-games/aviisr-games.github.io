@@ -1,7 +1,8 @@
 /*
  * Shows Google's official, unaltered "Get it on Google Play" badge in the page language.
  * Markup: <a class="play-badge" href="https://play.google.com/store/apps/details?id=...">
- *           <img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a>
+ *           <img data-play-badge data-app="Ninely" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely" width="150" height="58"></a>
+ * The alt text names the app, so screen-reader link lists can tell the badges apart.
  */
 (function () {
   'use strict';
@@ -14,7 +15,8 @@
     for (var i = 0; i < imgs.length; i++) {
       var want = '/assets/badges/google-play-' + FILE[lang] + '.png';
       if (imgs[i].getAttribute('src') !== want) imgs[i].setAttribute('src', want);
-      imgs[i].alt = ALT[lang];
+      var app = imgs[i].getAttribute('data-app');
+      imgs[i].alt = ALT[lang] + (app ? ': ' + app : '');
     }
   }
   sync();

@@ -45,6 +45,7 @@
 
   var AVIISR_STRINGS = {
     'en': {
+      qrText: 'On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.',
       iphoneSoon: 'Not on iPhone yet',
       tryInBrowser: 'Play in your browser',
       heroTitle: 'aviisr-games',
@@ -86,6 +87,7 @@
       actSplit: 'SPLIT'
     },
     'he': {
+      qrText: 'במחשב? כוונו את מצלמת הטלפון לקוד כדי לפתוח את הדף הזה בטלפון, ואז הקישו על כפתור Google Play.',
       iphoneSoon: 'עדיין לא ב-iPhone',
       tryInBrowser: 'לשחק בדפדפן',
       heroTitle: 'aviisr-games',
@@ -127,6 +129,7 @@
       actSplit: 'פיצול (Split)'
     },
     'ar': {
+      qrText: 'على الكمبيوتر؟ وجّه كاميرا هاتفك نحو الرمز لفتح هذه الصفحة على هاتفك، ثم اضغط زر Google Play.',
       iphoneSoon: 'ليست على iPhone بعد',
       tryInBrowser: 'العب في المتصفح',
       heroTitle: 'aviisr-games',

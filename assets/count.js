@@ -33,6 +33,9 @@
 
   send(location.pathname, false);
 
+  // qr_land/<page>: a phone opened this page from the desktop QR code (?src=qr).
+  if (/[?&]src=qr(&|$)/.test(location.search)) send('qr_land' + location.pathname, true);
+
   // store_click/<package>/<page>: counted once per link per page view.
   var clicked = {};
   document.addEventListener('click', function (e) {

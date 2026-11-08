@@ -804,7 +804,7 @@ class MonetizationPilotTests(unittest.TestCase):
         grade_data = json.loads(m.group(1))
         cfg_by_grade = {c['grade']: c for c in gen.GRADES_CONFIG}
 
-        for g in (3, 4, 5):
+        for g in (2, 3, 4, 5):
             pack = json.loads((ROOT / f'mila/worksheets/pack-grade{g}.json').read_text(encoding='utf-8'))
             for key in ('words', 'matching', 'wordBank', 'sentences'):
                 self.assertIn(key, pack, f"pack-grade{g}.json must export {key}")
@@ -814,10 +814,15 @@ class MonetizationPilotTests(unittest.TestCase):
                              f"GRADE_DATA[{g}] must match pack-grade{g}.json")
 
             words = {w['english']: w for w in pack['words']}
+            english = {w['english'] for w in pack['words']}
             for s in pack['sentences']:
-                w = words[s['answer']]
-                self.assertEqual(s['engPre'] + s['answer'] + s['engPost'], w['exampleSentence'])
                 self.assertIn(s['answer'], pack['wordBank'])
+                if g == 2:  # first-letter exercise for pre-readers: _ow -> c (cow)
+                    self.assertEqual(len(s['answer']), 1)
+                    self.assertIn(s['answer'] + s['engPost'], english)
+                else:
+                    w = words[s['answer']]
+                    self.assertEqual(s['engPre'] + s['answer'] + s['engPost'], w['exampleSentence'])
 
             # Answer key: matching answers and sentence answers per grade
             section = key_html[key_html.index(f'id="key-grade{g}"'):]
@@ -849,7 +854,7 @@ class MonetizationPilotTests(unittest.TestCase):
             "'<div class=\"flashcard-sentence\"><span class=\"bidi-eng\" lang=\"en\">' + w.exampleSentence + '</span><br>' + w.exampleSentenceHebrew + '</div>'",
             "'<td>' + m.num + '. <span class=\"bidi-eng\" lang=\"en\">' + m.eng + '</span> ' + m.emoji + '</td>'",
             "'<td>' + m.hebLetter + '. ' + m.hebText + '</td>'",
-            "'מחסן מילים: &nbsp;' + data.wordBank.map(",
+            "data.bankLabel + ': &nbsp;' + data.wordBank.map(",
             "}).join(' &nbsp;·&nbsp; ')",
             "'<span class=\"bidi-eng\" lang=\"en\">' + s.num + '. ' + s.engPre + '<span class=\"blank-line\"></span>' + s.engPost + '</span> &nbsp; (' + s.hebHint + ')'",
         ]:

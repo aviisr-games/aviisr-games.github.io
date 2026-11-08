@@ -244,9 +244,24 @@ class MonetizationPilotTests(unittest.TestCase):
         for h in html_files:
             content = h.read_text(encoding='utf-8')
             self.assertNotIn(
-                'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+                'pagead2.googlesyndication.com',
                 content,
-                f"Page {h.relative_to(ROOT)} must not load live adsbygoogle.js"
+                f"Page {h.relative_to(ROOT)} must not reference pagead2.googlesyndication.com in HTML or CSP"
+            )
+            self.assertNotIn(
+                'doubleclick.net',
+                content,
+                f"Page {h.relative_to(ROOT)} must not reference doubleclick.net in HTML or CSP"
+            )
+            self.assertNotIn(
+                'fonts.googleapis.com',
+                content,
+                f"Page {h.relative_to(ROOT)} must not reference fonts.googleapis.com in HTML or CSP"
+            )
+            self.assertNotIn(
+                'fonts.gstatic.com',
+                content,
+                f"Page {h.relative_to(ROOT)} must not reference fonts.gstatic.com in HTML or CSP"
             )
             ad_containers = len(re.findall(r'class="[^"]*\bad-slot-container\b[^"]*"', content))
             self.assertLessEqual(
@@ -440,6 +455,12 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('referrerpolicy="no-referrer"', sheet_html)
         self.assertNotIn('utm_', sheet_html)
 
+        # Regression checks for Defect 1 (Mila RTL column wording, Part C sentence bidi isolation, landing page print buttons)
+        self.assertIn('המילה באנגלית מימין לבין התרגום הנכון שלה בעברית משמאל', sheet_html)
+        self.assertEqual(len(re.findall(r'<div class="sentence-item">\s*<span class="bidi-eng" lang="en">', sheet_html)), 6)
+        mila_landing = (ROOT / 'mila/index.html').read_text(encoding='utf-8')
+        self.assertNotIn('onclick="window.print()"', mila_landing, "Landing page must link to worksheets/ instead of calling window.print()")
+
     def test_slice5a_baylight_dock_prototype(self):
         """Verify Slice 5A Baylight solver-verified dock prototype, move sequence replay, and rules fidelity."""
         fixtures_path = ROOT / 'tools/baylight_fixtures.json'
@@ -448,6 +469,7 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertTrue(dock_path.exists(), "baylight/dock/index.html must exist")
 
         import sys
+        import warnings
         sys.path.append('/Volumes/MacMiniDev/projects/baylight/Tools')
         import baylight_rules
 
@@ -457,7 +479,9 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertEqual(len(levels), 2)
 
         levels_path = '/Volumes/MacMiniDev/projects/baylight/Assets/_Project/Resources/Levels/levels.txt'
-        all_levels = baylight_rules.parse(levels_path)
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore', ResourceWarning)
+            all_levels = baylight_rules.parse(levels_path)
 
         for lvl_fix in levels:
             lvl_id = lvl_fix['id']
@@ -480,11 +504,18 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertEqual(len(st.pallet), 0)
             self.assertTrue(all(n == 0 for _, n in st.bays))
 
+        # Regression check for Defect 2: matching-bay preference on Dock 6 Move 13 + live BFS solver + replay timer cleanup
+        dock6_moves = next(l for l in levels if l['id'] == 6)['solutionMoves']
+        self.assertEqual(dock6_moves[12]['action'], 'bay')
+        self.assertEqual(dock6_moves[12]['target'], 3)
+
         dock_html = dock_path.read_text(encoding='utf-8')
         self.assertIn("default-src 'self'", dock_html)
         self.assertNotIn('adsbygoogle', dock_html)
         self.assertIn('SYMBOLS', dock_html)
         self.assertIn('prefers-reduced-motion', dock_html)
+        self.assertIn('findNextWinningMove', dock_html)
+        self.assertIn('stopReplayTimer', dock_html)
 
     def test_slice5b_morning_route_preview_and_canonicalization(self):
         """Verify Slice 5B Morning Route map preview, throw prototype, hazard counter-moves, and canonicalization."""
@@ -517,8 +548,11 @@ class MonetizationPilotTests(unittest.TestCase):
         for hazard in ['Bins', 'Pedestrians', 'Chasing Dogs', 'Reversing Cars', 'Drones', 'Skaters']:
             self.assertIn(hazard, preview_html)
 
-        # Throw timing zones and reduced motion step controls
+        # Throw timing zones and reduced motion step controls (including Defect 3 alignment check)
         self.assertIn('zone-porch', preview_html)
+        self.assertIn('left: 35%;\n    width: 25%;', preview_html)
+        self.assertNotIn('pos * 0.85', preview_html)
+        self.assertIn('cancelAnimationFrame', preview_html)
         self.assertIn('zone-mailbox', preview_html)
         self.assertIn('zone-window', preview_html)
         self.assertIn('btn-step-frame', preview_html)

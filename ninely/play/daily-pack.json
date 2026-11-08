@@ -1,0 +1,1187 @@
+{
+  "sourceCommit": "4fa5c68",
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T13:55:00Z",
+  "days": {
+    "2026-11-08": {
+      "date": "2026-11-08",
+      "seed": 20261108,
+      "difficulty": "Medium",
+      "puzzle": "000800109070060040251400800015020006060000010700010380007009651080070090509001000",
+      "solution": "643857129978162543251493867315928476862734915794516382437289651186375294529641738",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 0,
+        "targetDigit": 9,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "9",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 9 can\u0027t go in any other cell because of the 9s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 9 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 9 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 9 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 8
+          },
+          {
+            "row": 8,
+            "col": 2
+          }
+        ]
+      }
+    },
+    "2026-11-09": {
+      "date": "2026-11-09",
+      "seed": 20261109,
+      "difficulty": "Medium",
+      "puzzle": "301000600004010090600900180003600405062000710509007800056009001030050200008000904",
+      "solution": "391875642284316597675942183713698425862534719549127836456289371937451268128763954",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 2,
+        "targetDigit": 5,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "5",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 5 can\u0027t go in any other cell because of the 5s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 5 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 5 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 5 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 6,
+            "col": 1
+          },
+          {
+            "row": 5,
+            "col": 0
+          }
+        ]
+      }
+    },
+    "2026-11-10": {
+      "date": "2026-11-10",
+      "seed": 20261110,
+      "difficulty": "Medium",
+      "puzzle": "870200000025080000304100000060070390530609081089010050000006507000030410000001068",
+      "solution": "871253649625984173394167825162875394537649281489312756218496537956738412743521968",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 6,
+        "targetDigit": 8,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "8",
+          "3"
+        ],
+        "explanation": {
+          "en": "In box 3, 8 can\u0027t go in any other cell because of the 8s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 3, \u05D4\u05DE\u05E1\u05E4\u05E8 8 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 3\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 8 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 8 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 0
+          },
+          {
+            "row": 4,
+            "col": 7
+          },
+          {
+            "row": 8,
+            "col": 8
+          },
+          {
+            "row": 1,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-11-11": {
+      "date": "2026-11-11",
+      "seed": 20261111,
+      "difficulty": "Medium",
+      "puzzle": "026390714007000800000700000058103020030070080060408350000004000005000200981037640",
+      "solution": "826395714517642893493781562758163429234579186169428357672854931345916278981237645",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 4,
+        "targetDigit": 8,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "8",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 8 can\u0027t go in any other cell because of the 8s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 8 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 8 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 8 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 5,
+            "col": 5
+          },
+          {
+            "row": 1,
+            "col": 6
+          }
+        ]
+      }
+    },
+    "2026-11-12": {
+      "date": "2026-11-12",
+      "seed": 20261112,
+      "difficulty": "Medium",
+      "puzzle": "070603009003092040200700306500407900000000000006308001407009008050870100300206070",
+      "solution": "175643829863192547294785316531467982728951634946328751417539268652874193389216475",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 4,
+        "targetCol": 3,
+        "targetDigit": 9,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "9",
+          "5"
+        ],
+        "explanation": {
+          "en": "In box 5, 9 can\u0027t go in any other cell because of the 9s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 5, \u05D4\u05DE\u05E1\u05E4\u05E8 9 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 5\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 9 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 9 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 1,
+            "col": 4
+          },
+          {
+            "row": 3,
+            "col": 6
+          },
+          {
+            "row": 6,
+            "col": 5
+          }
+        ]
+      }
+    },
+    "2026-11-13": {
+      "date": "2026-11-13",
+      "seed": 20261113,
+      "difficulty": "Medium",
+      "puzzle": "010020854008300102600500300034000008100080006800000530001005003403009200795030080",
+      "solution": "319627854578394162642518397934256718157983426826741539261875943483169275795432681",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 0,
+        "targetDigit": 3,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "3",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 3 can\u0027t go in any other cell because of the 3s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 3 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 3 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 3 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 7,
+            "col": 2
+          },
+          {
+            "row": 1,
+            "col": 3
+          },
+          {
+            "row": 3,
+            "col": 1
+          },
+          {
+            "row": 2,
+            "col": 6
+          }
+        ]
+      }
+    },
+    "2026-11-14": {
+      "date": "2026-11-14",
+      "seed": 20261114,
+      "difficulty": "Medium",
+      "puzzle": "007005031000620850005100400570000900609000504004000026006003100038091000290400300",
+      "solution": "867945231143627859925138467572864913619372584384519726456783192738291645291456378",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 4,
+        "targetDigit": 3,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "3",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 3 can\u0027t go in any other cell because of the 3s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 3 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 3 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 3 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 7
+          },
+          {
+            "row": 6,
+            "col": 5
+          }
+        ]
+      }
+    },
+    "2026-11-15": {
+      "date": "2026-11-15",
+      "seed": 20261115,
+      "difficulty": "Medium",
+      "puzzle": "090680000100000090304201607061908000900000005000702160207806903030000002000023070",
+      "solution": "592687431176345298384291657761958324923164785845732169257816943638479512419523876",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 2,
+        "targetDigit": 6,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "6",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 6 can\u0027t go in any other cell because of the 6s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 6 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 6 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 6 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 3
+          },
+          {
+            "row": 3,
+            "col": 1
+          },
+          {
+            "row": 2,
+            "col": 6
+          }
+        ]
+      }
+    },
+    "2026-11-16": {
+      "date": "2026-11-16",
+      "seed": 20261116,
+      "difficulty": "Medium",
+      "puzzle": "930500020075206000060034000003000160021000580097000300000790050000405630050003078",
+      "solution": "934517826175286493268934715543872169621349587897651342316798254789425631452163978",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 3,
+        "targetDigit": 9,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "9",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 9 can\u0027t go in any other cell because of the 9s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 9 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 9 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 9 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 0
+          },
+          {
+            "row": 6,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-11-17": {
+      "date": "2026-11-17",
+      "seed": 20261117,
+      "difficulty": "Medium",
+      "puzzle": "541280096000000400076005200000090810030000020017040000003600940005000000760058132",
+      "solution": "541283796328769451976415283452396817639871524817542369183627945295134678764958132",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 3,
+        "targetDigit": 4,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "4",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 4 can\u0027t go in any other cell because of the 4s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 4 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 4 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 4 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 1
+          },
+          {
+            "row": 1,
+            "col": 6
+          },
+          {
+            "row": 5,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-11-18": {
+      "date": "2026-11-18",
+      "seed": 20261118,
+      "difficulty": "Medium",
+      "puzzle": "870040000460090080925001000706280090000000000090067502000600874010050023000020015",
+      "solution": "871346259463592187925871346736285491542139768198467532259613874614758923387924615",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 5,
+        "targetDigit": 6,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "6",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 6 can\u0027t go in any other cell because of the 6s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 6 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 6 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 6 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 6,
+            "col": 3
+          },
+          {
+            "row": 1,
+            "col": 1
+          },
+          {
+            "row": 5,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-11-19": {
+      "date": "2026-11-19",
+      "seed": 20261119,
+      "difficulty": "Medium",
+      "puzzle": "004000768109875300007000005600002000081040520000600004500000400002587603318000200",
+      "solution": "254139768169875342837264195643952871981743526725618934576321489492587613318496257",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 1,
+        "targetDigit": 5,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "5",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 5 can\u0027t go in any other cell because of the 5s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 5 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 5 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 5 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 6,
+            "col": 0
+          },
+          {
+            "row": 1,
+            "col": 5
+          },
+          {
+            "row": 2,
+            "col": 8
+          }
+        ]
+      }
+    },
+    "2026-11-20": {
+      "date": "2026-11-20",
+      "seed": 20261120,
+      "difficulty": "Medium",
+      "puzzle": "000070520000209804080045300709100008008000100100007905004720050205406000073090000",
+      "solution": "461378529537219864982645317759164238348952176126837945894723651215486793673591482",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 2,
+        "targetDigit": 2,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "2",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 2 can\u0027t go in any other cell because of the 2s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 2 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 2 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 2 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 7
+          },
+          {
+            "row": 7,
+            "col": 0
+          },
+          {
+            "row": 1,
+            "col": 3
+          }
+        ]
+      }
+    },
+    "2026-11-21": {
+      "date": "2026-11-21",
+      "seed": 20261121,
+      "difficulty": "Medium",
+      "puzzle": "520009000600000000001503802035602190007000600096307240709806300000000006000900015",
+      "solution": "528769431643128579971543862435682197287491653196357248759816324314275986862934715",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 0,
+        "targetDigit": 9,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "9",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 9 can\u0027t go in any other cell because of the 9s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 9 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 9 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 9 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 5
+          },
+          {
+            "row": 6,
+            "col": 2
+          },
+          {
+            "row": 5,
+            "col": 1
+          }
+        ]
+      }
+    },
+    "2026-11-22": {
+      "date": "2026-11-22",
+      "seed": 20261122,
+      "difficulty": "Medium",
+      "puzzle": "020000479000500021300210605000604052000000000650301000901065008270008000586000090",
+      "solution": "125836479768549321394217685839674152417952863652381947941765238273498516586123794",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 0,
+        "targetDigit": 1,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "1",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 1 can\u0027t go in any other cell because of the 1s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 1 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 1 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 1 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 6,
+            "col": 2
+          },
+          {
+            "row": 1,
+            "col": 8
+          },
+          {
+            "row": 2,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-11-23": {
+      "date": "2026-11-23",
+      "seed": 20261123,
+      "difficulty": "Medium",
+      "puzzle": "301040907000000400700100025530012006100000002900580013280001004009000000405020109",
+      "solution": "361245987852379461794168325537912846148637592926584713283791654619453278475826139",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 8,
+        "targetDigit": 1,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "1",
+          "3"
+        ],
+        "explanation": {
+          "en": "In box 3, 1 can\u0027t go in any other cell because of the 1s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 3, \u05D4\u05DE\u05E1\u05E4\u05E8 1 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 3\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 1 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 1 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 2
+          },
+          {
+            "row": 5,
+            "col": 7
+          },
+          {
+            "row": 2,
+            "col": 3
+          },
+          {
+            "row": 8,
+            "col": 6
+          }
+        ]
+      }
+    },
+    "2026-11-24": {
+      "date": "2026-11-24",
+      "seed": 20261124,
+      "difficulty": "Medium",
+      "puzzle": "140009035003008400069043100300000200000407000005000004007320960006800500420900078",
+      "solution": "142769835753218496869543127374685219218497653695132784587324961936871542421956378",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 3,
+        "targetCol": 2,
+        "targetDigit": 4,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "4",
+          "4"
+        ],
+        "explanation": {
+          "en": "In box 4, 4 can\u0027t go in any other cell because of the 4s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 4, \u05D4\u05DE\u05E1\u05E4\u05E8 4 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 4\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 4 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 4 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 1
+          },
+          {
+            "row": 4,
+            "col": 3
+          },
+          {
+            "row": 8,
+            "col": 0
+          },
+          {
+            "row": 5,
+            "col": 8
+          }
+        ]
+      }
+    },
+    "2026-11-25": {
+      "date": "2026-11-25",
+      "seed": 20261125,
+      "difficulty": "Medium",
+      "puzzle": "000400201001670003000501000900200038805903407640007009000309000500064800108005000",
+      "solution": "796438251451672983382591746917246538825913467643857129274389615539164872168725394",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 5,
+        "targetCol": 2,
+        "targetDigit": 3,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "3",
+          "4"
+        ],
+        "explanation": {
+          "en": "In box 4, 3 can\u0027t go in any other cell because of the 3s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 4, \u05D4\u05DE\u05E1\u05E4\u05E8 3 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 4\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 3 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 3 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 3,
+            "col": 7
+          },
+          {
+            "row": 4,
+            "col": 5
+          }
+        ]
+      }
+    },
+    "2026-11-26": {
+      "date": "2026-11-26",
+      "seed": 20261126,
+      "difficulty": "Medium",
+      "puzzle": "001000000020009560069020183000780002097060410800091000635040790014300020000000300",
+      "solution": "371658249428139567569427183156784932297563418843291675635842791914375826782916354",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 6,
+        "targetDigit": 2,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "2",
+          "3"
+        ],
+        "explanation": {
+          "en": "In box 3, 2 can\u0027t go in any other cell because of the 2s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 3, \u05D4\u05DE\u05E1\u05E4\u05E8 2 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 3\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 2 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 2 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 7,
+            "col": 7
+          },
+          {
+            "row": 3,
+            "col": 8
+          },
+          {
+            "row": 1,
+            "col": 1
+          }
+        ]
+      }
+    },
+    "2026-11-27": {
+      "date": "2026-11-27",
+      "seed": 20261127,
+      "difficulty": "Medium",
+      "puzzle": "000000108107062000904108030000040602005637800406080000070406309000820407809000000",
+      "solution": "653794128187362945924158736738945612215637894496281573572416389361829457849573261",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 1,
+        "targetDigit": 8,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "8",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 8 can\u0027t go in any other cell because of the 8s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 8 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 8 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 8 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 8
+          },
+          {
+            "row": 8,
+            "col": 0
+          },
+          {
+            "row": 2,
+            "col": 5
+          }
+        ]
+      }
+    },
+    "2026-11-28": {
+      "date": "2026-11-28",
+      "seed": 20261128,
+      "difficulty": "Medium",
+      "puzzle": "960001000508000000017546003831070050000000000050030412600482130000000604000600089",
+      "solution": "963821547548397261217546893831274956492165378756938412679482135385719624124653789",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 2,
+        "targetDigit": 3,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "3",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 3 can\u0027t go in any other cell because of the 3s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 3 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 3 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 3 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 3,
+            "col": 1
+          },
+          {
+            "row": 2,
+            "col": 8
+          }
+        ]
+      }
+    },
+    "2026-11-29": {
+      "date": "2026-11-29",
+      "seed": 20261129,
+      "difficulty": "Medium",
+      "puzzle": "800700000163004007402105600000450020000307000090012000001209308900800275000006001",
+      "solution": "859763142163924857472185639617458923284397516395612784541279368936841275728536491",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 1,
+        "targetDigit": 7,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "7",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 7 can\u0027t go in any other cell because of the 7s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 7 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 7 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 7 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 3
+          }
+        ]
+      }
+    },
+    "2026-11-30": {
+      "date": "2026-11-30",
+      "seed": 20261130,
+      "difficulty": "Medium",
+      "puzzle": "340100007080702460700060180000930000000807000000016000023090004094308020800001095",
+      "solution": "346189257981752463752463189678934512415827936239516748123695874594378621867241395",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 2,
+        "targetDigit": 6,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "6",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 6 can\u0027t go in any other cell because of the 6s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 6 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 6 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 6 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 1,
+            "col": 7
+          },
+          {
+            "row": 2,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-12-01": {
+      "date": "2026-12-01",
+      "seed": 20261201,
+      "difficulty": "Medium",
+      "puzzle": "690080071000009000050030900280076349000000000435910086007090030000100000520060014",
+      "solution": "693284571812759463754631928281576349976843152435912786167498235348125697529367814",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 5,
+        "targetDigit": 1,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "1",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 1 can\u0027t go in any other cell because of the 1s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 1 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 1 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 1 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 8
+          },
+          {
+            "row": 7,
+            "col": 3
+          },
+          {
+            "row": 5,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-12-02": {
+      "date": "2026-12-02",
+      "seed": 20261202,
+      "difficulty": "Medium",
+      "puzzle": "020501000050000924007000003030069470006107200012480030400000800279000010000906040",
+      "solution": "324591768651378924897642153538269471946137285712485639465713892279854316183926547",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 6,
+        "targetDigit": 1,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "1",
+          "3"
+        ],
+        "explanation": {
+          "en": "In box 3, 1 can\u0027t go in any other cell because of the 1s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 3, \u05D4\u05DE\u05E1\u05E4\u05E8 1 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 3\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 1 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 1 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 5
+          },
+          {
+            "row": 7,
+            "col": 7
+          }
+        ]
+      }
+    },
+    "2026-12-03": {
+      "date": "2026-12-03",
+      "seed": 20261203,
+      "difficulty": "Medium",
+      "puzzle": "060500800002070600408600072270000105800030007109000063720005306005040700004002050",
+      "solution": "367524819592178634418693572273469185856231497149857263721985346985346721634712958",
+      "clueCount": 33,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 2,
+        "targetDigit": 7,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "7",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 7 can\u0027t go in any other cell because of the 7s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 7 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 7 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 7 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 6,
+            "col": 0
+          },
+          {
+            "row": 1,
+            "col": 4
+          },
+          {
+            "row": 3,
+            "col": 1
+          },
+          {
+            "row": 2,
+            "col": 7
+          }
+        ]
+      }
+    },
+    "2026-12-04": {
+      "date": "2026-12-04",
+      "seed": 20261204,
+      "difficulty": "Medium",
+      "puzzle": "900205640206801070001000000009000050810306094020000700000000300050908407098403006",
+      "solution": "983275641246831975571694832639742158817356294425189763164527389352968417798413526",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 2,
+        "targetCol": 0,
+        "targetDigit": 5,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "5",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 5 can\u0027t go in any other cell because of the 5s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 5 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 5 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 5 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 5
+          },
+          {
+            "row": 7,
+            "col": 1
+          }
+        ]
+      }
+    },
+    "2026-12-05": {
+      "date": "2026-12-05",
+      "seed": 20261205,
+      "difficulty": "Medium",
+      "puzzle": "000038600980001007000045002570080903001000400604090078700810000400300086008450000",
+      "solution": "247938651985261347163745892572184963891673425634592178756819234419327586328456719",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 0,
+        "targetCol": 1,
+        "targetDigit": 4,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "4",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 4 can\u0027t go in any other cell because of the 4s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 4 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 4 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 4 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 7,
+            "col": 0
+          },
+          {
+            "row": 5,
+            "col": 2
+          },
+          {
+            "row": 2,
+            "col": 4
+          }
+        ]
+      }
+    },
+    "2026-12-06": {
+      "date": "2026-12-06",
+      "seed": 20261206,
+      "difficulty": "Medium",
+      "puzzle": "500960700036500000001032004070300200010409070002005060400280300000003420003094007",
+      "solution": "524961738736548192891732654978316245615429873342875961459287316187653429263194587",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 4,
+        "targetDigit": 4,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "4",
+          "2"
+        ],
+        "explanation": {
+          "en": "In box 2, 4 can\u0027t go in any other cell because of the 4s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 2, \u05D4\u05DE\u05E1\u05E4\u05E8 4 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 2\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 4 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 4 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 8,
+            "col": 5
+          },
+          {
+            "row": 2,
+            "col": 8
+          },
+          {
+            "row": 4,
+            "col": 3
+          }
+        ]
+      }
+    },
+    "2026-12-07": {
+      "date": "2026-12-07",
+      "seed": 20261207,
+      "difficulty": "Medium",
+      "puzzle": "800700004060390280900000030305010079009000800170050302010000007097063040500009003",
+      "solution": "831726954764395281952841736325618479649237815178954362413582697297163548586479123",
+      "clueCount": 32,
+      "hardestTechnique": "NakedSingle",
+      "hint": {
+        "targetRow": 1,
+        "targetCol": 0,
+        "targetDigit": 7,
+        "technique": "HiddenSingle",
+        "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+        "localizationArgs": [
+          "7",
+          "1"
+        ],
+        "explanation": {
+          "en": "In box 1, 7 can\u0027t go in any other cell because of the 7s that cross it. This is the only place left for it!",
+          "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 1, \u05D4\u05DE\u05E1\u05E4\u05E8 7 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+          "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 1\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 7 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 7 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+        },
+        "highlights": [
+          {
+            "row": 0,
+            "col": 3
+          },
+          {
+            "row": 5,
+            "col": 1
+          },
+          {
+            "row": 7,
+            "col": 2
+          }
+        ]
+      }
+    }
+  },
+  "fallback": {
+    "id": "practice-fallback",
+    "difficulty": "Medium",
+    "puzzle": "007000902500027010200001700690018000001302800000650097002800009040170003905000400",
+    "solution": "417583962569427318283961754694718235751392846328654197132845679846179523975236481",
+    "clueCount": 32,
+    "hardestTechnique": "NakedSingle",
+    "hint": {
+      "targetRow": 5,
+      "targetCol": 1,
+      "targetDigit": 2,
+      "technique": "HiddenSingle",
+      "localizationKey": "HINT_HIDDEN_SINGLE_BOX",
+      "localizationArgs": [
+        "2",
+        "4"
+      ],
+      "explanation": {
+        "en": "In box 4, 2 can\u0027t go in any other cell because of the 2s that cross it. This is the only place left for it!",
+        "he": "\u05D1\u05E8\u05D9\u05D1\u05D5\u05E2 4, \u05D4\u05DE\u05E1\u05E4\u05E8 2 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05D4\u05D5\u05E4\u05D9\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05DE\u05E9\u05D1\u05E6\u05D5\u05EA \u05D1\u05D2\u05DC\u05DC \u05D7\u05E1\u05D9\u05DE\u05D5\u05EA \u05D1\u05E9\u05D5\u05E8\u05D5\u05EA \u05D5\u05D1\u05E2\u05DE\u05D5\u05D3\u05D5\u05EA \u05D4\u05D7\u05D5\u05E6\u05D5\u05EA. \u05DC\u05DB\u05DF \u05D6\u05D5 \u05D4\u05DE\u05E9\u05D1\u05E6\u05EA \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05E0\u05D5\u05EA\u05E8\u05D4 \u05E2\u05D1\u05D5\u05E8\u05D5!",
+        "ar": "\u0641\u064A \u0627\u0644\u0645\u0631\u0628\u0639 4\u060C \u0644\u0627 \u064A\u0645\u0643\u0646 \u0648\u0636\u0639 \u0627\u0644\u0631\u0642\u0645 2 \u0641\u064A \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649 \u0628\u0633\u0628\u0628 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 2 \u0627\u0644\u0645\u062A\u0642\u0627\u0637\u0639\u0629. \u0644\u0630\u0627 \u0647\u0630\u0647 \u0647\u064A \u0627\u0644\u062E\u0627\u0646\u0629 \u0627\u0644\u0648\u062D\u064A\u062F\u0629 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 \u0644\u0647!"
+      },
+      "highlights": [
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 4,
+          "col": 5
+        }
+      ]
+    }
+  }
+}

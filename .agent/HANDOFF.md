@@ -1,8 +1,46 @@
 # Claude Handoff: Audit of Gemini 3.8 Work & Remaining Roadmap
 
 **Last Updated:** 2026-11-08  
-**Latest Phase:** Phase 3 remediation + Wave 3 (this commit, on top of `995da2f`)  
-**Automated Verification Suite:** `python3 -m unittest discover -s tools -p "test_*.py" -v` (24 tests) & `python3 tools/agent_workflow.py check`
+**Latest state:** website release R1 is live (`main` at `25498bc`, PRs #7-#11). See "Current state" below.  
+**Automated Verification Suite:** `python3 -m unittest discover -s tools -p "test_*.py" -v` (42 tests) & `python3 tools/agent_workflow.py check`
+
+---
+
+## Current state (2026-11-08, end of day)
+
+**Live on aviisrgames.com.** Each of these PRs was squash-merged after CI passed, and the live site was checked after deploy.
+
+| PR | What |
+|---|---|
+| #7 | T1: dead App Store links removed (no app is public on the App Store yet); opt-in cookieless counter `assets/count.js`, **off** until `ENDPOINT` is set |
+| #8 | T2 Google Play badges with `utm_source=aviisrgames&utm_medium=<surface>&utm_campaign=<app>-<surface>`; T3 allowlist homepage, studio `/support/` and `/privacy/`, generated sitemap; T4 reflow, focus ring, contrast, skip links; T5 Mila pinned to Hebrew, WebP screenshots; T7 store names everywhere |
+| #9 | T8 hubs offer en/he/ar only; T9 `/redline-2030/` and `/morning-route/` canonicalise to `/middle-east-2030/` and `/paper-route/`; T10 favicon colour change and share images |
+| #10 | Badges name their app for screen readers; readable hint technique names (en/he/ar); briefing H1; unique Mila print links |
+| #11 | Custom `404.html`; Mila grades 1-2 pack (`pack-grade2.json`, `?grade=2`); desktop-only QR handoff on the four hubs; store-name drift check |
+
+**Invariants (enforced by tests).**
+- **Allowlist.** Studio pages, the homepage and the sitemap list only Ninely, Middle East 2030, Baylight, Morning Paper Route and Mila (`tools/test_allowlist.py`, `tools/build_sitemap.py`). Pages of non-allowlisted titles are left untouched.
+- **Mila.** No counter, ads, cross-promotion or third-party requests on `/mila/**`. Mila pages use `storageKey: 'aviisr_lang_mila'` and `useBrowserLanguage: false`.
+- **Store links.** No App Store link until an app is public; add its badge then (`test_no_app_store_links_while_no_app_is_live` lists live IDs). Badges are official Google artwork in `assets/badges/` via `assets/play-badge.js`.
+- **Names.** Hub H1 = homepage card = Google Play title (`tools/check_store_listings.py`).
+
+**Generators.** Re-run these after editing their sources; the tests fail if the output is stale.
+- `python3 tools/build_sitemap.py` writes `sitemap.xml`.
+- `MILA_REPO=~/Repos/english-learning python3 tools/generate_mila_pack.py` writes the Mila packs, `GRADE_DATA`, the static grade 3 markup and the generated grade 2 answer key.
+- `dotnet run --project tools/pack_generator/pack_generator.csproj -p:NinelyEngineDir=<Ninely@4fa5c68>/Assets/_Project/Scripts/SudokuEngine ninely/play/daily-pack.json 90` writes the Ninely daily pack.
+
+**CI.**
+- `agent-workflow.yml` runs the structure check, the sitemap check and the full test suite.
+- `store-links.yml` runs weekly and on HTML PRs: live store links plus the store-name check.
+
+**Open (not code).**
+- Founder TODOs are in `.agent/TODO.md`: GoatCounter code, Search Console export, Play Console campaign check, a 5-person test, and the 28-day gate.
+- A real VoiceOver/TalkBack session is still to do. An accessibility-tree pass found no unnamed controls.
+- The public studio name ("Aviisr Games" or "aviisr-games") is undecided.
+
+**Gated (Phase 3).**
+- Hub redesign, more Ninely guides and logo Route C wait on 28 days of counter and Search Console data.
+- App Store badges wait on an iOS launch.
 
 ---
 

@@ -1,5 +1,12 @@
 # aviisrgames.com agent guidance
 
+## Studio Identity & Canonical Endpoints (Hard Invariant)
+- **Developer & Support Email:** `aviisr@aviisrgames.com` (never use legacy `@gmail.com` addresses in code, docs, store metadata, or scripts).
+- **Canonical Domain:** `https://aviisrgames.com/` (never use legacy `.github.io` URLs).
+- **Studio Website (aviisrgames.com) Canonical URLs:** Root `https://aviisrgames.com/`, Support `https://aviisrgames.com/support.html`, Privacy `https://aviisrgames.com/privacy.html`, Seller files `https://aviisrgames.com/app-ads.txt` & `https://aviisrgames.com/ads.txt`.
+- **Git Commit Identity:** Repo-local `user.name = aviisr-games`, `user.email = aviisr@aviisrgames.com`.
+- **COPPA & Privacy Safety:** Never place third-party ads or analytics trackers on `/mila/` or privacy pages.
+
 <!-- aviisr-agent-workflow:v1 -->
 ## Agent execution standard
 - The primary reasoning agent owns architecture, planning, shared contracts, ambiguous bugs,

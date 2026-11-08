@@ -7,6 +7,7 @@
 <meta name="description" content="A friend challenged you to a Ninely Sudoku board. Beat their time in your browser or in the app!">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<meta name="apple-itunes-app" content="app-id=6824055538, app-argument=https://aviisrgames.com/ninely/duel/">
 <link rel="stylesheet" href="../../style.css">
 <style>
   .duel-container { max-width: 520px; margin: 0 auto; text-align: center; }
@@ -34,6 +35,9 @@
   .store-btn { display: inline-block; background: #000; color: #fff; padding: 10px 18px; border-radius: 8px; font-weight: bold; text-decoration: none; border: 1px solid #334155; }
   .store-btn:hover { background: #1e293b; text-decoration: none; }
   .duel-callout { background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.35); border-radius: 8px; padding: 12px; margin: 14px 0; font-size: 0.92rem; line-height: 1.5; color: #bae6fd; }
+  .duel-actions { margin-top: 10px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .action-btn.aux-btn { background: #1e293b; color: #f8fafc; border: 1px solid #475569; font-size: 0.95rem; }
+  .action-btn.aux-btn:hover { background: #334155; opacity: 1; }
 </style>
 </head>
 <body>
@@ -49,8 +53,9 @@
   
   <div class="duel-callout">
     <span data-i18n="duelNote">This challenge link was shared from the Ninely mobile game. Tap below to launch Ninely on your phone with the exact challenge seed and target time:</span>
-    <div style="margin-top: 10px;">
+    <div class="duel-actions">
       <a id="open" class="store-btn" style="background: #0284c7; border-color: #38bdf8;" href="#">⚡ <span data-i18n="openApp">Open Challenge in Ninely App</span></a>
+      <button type="button" id="btn-copy-duel-link" class="action-btn aux-btn">🔗 Copy Challenge Link</button>
     </div>
   </div>
 
@@ -162,6 +167,58 @@
   var appUrl = 'ninely://duel?s=' + encodeURIComponent(s) + '&d=' + encodeURIComponent(d) + '&t=' + encodeURIComponent(t);
   var openBtn = document.getElementById('open');
   if (openBtn) openBtn.href = appUrl;
+
+  var itunesMeta = document.querySelector('meta[name="apple-itunes-app"]');
+  if (itunesMeta) {
+    itunesMeta.setAttribute('content', 'app-id=6824055538, app-argument=https://aviisrgames.com/ninely/duel/?s=' + encodeURIComponent(s) + '&d=' + encodeURIComponent(d) + '&t=' + encodeURIComponent(t));
+  }
+
+  var copyBtn = document.getElementById('btn-copy-duel-link');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var canonicalUrl = 'https://aviisrgames.com/ninely/duel/?s=' + encodeURIComponent(s) + '&d=' + encodeURIComponent(d) + '&t=' + encodeURIComponent(t);
+      var urlToCopy = (window.location && window.location.protocol && window.location.protocol.indexOf('http') === 0 && window.location.origin)
+        ? (window.location.origin + '/ninely/duel/?s=' + encodeURIComponent(s) + '&d=' + encodeURIComponent(d) + '&t=' + encodeURIComponent(t))
+        : canonicalUrl;
+
+      function onCopied() {
+        var originalText = copyBtn.textContent;
+        copyBtn.textContent = '✓ Link Copied!';
+        setTimeout(function () {
+          copyBtn.textContent = originalText;
+        }, 2000);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(urlToCopy).then(onCopied, function () {
+          fallbackCopy(urlToCopy);
+        });
+      } else {
+        fallbackCopy(urlToCopy);
+      }
+
+      function fallbackCopy(text) {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          var success = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if (success) {
+            onCopied();
+          }
+        } catch (e) {
+          // ignore fallback failure
+        }
+      }
+    });
+  }
 
   function Mulberry32(seed) {
     return function() {

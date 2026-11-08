@@ -41,7 +41,7 @@ def count_sudoku_solutions(board_list, limit=2):
 
 
 class DiagramBoardParser(HTMLParser):
-    """Extracts the 81 cells of #interactive-board from a strategy guide HTML file."""
+    """Extracts the 81 cells of #interactive-board from a strategy guide HTML file, including candidate notes."""
 
     def __init__(self):
         super().__init__()
@@ -51,8 +51,11 @@ class DiagramBoardParser(HTMLParser):
         self.cell_depth = 0
         self.in_candidates = False
         self.cand_depth = 0
+        self.in_cand_num = False
         self.current_cell_text = []
+        self.current_cell_candidates = []
         self.cells = []
+        self.cell_candidates = []
 
     def handle_starttag(self, tag, attrs):
         attr_dict = dict(attrs)
@@ -67,6 +70,7 @@ class DiagramBoardParser(HTMLParser):
                 self.in_cell = True
                 self.cell_depth = 1
                 self.current_cell_text = []
+                self.current_cell_candidates = []
                 return
             if self.in_cell:
                 self.cell_depth += 1
@@ -75,10 +79,14 @@ class DiagramBoardParser(HTMLParser):
                     self.cand_depth = 1
                 elif self.in_candidates:
                     self.cand_depth += 1
+                    if 'cand-num' in cls.split():
+                        self.in_cand_num = True
 
     def handle_endtag(self, tag):
         if self.in_board:
             if self.in_candidates:
+                if self.in_cand_num and tag == 'span':
+                    self.in_cand_num = False
                 self.cand_depth -= 1
                 if self.cand_depth == 0:
                     self.in_candidates = False
@@ -88,13 +96,19 @@ class DiagramBoardParser(HTMLParser):
                     self.in_cell = False
                     txt = ''.join(self.current_cell_text).strip()
                     self.cells.append(int(txt) if txt.isdigit() and len(txt) == 1 else 0)
+                    self.cell_candidates.append(list(self.current_cell_candidates))
             self.board_depth -= 1
             if self.board_depth == 0:
                 self.in_board = False
 
     def handle_data(self, data):
-        if self.in_cell and not self.in_candidates:
-            self.current_cell_text.append(data)
+        if self.in_cell:
+            if not self.in_candidates:
+                self.current_cell_text.append(data)
+            elif self.in_cand_num:
+                txt = data.strip()
+                if txt.isdigit():
+                    self.current_cell_candidates.append(int(txt))
 
 
 class MonetizationPilotTests(unittest.TestCase):
@@ -287,6 +301,9 @@ class MonetizationPilotTests(unittest.TestCase):
             ROOT / 'ninely/strategy/naked-singles/index.html',
             ROOT / 'ninely/strategy/hidden-singles/index.html',
             ROOT / 'ninely/strategy/locked-candidates/index.html',
+            ROOT / 'ninely/strategy/naked-pairs/index.html',
+            ROOT / 'ninely/strategy/hidden-pairs/index.html',
+            ROOT / 'ninely/strategy/x-wing/index.html',
         ]
         for g in guides:
             self.assertTrue(g.exists(), f"Guide {g} must exist")
@@ -319,6 +336,34 @@ class MonetizationPilotTests(unittest.TestCase):
                         ]
                         self.assertEqual(len(box_vals), len(set(box_vals)), f"Duplicate digit in Box ({br},{bc}) of {g.parent.name}")
 
+                # Verify mathematical validity of all rendered candidate notes against filled givens
+                for idx, cands in enumerate(parser.cell_candidates):
+                    if not cands:
+                        continue
+                    r, c = divmod(idx, 9)
+                    br, bc = (r // 3) * 3, (c // 3) * 3
+                    for cand in cands:
+                        for col_i in range(9):
+                            if col_i != c:
+                                self.assertNotEqual(
+                                    parser.cells[r * 9 + col_i], cand,
+                                    f"Candidate {cand} at R{r+1}C{c+1} collides with Row {r+1} given in {g.parent.name}"
+                                )
+                        for row_i in range(9):
+                            if row_i != r:
+                                self.assertNotEqual(
+                                    parser.cells[row_i * 9 + c], cand,
+                                    f"Candidate {cand} at R{r+1}C{c+1} collides with Col {c+1} given in {g.parent.name}"
+                                )
+                        for bi in range(3):
+                            for bj in range(3):
+                                peer_idx = (br + bi) * 9 + (bc + bj)
+                                if peer_idx != idx:
+                                    self.assertNotEqual(
+                                        parser.cells[peer_idx], cand,
+                                        f"Candidate {cand} at R{r+1}C{c+1} collides with Box given in {g.parent.name}"
+                                    )
+
                 # Verify board is completable to at least 1 valid Sudoku solution
                 self.assertGreaterEqual(
                     count_sudoku_solutions(parser.cells, limit=1),
@@ -327,7 +372,7 @@ class MonetizationPilotTests(unittest.TestCase):
                 )
 
     def test_sitemap_urls_preserved_and_expanded(self):
-        """Verify sitemap contains all 23 original URLs plus 4 new strategy URLs."""
+        """Verify sitemap contains all original URLs plus all 6 strategy URLs."""
         sitemap = (ROOT / 'sitemap.xml').read_text(encoding='utf-8')
         expected_urls = [
             'https://aviisrgames.com/',
@@ -339,6 +384,9 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/ninely/strategy/naked-singles/',
             'https://aviisrgames.com/ninely/strategy/hidden-singles/',
             'https://aviisrgames.com/ninely/strategy/locked-candidates/',
+            'https://aviisrgames.com/ninely/strategy/naked-pairs/',
+            'https://aviisrgames.com/ninely/strategy/hidden-pairs/',
+            'https://aviisrgames.com/ninely/strategy/x-wing/',
             'https://aviisrgames.com/middle-east-2030/',
             'https://aviisrgames.com/middle-east-2030/briefing/',
             'https://aviisrgames.com/middle-east-2030/guide/',
@@ -357,10 +405,48 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertIn(f'<loc>{url}</loc>', sitemap, f"Sitemap must contain {url}")
 
     def test_duel_no_auto_redirect(self):
-        """Verify duel/index.html removed the automatic mobile redirect timer."""
+        """Verify duel/index.html removed the automatic mobile redirect timer and has copy link button."""
         duel = (ROOT / 'ninely/duel/index.html').read_text(encoding='utf-8')
         self.assertNotIn('setTimeout(function () { window.location.href = appUrl; }, 400);', duel)
         self.assertIn('Open Challenge in Ninely App', duel)
+        self.assertIn('btn-copy-duel-link', duel)
+
+    def test_universal_links_and_app_links(self):
+        """Verify Apple App Site Association and Android AssetLinks configurations and Duel link integration."""
+        aasa_path = ROOT / '.well-known/apple-app-site-association'
+        assetlinks_path = ROOT / '.well-known/assetlinks.json'
+        security_path = ROOT / '.well-known/security.txt'
+
+        self.assertTrue(aasa_path.exists(), "apple-app-site-association must exist in .well-known/")
+        self.assertTrue(assetlinks_path.exists(), "assetlinks.json must exist in .well-known/")
+        self.assertTrue(security_path.exists(), "security.txt must be preserved in .well-known/")
+
+        aasa_data = json.loads(aasa_path.read_text(encoding='utf-8'))
+        applinks = aasa_data.get('applinks', {})
+        self.assertIn('details', applinks)
+        detail = applinks['details'][0]
+        self.assertEqual(detail.get('appID'), '86BJ7PMHXZ.com.aviisrgames.ninely')
+        self.assertIn('/ninely/duel/*', detail.get('paths', []))
+        self.assertIn('/ninely/duel/', detail.get('paths', []))
+        self.assertEqual(aasa_data.get('webcredentials', {}).get('apps'), ['86BJ7PMHXZ.com.aviisrgames.ninely'])
+
+        assetlinks_data = json.loads(assetlinks_path.read_text(encoding='utf-8'))
+        self.assertTrue(isinstance(assetlinks_data, list) and len(assetlinks_data) > 0)
+        entry = assetlinks_data[0]
+        self.assertIn('delegate_permission/common.handle_all_urls', entry.get('relation', []))
+        target = entry.get('target', {})
+        self.assertEqual(target.get('namespace'), 'android_app')
+        self.assertEqual(target.get('package_name'), 'com.aviisrgames.ninely')
+        self.assertIn(
+            '65:B7:62:39:D7:36:B2:3D:D2:B6:EA:F1:98:B1:F5:08:80:52:BF:68:5A:D7:D0:84:CF:EC:E8:1E:B9:60:F5:16',
+            target.get('sha256_cert_fingerprints', [])
+        )
+
+        duel_html = (ROOT / 'ninely/duel/index.html').read_text(encoding='utf-8')
+        self.assertIn('<meta name="apple-itunes-app"', duel_html)
+        self.assertIn('app-id=6824055538', duel_html)
+        self.assertIn('id="btn-copy-duel-link"', duel_html)
+        self.assertIn('navigator.clipboard', duel_html)
 
     def test_slice3_middle_east_2030_guide_and_briefing_paths(self):
         """Verify Slice 3 ME2030 scenario companion, 8 choice paths, 8 chairs, fiction labeling, and ad-free compliance."""

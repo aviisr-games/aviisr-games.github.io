@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hidden Pairs in Sudoku: Finding Locked Twins in Crowded Units | Ninely</title>
+<meta name="description" content="Master Hidden Pairs in Sudoku. Learn how to identify two digits restricted to two cells among extra candidates and strip them clean. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/hidden-pairs/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Hidden Pairs in Sudoku: Finding Locked Twins in Crowded Units",
+  "description": "Learn how two digits that appear in only two cells of a unit lock those spots and eliminate extraneous candidates.",
+  "url": "https://aviisrgames.com/ninely/strategy/hidden-pairs/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Hidden Pairs in Sudoku: Finding Locked Twins in Crowded Units</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Hidden Pair?</h2>
+      <p>A <strong>Hidden Pair</strong> occurs when two digits appear as legal candidates in <em>only two cells</em> within a unit (row, column, or 3×3 box), even though those two cells also contain other candidate numbers.</p>
+      <p>Because those two digits cannot be placed anywhere else in that unit, they are strictly locked into those two cells. Therefore, every other candidate in those two cells can be discarded, turning the hidden pair into a clean Naked Pair!</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Hidden Pair &#123;4, 8&#125; in Box 3 Locks Cells R2C7 &amp; R2C8</h2>
+      <p>Examine <strong>Box 3</strong> (top-right 3×3 box, Rows 1–3, Columns 7–9). Box 3 contains fixed digits <code>1, 2, 3, 6</code> and has five empty cells: <code>R1C7</code>, <code>R2C7</code>, <code>R2C8</code>, <code>R3C8</code>, and <code>R3C9</code>.</p>
+      <ul>
+        <li><strong>Missing digits in Box 3:</strong> <code>&#123;4, 5, 7, 8, 9&#125;</code>.</li>
+        <li><strong>Where can 4 go?</strong> Row 1, Row 3, and Column 9 are blocked by 4s elsewhere on the board. In Box 3, <code>4</code> can <em>only</em> go in <strong>R2C7 and R2C8</strong>!</li>
+        <li><strong>Where can 8 go?</strong> Similarly, Row 1 and Row 3 are blocked by 8s. In Box 3, <code>8</code> can <em>only</em> go in <strong>R2C7 and R2C8</strong>!</li>
+        <li><strong>Elimination:</strong> Both cells currently hold candidates <code>&#123;4, 5, 8, 9&#125;</code>. Because <code>4</code> and <code>8</code> are locked into these two spots, candidates <strong>5 and 9 are eliminated from both cells</strong>, leaving a locked pair of <code>&#123;4, 8&#125;</code>!</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Before: Crowded Candidates in R2C7 &amp; R2C8</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span>
+              </div>
+            </div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">After: Stripped to Locked Pair &#123;4, 8&#125;</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num"></span>
+              </div>
+            </div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">2</div>
+          <!-- Row 2 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div id="pair-cell-1" class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div></div><div id="pair-cell-2" class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div></div><div class="diagram-cell fixed">6</div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 5 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
+          <!-- Row 9 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Candidates 5 and 9 eliminated from R2C7 and R2C8, locking &#123;4, 8&#125;</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Box 3, digits 4 and 8 only appear in cells R2C7 and R2C8. Eliminating extra candidates 5 and 9 leaves a locked pair &#123;4, 8&#125;.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 5 or 9 in R2C7</h4>
+        <p>Because <code>5</code> and <code>9</code> appear across multiple empty cells in Box 3, a solver might prematurely place <code>5</code> in R2C7.</p>
+        <p><strong>Why this fails:</strong> If <code>R2C7</code> is filled with <code>5</code>, Box 3 is left with only <em>one</em> remaining valid cell (<code>R2C8</code>) to place both <code>4</code> and <code>8</code>. One of those two numbers will have nowhere to go, completely breaking the puzzle!</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: Count by Digit, Not by Cell</h4>
+        <p>Naked pairs are easy to spot because you look for cells with only two pencil marks. Hidden pairs require the reverse mindset: look at the digits! For every unplaced number in a box or line, count how many cells can legally hold it. When two numbers share the exact same two candidate cells, you have found a Hidden Pair.</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Uncover Hidden Pairs?</h3>
+      <p>Test your pattern recognition on today's free daily warmup:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Single Reserved Ad Slot Container -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../x-wing/">X-Wing Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 3;
+  var c1 = document.getElementById('pair-cell-1');
+  var c2 = document.getElementById('pair-cell-2');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !c1 || !c2) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: In Box 3, cells R2C7 and R2C8 hold candidates {4, 5, 8, 9}",
+      html1: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">4</span><span class="cand-num">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num">9</span></div>',
+      html2: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">4</span><span class="cand-num">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num">9</span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: Digits 4 and 8 appear nowhere else in Box 3 (Hidden Pair)",
+      html1: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div>',
+      html2: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Candidates 5 and 9 eliminated from R2C7 and R2C8, locking {4, 8}",
+      html1: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div>',
+      html2: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num elim">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num elim">9</span></div>',
+      cls: "highlight"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    c1.innerHTML = s.html1;
+    c2.innerHTML = s.html2;
+    c1.className = "diagram-cell " + s.cls;
+    c2.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

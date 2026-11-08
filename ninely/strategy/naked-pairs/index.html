@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naked Pairs in Sudoku: How to Spot and Eliminate Pair Candidates | Ninely</title>
+<meta name="description" content="Master Naked Pairs in Sudoku. Learn how two identical candidate pairs in a unit eliminate candidates across rows, columns, and boxes. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/naked-pairs/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Naked Pairs in Sudoku: How to Spot and Eliminate Pair Candidates",
+  "description": "Learn how two cells sharing the same two candidates lock those digits and unlock single candidate solutions.",
+  "url": "https://aviisrgames.com/ninely/strategy/naked-pairs/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Naked Pairs in Sudoku: How to Spot &amp; Eliminate Pair Candidates</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Naked Pair?</h2>
+      <p>A <strong>Naked Pair</strong> occurs when exactly two cells inside the same unit (a row, column, or 3×3 box) contain the identical pair of candidate digits, say <code>&#123;X, Y&#125;</code>, and <em>no other candidates</em>.</p>
+      <p>Because those two digits must occupy those two cells in some order, neither digit can appear anywhere else in that unit. You can safely eliminate <code>X</code> and <code>Y</code> from every other empty cell in that row, column, or box, often leaving a <strong>Naked Single</strong> behind!</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Naked Pair &#123;3, 4&#125; in Row 8 Unlocks Cell R8C9</h2>
+      <p>Look at <strong>Row 8</strong> on the board below. Six digits are already firmly solved: <code>R8C1 = 2</code>, <code>R8C2 = 5</code>, <code>R8C3 = 8</code>, <code>R8C4 = 1</code>, <code>R8C6 = 7</code>, and <code>R8C8 = 9</code>. The row is missing only three digits: <code>&#123;3, 4, 6&#125;</code>.</p>
+      <ul>
+        <li><strong>Cells R8C5 &amp; R8C7:</strong> Both empty cells see <code>6</code> in their intersecting columns and boxes, restricting their pencil marks strictly to <strong>&#123;3, 4&#125;</strong>. They form a textbook Naked Pair.</li>
+        <li><strong>Target Cell R8C9:</strong> Cell <code>R8C9</code> in Box 9 sees <code>4</code> in its column, leaving candidate notes <code>&#123;3, 6&#125;</code>.</li>
+        <li><strong>Elimination:</strong> Because <code>3</code> and <code>4</code> are locked into <code>R8C5</code> and <code>R8C7</code> along Row 8, <strong>candidate 3 is eliminated from R8C9</strong>. This leaves <strong>6</strong> as the sole legal candidate!</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Naked Pair (R8C5 &amp; R8C7)</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              </div>
+            </div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R8C9 (3 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; margin:0 auto; border-radius:6px;">
+            <div class="candidates-grid">
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span>
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span>
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 5 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div>
+          <!-- Row 6 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">4</div>
+          <!-- Row 7 -->
+          <div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <!-- Row 8 -->
+          <div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">1</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">7</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">9</div><div id="target-cell" class="diagram-cell danger"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 3 eliminated from R8C9, leaving 6</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Row 8, cells R8C5 and R8C7 form a Naked Pair &#123;3, 4&#125;. Eliminating candidate 3 from cell R8C9 leaves 6 as a Naked Single.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Guessing 3 in R8C9</h4>
+        <p>A player looking casually at Box 9 sees that <code>R8C9</code> can take <code>3</code> or <code>6</code> and might be tempted to guess <code>3</code>.</p>
+        <p><strong>Why this fails:</strong> Placing <code>3</code> in R8C9 eliminates <code>3</code> from both <code>R8C5</code> and <code>R8C7</code> along Row 8. That forces both cells to become <code>4</code> simultaneously, causing an immediate conflict in Row 8! Spotting the Naked Pair first prevents this fatal error.</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: The Twin Candidate Scan</h4>
+        <p>When solving intermediate puzzles with candidate notes, regularly scan each house for cells that contain exactly two pencil marks. When two cells in the same line or box share the exact same two digits, immediately draw a mental boundary around them and prune those two numbers from every neighboring peer.</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Spot Naked Pairs?</h3>
+      <p>Test your candidate reading skills on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Single Reserved Ad Slot Container -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../hidden-pairs/">Hidden Pairs Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 3;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: Inspect Row 8. Cells R8C5 and R8C7 both contain only candidates {3, 4}",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: {3, 4} form a Naked Pair along Row 8, locking both digits into those two cells",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Candidate 3 eliminated from R8C9, leaving 6 as a Naked Single",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

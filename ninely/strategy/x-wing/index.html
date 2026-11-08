@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X-Wing Technique in Sudoku: Multi-Line Elimination Guide | Ninely</title>
+<meta name="description" content="Master the X-Wing strategy in Sudoku. Learn how rectangular fish patterns across rows and columns eliminate candidates and unlock singles. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/x-wing/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "X-Wing Technique in Sudoku: Multi-Line Elimination Guide",
+  "description": "Learn how the rectangular X-Wing pattern across two rows or columns eliminates candidates across intersecting units.",
+  "url": "https://aviisrgames.com/ninely/strategy/x-wing/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>X-Wing Technique in Sudoku: Multi-Line Elimination Guide</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is an X-Wing?</h2>
+      <p>An <strong>X-Wing</strong> is a powerful multi-line candidate pattern that spans across two parallel rows and two intersecting columns (or vice versa).</p>
+      <p>When a specific candidate digit appears in <em>exactly two cells</em> in Row A, and in <em>the exact same two columns</em> in Row B:</p>
+      <ol>
+        <li>Because each row must contain that digit, one row will take the left column while the other row takes the right column (or vice versa).</li>
+        <li>These two diagonal possibilities form an &ldquo;X&rdquo; shape.</li>
+        <li>Either way, both columns are guaranteed to have their digit placed in one of those two rows.</li>
+        <li>Therefore, that digit <strong>cannot appear anywhere else</strong> in those two columns!</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: X-Wing on Digit 4 Eliminates 4 from Cell R6C3</h2>
+      <p>Observe digit <strong>4</strong> across <strong>Row 5</strong> and <strong>Row 8</strong> on the board below:</p>
+      <ul>
+        <li><strong>Row 5:</strong> Candidate 4 can only be placed in two columns: <strong>Column 3 (R5C3)</strong> and <strong>Column 7 (R5C7)</strong>.</li>
+        <li><strong>Row 8:</strong> Candidate 4 can also only be placed in the exact same two columns: <strong>Column 3 (R8C3)</strong> and <strong>Column 7 (R8C7)</strong>.</li>
+        <li><strong>The Rectangular Lock:</strong> If Row 5 places 4 at R5C3, then Row 8 must place 4 at R8C7. If Row 5 places 4 at R5C7, then Row 8 must place 4 at R8C3. In both outcomes, Column 3 and Column 7 have their 4s locked into Row 5 and Row 8!</li>
+        <li><strong>Target Elimination at R6C3:</strong> Follow Column 3 down to cell <strong>Row 6, Column 3 (R6C3)</strong>. This cell has candidates <code>&#123;2, 4&#125;</code>. Because the X-Wing claims Column 3's 4, <strong>candidate 4 is eliminated from R6C3</strong>, leaving <strong>2</strong> as a Naked Single!</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">X-Wing on 4: Rows 5 &amp; 8 (Cols 3 &amp; 7)</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              </div>
+            </div>
+            <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;">
+              <div class="candidates-grid">
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span>
+                <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R6C3 (4 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; margin:0 auto; border-radius:6px;">
+            <div class="candidates-grid">
+              <span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span>
+              <span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span>
+              <span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div>
+          <!-- Row 2 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div>
+          <!-- Row 3 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">2</div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <!-- Row 5 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">3</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">7</div><div id="target-cell" class="diagram-cell danger"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div>
+          <!-- Row 8 -->
+          <div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">1</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">9</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">6</div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 4 eliminated from R6C3, leaving 2</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Row 5 and Row 8, candidate 4 is restricted to Column 3 and Column 7. This X-Wing eliminates candidate 4 from R6C3, leaving 2.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 4 in R6C3</h4>
+        <p>A player searching for a place to put 4 in Column 3 might guess <code>4</code> in R6C3 because the cell only has two candidates <code>&#123;2, 4&#125;</code>.</p>
+        <p><strong>Why this fails:</strong> Placing <code>4</code> in R6C3 eliminates <code>4</code> from both R5C3 and R8C3 along Column 3. This forces Row 5 to place <code>4</code> at R5C7, and Row 8 to place <code>4</code> at R8C7. That puts two 4s directly in Column 7, causing an immediate, fatal contradiction!</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: The Fish Pattern Finder</h4>
+        <p>X-Wing is the smallest member of the &ldquo;Fish&rdquo; family (where N parallel lines hold a candidate in the same N perpendicular lines). When you hit an advanced deadlock, pick one digit at a time and highlight all rows that have exactly two candidate cells for that digit. If two rows share the same two columns, you have found an X-Wing!</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Master Advanced Sudoku?</h3>
+      <p>Put multi-line deductions to work on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Single Reserved Ad Slot Container -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../naked-singles/">Naked Singles Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 3;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: In Row 5 and Row 8, candidate 4 appears only in Col 3 and Col 7",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num"></span><span class="cand-num">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: The 4 corners form an X-Wing lock across Col 3 and Col 7",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: Candidate 4 eliminated from R6C3, leaving 2 as a Naked Single",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num elim">4</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

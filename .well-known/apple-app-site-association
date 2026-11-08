@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "86BJ7PMHXZ.com.aviisrgames.ninely",
+        "appIDs": ["86BJ7PMHXZ.com.aviisrgames.ninely"],
+        "paths": ["/ninely/duel/*", "/ninely/duel/"],
+        "components": [
+          { "/": "/ninely/duel/*" },
+          { "/": "/ninely/duel/" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["86BJ7PMHXZ.com.aviisrgames.ninely"]
+  }
+}

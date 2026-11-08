@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aviisrgames.ninely",
+      "sha256_cert_fingerprints": [
+        "65:B7:62:39:D7:36:B2:3D:D2:B6:EA:F1:98:B1:F5:08:80:52:BF:68:5A:D7:D0:84:CF:EC:E8:1E:B9:60:F5:16"
+      ]
+    }
+  }
+]

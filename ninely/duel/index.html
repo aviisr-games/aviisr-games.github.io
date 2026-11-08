@@ -31,13 +31,14 @@
   .hint-box { background: rgba(15, 23, 42, 0.7); border: 1px solid #38bdf8; border-radius: 8px; padding: 12px; margin: 14px 0; font-size: 0.95rem; text-align: left; display: none; }
   [dir="rtl"] .hint-box { text-align: right; }
   .store-links { margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .store-btn { display: inline-block; background: #000; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none; border: 1px solid #334155; }
+  .store-btn { display: inline-block; background: #000; color: #fff; padding: 10px 18px; border-radius: 8px; font-weight: bold; text-decoration: none; border: 1px solid #334155; }
   .store-btn:hover { background: #1e293b; text-decoration: none; }
+  .duel-callout { background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.35); border-radius: 8px; padding: 12px; margin: 14px 0; font-size: 0.92rem; line-height: 1.5; color: #bae6fd; }
 </style>
 </head>
 <body>
 <main>
-<nav class="lang"><a href="../">Ninely</a> <a href="../../">All Games</a></nav>
+<nav class="lang"><a href="../">Ninely</a> · <a href="../strategy/">Strategy</a> · <a href="../../">All Games</a></nav>
 
 <div class="duel-container">
   <div class="duel-badge" data-i18n="badge">Ninely Friend Challenge</div>
@@ -46,11 +47,15 @@
   
   <p id="info" style="font-weight: bold; color: var(--gold);"></p>
   
-  <div style="margin: 12px 0;">
-    <a id="open" class="store-btn" style="background: #0284c7;" href="#">⚡ <span data-i18n="openApp">Open in Ninely App</span></a>
+  <div class="duel-callout">
+    <span data-i18n="duelNote">This challenge link was shared from the Ninely mobile game. Tap below to launch Ninely on your phone with the exact challenge seed and target time:</span>
+    <div style="margin-top: 10px;">
+      <a id="open" class="store-btn" style="background: #0284c7; border-color: #38bdf8;" href="#">⚡ <span data-i18n="openApp">Open Challenge in Ninely App</span></a>
+    </div>
   </div>
 
   <div class="card" style="padding: 16px;">
+    <div style="font-size: 0.95rem; color: var(--dim); margin-bottom: 8px;" data-i18n="browserPractice">Or practice right here in your browser:</div>
     <div class="timer-box">⏱️ <span id="game-timer">00:00</span></div>
     <div id="board" class="sudoku-board"></div>
     
@@ -79,13 +84,13 @@
   </div>
 
   <div class="store-links">
-    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely" target="_blank" rel="noopener noreferrer noreferrer">Google Play</a>
-    <a class="store-btn" href="https://apps.apple.com/app/id6824055538" target="_blank" rel="noopener noreferrer noreferrer">App Store</a>
+    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web&utm_medium=duel_footer" target="_blank" rel="noopener noreferrer">Google Play</a>
+    <a class="store-btn" href="https://apps.apple.com/app/id6824055538?ct=duel_footer" target="_blank" rel="noopener noreferrer">App Store</a>
   </div>
 </div>
 
 <footer>
-  <a href="../">Ninely</a> · <a href="../privacy.html">Privacy</a> · <a href="mailto:aviisr@aviisrgames.com">Support</a>
+  <a href="../">Ninely Hub</a> · <a href="../strategy/">Strategy</a> · <a href="../privacy.html">Privacy</a> · <a href="mailto:aviisr@aviisrgames.com">Support</a>
 </footer>
 </main>
 
@@ -99,36 +104,42 @@
       badge: "Ninely Friend Challenge",
       title: "Ninely Sudoku Duel",
       sub: "A friend challenged you to beat their Sudoku time. Play right here or launch the app!",
-      openApp: "Open in Ninely App",
+      openApp: "Open Challenge in Ninely App",
       smartHint: "Smart Hint",
       restart: "↺ Restart",
       erase: "⌫",
-      won: "Board Cleared!"
+      won: "Board Cleared!",
+      duelNote: "This challenge was created in the Ninely mobile game. Tap below to launch the app with the exact challenge seed and timer:",
+      browserPractice: "Or practice right here in your browser:"
     },
     he: {
       badge: "אתגר חברים Ninely",
       title: "דו-קרב סודוקו ב-Ninely",
-      sub: "חבר אתגר אותך לנצח את הזמן שלו! אפשר לשחק כאן בדפדפן או לפתוח באפליקציה:",
-      openApp: "פתיחה באפליקציית Ninely",
+      sub: "חבר אתגר אותך לנצח את הזמן שלו! פתחו באפליקציה או שחקו כאן בדפדפן:",
+      openApp: "פתיחת האתגר באפליקציית Ninely",
       smartHint: "רמז חכם",
       restart: "↺ התחלה מחדש",
       erase: "⌫ מחק",
-      won: "הלוח הושלם בהצלחה!"
+      won: "הלוח הושלם בהצלחה!",
+      duelNote: "האתגר נוצר במשחק Ninely למובייל. לחצו כאן כדי לפתוח את האתגר עם הלוח והזמן המדויק באפליקציה:",
+      browserPractice: "או תרגלו כאן בדפדפן:"
     },
     ar: {
       badge: "تحدي الأصدقاء Ninely",
       title: "تحدي سودوكو في Ninely",
-      sub: "صديقك يتحداك في لوح سودوكو! العب هنا في المتصفح أو افتح التطبيق مباشرة:",
-      openApp: "فتح في تطبيق Ninely",
+      sub: "صديقك يتحداك في لوح سودوكو! افتح التطبيق أو العب في المتصفح:",
+      openApp: "فتح التحدي في تطبيق Ninely",
       smartHint: "تلميح ذكي",
       restart: "↺ إعادة البدء",
       erase: "⌫ مسح",
-      won: "تم حل اللوح بنجاح!"
+      won: "تم حل اللوح بنجاح!",
+      duelNote: "تمت مشاركة هذا التحدي من تطبيق Ninely. اضغط لفتح اللعبة باللوح والوقت المحددين:",
+      browserPractice: "أو تدرّب هنا في المتصفح:"
     }
   };
 
   AviisrI18n.init({
-    supported: ['en', 'he', 'ar', 'ja', 'ko', 'de', 'fr', 'nl', 'es', 'pt-BR', 'zh-TW', 'zh-CN', 'it', 'ru', 'sv', 'da', 'nb', 'fi'],
+    supported: ['en', 'he', 'ar'],
     translations: translations,
     defaultLang: 'en'
   });
@@ -152,16 +163,12 @@
   var openBtn = document.getElementById('open');
   if (openBtn) openBtn.href = appUrl;
 
-  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    setTimeout(function () { window.location.href = appUrl; }, 400);
-  }
-
   function Mulberry32(seed) {
     return function() {
-      var t = seed += 0x6D2B79F5;
-      t = Math.imul(t ^ t >>> 15, t | 1);
-      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      var val = seed += 0x6D2B79F5;
+      val = Math.imul(val ^ val >>> 15, val | 1);
+      val ^= val + Math.imul(val ^ val >>> 7, val | 61);
+      return ((val ^ val >>> 14) >>> 0) / 4294967296;
     };
   }
 
@@ -225,18 +232,41 @@
     this.classList.add('selected');
   }
 
+  function updateConflicts() {
+    for (var i = 0; i < 81; i++) cells[i].classList.remove('conflict');
+    for (var idx = 0; idx < 81; idx++) {
+      var val = currentBoard[idx];
+      if (val === 0) continue;
+      var r = Math.floor(idx / 9), c = idx % 9;
+      var br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+      var hasConflict = false;
+
+      for (var col = 0; col < 9; col++) {
+        var o1 = r * 9 + col;
+        if (o1 !== idx && currentBoard[o1] === val) { hasConflict = true; break; }
+      }
+      if (!hasConflict) {
+        for (var row = 0; row < 9; row++) {
+          var o2 = row * 9 + c;
+          if (o2 !== idx && currentBoard[o2] === val) { hasConflict = true; break; }
+        }
+      }
+      if (!hasConflict) {
+        for (var bi = 0; bi < 9; bi++) {
+          var o3 = (br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3));
+          if (o3 !== idx && currentBoard[o3] === val) { hasConflict = true; break; }
+        }
+      }
+      if (hasConflict) cells[idx].classList.add('conflict');
+    }
+  }
+
   function handleNumInput(val) {
     if (selectedCell === -1 || puzzle[selectedCell] !== 0) return;
     currentBoard[selectedCell] = val;
     cells[selectedCell].textContent = val === 0 ? '' : String(val);
     cells[selectedCell].classList.remove('hinted');
-
-    if (val !== 0 && val !== baseSolution[selectedCell]) {
-      cells[selectedCell].classList.add('conflict');
-    } else {
-      cells[selectedCell].classList.remove('conflict');
-    }
-
+    updateConflicts();
     checkWin();
   }
 
@@ -265,16 +295,44 @@
   }, 1000);
 
   function checkWin() {
-    for (var c = 0; c < 81; c++) {
-      if (currentBoard[c] !== baseSolution[c]) return;
+    for (var i = 0; i < 81; i++) {
+      if (currentBoard[i] < 1 || currentBoard[i] > 9) return;
+      if (puzzle[i] !== 0 && currentBoard[i] !== puzzle[i]) return;
     }
+
+    for (var r = 0; r < 9; r++) {
+      var rowMask = 0;
+      for (var c = 0; c < 9; c++) {
+        var num = currentBoard[r * 9 + c];
+        if ((rowMask & (1 << num)) !== 0) return;
+        rowMask |= (1 << num);
+      }
+    }
+    for (var c2 = 0; c2 < 9; c2++) {
+      var colMask = 0;
+      for (var r2 = 0; r2 < 9; r2++) {
+        var num2 = currentBoard[r2 * 9 + c2];
+        if ((colMask & (1 << num2)) !== 0) return;
+        colMask |= (1 << num2);
+      }
+    }
+    for (var b = 0; b < 9; b++) {
+      var boxMask = 0;
+      var br = Math.floor(b / 3) * 3, bc = (b % 3) * 3;
+      for (var bi = 0; bi < 9; bi++) {
+        var num3 = currentBoard[(br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3))];
+        if ((boxMask & (1 << num3)) !== 0) return;
+        boxMask |= (1 << num3);
+      }
+    }
+
     clearInterval(timerInterval);
     var winBox = document.getElementById('win-box');
     var winTime = document.getElementById('win-time');
     var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
     var timeStr = m + 'm ' + s + 's';
     if (winTime) {
-      winTime.textContent = timeStr + (secondsElapsed < targetSecs ? ' — ⚡ You beat your friend\'s time!' : ' — Solved!');
+      winTime.textContent = timeStr + (secondsElapsed <= targetSecs ? ' — ⚡ You beat your friend\'s time!' : ' — Solved!');
     }
     if (winBox) winBox.style.display = 'block';
   }
@@ -293,7 +351,7 @@
           currentBoard[i] = correctVal;
         }
         hintBox.style.display = 'block';
-        hintBox.textContent = 'Smart Hint: Row ' + row + ', Column ' + col + ' must be ' + correctVal + ' because no other number fits that row/column/box. (Ninely teaches advanced techniques like Naked Singles, Hidden Pairs, and X-Wings in the full app!)';
+        hintBox.textContent = 'Smart Hint: Row ' + row + ', Column ' + col + ' is ' + correctVal + '. In the full Ninely app, Smart Hints show complete candidate highlights step-by-step!';
         checkWin();
         return;
       }

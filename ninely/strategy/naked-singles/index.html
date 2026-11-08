@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Find Naked Singles in Sudoku: Step-by-Step Guide | Ninely</title>
+<meta name="description" content="Learn what a Naked Single is in Sudoku, how to spot it by eliminating peer digits, and how to avoid the common wrong move trap. Interactive worked example.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/naked-singles/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Find Naked Singles in Sudoku: Step-by-Step Guide",
+  "description": "A comprehensive, worked tutorial on identifying Naked Singles in Sudoku using cell peer elimination.",
+  "url": "https://aviisrgames.com/ninely/strategy/naked-singles/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>How to Find Naked Singles in Sudoku</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Naked Single?</h2>
+      <p>A <strong>Naked Single</strong> (often called a <em>Sole Candidate</em>) occurs when a single empty cell can only contain one possible digit because the other eight digits (1 through 9) are already present in its <strong>peers</strong>—that is, in its row, its column, or its 3×3 box.</p>
+      <p>Unlike a <em>Hidden Single</em> (where a number can only go in one spot in an entire house), a Naked Single is identified by looking directly at the cell itself and ticking off all digits blocked by its intersecting neighbors.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Cell Row 5, Column 5</h2>
+      <p>Consider the central cell at <strong>Row 5, Column 5</strong> (center of the board). Let us examine every intersecting unit:</p>
+      <ul>
+        <li><strong>Row 5 contains:</strong> 1, 2, 3, 4, 6, 8, 9</li>
+        <li><strong>Column 5 contains:</strong> 2, 3, 4, 6, 7, 8</li>
+        <li><strong>Center 3×3 Box contains:</strong> 2, 3, 4, 6, 8, 9</li>
+      </ul>
+      <p>Now count through digits 1 to 9 for the target cell:</p>
+      <p><code>1</code> (blocked by row), <code>2</code> (blocked by box), <code>3</code> (blocked by row), <code>4</code> (blocked by col), <code>6</code> (blocked by box), <code>7</code> (blocked by col), <code>8</code> (blocked by row), <code>9</code> (blocked by box).</p>
+      <p><strong>The only surviving digit is 5!</strong></p>
+
+      <!-- Static representation readable with JS disabled -->
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
+          <!-- Row 5 (Target at Col 5) -->
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell highlight"></div><div class="diagram-cell highlight"></div><div class="diagram-cell fixed">8</div><div id="target-cell" class="diagram-cell target">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell highlight"></div><div class="diagram-cell highlight"></div><div class="diagram-cell fixed">1</div>
+          <!-- Row 6 -->
+          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Digit 5 confirmed</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: All 8 peers are populated, leaving 5 as the only remaining candidate for R5C5.)</em></p>
+      </noscript>
+    </div>
+
+    <!-- Mobile ad slot -->
+    <div class="ad-slot-container ad-inline">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Guessing 7 in R5C5</h4>
+        <p>A player without complete pencil marks might see that 7 is missing in Row 5 and hurriedly place 7 in the center cell (R5C5).</p>
+        <p><strong>Why this fails:</strong> Column 5 already has a 7 in Row 1! Placing 7 in R5C5 creates an illegal duplicate in Column 5. Later in the solve, Row 9 will have no legal placement for its 7. In Ninely, Smart Hints will alert you to the row and column collisions before you commit the error.</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: The "Rule of 8"</h4>
+        <p>Whenever a row and column cross at a cell that shares a crowded 3×3 box, count the distinct numbers in all three units. If they sum to 8 distinct digits, you have found a Naked Single!</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Put It Into Practice</h3>
+      <p>Try spotting naked singles in real time on today's Ninely daily board:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Desktop Rail Ad Slot -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder" style="min-height: 400px;">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../hidden-singles/">Hidden Singles Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  // Progressive step-through for the interactive board
+  var currentStep = 3;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    { num: 1, text: "Step 1 of 3: Inspect empty cell at Row 5, Column 5", val: "", cls: "highlight" },
+    { num: 2, text: "Step 2 of 3: 8 peer digits (1,2,3,4,6,7,8,9) cross this cell", val: "·5·", cls: "highlight" },
+    { num: 3, text: "Step 3 of 3: Digit 5 is the sole survivor (Naked Single)", val: "5", cls: "target" }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.textContent = s.val;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

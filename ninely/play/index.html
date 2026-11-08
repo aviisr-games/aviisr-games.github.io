@@ -6,18 +6,19 @@
 <title>Ninely - Daily Web Sudoku & Smart Hints</title>
 <meta name="description" content="Play the free Ninely Daily Sudoku warmup with smart hints explaining each move. Available on iOS & Android.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://*.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
 <link rel="stylesheet" href="../../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2451365263828795" crossorigin="anonymous"></script>
 <style>
   .play-container { max-width: 540px; margin: 0 auto; text-align: center; }
-  .badge-pill { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 12px; }
+  .badge-pill { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 12px; font-size: 0.9rem; }
+  .date-pill { display: inline-block; background: rgba(242, 201, 76, 0.15); color: var(--gold); border: 1px solid rgba(242, 201, 76, 0.3); padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; }
   .sudoku-board { display: grid; grid-template-columns: repeat(9, 1fr); gap: 1px; background: #334155; border: 3px solid #0f172a; border-radius: 8px; margin: 16px auto; max-width: 360px; aspect-ratio: 1; padding: 2px; }
-  .sudoku-cell { background: #1e293b; color: #f8fafc; font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
+  .sudoku-cell { background: #1e293b; color: #f8fafc; font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.1s; }
   .sudoku-cell:hover { background: #334155; }
   .sudoku-cell.selected { background: #0284c7; color: #fff; }
   .sudoku-cell.fixed { background: #0f172a; color: #94a3b8; cursor: default; }
-  .sudoku-cell.hinted { background: #f59e0b; color: #000; }
+  .sudoku-cell.hinted { background: #f59e0b; color: #000; font-weight: 800; }
+  .sudoku-cell.highlighted { background: rgba(2, 132, 199, 0.4); }
   .sudoku-cell.conflict { background: #dc2626; color: #fff; }
   .sudoku-cell:nth-child(3n) { border-right: 2px solid #64748b; }
   .sudoku-cell:nth-child(9n) { border-right: none; }
@@ -26,20 +27,26 @@
   .numpad { display: flex; justify-content: center; gap: 6px; margin: 14px auto; flex-wrap: wrap; max-width: 360px; }
   .num-btn { background: #334155; color: #fff; border: 1px solid #475569; border-radius: 6px; font-size: 1.15rem; font-weight: bold; padding: 10px 14px; cursor: pointer; min-width: 34px; }
   .num-btn:hover { background: #0284c7; }
-  .action-btn { background: #f59e0b; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; padding: 10px 18px; cursor: pointer; margin: 6px 4px; }
-  .hint-box { background: rgba(15, 23, 42, 0.7); border: 1px solid #38bdf8; border-radius: 8px; padding: 12px; margin: 14px 0; font-size: 0.95rem; text-align: left; display: none; }
+  .action-btn { background: #f59e0b; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; padding: 10px 18px; cursor: pointer; margin: 6px 4px; font-size: 0.95rem; }
+  .action-btn:hover { background: #fbbf24; }
+  .hint-box { background: rgba(15, 23, 42, 0.85); border: 1px solid #38bdf8; border-radius: 8px; padding: 14px; margin: 14px 0; font-size: 0.95rem; text-align: left; display: none; line-height: 1.5; }
   [dir="rtl"] .hint-box { text-align: right; }
+  .hint-tech { font-weight: bold; color: #38bdf8; display: block; margin-bottom: 4px; }
+  .hint-link { display: inline-block; margin-top: 8px; color: var(--gold); font-weight: 600; text-decoration: underline; }
+  .win-card { display: none; margin-top: 16px; padding: 18px; background: #064e3b; border: 1px solid #10b981; color: #fff; border-radius: 10px; font-size: 1rem; }
+  .win-card h2 { color: #a7f3d0; margin: 0 0 8px; font-size: 1.35rem; }
   .store-links { margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .store-btn { display: inline-block; background: #000; color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none; border: 1px solid #334155; }
+  .store-btn { display: inline-block; background: #000; color: #fff; padding: 9px 18px; border-radius: 8px; font-weight: bold; text-decoration: none; border: 1px solid #334155; transition: background 0.15s; }
   .store-btn:hover { background: #1e293b; text-decoration: none; }
 </style>
 </head>
 <body>
 <main>
-<nav class="lang"><a href="../">Ninely</a> <a href="../../">All Games</a></nav>
+<nav class="lang"><a href="../">Ninely</a> · <a href="../strategy/">Strategy</a> · <a href="../../">All Games</a></nav>
 
 <div class="play-container">
   <div class="badge-pill" data-i18n="badge">Daily Sudoku Warmup</div>
+  <div id="date-label" class="date-pill">Loading puzzle...</div>
   <h1 data-i18n="title">Ninely: Daily Web Puzzle</h1>
   <p class="sub" data-i18n="sub">Train your logic with smart hints. Clear the board in your browser, or download the full game for thousands of puzzles!</p>
 
@@ -66,19 +73,25 @@
     </div>
 
     <div id="hint-box" class="hint-box"></div>
-    <div id="win-box" style="display: none; margin-top: 14px; padding: 14px; background: #065f46; color: #fff; border-radius: 8px; font-weight: bold;">
-      🎉 <span data-i18n="won">Congratulations! Board cleared in</span> <span id="win-time"></span>!
+    
+    <div id="win-box" class="win-card">
+      <h2>🎉 <span data-i18n="won">Board cleared in</span> <span id="win-time"></span>!</h2>
+      <p style="margin: 8px 0 14px; color: #d1fae5;" data-i18n="practiseMore">Practise more techniques and master thousands of boards in the full Ninely app:</p>
+      <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web&utm_medium=daily_win" target="_blank" rel="noopener noreferrer">Get on Google Play</a>
+        <a class="store-btn" href="https://apps.apple.com/app/id6824055538?ct=daily_win" target="_blank" rel="noopener noreferrer">Download on App Store</a>
+      </div>
     </div>
   </div>
 
   <div class="store-links">
-    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely" target="_blank" rel="noopener noreferrer noreferrer">Get on Google Play</a>
-    <a class="store-btn" href="https://apps.apple.com/app/id6824055538" target="_blank" rel="noopener noreferrer noreferrer">Download on App Store</a>
+    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web&utm_medium=daily_footer" target="_blank" rel="noopener noreferrer">Get on Google Play</a>
+    <a class="store-btn" href="https://apps.apple.com/app/id6824055538?ct=daily_footer" target="_blank" rel="noopener noreferrer">Download on App Store</a>
   </div>
 </div>
 
 <footer>
-  <a href="../">Ninely Hub</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../../">All Games</a>
+  <a href="../">Ninely Hub</a> · <a href="../strategy/">Strategy Guides</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../../">All Games</a>
 </footer>
 </main>
 
@@ -95,7 +108,8 @@
       smartHint: "Smart Hint",
       restart: "↺ Restart",
       erase: "⌫",
-      won: "Congratulations! Board cleared in"
+      won: "Board cleared in",
+      practiseMore: "Practise more techniques and master thousands of boards in the full Ninely app:"
     },
     he: {
       badge: "חימום סודוקו יומי",
@@ -104,7 +118,8 @@
       smartHint: "רמז חכם",
       restart: "↺ התחלה מחדש",
       erase: "⌫ מחק",
-      won: "כל הכבוד! הלוח הושלם תוך"
+      won: "הלוח הושלם תוך",
+      practiseMore: "תרגלו טכניקות מתקדמות באפליקציית Ninely המלאה:"
     },
     ar: {
       badge: "لغز سودوكو اليومي",
@@ -113,59 +128,91 @@
       smartHint: "تلميح ذكي",
       restart: "↺ إعادة البدء",
       erase: "⌫ مسح",
-      won: "تهانينا! تم حل اللوح في"
+      won: "تم حل اللوح في",
+      practiseMore: "تدرّب على المزيد من التقنيات في تطبيق Ninely الكامل:"
     }
   };
 
   AviisrI18n.init({
-    supported: ['en', 'he', 'ar', 'ja', 'ko', 'de', 'fr', 'nl', 'es', 'pt-BR', 'zh-TW', 'zh-CN', 'it', 'ru', 'sv', 'da', 'nb', 'fi'],
+    supported: ['en', 'he', 'ar'],
     translations: translations,
     defaultLang: 'en'
   });
 
-  // Daily seed based on YYYYMMDD
-  var today = new Date();
-  var dailySeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+  // Evergreen practice fallback puzzle (strictly 1 solution, verified by native engine)
+  var fallbackPackEntry = {
+    id: "practice-fallback",
+    difficulty: "Medium",
+    puzzle: "000800109070060040000000000000000000000000000000000000000000000040060070901008000",
+    solution: "234857169875169243196234857312475698457698312689312475723541986548963721961728534",
+    hint: {
+      targetRow: 1,
+      targetCol: 0,
+      targetDigit: 9,
+      technique: "HiddenSingle",
+      localizationKey: "HINT_HIDDEN_SINGLE_BOX",
+      highlights: [{row: 1, col: 0}]
+    }
+  };
 
-  function Mulberry32(seed) {
-    return function() {
-      var t = seed += 0x6D2B79F5;
-      t = Math.imul(t ^ t >>> 15, t | 1);
-      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
-    };
-  }
-
-  var rng = Mulberry32(dailySeed);
-
-  var baseSolution = [
-    5,3,4,6,7,8,9,1,2,
-    6,7,2,1,9,5,3,4,8,
-    1,9,8,3,4,2,5,6,7,
-    8,5,9,7,6,1,4,2,3,
-    4,2,6,8,5,3,7,9,1,
-    7,1,3,9,2,4,8,5,6,
-    9,6,1,5,3,7,2,8,4,
-    2,8,7,4,1,9,6,3,5,
-    3,4,5,2,8,6,1,7,9
-  ];
-
-  var holesCount = 38;
-  var puzzle = baseSolution.slice();
-  var indices = [];
-  for (var i = 0; i < 81; i++) indices.push(i);
-  for (var k = indices.length - 1; k > 0; k--) {
-    var j = Math.floor(rng() * (k + 1));
-    var tmp = indices[k]; indices[k] = indices[j]; indices[j] = tmp;
-  }
-  for (var r = 0; r < holesCount; r++) {
-    puzzle[indices[r]] = 0;
-  }
-
-  var currentBoard = puzzle.slice();
+  var activePuzzle = fallbackPackEntry;
+  var puzzleGivens = [];
+  var currentBoard = [];
   var selectedCell = -1;
   var boardEl = document.getElementById('board');
+  var dateLabel = document.getElementById('date-label');
   var cells = [];
+  var secondsElapsed = 0;
+  var timerInterval = null;
+  var gameWon = false;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function getTodayKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    secondsElapsed = 0;
+    var timerEl = document.getElementById('game-timer');
+    if (timerEl) timerEl.textContent = '00:00';
+    timerInterval = setInterval(function () {
+      if (gameWon) return;
+      secondsElapsed++;
+      var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
+      if (timerEl) timerEl.textContent = pad(m) + ':' + pad(s);
+    }, 1000);
+  }
+
+  function setupBoard(entry, isDaily) {
+    activePuzzle = entry;
+    gameWon = false;
+    puzzleGivens = [];
+    currentBoard = [];
+    var pStr = entry.puzzle;
+    for (var i = 0; i < 81; i++) {
+      var v = parseInt(pStr.charAt(i), 10) || 0;
+      puzzleGivens.push(v);
+      currentBoard.push(v);
+    }
+
+    if (dateLabel) {
+      if (isDaily && entry.date) {
+        dateLabel.textContent = 'Daily Puzzle · ' + entry.date + ' (' + (entry.difficulty || 'Medium') + ')';
+      } else {
+        dateLabel.textContent = 'Evergreen Practice Board · ' + (entry.difficulty || 'Medium');
+      }
+    }
+
+    renderBoard();
+    startTimer();
+    var hintBox = document.getElementById('hint-box');
+    if (hintBox) hintBox.style.display = 'none';
+    var winBox = document.getElementById('win-box');
+    if (winBox) winBox.style.display = 'none';
+  }
 
   function renderBoard() {
     boardEl.replaceChildren();
@@ -173,9 +220,9 @@
     for (var idx = 0; idx < 81; idx++) {
       var cell = document.createElement('div');
       cell.className = 'sudoku-cell';
-      if (puzzle[idx] !== 0) {
+      if (puzzleGivens[idx] !== 0) {
         cell.classList.add('fixed');
-        cell.textContent = String(puzzle[idx]);
+        cell.textContent = String(puzzleGivens[idx]);
       } else if (currentBoard[idx] !== 0) {
         cell.textContent = String(currentBoard[idx]);
       }
@@ -188,7 +235,7 @@
 
   function onCellClick() {
     var idx = parseInt(this.getAttribute('data-idx'), 10);
-    if (puzzle[idx] !== 0) return;
+    if (puzzleGivens[idx] !== 0) return;
     if (selectedCell !== -1 && cells[selectedCell]) {
       cells[selectedCell].classList.remove('selected');
     }
@@ -196,19 +243,103 @@
     this.classList.add('selected');
   }
 
+  function clearHighlights() {
+    for (var i = 0; i < cells.length; i++) {
+      cells[i].classList.remove('highlighted');
+    }
+  }
+
+  function updateConflicts() {
+    // Check conflicts per cell: duplicate digit in same row, column, or 3x3 box
+    for (var i = 0; i < 81; i++) {
+      cells[i].classList.remove('conflict');
+    }
+
+    for (var idx = 0; idx < 81; idx++) {
+      var val = currentBoard[idx];
+      if (val === 0) continue;
+      var r = Math.floor(idx / 9), c = idx % 9;
+      var br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+      var hasConflict = false;
+
+      // Row check
+      for (var col = 0; col < 9; col++) {
+        var o1 = r * 9 + col;
+        if (o1 !== idx && currentBoard[o1] === val) { hasConflict = true; break; }
+      }
+      // Col check
+      if (!hasConflict) {
+        for (var row = 0; row < 9; row++) {
+          var o2 = row * 9 + c;
+          if (o2 !== idx && currentBoard[o2] === val) { hasConflict = true; break; }
+        }
+      }
+      // Box check
+      if (!hasConflict) {
+        for (var bi = 0; bi < 9; bi++) {
+          var o3 = (br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3));
+          if (o3 !== idx && currentBoard[o3] === val) { hasConflict = true; break; }
+        }
+      }
+
+      if (hasConflict) {
+        cells[idx].classList.add('conflict');
+      }
+    }
+  }
+
   function handleNumInput(val) {
-    if (selectedCell === -1 || puzzle[selectedCell] !== 0) return;
+    if (selectedCell === -1 || puzzleGivens[selectedCell] !== 0 || gameWon) return;
     currentBoard[selectedCell] = val;
     cells[selectedCell].textContent = val === 0 ? '' : String(val);
     cells[selectedCell].classList.remove('hinted');
+    clearHighlights();
+    updateConflicts();
+    checkWin();
+  }
 
-    if (val !== 0 && val !== baseSolution[selectedCell]) {
-      cells[selectedCell].classList.add('conflict');
-    } else {
-      cells[selectedCell].classList.remove('conflict');
+  function checkWin() {
+    // Check complete and valid
+    for (var i = 0; i < 81; i++) {
+      if (currentBoard[i] < 1 || currentBoard[i] > 9) return;
+      if (puzzleGivens[i] !== 0 && currentBoard[i] !== puzzleGivens[i]) return;
     }
 
-    checkWin();
+    // Validate rows, cols, boxes
+    for (var r = 0; r < 9; r++) {
+      var rowMask = 0;
+      for (var c = 0; c < 9; c++) {
+        var num = currentBoard[r * 9 + c];
+        if ((rowMask & (1 << num)) !== 0) return;
+        rowMask |= (1 << num);
+      }
+    }
+    for (var c2 = 0; c2 < 9; c2++) {
+      var colMask = 0;
+      for (var r2 = 0; r2 < 9; r2++) {
+        var num2 = currentBoard[r2 * 9 + c2];
+        if ((colMask & (1 << num2)) !== 0) return;
+        colMask |= (1 << num2);
+      }
+    }
+    for (var b = 0; b < 9; b++) {
+      var boxMask = 0;
+      var br = Math.floor(b / 3) * 3, bc = (b % 3) * 3;
+      for (var bi = 0; bi < 9; bi++) {
+        var num3 = currentBoard[(br + Math.floor(bi / 3)) * 9 + (bc + (bi % 3))];
+        if ((boxMask & (1 << num3)) !== 0) return;
+        boxMask |= (1 << num3);
+      }
+    }
+
+    // Win condition met!
+    gameWon = true;
+    if (timerInterval) clearInterval(timerInterval);
+    var winBox = document.getElementById('win-box');
+    var winTime = document.getElementById('win-time');
+    var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
+    if (winTime) winTime.textContent = pad(m) + ':' + pad(s);
+    if (winBox) winBox.style.display = 'block';
   }
 
   document.querySelectorAll('.num-btn').forEach(function (btn) {
@@ -226,59 +357,93 @@
     }
   });
 
-  var secondsElapsed = 0;
-  var timerInterval = setInterval(function () {
-    secondsElapsed++;
-    var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
-    var timerDisplay = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    var timerEl = document.getElementById('game-timer');
-    if (timerEl) timerEl.textContent = timerDisplay;
-  }, 1000);
-
-  function checkWin() {
-    for (var c = 0; c < 81; c++) {
-      if (currentBoard[c] !== baseSolution[c]) return;
-    }
-    clearInterval(timerInterval);
-    var winBox = document.getElementById('win-box');
-    var winTime = document.getElementById('win-time');
-    var m = Math.floor(secondsElapsed / 60), s = secondsElapsed % 60;
-    var timeStr = m + 'm ' + s + 's';
-    if (winTime) winTime.textContent = timeStr;
-    if (winBox) winBox.style.display = 'block';
-  }
-
   document.getElementById('hint-btn').addEventListener('click', function () {
+    if (gameWon) return;
+    clearHighlights();
+    var hint = activePuzzle.hint;
     var hintBox = document.getElementById('hint-box');
-    for (var i = 0; i < 81; i++) {
-      if (currentBoard[i] !== baseSolution[i]) {
-        var correctVal = baseSolution[i];
-        var row = Math.floor(i / 9) + 1;
-        var col = (i % 9) + 1;
-        if (cells[i]) {
-          cells[i].classList.add('hinted');
-          cells[i].classList.remove('conflict');
-          cells[i].textContent = String(correctVal);
-          currentBoard[i] = correctVal;
-        }
+    if (!hint) {
+      if (hintBox) {
         hintBox.style.display = 'block';
-        hintBox.textContent = 'Smart Hint: Row ' + row + ', Column ' + col + ' must be ' + correctVal + ' by single candidate elimination. In the full Ninely app, hints visually highlight the candidates and teach you step-by-step!';
-        checkWin();
-        return;
+        hintBox.textContent = 'Smart Hint: Look for single row/column candidates!';
+      }
+      return;
+    }
+
+    var r = hint.targetRow, c = hint.targetCol, val = hint.targetDigit;
+    var targetIdx = r * 9 + c;
+
+    if (cells[targetIdx]) {
+      cells[targetIdx].classList.add('hinted');
+      cells[targetIdx].textContent = String(val);
+      currentBoard[targetIdx] = val;
+    }
+
+    if (hint.highlights && hint.highlights.length) {
+      for (var h = 0; h < hint.highlights.length; h++) {
+        var hl = hint.highlights[h];
+        var hlIdx = hl.row * 9 + hl.col;
+        if (cells[hlIdx] && hlIdx !== targetIdx) {
+          cells[hlIdx].classList.add('highlighted');
+        }
       }
     }
+
+    updateConflicts();
+
+    var techSlug = 'hidden-singles';
+    if (hint.technique === 'NakedSingle') techSlug = 'naked-singles';
+    else if (hint.technique === 'PointingPair' || hint.technique === 'BoxLine') techSlug = 'locked-candidates';
+
+    if (hintBox) {
+      hintBox.style.display = 'block';
+      hintBox.replaceChildren();
+      var title = document.createElement('span');
+      title.className = 'hint-tech';
+      title.textContent = '💡 Smart Hint: ' + (hint.technique || 'Logic Deduction') + ' placed ' + val + ' at row ' + (r + 1) + ', column ' + (c + 1);
+      hintBox.appendChild(title);
+
+      var desc = document.createElement('p');
+      desc.style.margin = '4px 0 6px';
+      desc.textContent = 'In the full Ninely app, Smart Hints analyze candidates step-by-step to show why this number is locked.';
+      hintBox.appendChild(desc);
+
+      var guideLink = document.createElement('a');
+      guideLink.className = 'hint-link';
+      guideLink.href = '../strategy/' + techSlug + '/';
+      guideLink.target = '_blank';
+      guideLink.textContent = 'Learn how to spot ' + hint.technique + ' in our Strategy Guide ➔';
+      hintBox.appendChild(guideLink);
+    }
+
+    checkWin();
   });
 
   document.getElementById('restart-btn').addEventListener('click', function () {
-    currentBoard = puzzle.slice();
-    renderBoard();
-    var hintBox = document.getElementById('hint-box');
-    if (hintBox) hintBox.style.display = 'none';
-    var winBox = document.getElementById('win-box');
-    if (winBox) winBox.style.display = 'none';
+    setupBoard(activePuzzle, activePuzzle.date !== undefined);
   });
 
-  renderBoard();
+  // Load daily pack
+  var todayKey = getTodayKey();
+  fetch('daily-pack.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('Failed to fetch daily-pack.json: ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      if (data && data.days && data.days[todayKey]) {
+        setupBoard(data.days[todayKey], true);
+      } else if (data && data.fallback) {
+        setupBoard(data.fallback, false);
+      } else {
+        setupBoard(fallbackPackEntry, false);
+      }
+    })
+    .catch(function (err) {
+      console.warn('Offline or pack missing; using evergreen practice fallback', err);
+      setupBoard(fallbackPackEntry, false);
+    });
+
 })();
 </script>
 </body>

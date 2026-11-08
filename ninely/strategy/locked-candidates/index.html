@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Locked Candidates in Sudoku: Pointing Pairs & Box-Line Reductions | Ninely</title>
+<meta name="description" content="Master Locked Candidates in Sudoku. Learn how Pointing Pairs and Box-Line Reductions eliminate candidate digits across lines and boxes. Interactive diagram.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/locked-candidates/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Locked Candidates in Sudoku: Pointing Pairs and Box-Line Reductions",
+  "description": "Learn how candidate interactions between 3x3 boxes and lines unlock hard Sudoku puzzles.",
+  "url": "https://aviisrgames.com/ninely/strategy/locked-candidates/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Locked Candidates in Sudoku: Pointing Pairs & Box-Line Reductions</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What Are Locked Candidates?</h2>
+      <p>When you advance from beginner to intermediate or expert Sudoku puzzles, singles alone are no longer enough. You need <strong>candidate eliminations</strong> to unlock the board.</p>
+      <p><strong>Locked Candidates</strong> (also known as <em>Intersections</em>) happen when the possible spots for a number in one unit are constrained in a way that affects an intersecting unit. There are two complementary types:</p>
+      <ol>
+        <li><strong>Type 1: Pointing Pair / Triple (Box to Line):</strong> Inside a 3×3 box, all candidates for a digit lie strictly along a single row or column. Therefore, that digit <em>must</em> be placed on that line inside this box—and cannot appear anywhere else in that row or column outside the box!</li>
+        <li><strong>Type 2: Box-Line Reduction (Line to Box):</strong> Along a row or column, all candidates for a digit lie strictly within a single 3×3 box. Therefore, that digit cannot appear in any other cell of that 3×3 box!</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Pointing Pair in Box 2</h2>
+      <p>Look at Box 2 (top middle, Rows 1–3, Columns 4–6). Suppose digit <strong>7</strong> can only appear in <strong>Row 2, Column 4</strong> and <strong>Row 2, Column 5</strong>.</p>
+      <ul>
+        <li>Because 7 must go into one of these two cells to satisfy Box 2, <strong>7 is locked into Row 2</strong>.</li>
+        <li>Now trace Row 2 across into neighboring Box 3 (top right). Any pencil mark for 7 in Box 3 along Row 2 (e.g. at R2C8 or R2C9) is <strong>eliminated</strong>!</li>
+        <li>Removing 7 from R2C8 instantly turns R2C8 into a Naked Single (e.g. placing 3)!</li>
+      </ul>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 2: Pointing pair at Col 4 & 5, danger at Col 8 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell highlight">7?</div><div class="diagram-cell highlight">7?</div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div id="target-cell" class="diagram-cell danger">⍉ 7</div><div class="diagram-cell"></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div>
+          <!-- Row 4-9 context -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div>
+          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Candidate 7 eliminated from R2C8</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Box 2, 7 can only sit in Row 2. Thus R2C8 cannot be 7, eliminating candidate 7 from Row 2 outside Box 2.)</em></p>
+      </noscript>
+    </div>
+
+    <!-- Mobile ad slot -->
+    <div class="ad-slot-container ad-inline">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 7 in R2C8</h4>
+        <p>A player who notices that Row 2 needs a 7 might place it casually in R2C8 without checking Box 2.</p>
+        <p><strong>Why this fails:</strong> Placing 7 in R2C8 means that Row 2 inside Box 2 cannot contain 7. But in Box 2, <em>Row 2 was the only line with candidate 7 remaining!</em> Now Box 2 has zero valid cells for 7, immediately corrupting the game. In Ninely, Smart Hints reveal this locked alignment and explain the elimination step before you get trapped.</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: The Box-to-Line Scan</h4>
+        <p>When you finish placing simple singles and hit your first roadblock, scan each 3×3 box one by one. Check if the remaining candidates for any number line up in the same horizontal row or vertical column. If they do, project that line into neighboring boxes and cross off candidates!</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Try Advanced Logic?</h3>
+      <p>Test your candidate reading on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Desktop Rail Ad Slot -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder" style="min-height: 400px;">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../naked-singles/">Naked Singles Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 3;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    { num: 1, text: "Step 1 of 3: Look at Box 2. Candidates for 7 are locked strictly in Row 2.", val: "7?", cls: "highlight" },
+    { num: 2, text: "Step 2 of 3: Follow Row 2 rightwards into Box 3.", val: "7?", cls: "highlight" },
+    { num: 3, text: "Step 3 of 3: Candidate 7 eliminated from R2C8 (Locked Candidates Pointing Pair)", val: "⍉ 7", cls: "danger" }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.textContent = s.val;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

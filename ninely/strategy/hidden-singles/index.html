@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Spot Hidden Singles in Sudoku: Step-by-Step Guide | Ninely</title>
+<meta name="description" content="Discover how to spot Hidden Singles in Sudoku rows, columns, and 3x3 boxes. Learn the difference between naked and hidden singles with an interactive board.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/hidden-singles/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Spot Hidden Singles in Sudoku: Step-by-Step Guide",
+  "description": "Learn the most common foundational Sudoku technique: locating Hidden Singles in boxes, rows, and columns.",
+  "url": "https://aviisrgames.com/ninely/strategy/hidden-singles/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>How to Spot Hidden Singles in Sudoku</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Hidden Single?</h2>
+      <p>A <strong>Hidden Single</strong> occurs when a particular number can only fit in <em>one</em> remaining cell within a unit (a row, a column, or a 3×3 box), even though that cell might have multiple other candidate numbers written into it.</p>
+      <p>It is called "hidden" because if you inspect only the cell, you might see pencil notes like <code>{2, 4, 7}</code> and think the cell is unresolved. But if you look at the entire 3×3 box, you discover that <strong>4 cannot be placed in any other cell of that box</strong> because crossing rows or columns block it elsewhere!</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Placing 4 in Box 1</h2>
+      <p>Observe the top-left 3×3 box (Box 1, Rows 1–3, Columns 1–3):</p>
+      <ul>
+        <li>Row 1 has empty cells at Column 2 and 3. But Row 1 already intersects with a 4 in Column 8.</li>
+        <li>Row 2 has a 4 given in Column 6, so no cell in Row 2 can hold a 4.</li>
+        <li>Row 3 has only one empty cell remaining at <strong>Row 3, Column 3</strong>.</li>
+      </ul>
+      <p>Because crossing 4s block all other empty positions in Box 1, <strong>Row 3, Column 3 is the only available shelter for 4</strong>!</p>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1: crossing 4 from right -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell highlight"></div><div class="diagram-cell highlight"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">2</div>
+          <!-- Row 2: contains 4 at col 8 -->
+          <div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">8</div>
+          <!-- Row 3: Target cell at col 3 -->
+          <div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div id="target-cell" class="diagram-cell target">4</div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">7</div>
+          <!-- Row 4-9 context -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div>
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div>
+          <div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">9</div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn" disabled>◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 3 of 3: Digit 4 locked into R3C3</span>
+          <button type="button" id="next-step" class="step-btn" disabled>Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: All other cells in Box 1 are blocked by crossing 4s, making R3C3 the sole placement for 4.)</em></p>
+      </noscript>
+    </div>
+
+    <!-- Mobile ad slot -->
+    <div class="ad-slot-container ad-inline">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h4>⚠️ The Tempting Wrong Move: Placing 8 at R3C3</h4>
+        <p>A player looking at the row might see that 8 is also missing and place 8 in R3C3 because "it isn't in Row 3 yet."</p>
+        <p><strong>Why this fails:</strong> Placing 8 in R3C3 starves Box 1 of any valid location for 4! With R3C3 filled with 8, 4 has zero legal cells remaining in Box 1, creating an irrecoverable dead board. Always check whether placing an alternative digit makes another digit impossible to place in that unit.</p>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Solving Tip: Cross-Hatching Technique</h4>
+        <p>The fastest way to spot Hidden Singles in 3×3 boxes is called <strong>cross-hatching</strong>: pick one digit (e.g. 1), trace its horizontal and vertical lines across neighbouring boxes, and see which box has only one unblocked cell left.</p>
+      </div>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Spot Hidden Singles?</h3>
+      <p>Test your cross-hatching speed on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+    </div>
+  </article>
+
+  <!-- Desktop Rail Ad Slot -->
+  <aside class="ad-rail">
+    <div class="ad-slot-container">
+      <span class="ad-label">Advertisements</span>
+      <div class="ad-placeholder" style="min-height: 400px;">
+        <span>Sponsored Content</span>
+        <small style="margin-top: 4px; opacity: 0.7;">Reserved Ad Placement</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../locked-candidates/">Locked Candidates Guide ➔</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 3;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+  
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    { num: 1, text: "Step 1 of 3: Look at Box 1. Digit 4 is missing.", val: "", cls: "highlight" },
+    { num: 2, text: "Step 2 of 3: Rows 1 and 2 already have crossing 4s elsewhere", val: "·4·", cls: "highlight" },
+    { num: 3, text: "Step 3 of 3: Digit 4 locked into R3C3 (Hidden Single in Box 1)", val: "4", cls: "target" }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.textContent = s.val;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  prevBtn.disabled = false;
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+</body>
+</html>

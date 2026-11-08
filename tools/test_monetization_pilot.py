@@ -336,33 +336,34 @@ class MonetizationPilotTests(unittest.TestCase):
                         ]
                         self.assertEqual(len(box_vals), len(set(box_vals)), f"Duplicate digit in Box ({br},{bc}) of {g.parent.name}")
 
-                # Verify mathematical validity of all rendered candidate notes against filled givens
+                # Verify mathematical validity of all rendered candidate notes against filled givens (exact set equality)
                 for idx, cands in enumerate(parser.cell_candidates):
                     if not cands:
                         continue
                     r, c = divmod(idx, 9)
                     br, bc = (r // 3) * 3, (c // 3) * 3
-                    for cand in cands:
-                        for col_i in range(9):
-                            if col_i != c:
-                                self.assertNotEqual(
-                                    parser.cells[r * 9 + col_i], cand,
-                                    f"Candidate {cand} at R{r+1}C{c+1} collides with Row {r+1} given in {g.parent.name}"
-                                )
-                        for row_i in range(9):
-                            if row_i != r:
-                                self.assertNotEqual(
-                                    parser.cells[row_i * 9 + c], cand,
-                                    f"Candidate {cand} at R{r+1}C{c+1} collides with Col {c+1} given in {g.parent.name}"
-                                )
-                        for bi in range(3):
-                            for bj in range(3):
-                                peer_idx = (br + bi) * 9 + (bc + bj)
-                                if peer_idx != idx:
-                                    self.assertNotEqual(
-                                        parser.cells[peer_idx], cand,
-                                        f"Candidate {cand} at R{r+1}C{c+1} collides with Box given in {g.parent.name}"
-                                    )
+                    used = set()
+                    for i in range(9):
+                        used.add(parser.cells[r * 9 + i])
+                        used.add(parser.cells[i * 9 + c])
+                        used.add(parser.cells[(br + i // 3) * 9 + (bc + i % 3)])
+                    true_peer_cands = (set(range(1, 10)) - used)
+                    self.assertEqual(
+                        set(cands),
+                        true_peer_cands,
+                        f"Candidate set mismatch at R{r+1}C{c+1} in {g.parent.name}: shown={sorted(cands)}, expected={sorted(true_peer_cands)}"
+                    )
+
+                # Verify that interactive walkthrough steps produce distinct states (no duplicate Step 2 vs Step 3)
+                step_htmls = re.findall(r'num:\s*([1-3]),.*?html1?:\s*([^\n]+)', content, re.DOTALL)
+                if step_htmls and len(step_htmls) >= 3:
+                    s2_html = next((h for n, h in step_htmls if n == '2'), None)
+                    s3_html = next((h for n, h in step_htmls if n == '3'), None)
+                    if s2_html and s3_html:
+                        self.assertNotEqual(
+                            s2_html.strip(), s3_html.strip(),
+                            f"Step 2 and Step 3 in {g.parent.name} must produce visually distinct DOM states"
+                        )
 
                 # Verify board is completable to at least 1 valid Sudoku solution
                 self.assertGreaterEqual(
@@ -446,6 +447,9 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('<meta name="apple-itunes-app"', duel_html)
         self.assertIn('app-id=6824055538', duel_html)
         self.assertIn('id="btn-copy-duel-link"', duel_html)
+        self.assertIn('data-i18n="copyLink"', duel_html)
+        self.assertIn('copiedLink', duel_html)
+        self.assertIn('clearTimeout(copyTimer)', duel_html)
         self.assertIn('navigator.clipboard', duel_html)
 
     def test_slice3_middle_east_2030_guide_and_briefing_paths(self):

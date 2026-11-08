@@ -55,7 +55,7 @@
     <span data-i18n="duelNote">This challenge link was shared from the Ninely mobile game. Tap below to launch Ninely on your phone with the exact challenge seed and target time:</span>
     <div class="duel-actions">
       <a id="open" class="store-btn" style="background: #0284c7; border-color: #38bdf8;" href="#">⚡ <span data-i18n="openApp">Open Challenge in Ninely App</span></a>
-      <button type="button" id="btn-copy-duel-link" class="action-btn aux-btn">🔗 Copy Challenge Link</button>
+      <button type="button" id="btn-copy-duel-link" class="action-btn aux-btn" data-i18n="copyLink">🔗 Copy Challenge Link</button>
     </div>
   </div>
 
@@ -115,7 +115,9 @@
       erase: "⌫",
       won: "Board Cleared!",
       duelNote: "This challenge was created in the Ninely mobile game. Tap below to launch the app with the exact challenge seed and timer:",
-      browserPractice: "Browser Practice Board (Verified Unique Solution · Matching Difficulty):"
+      browserPractice: "Browser Practice Board (Verified Unique Solution · Matching Difficulty):",
+      copyLink: "🔗 Copy Challenge Link",
+      copiedLink: "✓ Link Copied!"
     },
     he: {
       badge: "אתגר חברים Ninely",
@@ -127,7 +129,9 @@
       erase: "⌫ מחק",
       won: "הלוח הושלם בהצלחה!",
       duelNote: "האתגר נוצר במשחק Ninely למובייל. לחצו כאן כדי לפתוח את האתגר עם הלוח והזמן המדויק באפליקציה:",
-      browserPractice: "לוח תרגול בדפדפן (פתרון יחיד מאומת ברמת הקושי שנבחרה):"
+      browserPractice: "לוח תרגול בדפדפן (פתרון יחיד מאומת ברמת הקושי שנבחרה):",
+      copyLink: "🔗 העתקת קישור לאתגר",
+      copiedLink: "✓ הקישור הועתק!"
     },
     ar: {
       badge: "تحدي الأصدقاء Ninely",
@@ -139,7 +143,9 @@
       erase: "⌫ مسح",
       won: "تم حل اللوح بنجاح!",
       duelNote: "تمت مشاركة هذا التحدي من تطبيق Ninely. اضغط لفتح اللعبة باللوح والوقت المحددين:",
-      browserPractice: "لوح تدريب في المتصفح (حل وحيد موثق بنفس مستوى الصعوبة):"
+      browserPractice: "لوح تدريب في المتصفح (حل وحيد موثق بنفس مستوى الصعوبة):",
+      copyLink: "🔗 نسخ رابط التحدي",
+      copiedLink: "✓ تم نسخ الرابط!"
     }
   };
 
@@ -173,6 +179,12 @@
     itunesMeta.setAttribute('content', 'app-id=6824055538, app-argument=https://aviisrgames.com/ninely/duel/?s=' + encodeURIComponent(s) + '&d=' + encodeURIComponent(d) + '&t=' + encodeURIComponent(t));
   }
 
+  var copyTimer = null;
+  function getDict() {
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    return translations[lang] || translations.en;
+  }
+
   var copyBtn = document.getElementById('btn-copy-duel-link');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
@@ -182,10 +194,11 @@
         : canonicalUrl;
 
       function onCopied() {
-        var originalText = copyBtn.textContent;
-        copyBtn.textContent = '✓ Link Copied!';
-        setTimeout(function () {
-          copyBtn.textContent = originalText;
+        if (copyTimer) clearTimeout(copyTimer);
+        copyBtn.textContent = getDict().copiedLink;
+        copyTimer = setTimeout(function () {
+          copyBtn.textContent = getDict().copyLink;
+          copyTimer = null;
         }, 2000);
       }
 

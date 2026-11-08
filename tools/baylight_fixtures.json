@@ -269,7 +269,7 @@
         },
         {
           "action": "bay",
-          "target": 0,
+          "target": 2,
           "afterState": {
             "i": 12,
             "bays": [
@@ -657,7 +657,7 @@
         },
         {
           "action": "bay",
-          "target": 2,
+          "target": 3,
           "afterState": {
             "i": 13,
             "bays": [
@@ -670,16 +670,16 @@
                 2
               ],
               [
-                "P",
-                1
+                null,
+                0
               ],
               [
-                "P",
-                2
+                null,
+                0
               ]
             ],
             "locked": 0,
-            "ships": 2,
+            "ships": 3,
             "pallet": []
           }
         },
@@ -698,16 +698,16 @@
                 0
               ],
               [
-                "P",
-                1
+                null,
+                0
               ],
               [
-                "P",
-                2
+                null,
+                0
               ]
             ],
             "locked": 0,
-            "ships": 3,
+            "ships": 4,
             "pallet": []
           }
         },

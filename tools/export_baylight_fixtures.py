@@ -16,6 +16,24 @@ import baylight_rules
 
 OUT_FILE = Path(__file__).resolve().parent.parent / 'tools/baylight_fixtures.json'
 
+
+def ordered_moves(lvl, st):
+    """Prioritize matching-color bays first, then empty bays, then pallet."""
+    raw = list(baylight_rules.moves(lvl, st))
+    f = lvl['belt'][st.i] if st.i < len(lvl['belt']) else None
+
+    def priority(item):
+        act, _ = item
+        if act[0] == 'bay':
+            k = act[1]
+            if st.bays[k][0] == f:
+                return (0, k)
+            return (1, k)
+        return (2, 0)
+
+    return sorted(raw, key=priority)
+
+
 def solve_level(lvl):
     q = deque([(baylight_rules.start(lvl), [])])
     seen = {baylight_rules.start(lvl).key()}
@@ -23,12 +41,13 @@ def solve_level(lvl):
         st, path = q.popleft()
         if baylight_rules.won(lvl, st):
             return path
-        for act, nxt in baylight_rules.moves(lvl, st):
+        for act, nxt in ordered_moves(lvl, st):
             k = nxt.key()
             if k not in seen and baylight_rules.solvable(lvl, nxt):
                 seen.add(k)
                 q.append((nxt, path + [(act, nxt)]))
     return None
+
 
 def main():
     levels_path = BAYLIGHT_DIR / 'Assets/_Project/Resources/Levels/levels.txt'
@@ -81,6 +100,7 @@ def main():
 
     OUT_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
     print(f"Exported {len(exported_levels)} levels to {OUT_FILE}")
+
 
 if __name__ == '__main__':
     main()

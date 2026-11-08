@@ -155,8 +155,8 @@
     pointer-events: none;
   }
   .zone-porch {
-    left: 40%;
-    width: 20%;
+    left: 35%;
+    width: 25%;
     background: #f59e0b;
   }
   .zone-mailbox {
@@ -457,25 +457,34 @@
   var bikeEl = document.getElementById('courier-bike');
   var cursorEl = document.getElementById('meter-cursor');
   var bannerEl = document.getElementById('result-banner');
+  var animFrameId = null;
 
   function updateVisuals() {
     cursorEl.style.left = pos + '%';
-    bikeEl.style.left = (pos * 0.85) + '%';
+    bikeEl.style.left = 'calc(' + pos + '% - 18px)';
   }
 
   function loop() {
-    if (!isPaused) {
-      pos += dir * speed;
-      if (pos >= 100) {
-        pos = 100;
-        dir = -1;
-      } else if (pos <= 0) {
-        pos = 0;
-        dir = 1;
-      }
-      updateVisuals();
+    if (isPaused) {
+      animFrameId = null;
+      return;
     }
-    requestAnimationFrame(loop);
+    pos += dir * speed;
+    if (pos >= 100) {
+      pos = 100;
+      dir = -1;
+    } else if (pos <= 0) {
+      pos = 0;
+      dir = 1;
+    }
+    updateVisuals();
+    animFrameId = requestAnimationFrame(loop);
+  }
+
+  function startLoopIfRunning() {
+    if (!isPaused && animFrameId === null) {
+      animFrameId = requestAnimationFrame(loop);
+    }
   }
 
   function throwPaper() {
@@ -523,10 +532,20 @@
   document.getElementById('btn-toggle-motion').addEventListener('click', function() {
     isPaused = !isPaused;
     this.textContent = isPaused ? '▶️ Resume Motion' : '⏸️ Pause Motion';
+    if (isPaused && animFrameId !== null) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    } else {
+      startLoopIfRunning();
+    }
   });
 
   document.getElementById('btn-step-frame').addEventListener('click', function() {
     isPaused = true;
+    if (animFrameId !== null) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
     document.getElementById('btn-toggle-motion').textContent = '▶️ Resume Motion';
     pos = (pos + 10) % 100;
     updateVisuals();
@@ -543,11 +562,12 @@
     bannerEl.style.color = '#f8fafc';
   });
 
+  updateVisuals();
   if (isPaused) {
     document.getElementById('btn-toggle-motion').textContent = '▶️ Resume Motion';
+  } else {
+    startLoopIfRunning();
   }
-
-  requestAnimationFrame(loop);
 })();
 </script>
 </body>

@@ -40,6 +40,11 @@ def count_sudoku_solutions(board_list, limit=2):
     return sols
 
 
+def store_link_tags(html):
+    """Every <a> pointing at a store listing (App Store or Google Play)."""
+    return re.findall(r'<a\b[^>]*href="https://(?:apps\.apple\.com|play\.google\.com)[^"]*"[^>]*>', html)
+
+
 def read_mila_vocabulary():
     """vocabulary.ts at the packs' pinned commit, or None when no english-learning clone is present
     (set MILA_REPO; defaults to ~/Repos/english-learning)."""
@@ -278,7 +283,11 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertNotIn('gtag', content, f"{path.name} must not contain analytics")
 
         landing = (ROOT / 'mila/index.html').read_text(encoding='utf-8')
-        self.assertIn('referrerpolicy="no-referrer"', landing, "Store link on Mila must have no-referrer")
+        # Mila is not public yet, so the hub shows "coming soon" with no store link. Any store link
+        # added at launch must carry referrerpolicy="no-referrer" and no campaign tags.
+        for tag in store_link_tags(landing):
+            self.assertIn('referrerpolicy="no-referrer"', tag, "Store link on Mila must have no-referrer")
+            self.assertNotIn('utm_', tag)
         self.assertNotIn('utm_', landing, "Mila store link must not contain UTM parameters")
         self.assertNotIn('ct=', landing, "Mila store link must not contain campaign parameters")
 
@@ -769,8 +778,9 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertNotIn('gtag', h)
             self.assertNotIn('doubleclick', h)
 
-        # Untagged store link with referrerpolicy
-        self.assertIn('referrerpolicy="no-referrer"', sheet_html)
+        # Any store link must be untagged and carry referrerpolicy (none while Mila is unreleased)
+        for tag in store_link_tags(sheet_html):
+            self.assertIn('referrerpolicy="no-referrer"', tag)
         self.assertNotIn('utm_', sheet_html)
 
         # Regression checks for Defect 1 (Mila RTL column wording, Part C sentence bidi isolation, landing page print buttons)

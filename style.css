@@ -138,3 +138,12 @@ nav.lang {
 
 section + section { border-top: 1px solid rgba(255,255,255,.15); margin-top: 2.5rem; padding-top: 1rem; }
 footer { color: var(--dim); font-size: .9rem; margin-top: 3rem; text-align: center; border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; }
+
+/* Honest platform fallback next to store links (e.g. "Not on iPhone yet"). */
+.store-note {
+  display: inline-block;
+  align-self: center;
+  padding: 6px 4px;
+  color: var(--dim, #a9b5ad);
+  font-size: 0.9rem;
+}

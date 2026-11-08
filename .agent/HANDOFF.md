@@ -15,7 +15,7 @@
 - **Wave 3 shipped.** `/ninely/strategy/naked-triples/` (Row 1 triple {1,2,3}, R1C8 -> 8) and `/ninely/strategy/swordfish/` (digit 4, Cols 3/7/9 x Rows 1/2/5, R5C2 -> 1). Both boards have unique solutions and the patterns hold on givens-only candidates (asserted in `test_wave3_patterns_hold_on_plain_candidates`). Hub cards 7-8 and sitemap updated.
 - **Hint deep-link.** `#hint-box` link label is "Learn this technique ➔" (en/he/ar) via `TECHNIQUE_GUIDES` (all engine techniques; unknown -> Strategy Hub).
 - **Tests no longer need `/Volumes/MacMiniDev`.** Mila and Baylight checks read their pinned commits from local clones (`MILA_REPO`, `BAYLIGHT_REPO`, default `~/Repos/...`).
-- **Still open (Section 3 item 3):** human print-preview pass and ad sign-off. `ADS_ENABLED` stays `false`.
+- **Closed (Section 3 item 3, 2026-11-08):** Avi checked the print preview on the live site and approved it. Ads: leave as is. The reserved placeholder box stays, and no ad script ships (the flag lives only in these notes; Mila stays ad-free).
 
 ---
 

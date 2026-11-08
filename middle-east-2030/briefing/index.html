@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Middle East 2030: Crisis Briefing Teaser</title>
 <meta name="description" content="Can you navigate 3 months as Prime Minister? Make critical geopolitical decisions and read tomorrow's front page.">
+<link rel="canonical" href="https://aviisrgames.com/middle-east-2030/briefing/">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
 <link rel="stylesheet" href="../../style.css">
@@ -12,26 +13,29 @@
   body { background: #f5f0e3; color: #1a1a1a; font-family: Georgia, serif; }
   main { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
   h1 { color: #1a1a1a; font-size: 2rem; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; }
-  .newspaper-header { text-align: center; border-bottom: 3px double #1a1a1a; margin-bottom: 18px; padding-bottom: 8px; }
+  .newspaper-header { text-align: center; border-bottom: 3px double #1a1a1a; margin-bottom: 14px; padding-bottom: 8px; }
   .newspaper-title { font-family: 'Times New Roman', serif; font-size: 2.4rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
   .newspaper-meta { font-size: 0.85rem; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4px 0; margin-top: 6px; display: flex; justify-content: space-between; }
+  .fiction-banner { background: #fffbeb; border: 1px solid #92400e; color: #78350f; padding: 8px 12px; border-radius: 4px; margin-bottom: 14px; font-family: sans-serif; font-size: 0.84rem; text-align: center; }
   .crisis-card { background: #fff; border: 1px solid #d4cbb8; border-radius: 4px; padding: 20px; box-shadow: 2px 2px 8px rgba(0,0,0,0.06); margin: 18px 0; }
   .month-tag { font-family: sans-serif; font-size: 0.85rem; font-weight: bold; color: #7f1d1d; text-transform: uppercase; margin-bottom: 6px; }
   .dilemma-title { font-size: 1.35rem; font-weight: bold; margin-bottom: 10px; }
   .dilemma-desc { font-size: 1.05rem; line-height: 1.6; color: #2d3748; margin-bottom: 18px; }
   .choice-btn { display: block; width: 100%; text-align: left; background: #faf8f5; border: 1px solid #1a1a1a; border-radius: 4px; padding: 12px 16px; margin-bottom: 10px; font-family: Georgia, serif; font-size: 1rem; cursor: pointer; transition: background 0.15s; }
   [dir="rtl"] .choice-btn { text-align: right; }
-  .choice-btn:hover { background: #e8dfcf; }
+  .choice-btn:hover, .choice-btn:focus-visible { background: #e8dfcf; outline: 2px solid #7f1d1d; }
   .choice-impact { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
   .stats-bar { display: flex; justify-content: space-around; background: #e8dfcf; border: 1px solid #c9bfa8; border-radius: 4px; padding: 10px; margin-bottom: 16px; font-family: sans-serif; font-weight: bold; font-size: 0.95rem; }
   .headline-result { font-family: 'Times New Roman', serif; font-size: 1.6rem; font-weight: bold; line-height: 1.25; margin: 12px 0; color: #1a1a1a; }
+  .guide-callout { background: #faf8f5; border-left: 4px solid #7f1d1d; padding: 12px 14px; margin: 14px 0; font-size: 0.95rem; }
+  .guide-callout a { color: #7f1d1d; font-weight: bold; }
   .store-banner { background: #1a1a1a; color: #fff; padding: 20px; border-radius: 6px; text-align: center; margin-top: 24px; }
   .store-banner a { display: inline-block; background: #fff; color: #1a1a1a; padding: 8px 16px; border-radius: 4px; font-weight: bold; margin: 8px 6px; text-decoration: none; }
 </style>
 </head>
 <body>
 <main>
-<nav class="lang" style="margin-bottom: 12px;"><a href="../">Middle East 2030</a> <a href="../../">All Games</a></nav>
+<nav class="lang" style="margin-bottom: 12px;"><a href="../">Middle East 2030</a> · <a href="../guide/">Strategy &amp; Chair Guide</a> · <a href="../../">All Games</a></nav>
 
 <div class="newspaper-header">
   <div class="newspaper-title">The Morning Edition</div>
@@ -40,6 +44,10 @@
     <span data-i18n="metaDate">Jerusalem / Regional Desk · Crisis Simulation</span>
     <span>3-Month Preview</span>
   </div>
+</div>
+
+<div class="fiction-banner" role="note" data-i18n="fictionNotice">
+  <strong>Work of Fiction:</strong> Fictional political strategy simulation set in an invented 2030. Read the <a href="../guide/" style="color:#7f1d1d; font-weight:bold;">Coalition Strategy &amp; Chair Guide</a>.
 </div>
 
 <div class="stats-bar">
@@ -61,13 +69,18 @@
   <div class="month-tag" data-i18n="termSummary">Term Result · Special Front Page</div>
   <div id="final-headline" class="headline-result">Government Holds On After Tumultuous 3 Months</div>
   <p id="final-editorial" style="font-size: 1.05rem; line-height: 1.6; color: #374151;"></p>
+
+  <div class="guide-callout">
+    <span id="path-summary-label">Decision Path: AAA</span> ·
+    <a id="guide-outcome-link" href="../guide/#path-AAA">Read Strategic Analysis for Path AAA in the Companion Guide ➔</a>
+  </div>
   
   <div class="store-banner">
     <h3 style="margin-bottom: 6px; color: #fff;" data-i18n="fullGameTitle">Govern a full multi-year term in Middle East 2030</h3>
     <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="fullGameSub">8 playable capitals, dozens of crises, daily newspaper printouts and deep geopolitical simulation.</p>
     <div>
-      <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030" target="_blank" rel="noopener noreferrer noreferrer">Get it on Google Play</a>
-      <a href="https://apps.apple.com/app/id6820597256" target="_blank" rel="noopener noreferrer noreferrer">Download on App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+      <a href="https://apps.apple.com/app/id6820597256" target="_blank" rel="noopener noreferrer">Download on App Store</a>
     </div>
   </div>
   
@@ -77,7 +90,7 @@
 </div>
 
 <footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #71717a;">
-  <a href="../">Middle East 2030</a> · <a href="../privacy/">Privacy Policy</a> · <a href="../support/">Support</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
+  <a href="../">Middle East 2030</a> · <a href="../guide/">Strategy Guide</a> · <a href="../privacy/">Privacy Policy</a> · <a href="../support/">Support</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
 </footer>
 </main>
 
@@ -131,8 +144,8 @@
       title: "Cross-Border Energy Pipeline Accord",
       desc: "Neighbors propose an expedited joint natural gas & solar grid. Coalition hardliners demand sovereign control, while industrialists warn of rising brownouts.",
       choices: [
-        { text: "Sign the regional energy treaty with security guarantees", dC: -5, dE: +12, dS: +8, headline: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW" },
-        { text: "Reject multilateral terms and fund emergency domestic coal/gas", dC: +8, dE: -8, dS: -4, headline: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS" }
+        { code: "A", text: "Sign the regional energy treaty with security guarantees", dC: -5, dE: +12, dS: +8, headline: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW" },
+        { code: "B", text: "Reject multilateral terms and fund emergency domestic coal/gas", dC: +8, dE: -8, dS: -4, headline: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS" }
       ]
     },
     {
@@ -140,8 +153,8 @@
       title: "Currency Pressure & Foreign Reserve Crisis",
       desc: "Speculative currency runs threaten import prices on food and grain. The Central Bank requests immediate interest rate hikes and subsidy trimming.",
       choices: [
-        { text: "Authorize aggressive rate hike and target emergency food vouchers", dC: -4, dE: +10, dS: -2, headline: "INTEREST RATES HIKED TO DEFEND CURRENCY AS SHOPS FEEL SQUEEZE" },
-        { text: "Cap retail prices and draw down sovereign wealth reserves", dC: +6, dE: -12, dS: +4, headline: "GOVERNMENT CAPS FOOD PRICES DRAWING ON STRATEGIC RESERVES" }
+        { code: "A", text: "Authorize aggressive rate hike and target emergency food vouchers", dC: -4, dE: +10, dS: -2, headline: "INTEREST RATES HIKED TO DEFEND CURRENCY AS SHOPS FEEL SQUEEZE" },
+        { code: "B", text: "Cap retail prices and draw down sovereign wealth reserves", dC: +6, dE: -12, dS: +4, headline: "GOVERNMENT CAPS FOOD PRICES DRAWING ON STRATEGIC RESERVES" }
       ]
     },
     {
@@ -149,8 +162,8 @@
       title: "Diplomatic Summit on Maritime Boundaries",
       desc: "A disputed offshore maritime corridor risks naval friction or an economic opening with rival maritime neighbors.",
       choices: [
-        { text: "Negotiate shared exploration zones under neutral mediator arbitration", dC: -6, dE: +8, dS: +12, headline: "MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT" },
-        { text: "Deploy coast guard escorts and declare unilateral maritime boundary", dC: +10, dE: -6, dS: -10, headline: "NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS" }
+        { code: "A", text: "Negotiate shared exploration zones under neutral mediator arbitration", dC: -6, dE: +8, dS: +12, headline: "MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT" },
+        { code: "B", text: "Deploy coast guard escorts and declare unilateral maritime boundary", dC: +10, dE: -6, dS: -10, headline: "NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS" }
       ]
     }
   ];
@@ -158,6 +171,7 @@
   var currentMonth = 0;
   var stats = { coalition: 65, economy: 60, stability: 55 };
   var history = [];
+  var choiceCodes = [];
 
   function updateStatsUI() {
     document.getElementById('val-coalition').textContent = stats.coalition + '%';
@@ -190,6 +204,7 @@
         stats.economy = Math.max(10, Math.min(100, stats.economy + choice.dE));
         stats.stability = Math.max(10, Math.min(100, stats.stability + choice.dS));
         history.push(choice.headline);
+        choiceCodes.push(choice.code);
         updateStatsUI();
         currentMonth++;
         renderCurrentCrisis();
@@ -213,12 +228,22 @@
       (stats.stability > 60 ? "Diplomatic partners express confidence in regional de-escalation." : "Tensions remain elevated across borders, and parliamentary observers forecast early elections unless bold reforms follow.");
     
     document.getElementById('final-editorial').textContent = editorial;
+
+    var pathCode = choiceCodes.join('') || 'AAA';
+    var labelEl = document.getElementById('path-summary-label');
+    var linkEl = document.getElementById('guide-outcome-link');
+    if (labelEl) labelEl.textContent = 'Decision Path: ' + pathCode;
+    if (linkEl) {
+      linkEl.href = '../guide/#path-' + pathCode;
+      linkEl.textContent = 'Read Strategic Analysis for Path ' + pathCode + ' in the Companion Guide ➔';
+    }
   }
 
   document.getElementById('replay-btn').addEventListener('click', function () {
     currentMonth = 0;
     stats = { coalition: 65, economy: 60, stability: 55 };
     history = [];
+    choiceCodes = [];
     updateStatsUI();
     document.getElementById('game-container').style.display = 'block';
     document.getElementById('result-container').style.display = 'none';

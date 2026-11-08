@@ -326,6 +326,7 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/ninely/strategy/locked-candidates/',
             'https://aviisrgames.com/middle-east-2030/',
             'https://aviisrgames.com/middle-east-2030/briefing/',
+            'https://aviisrgames.com/middle-east-2030/guide/',
             'https://aviisrgames.com/mila/',
             'https://aviisrgames.com/casino/',
             'https://aviisrgames.com/privacy.html',
@@ -339,6 +340,55 @@ class MonetizationPilotTests(unittest.TestCase):
         duel = (ROOT / 'ninely/duel/index.html').read_text(encoding='utf-8')
         self.assertNotIn('setTimeout(function () { window.location.href = appUrl; }, 400);', duel)
         self.assertIn('Open Challenge in Ninely App', duel)
+
+    def test_slice3_middle_east_2030_guide_and_briefing_paths(self):
+        """Verify Slice 3 ME2030 scenario companion, 8 choice paths, 8 chairs, fiction labeling, and ad-free compliance."""
+        guide_path = ROOT / 'middle-east-2030/guide/index.html'
+        briefing_path = ROOT / 'middle-east-2030/briefing/index.html'
+        self.assertTrue(guide_path.exists(), "middle-east-2030/guide/index.html must exist")
+        guide_html = guide_path.read_text(encoding='utf-8')
+        briefing_html = briefing_path.read_text(encoding='utf-8')
+
+        # 1. Prominent fiction labeling, ad-free compliance, and house style (no em dashes)
+        self.assertIn('Work of Fiction', guide_html)
+        self.assertIn('Work of Fiction', briefing_html)
+        self.assertNotIn('ad-slot-container', guide_html, "ME2030 guide must remain strictly ad-free")
+        self.assertNotIn('adsbygoogle', guide_html, "ME2030 guide must not contain ad scripts")
+        self.assertNotIn('—', guide_html, "ME2030 guide must follow house style (no em dashes)")
+
+        # 2. Historical vs. fictional separation and Energy Accord fork controls
+        self.assertIn('Dated Historical Context', guide_html)
+        self.assertIn('In-Game Fictional Extrapolation', guide_html)
+        self.assertIn('id="btn-fork-a"', guide_html)
+        self.assertIn('id="btn-fork-b"', guide_html)
+        self.assertIn('id="btn-fork-reset"', guide_html)
+
+        # 3. All 8 playable capitals documented
+        for chair in ['Jerusalem', 'Cairo', 'Amman', 'Damascus', 'Tehran', 'Ankara', 'Riyadh', 'Abu Dhabi']:
+            self.assertIn(f'<strong>{chair}</strong>', guide_html, f"Guide must document chair {chair}")
+
+        # 4. Enumerate all 8 choice paths (AAA..BBB) and verify exact gauge math against briefing deltas
+        deltas = [
+            {'A': (-5, 12, 8), 'B': (8, -8, -4)},
+            {'A': (-4, 10, -2), 'B': (6, -12, 4)},
+            {'A': (-6, 8, 12), 'B': (10, -6, -10)},
+        ]
+        for c1 in ('A', 'B'):
+            for c2 in ('A', 'B'):
+                for c3 in ('A', 'B'):
+                    code = c1 + c2 + c3
+                    c_val, e_val, s_val = 65, 60, 55
+                    for m_idx, pick in enumerate((c1, c2, c3)):
+                        dc, de, ds = deltas[m_idx][pick]
+                        c_val = max(10, min(100, c_val + dc))
+                        e_val = max(10, min(100, e_val + de))
+                        s_val = max(10, min(100, s_val + ds))
+                    self.assertIn(f'id="path-{code}"', guide_html, f"Guide must contain anchor #path-{code}")
+                    expected_gauges = f'Coalition <strong>{c_val}%</strong> · Economy <strong>{e_val}%</strong> · Stability <strong>{s_val}%</strong>'
+                    self.assertIn(expected_gauges, guide_html, f"Path {code} gauge math mismatch in guide")
+
+        # 5. Briefing links each outcome to ../guide/#path-<code>
+        self.assertIn("'../guide/#path-' + pathCode", briefing_html)
 
 
 if __name__ == '__main__':

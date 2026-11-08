@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Middle East 2030 Coalition Strategy, Scenario Timeline &amp; Chair Guide | AVIISR Games</title>
+<meta name="description" content="Complete strategy companion for Middle East 2030: Politics Sim. Explore the 2030 fictional scenario timeline, the 8 playable capitals, the Energy Accord decision fork, and all 8 briefing outcomes.">
+<link rel="canonical" href="https://aviisrgames.com/middle-east-2030/guide/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Middle East 2030 Coalition Strategy, Scenario Timeline & Chair Guide",
+  "description": "Strategic guide to coalition survival, the Energy Pipeline Accord fork, all eight 3-month briefing outcomes, and the eight playable capitals in Middle East 2030.",
+  "url": "https://aviisrgames.com/middle-east-2030/guide/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr-games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-08"
+}
+</script>
+<style>
+  body { background: #f5f0e3; color: #1a1a1a; font-family: Georgia, serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 24px 16px; }
+  h1 { color: #1a1a1a; font-size: 2rem; border-bottom: 2px solid #1a1a1a; padding-bottom: 8px; margin-bottom: 8px; }
+  h2 { color: #1a1a1a; font-size: 1.45rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px; margin-top: 28px; }
+  h3 { color: #7f1d1d; font-size: 1.15rem; margin-top: 18px; margin-bottom: 6px; }
+  p, li { line-height: 1.65; color: #1f2937; }
+  a { color: #7f1d1d; font-weight: bold; }
+  .newspaper-header { text-align: center; border-bottom: 3px double #1a1a1a; margin-bottom: 18px; padding-bottom: 8px; }
+  .newspaper-title { font-family: 'Times New Roman', serif; font-size: 2.2rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+  .newspaper-meta { font-size: 0.85rem; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4px 0; margin-top: 6px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .fiction-banner { background: #fffbeb; border: 2px solid #92400e; color: #78350f; padding: 12px 16px; border-radius: 4px; margin: 14px 0 22px; font-family: sans-serif; font-size: 0.92rem; line-height: 1.5; }
+  .fiction-banner strong { text-transform: uppercase; letter-spacing: 0.5px; color: #7f1d1d; }
+  .guide-card { background: #fff; border: 1px solid #d4cbb8; border-radius: 4px; padding: 20px; box-shadow: 2px 2px 8px rgba(0,0,0,0.05); margin: 18px 0; }
+  .timeline-split { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 16px 0; }
+  @media (min-width: 700px) { .timeline-split { grid-template-columns: 1fr 1fr; } }
+  .timeline-box { background: #faf8f5; border: 1px solid #c9bfa8; border-radius: 4px; padding: 16px; }
+  .timeline-tag { display: inline-block; font-family: sans-serif; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; }
+  .tag-historical { background: #e2e8f0; color: #1e293b; }
+  .tag-fictional { background: #fee2e2; color: #7f1d1d; }
+  .fork-controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .fork-btn { flex: 1 1 240px; text-align: left; background: #faf8f5; border: 2px solid #1a1a1a; border-radius: 4px; padding: 12px 14px; font-family: Georgia, serif; font-size: 0.98rem; cursor: pointer; transition: background 0.15s; }
+  .fork-btn:hover, .fork-btn:focus-visible { background: #e8dfcf; outline: 2px solid #7f1d1d; }
+  .fork-btn.active { background: #1a1a1a; color: #fff; }
+  .fork-reset { background: #e8dfcf; border: 1px solid #1a1a1a; border-radius: 4px; padding: 8px 14px; font-family: sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; }
+  .fork-output { background: #faf8f5; border-left: 4px solid #7f1d1d; padding: 14px 16px; margin-top: 12px; }
+  .delta-pill { display: inline-block; font-family: sans-serif; font-size: 0.82rem; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-right: 6px; }
+  .delta-pos { background: #dcfce7; color: #166534; }
+  .delta-neg { background: #fee2e2; color: #991b1b; }
+  .paths-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+  @media (min-width: 700px) { .paths-grid { grid-template-columns: 1fr 1fr; } }
+  .path-card { background: #faf8f5; border: 1px solid #c9bfa8; border-radius: 4px; padding: 14px; scroll-margin-top: 24px; }
+  .path-card:target { border: 2px solid #7f1d1d; background: #fffbeb; }
+  .path-code { font-family: monospace; font-size: 0.95rem; font-weight: bold; background: #1a1a1a; color: #fff; padding: 2px 7px; border-radius: 3px; }
+  .chairs-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.95rem; background: #fff; }
+  .chairs-table th, .chairs-table td { border: 1px solid #c9bfa8; padding: 10px 12px; text-align: left; vertical-align: top; }
+  .chairs-table th { background: #e8dfcf; font-family: sans-serif; font-size: 0.85rem; text-transform: uppercase; }
+  .store-banner { background: #1a1a1a; color: #fff; padding: 20px; border-radius: 6px; text-align: center; margin-top: 28px; }
+  .store-banner a { display: inline-block; background: #fff; color: #1a1a1a; padding: 8px 16px; border-radius: 4px; font-weight: bold; margin: 8px 6px; text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+<nav class="lang" style="margin-bottom: 12px;">
+  <a href="../">Middle East 2030</a> · <a href="../briefing/">Play 3-Month Briefing</a> · <a href="../support/">Support</a> · <a href="../../">All Games</a>
+</nav>
+
+<div class="newspaper-header">
+  <div class="newspaper-title">The Morning Edition · Strategy Desk</div>
+  <div class="newspaper-meta">
+    <span>Companion Dossier</span>
+    <span>By Avi Israeli · Reviewed by Redline Engine Team (Updated 8 November 2026)</span>
+    <span>Ruleset v2.8.1</span>
+  </div>
+</div>
+
+<div class="fiction-banner" role="note" aria-label="Work of Fiction Notice">
+  <strong>Work of Fiction:</strong> <em>Middle East 2030: Politics Sim</em> is a work of political fiction set in an invented 2030. Real states appear by geography, but every cabinet minister, non-state network, newspaper headline, and post-2026 scenario is invented for gameplay. This page is completely ad-free.
+</div>
+
+<article>
+  <h1>Middle East 2030 Coalition Strategy: Scenario Timeline &amp; Chair Guide</h1>
+  <p>In <em>Middle East 2030</em>, a full term lasts 6 to 10 months (8 to 12 minutes of play). Each month you sit in one of eight regional capitals, weigh two cabinet decisions (plus an optional third using political capital), and face the next morning's newspaper front page. Unlike sprawling spreadsheet wargames, every economic decision carries an immediate political price, and both a compromise and a strike can bring your government down.</p>
+
+  <section class="guide-card" id="scenario-timeline">
+    <h2>1. Scenario Timeline: Dated Historical Baseline vs. In-Game Fiction</h2>
+    <p>To anchor the simulation without blurring real events and invented mechanics, the game separates the dated historical record (through autumn 2026) from the fictional three-year bridge (2027 to 2029) that sets the board on 1 January 2030.</p>
+
+    <div class="timeline-split">
+      <div class="timeline-box">
+        <span class="timeline-tag tag-historical">Dated Historical Context (2023 to Nov 2026)</span>
+        <ul>
+          <li><strong>October 2023 to 2024:</strong> Following the October 7 attack and the war in Gaza, regional conflict widened across the northern border, the Red Sea shipping lanes, and direct missile exchanges between Israel and Iran, alongside the December 2024 collapse of the Assad government in Damascus.</li>
+          <li><strong>2025 to 2026 (Dated Baseline as of November 2026):</strong> After the June 2025 twelve-day war, autumn 2025 Gaza ceasefire, and early-2026 regional escalations around Bab el-Mandeb and Hormuz, diplomatic tracks and ceasefire memoranda froze active fronts without resolving underlying strategic rivalries.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-box">
+        <span class="timeline-tag tag-fictional">In-Game Fictional Extrapolation (2027 to 2030)</span>
+        <ul>
+          <li><strong>2027 ("The Long Ceasefire", Fictional):</strong> Borders remain quiet on paper while state and non-state actors rebuild stockpiles with low-cost autonomous drones; high-energy laser air defense enters operational service and changes interception economics.</li>
+          <li><strong>2028 ("The Threshold Year", Fictional):</strong> Dispersed enrichment sites and competing intelligence estimates trigger cabinet splits across capitals over preemption versus containment.</li>
+          <li><strong>2029 to 1 January 2030 ("The Fall", Fictional):</strong> A budget freeze and grid crisis topple the outgoing cabinet. You take office on 1 January 2030 with a narrow mandate: <strong>65% Coalition</strong>, <strong>60% Economy</strong>, and <strong>55% Stability</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-card" id="energy-accord-fork">
+    <h2>2. Worked Policy Fork: Month 1 Cross-Border Energy Pipeline Accord</h2>
+    <p>In Month 1 of the <a href="../briefing/">playable 3-Month Crisis Briefing</a>, neighboring states propose an expedited joint natural gas and solar grid. Your coalition whip, <strong>Rafi Shoham</strong>, warns that hardliners will rebel against shared grid sovereignty, while Finance Minister <strong>Michal Avidar</strong> warns that rejecting the treaty will trigger industrial brownouts and credit downgrades.</p>
+    <p>Select either policy option below (using mouse, touch, or keyboard <code>Tab</code> / <code>Enter</code>) to inspect how the engine resolves the trade-off before Month 2 begins:</p>
+
+    <div class="fork-controls" role="group" aria-label="Month 1 Energy Accord Policy Fork">
+      <button type="button" id="btn-fork-a" class="fork-btn active" aria-pressed="true">
+        <strong>Option 1A: Sign Regional Energy Treaty</strong><br>
+        <small>Accept joint grid with security guarantees</small>
+      </button>
+      <button type="button" id="btn-fork-b" class="fork-btn" aria-pressed="false">
+        <strong>Option 1B: Reject Treaty &amp; Fund Domestic Grid</strong><br>
+        <small>Preserve sovereign control with emergency coal/gas</small>
+      </button>
+      <button type="button" id="btn-fork-reset" class="fork-reset">↺ Reset to Baseline (65 / 60 / 55)</button>
+    </div>
+
+    <div id="fork-live-panel" class="fork-output" aria-live="polite">
+      <div id="fork-headline" style="font-family: 'Times New Roman', serif; font-size: 1.35rem; font-weight: bold; margin-bottom: 8px;">
+        MORNING HEADLINE: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW"
+      </div>
+      <div id="fork-deltas" style="margin-bottom: 8px;">
+        <span class="delta-pill delta-neg">Coalition: 65% ➔ 60% (-5)</span>
+        <span class="delta-pill delta-pos">Economy: 60% ➔ 72% (+12)</span>
+        <span class="delta-pill delta-pos">Stability: 55% ➔ 63% (+8)</span>
+      </div>
+      <p id="fork-analysis" style="margin: 0;">
+        <strong>Strategic Consequence:</strong> Signing the accord cushions your Economy (+12) and regional Stability (+8) ahead of Month 2's currency run, allowing you to survive an interest-rate hike (`Path AAA` or `Path AAB`). However, dropping to 60% Coalition leaves little margin if you make two more anti-coalition concessions.
+      </p>
+    </div>
+
+    <noscript>
+      <p><em>Static Comparison (No-JS View): Option 1A shifts gauges to Coalition 60% (-5), Economy 72% (+12), Stability 63% (+8). Option 1B shifts gauges to Coalition 73% (+8), Economy 52% (-8), Stability 51% (-4). See all eight 3-month combinations below.</em></p>
+    </noscript>
+  </section>
+
+  <section class="guide-card" id="eight-choice-paths">
+    <h2>3. All Eight 3-Month Briefing Paths &amp; Outcomes</h2>
+    <p>The web briefing consists of three consecutive monthly dilemmas: <strong>Month 1 (Energy Pipeline Accord: 1A Treaty vs. 1B Domestic)</strong>, <strong>Month 2 (Currency Crisis: 2A Rate Hike vs. 2B Price Caps)</strong>, and <strong>Month 3 (Maritime Summit: 3A Shared Arbitration vs. 3B Naval Patrols)</strong>. Every path below starts from <code>Coalition 65% · Economy 60% · Stability 55%</code> and links back to the playable briefing:</p>
+
+    <div class="paths-grid">
+      <div class="path-card" id="path-AAA">
+        <div><span class="path-code">Path AAA</span> <strong>Reformist Technocrat</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1A Energy Treaty ➔ 2A Rate Hike ➔ 3A Maritime Arbitration</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>50%</strong> · Economy <strong>90%</strong> · Stability <strong>73%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Regional de-escalation holds (Stability &gt; 60%) with booming markets, but your coalition whip warns that one more backbench rebellion in Month 4 will trigger snap elections.</p>
+      </div>
+
+      <div class="path-card" id="path-AAB">
+        <div><span class="path-code">Path AAB</span> <strong>Pragmatic Deterrence</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1A Energy Treaty ➔ 2A Rate Hike ➔ 3B Naval Patrols</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>66%</strong> · Economy <strong>76%</strong> · Stability <strong>51%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Hardline naval deployment repairs your parliamentary majority (66%) and preserves economic gains (76%), but offshore gunboat friction drops Stability to 51% (elevated border tension).</p>
+      </div>
+
+      <div class="path-card" id="path-ABA">
+        <div><span class="path-code">Path ABA</span> <strong>Social Shield &amp; Detente</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1A Energy Treaty ➔ 2B Price Caps ➔ 3A Maritime Arbitration</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>60%</strong> · Economy <strong>68%</strong> · Stability <strong>79%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> The highest stability path in the briefing (79%). Month 1's energy surplus (+12) absorbs Month 2's reserve drawdown (-12), keeping all three gauges at 60% or above.</p>
+      </div>
+
+      <div class="path-card" id="path-ABB">
+        <div><span class="path-code">Path ABB</span> <strong>Populist Pivot</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1A Energy Treaty ➔ 2B Price Caps ➔ 3B Naval Patrols</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>76%</strong> · Economy <strong>54%</strong> · Stability <strong>57%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> After signing the energy deal, you appease domestic factions with food subsidies and coast guard patrols. Your whip is delighted (76%), but Stability slips below the 60% threshold.</p>
+      </div>
+
+      <div class="path-card" id="path-BAA">
+        <div><span class="path-code">Path BAA</span> <strong>Sovereign Start, Late Detente</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1B Domestic Grid ➔ 2A Rate Hike ➔ 3A Maritime Arbitration</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>63%</strong> · Economy <strong>70%</strong> · Stability <strong>61%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Banking coalition capital in Month 1 (+8) lets you spend political goodwill on central bank discipline and offshore arbitration, clearing the 60% de-escalation bar across every metric.</p>
+      </div>
+
+      <div class="path-card" id="path-BAB">
+        <div><span class="path-code">Path BAB</span> <strong>Austerity Hawk</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1B Domestic Grid ➔ 2A Rate Hike ➔ 3B Naval Patrols</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>79%</strong> · Economy <strong>56%</strong> · Stability <strong>39%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Combining grid isolation, retail rate pain, and naval confrontation drives Stability down to 39%, putting the cabinet on alert for diplomatic isolation or maritime skirmishes.</p>
+      </div>
+
+      <div class="path-card" id="path-BBA">
+        <div><span class="path-code">Path BBA</span> <strong>Domestic Fortress, Maritime Valve</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1B Domestic Grid ➔ 2B Price Caps ➔ 3A Maritime Arbitration</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>73%</strong> · Economy <strong>48%</strong> · Stability <strong>67%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Month 3's offshore deal rescues regional Stability (67%) and partially offsets two months of economic drain, though Economy (48%) requires urgent fiscal repair in Month 4.</p>
+      </div>
+
+      <div class="path-card" id="path-BBB">
+        <div><span class="path-code">Path BBB</span> <strong>Hardline Fortress</strong></div>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Choices:</strong> 1B Domestic Grid ➔ 2B Price Caps ➔ 3B Naval Patrols</p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Final Gauges:</strong> Coalition <strong>89%</strong> · Economy <strong>34%</strong> · Stability <strong>45%</strong></p>
+        <p style="font-size: 0.9rem; margin: 6px 0;"><strong>Front Page:</strong> <em>"NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS"</em></p>
+        <p style="font-size: 0.88rem; margin: 6px 0 0;"><strong>Verdict:</strong> Maximum coalition lockstep (89%) at the cost of depleted foreign reserves (34% Economy) and volatile borders (45% Stability). In a full 8-month campaign, this trajectory risks sovereign default or embargo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-card" id="eight-chairs-guide">
+    <h2>4. Chair Guide: The Eight Playable Capitals (v2.8.1)</h2>
+    <p>In the full mobile simulation, all eight chairs share the same core resolution engine and five possible endings, but each capital belongs to a distinct political system with asymmetric starting gauges and three signature cabinet actions:</p>
+
+    <table class="chairs-table">
+      <thead>
+        <tr>
+          <th>Playable Chair</th>
+          <th>Political System</th>
+          <th>Core Strategic Pressure &amp; Signature Lever</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Jerusalem</strong></td>
+          <td>Parliamentary Coalition</td>
+          <td>Fragile coalition whip math (`Rafi Shoham`), multi-front deterrence against invented hostile networks, and high sensitivity to US diplomatic alignment and bond ratings.</td>
+        </tr>
+        <tr>
+          <td><strong>Cairo</strong></td>
+          <td>Presidential Republic</td>
+          <td>Canal transit revenues, grain import inflation, and mediator leverage. Strong conventional military, but Red Sea shipping disruptions rapidly drain foreign reserves.</td>
+        </tr>
+        <tr>
+          <td><strong>Amman</strong></td>
+          <td>Constitutional Monarchy</td>
+          <td>Water and energy interdependence, longest border calm, and balancing domestic cost-of-living protests against regional security compacts.</td>
+        </tr>
+        <tr>
+          <td><strong>Damascus</strong></td>
+          <td>Transitional Cabinet</td>
+          <td>Post-2024 reconstruction, fractured provincial autonomy, and preventing the Euphrates Network from hijacking eastern transit corridors.</td>
+        </tr>
+        <tr>
+          <td><strong>Tehran</strong></td>
+          <td>Dual-Power Council</td>
+          <td>Balancing elected executive budgets against hardline security institutions, threshold nuclear signaling, and sanctions relief negotiations.</td>
+        </tr>
+        <tr>
+          <td><strong>Ankara</strong></td>
+          <td>Executive Presidency</td>
+          <td>Independent drone and naval diplomacy, NATO leverage, maritime corridor claims, and managing inflation before municipal polls.</td>
+        </tr>
+        <tr>
+          <td><strong>Riyadh</strong></td>
+          <td>Royal Council</td>
+          <td>Sovereign wealth megaproject timelines, oil price bands, and hedging between regional normalization compacts and Gulf-Iran de-escalation.</td>
+        </tr>
+        <tr>
+          <td><strong>Abu Dhabi</strong></td>
+          <td>Federal Executive</td>
+          <td>Maritime trade hubs, financial corridor stability, and high-tech diplomatic mediation across rival regional blocs.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>The Five Term Endings</h3>
+    <p>Every 6-to-10-month run in <em>Middle East 2030</em> concludes with a special edition newspaper front page recording one of five outcomes:</p>
+    <ol>
+      <li><strong>Stay in Office:</strong> Complete your constitutional term with Coalition, Economy, and Stability above collapse thresholds.</li>
+      <li><strong>Removed from Office:</strong> Triggered by coalition collapse, cabinet revolt, sovereign default, or domestic unrest.</li>
+      <li><strong>Strategic Embargo:</strong> Triggered when international isolation or maritime escalation severs trade and financial clearing.</li>
+      <li><strong>Neighbor Reaches Threshold First:</strong> Triggered when regional proliferation clocks expire while your cabinet is paralyzed by internal crises.</li>
+      <li><strong>Quiet Month Holds:</strong> Achieved by threading the needle between a lopsided deal and a reckless strike until the term clock expires in calm.</li>
+    </ol>
+  </section>
+
+  <div class="store-banner">
+    <h3 style="margin-top: 0; margin-bottom: 6px; color: #fff;">Test Your Strategy in the Crisis Briefing or Full Mobile Game</h3>
+    <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;">Play the 3-month interactive teaser in your browser or govern a full term from any of the 8 capitals on iOS and Android.</p>
+    <div>
+      <a href="../briefing/">Play 3-Month Web Briefing ➔</a>
+      <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+      <a href="https://apps.apple.com/app/id6820597256" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+    </div>
+  </div>
+</article>
+
+<footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #71717a;">
+  <a href="../">Middle East 2030</a> · <a href="../briefing/">Play Briefing</a> · <a href="../privacy/">Privacy Policy</a> · <a href="../support/">Support</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
+</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var btnA = document.getElementById('btn-fork-a');
+  var btnB = document.getElementById('btn-fork-b');
+  var btnReset = document.getElementById('btn-fork-reset');
+  var headlineEl = document.getElementById('fork-headline');
+  var deltasEl = document.getElementById('fork-deltas');
+  var analysisEl = document.getElementById('fork-analysis');
+
+  if (!btnA || !btnB || !btnReset) return;
+
+  var states = {
+    a: {
+      headline: 'MORNING HEADLINE: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW"',
+      deltas: '<span class="delta-pill delta-neg">Coalition: 65% ➔ 60% (-5)</span>' +
+              '<span class="delta-pill delta-pos">Economy: 60% ➔ 72% (+12)</span>' +
+              '<span class="delta-pill delta-pos">Stability: 55% ➔ 63% (+8)</span>',
+      analysis: '<strong>Strategic Consequence:</strong> Signing the accord cushions your Economy (+12) and regional Stability (+8) ahead of Month 2\'s currency run, allowing you to survive an interest-rate hike (Path AAA or Path AAB). However, dropping to 60% Coalition leaves little margin if you make two more anti-coalition concessions.'
+    },
+    b: {
+      headline: 'MORNING HEADLINE: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS"',
+      deltas: '<span class="delta-pill delta-pos">Coalition: 65% ➔ 73% (+8)</span>' +
+              '<span class="delta-pill delta-neg">Economy: 60% ➔ 52% (-8)</span>' +
+              '<span class="delta-pill delta-neg">Stability: 55% ➔ 51% (-4)</span>',
+      analysis: '<strong>Strategic Consequence:</strong> Rejecting multilateral terms locks in hardline coalition backing (73%), giving you political capital to spend later (such as Path BAA). However, Economy drops to 52% before Month 2\'s currency crisis even hits, making populist price caps in Month 2 (Path BBA or Path BBB) dangerous for your treasury.'
+    },
+    reset: {
+      headline: 'MONTH 1 DILEMMA: CROSS-BORDER ENERGY PIPELINE ACCORD (AWAITING CABINET VOTE)',
+      deltas: '<span class="delta-pill">Baseline Coalition: 65%</span>' +
+              '<span class="delta-pill">Baseline Economy: 60%</span>' +
+              '<span class="delta-pill">Baseline Stability: 55%</span>',
+      analysis: '<strong>Baseline State (1 January 2030):</strong> Choose Option 1A or Option 1B above to preview the immediate gauge shifts and morning headline.'
+    }
+  };
+
+  function renderState(key) {
+    var s = states[key];
+    headlineEl.textContent = s.headline;
+    deltasEl.innerHTML = s.deltas;
+    analysisEl.innerHTML = s.analysis;
+    btnA.classList.toggle('active', key === 'a');
+    btnB.classList.toggle('active', key === 'b');
+    btnA.setAttribute('aria-pressed', key === 'a' ? 'true' : 'false');
+    btnB.setAttribute('aria-pressed', key === 'b' ? 'true' : 'false');
+  }
+
+  btnA.addEventListener('click', function () { renderState('a'); });
+  btnB.addEventListener('click', function () { renderState('b'); });
+  btnReset.addEventListener('click', function () { renderState('reset'); });
+})();
+</script>
+</body>
+</html>

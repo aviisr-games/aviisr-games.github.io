@@ -602,13 +602,15 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/mila/worksheets/answer-key/',
             'https://aviisrgames.com/baylight/',
             'https://aviisrgames.com/baylight/dock/',
-            'https://aviisrgames.com/morning-route/',
             'https://aviisrgames.com/morning-route/preview/',
             'https://aviisrgames.com/privacy/',
             'https://aviisrgames.com/support/'
         ]
         for url in expected_urls:
             self.assertIn(f'<loc>{url}</loc>', sitemap, f"Sitemap must contain {url}")
+        # Duplicate hubs canonicalise to the survivor (T9) and are not listed themselves.
+        for dup in ('https://aviisrgames.com/redline-2030/', 'https://aviisrgames.com/morning-route/'):
+            self.assertNotIn(f'<loc>{dup}</loc>', sitemap)
 
     def test_duel_no_auto_redirect(self):
         """Verify duel/index.html removed the automatic mobile redirect timer and has copy link button."""

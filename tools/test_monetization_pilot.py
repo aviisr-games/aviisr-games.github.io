@@ -577,7 +577,7 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertIn('hint_ar', entry, f"Day {date_key} must have hint_ar")
 
     def test_sitemap_urls_preserved_and_expanded(self):
-        """Verify sitemap contains all original URLs plus all 6 strategy URLs."""
+        """Verify the allowlist sitemap keeps every allowlisted URL plus the studio support/privacy pages."""
         sitemap = (ROOT / 'sitemap.xml').read_text(encoding='utf-8')
         expected_urls = [
             'https://aviisrgames.com/',
@@ -604,9 +604,8 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/baylight/dock/',
             'https://aviisrgames.com/morning-route/',
             'https://aviisrgames.com/morning-route/preview/',
-            'https://aviisrgames.com/casino/',
-            'https://aviisrgames.com/privacy.html',
-            'https://aviisrgames.com/support.html'
+            'https://aviisrgames.com/privacy/',
+            'https://aviisrgames.com/support/'
         ]
         for url in expected_urls:
             self.assertIn(f'<loc>{url}</loc>', sitemap, f"Sitemap must contain {url}")

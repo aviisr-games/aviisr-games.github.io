@@ -24,7 +24,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -125,13 +126,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 7 in R2C7</h4>
+        <h3>⚠️ The Tempting Wrong Move: Placing 7 in R2C7</h3>
         <p>A player inspecting only Box 3 and Column 7 sees that <code>R2C7</code> has only two candidates <code>{7, 9}</code> and might guess <code>7</code> in R2C7.</p>
         <p><strong>Why this fails:</strong> Placing <code>7</code> in R2C7 eliminates <code>7</code> from both <code>R2C4</code> and <code>R2C5</code> along Row 2. Because <code>R1C5</code> is already blocked by <code>R1C2 = 7</code> and Row 3 in Box 2 is completely full, Box 2 is left with <em>zero</em> legal cells for <code>7</code>! In Ninely, Smart Hints reveal this Pointing Pair elimination before you make an unsolvable guess.</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: The Box-to-Line Scan</h4>
+        <h3>💡 Solving Tip: The Box-to-Line Scan</h3>
         <p>When you finish placing simple singles and hit a roadblock, scan each 3×3 box one digit at a time. Check if all remaining candidates for that digit align in the same horizontal row or vertical column. Whenever they do, project that line into neighboring boxes and cross off candidates!</p>
       </div>
     </div>

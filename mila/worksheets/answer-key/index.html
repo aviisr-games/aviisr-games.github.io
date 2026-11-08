@@ -174,10 +174,15 @@
       border: 1pt solid #000 !important;
     }
   }
+  /* Light page: dark links and focus ring (shared style.css assumes a dark background). */
+  nav.lang a, footer a { color: #1d4ed8; }
+  .lang-switcher { background-color: #ffffff; color: #1e3a8a; border-color: #94a3b8; }
+  :focus-visible { outline-color: #1e3a8a; }
 </style>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">דילוג לתוכן</a>
+<main id="main">
 <nav class="lang no-print" style="margin-bottom: 12px;">
   <a id="link-back-worksheets" href="../?grade=3">➔ חזרה לדף העבודה והכרטיסיות</a> · <a href="../../">דף הבית של מילה</a> · <a href="../../../">כל המשחקים</a>
 </nav>

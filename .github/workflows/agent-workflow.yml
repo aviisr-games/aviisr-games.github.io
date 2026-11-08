@@ -18,3 +18,5 @@ jobs:
           python-version: '3.12'
       - run: python3 tools/agent_workflow.py check
       - run: python3 tools/test_agent_workflow.py
+      - run: python3 tools/build_sitemap.py --check
+      - run: python3 -m unittest discover -s tools -p "test_*.py"

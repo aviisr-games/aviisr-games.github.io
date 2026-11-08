@@ -25,7 +25,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -132,13 +133,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 5 or 9 in R2C7</h4>
+        <h3>⚠️ The Tempting Wrong Move: Placing 5 or 9 in R2C7</h3>
         <p>Because <code>5</code> and <code>9</code> appear across multiple empty cells in Box 3, a solver might prematurely place <code>5</code> in R2C7.</p>
         <p><strong>Why this fails:</strong> If <code>R2C7</code> is filled with <code>5</code>, Box 3 is left with only <em>one</em> remaining valid cell (<code>R2C8</code>) to place both <code>4</code> and <code>8</code>. One of those two numbers will have nowhere to go, completely breaking the puzzle!</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: Count by Digit, Not by Cell</h4>
+        <h3>💡 Solving Tip: Count by Digit, Not by Cell</h3>
         <p>Naked pairs are easy to spot because you look for cells with only two pencil marks. Hidden pairs require the reverse mindset: look at the digits! For every unplaced number in a box or line, count how many cells can legally hold it. When two numbers share the exact same two candidate cells, you have found a Hidden Pair.</p>
       </div>
     </div>

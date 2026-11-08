@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="../assets/icons/mila.webp" type="image/webp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>מילה - אנגלית לילדים (כיתות א'-ו') | תרגול מותאם אישית בבית</title>
   <meta name="description" content="מילה היא אפליקציה ללימוד ותרגול אנגלית לילדים דוברי עברית בכיתות א'-ו'. למידה מותאמת אישית, בלי פרסומות, בלי מנוי ובלי איסוף מידע.">
@@ -31,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "מילה - אנגלית לילדים (Mila - English for Kids)",
-    "description": "English learning app for Hebrew-speaking children in grades 1–6. 100% offline, zero ads, no subscriptions, COPPA compliant.",
+    "description": "English learning app for Hebrew-speaking children in grades 1–6. 100% offline, zero ads, no subscriptions.",
     "url": "https://aviisrgames.com/mila/",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "iOS, Android",
@@ -107,7 +108,8 @@
     }
     .nav-links {
       display: flex;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 6px 16px;
       font-size: 0.95rem;
     }
     .nav-links a { color: var(--text-muted); font-weight: 600; }
@@ -293,7 +295,7 @@
       margin-bottom: 10px;
       display: block;
     }
-    .pillar-box h4 {
+    .pillar-box h3, .pillar-box h4 {
       font-size: 1.15rem;
       color: var(--primary-dark);
       margin-bottom: 8px;
@@ -366,7 +368,7 @@
     .safe-tag {
       display: inline-block;
       background: #ecfdf5;
-      color: var(--success);
+      color: #047857;
       font-weight: 700;
       font-size: 0.95rem;
       padding: 6px 14px;
@@ -428,14 +430,18 @@
       .screenshot-card { flex: 0 0 210px; }
       .grade-item { flex-direction: column; gap: 8px; }
     }
+      :focus-visible { outline: 3px solid #1e3a8a; outline-offset: 3px; border-radius: 4px; }
+    .skip-link { position: absolute; right: 8px; top: -48px; z-index: 100; padding: 8px 14px; border-radius: 6px; background: #1e3a8a; color: #fff; font-weight: 700; }
+    .skip-link:focus { top: 8px; }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">דילוג לתוכן</a>
 
   <header>
     <div class="container nav-inner">
       <div class="brand">
-        <img src="assets/icon.png" alt="לוגו מילה" width="42" height="42">
+        <img src="../assets/icons/mila.webp" alt="לוגו מילה" width="42" height="42">
         <span data-i18n="brandName">מילה</span>
       </div>
       <nav class="nav-links">
@@ -449,7 +455,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Hero -->
     <section class="hero">
       <div class="container">
@@ -464,15 +470,15 @@
         <!-- Screenshots Showcase -->
         <div class="screenshots-row">
           <div class="screenshot-card">
-            <img src="assets/screen-home.png" alt="מסך הבית של מילה עם כוכבים ומסלול אימון" loading="lazy">
+            <img src="assets/screen-home.webp" alt="מסך הבית של מילה עם כוכבים ומסלול אימון" width="600" height="1305" fetchpriority="high">
             <div class="screenshot-caption">אימון מותאם אישית וכוכבים</div>
           </div>
           <div class="screenshot-card">
-            <img src="assets/screen-story.png" alt="סיפור קצר עם הקראה ותרגום לעברית" loading="lazy">
+            <img src="assets/screen-story.webp" alt="סיפור קצר עם הקראה ותרגום לעברית" width="600" height="1298" loading="lazy">
             <div class="screenshot-caption">סיפורים קצרים עם תרגום בלחיצה</div>
           </div>
           <div class="screenshot-card">
-            <img src="assets/screen-words.png" alt="כרטיסיות מילים עם הקראה איטית" loading="lazy">
+            <img src="assets/screen-words.webp" alt="כרטיסיות מילים עם הקראה איטית" width="600" height="1305" loading="lazy">
             <div class="screenshot-caption">אוצר מילים עשיר והגייה ברורה</div>
           </div>
         </div>
@@ -488,17 +494,17 @@
         <div class="pillars-grid">
           <div class="pillar-box">
             <span class="pillar-icon">🚫</span>
-            <h4 data-i18n="pil1Title">אפס פרסומות</h4>
+            <h3 data-i18n="pil1Title">אפס פרסומות</h3>
             <p data-i18n="pil1Desc">אין פרסומות קופצות, אין סרטוני שיווק, ואין לחץ להוריד אפליקציות אחרות. הלמידה רציפה ונטולת הסחות דעת.</p>
           </div>
           <div class="pillar-box">
             <span class="pillar-icon">🔒</span>
-            <h4 data-i18n="pil2Title">בלי מנוי חודשי</h4>
+            <h3 data-i18n="pil2Title">בלי מנוי חודשי</h3>
             <p data-i18n="pil2Desc">לא צריך לזכור לבטל מנוי. מתחילים בחינם, ומי שרוצה את כל התוכן משלם פעם אחת בלבד ₪49.90 לכל החיים.</p>
           </div>
           <div class="pillar-box">
             <span class="pillar-icon">🛡️</span>
-            <h4 data-i18n="pil3Title">הכל נשאר במכשיר</h4>
+            <h3 data-i18n="pil3Title">הכל נשאר במכשיר</h3>
             <p data-i18n="pil3Desc">אין הרשמה, אין צורך בכתובת אימייל או סיסמה. כל ההתקדמות והשמות נשמרים מקומית במכשיר שלכם בלבד.</p>
           </div>
         </div>
@@ -631,17 +637,17 @@
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0;">
           <div class="card" style="margin: 0; text-align: center;">
-            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print1Title">🔤 אותיות וצלילים (א'-ב')</h4>
+            <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print1Title">🔤 אותיות וצלילים (א'-ב')</h3>
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print1Desc">26 אותיות ה-ABC עם צליל פותח, מילים ראשונות ותמונות לצביעה.</p>
             <a href="worksheets/" style="display:inline-block; background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none;" data-i18n="printBtn">📄 פתיחת ערכת הדפסה (כיתה ג׳)</a>
           </div>
           <div class="card" style="margin: 0; text-align: center;">
-            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print2Title">🍎 אוצר מילים Pre-Band I (ג'-ד')</h4>
+            <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print2Title">🍎 אוצר מילים Pre-Band I (ג'-ד')</h3>
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print2Desc">כרטיסיות גזירה עם מילים בסיסיות, תרגום עברי ומשפטי הדגמה.</p>
             <a href="worksheets/" style="display:inline-block; background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none;" data-i18n="printBtn">📄 פתיחת ערכת הדפסה (כיתה ג׳)</a>
           </div>
           <div class="card" style="margin: 0; text-align: center;">
-            <h4 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print3Title">📚 סיפורים ותרגול Band I (ה'-ו')</h4>
+            <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 8px;" data-i18n="print3Title">📚 סיפורים ותרגול Band I (ה'-ו')</h3>
             <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;" data-i18n="print3Desc">סיפורים קצרים לקריאה בקול עם שאלות הבנה ותרגול פעלים.</p>
             <a href="worksheets/" style="display:inline-block; background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none;" data-i18n="printBtn">📄 פתיחת ערכת הדפסה (כיתה ג׳)</a>
           </div>
@@ -708,6 +714,8 @@
   AviisrI18n.init({
     supported: ['he', 'en'],
     defaultLang: 'he',
+    storageKey: 'aviisr_lang_mila',
+    useBrowserLanguage: false,
     translations: {
       he: {
         storeSoon: 'בקרוב ב-App Store וב-Google Play',

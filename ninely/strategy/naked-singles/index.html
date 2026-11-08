@@ -24,7 +24,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -110,13 +111,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Guessing 7 in R5C5</h4>
+        <h3>⚠️ The Tempting Wrong Move: Guessing 7 in R5C5</h3>
         <p>A player scanning only Row 5 (`4, 8, 3, 1`) might notice that `7` is missing from Row 5 and Box 5, and hurriedly place `7` in the center cell (R5C5).</p>
         <p><strong>Why this fails:</strong> Column 5 already contains a given `7` at the top (`R1C5`)! Placing `7` in R5C5 creates an immediate collision in Column 5. In Ninely, Smart Hints check all three intersecting units simultaneously so you never overlook a vertical blocker.</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: The "Rule of 8"</h4>
+        <h3>💡 Solving Tip: The "Rule of 8"</h3>
         <p>Whenever a row and column cross at a cell that shares a crowded 3×3 box, count the distinct numbers across all three units. If they cover 8 distinct digits, that intersection is guaranteed to be a Naked Single!</p>
       </div>
     </div>

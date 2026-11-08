@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Baylight: Sort &amp; Ship — Interactive Dock Puzzle Prototype</title>
+<title>Baylight: Truck Sort Puzzle · Load a dock in your browser</title>
 <meta name="description" content="Play the interactive Baylight depot sorting puzzle in your browser. Stack 3 of a kind to ship trucks, unlock blocked lanes, and use the pallet.">
 <link rel="canonical" href="https://aviisrgames.com/baylight/dock/">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Baylight: Interactive Dock Sorting Prototype",
-  "description": "Browser playable depot sorting puzzle prototype from Baylight: Sort & Ship. Solver-verified levels with blocked lanes and pallet parking.",
+  "description": "Browser playable depot sorting puzzle prototype from Baylight: Truck Sort Puzzle. Solver-verified levels with blocked lanes and pallet parking.",
   "url": "https://aviisrgames.com/baylight/dock/",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Any",
@@ -219,7 +219,7 @@
   }
   .bay-indicator {
     font-size: 0.75rem;
-    color: #64748b;
+    color: #a3b1c2;
   }
 
   /* Pallet Spot */
@@ -274,11 +274,11 @@
     cursor: not-allowed;
   }
   .btn-primary {
-    background: #0284c7;
+    background: #0369a1;
     border-color: #38bdf8;
   }
   .btn-primary:hover:not(:disabled) {
-    background: #0369a1;
+    background: #075985;
   }
 
   /* Status message */
@@ -304,13 +304,14 @@
 </style>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang" style="margin-bottom: 12px;">
   <a href="../">Baylight Home</a> · <a href="../privacy.html">Privacy</a> · <a href="../../">All Games</a>
 </nav>
 
 <header>
-  <h1>Baylight: Sort &amp; Ship</h1>
+  <h1>Baylight: Truck Sort Puzzle</h1>
   <p class="sub">Depot Sorting Puzzle — Interactive Web Prototype</p>
 </header>
 
@@ -385,7 +386,8 @@
   </noscript>
 </section>
 
-<footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #64748b;">
+<div class="store-cta" style="justify-content:center"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=playable&amp;utm_campaign=baylight-playable"><img data-play-badge src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="150" height="58"></a> <span class="store-note">Not on iPhone yet</span></div>
+<footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #a3b1c2;">
   <a href="../">Baylight Home</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
 </footer>
 </main>
@@ -684,7 +686,6 @@
       cell.className = 'bay-cell';
       cell.setAttribute('role', 'button');
       cell.setAttribute('tabindex', '0');
-      cell.setAttribute('aria-label', 'Bay ' + (k + 1) + (bay[0] ? ': ' + bay[1] + ' ' + bay[0] : ': Empty'));
 
       var name = document.createElement('div');
       name.className = 'bay-name';
@@ -891,6 +892,7 @@
   initLevel(5);
 })();
 </script>
+<script src="/assets/play-badge.js"></script>
 <script src="/assets/count.js" defer></script>
 </body>
 </html>

@@ -25,7 +25,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -112,13 +113,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 2 in R1C8</h4>
+        <h3>⚠️ The Tempting Wrong Move: Placing 2 in R1C8</h3>
         <p>R1C8 has just two candidates <code>&#123;2, 8&#125;</code>, so a quick guess of <code>2</code> looks harmless.</p>
         <p><strong>Why this fails:</strong> Placing <code>2</code> in R1C8 removes 2 from R1C4 and R1C9. R1C9 is left with only <code>3</code>, so R1C2 must take <code>1</code>. Now R1C4 needs a 1 or a 3, and both are already used in Row 1. The cell has no legal digit, an immediate contradiction!</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: Count Cells, Not Candidates</h4>
+        <h3>💡 Solving Tip: Count Cells, Not Candidates</h3>
         <p>When a unit has many two- and three-candidate cells, pick any three of them and write the union of their candidates. If the union has exactly three digits, you have a Naked Triple. Don't wait for three identical <code>&#123;a, b, c&#125;</code> cells: mixed pairs and triples are far more common. In the Ninely engine, a Naked Triple is an Expert-tier technique.</p>
       </div>
     </div>

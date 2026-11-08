@@ -25,7 +25,8 @@
 </script>
 </head>
 <body>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 <nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
 
 <div class="guide-container">
@@ -129,13 +130,13 @@
 
     <div class="guide-section">
       <div class="wrong-move-box">
-        <h4>⚠️ The Tempting Wrong Move: Placing 4 in R6C3</h4>
+        <h3>⚠️ The Tempting Wrong Move: Placing 4 in R6C3</h3>
         <p>A player searching for a place to put 4 in Column 3 might guess <code>4</code> in R6C3 because the cell only has two candidates <code>&#123;2, 4&#125;</code>.</p>
         <p><strong>Why this fails:</strong> Placing <code>4</code> in R6C3 eliminates <code>4</code> from both R5C3 and R8C3 along Column 3. This forces Row 5 to place <code>4</code> at R5C7, and Row 8 to place <code>4</code> at R8C7. That puts two 4s directly in Column 7, causing an immediate, fatal contradiction!</p>
       </div>
 
       <div class="tip-box">
-        <h4>💡 Solving Tip: The Fish Pattern Finder</h4>
+        <h3>💡 Solving Tip: The Fish Pattern Finder</h3>
         <p>X-Wing is the smallest member of the &ldquo;Fish&rdquo; family (where N parallel lines hold a candidate in the same N perpendicular lines). When you hit an advanced deadlock, pick one digit at a time and highlight all rows that have exactly two candidate cells for that digit. If two rows share the same two columns, you have found an X-Wing!</p>
       </div>
     </div>

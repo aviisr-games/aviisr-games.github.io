@@ -6,9 +6,9 @@
 
 ---
 
-## R2 branch (2026-11-09, not merged): acquisition fixes
+## R2 (2026-11-09, live: PR #14, `30eafd7`): acquisition fixes
 
-Branch `feat/website-acquisition-hybrid-r2`. Not live until the owner approves the merge (Pages deploys `main`).
+Merged and verified live on 2026-11-09. Visit counter turned on the same day (GoatCounter site `aviisrgames`; `assets/count.js` `ENDPOINT`).
 - Structured data no longer claims iOS on any hub; unreleased Mila has no Offer markup.
 - Homepage counts four games on Google Play; Mila is "coming". Middle East 2030 card and hub say adult players and fiction in en/he/ar; the hub notice no longer has `data-i18n`, so a shared string cannot replace it.
 - Ninely he/ar sections have the Play badge. Middle East 2030 offers en/he and Baylight en only, because those pages have no Arabic (or Hebrew) body.

@@ -2,7 +2,7 @@
 
 Opened 2026-11-08. These need the founder's accounts or people. Agents handle code tickets in PRs.
 
-- [ ] **Turn on the visit counter.**
+- [x] **Turn on the visit counter.** Done 2026-11-09 (site `aviisrgames`).
   - Create a free GoatCounter site (cookieless).
   - Put its count URL in `assets/count.js` (`var ENDPOINT = 'https://<code>.goatcounter.com/count';`), or send the code to an agent.
   - It never runs on `/mila/**` or on privacy and support pages.

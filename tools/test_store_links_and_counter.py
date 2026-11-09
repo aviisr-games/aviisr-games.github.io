@@ -62,9 +62,11 @@ class StoreLinksAndCounterTests(unittest.TestCase):
             self.assertRegex(csp, r"img-src 'self' data: https://\*\.goatcounter\.com", p)
             self.assertNotRegex(csp, r'connect-src[^;]*goatcounter', p)  # pixel only, no XHR/beacon
 
-    def test_counter_is_off_by_default_and_guarded(self):
+    def test_counter_endpoint_is_owner_approved_and_guarded(self):
         js = (ROOT / 'assets/count.js').read_text(encoding='utf-8')
-        self.assertIn("var ENDPOINT = '';", js, "counter must ship disabled; the founder enables it")
+        # Enabled by the founder on 2026-11-09. Only this GoatCounter site (or off) is allowed.
+        endpoint = re.search(r"var ENDPOINT = '([^']*)';", js).group(1)
+        self.assertIn(endpoint, ('', 'https://aviisrgames.goatcounter.com/count'))
         self.assertIn(r"/^\/mila(\/|$)/.test(location.pathname)", js)
         self.assertIn("navigator.doNotTrack === '1'", js)
         self.assertIn('navigator.globalPrivacyControl === true', js)

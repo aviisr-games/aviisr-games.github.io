@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  var ENDPOINT = ''; // e.g. 'https://aviisrgames.goatcounter.com/count'
+  var ENDPOINT = 'https://aviisrgames.goatcounter.com/count';
 
   if (!ENDPOINT) return;
   if (/^\/mila(\/|$)/.test(location.pathname)) return;

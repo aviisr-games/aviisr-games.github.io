@@ -187,3 +187,11 @@ main, footer, nav.lang { overflow-wrap: anywhere; }
 .qr-handoff img { width: 112px; height: 112px; border-radius: 6px; flex: none; }
 .qr-handoff p { margin: 0; color: var(--dim); font-size: 0.95rem; }
 @media (min-width: 900px) and (hover: hover) { .qr-handoff { display: flex; } }
+
+/* Gameplay proof: real store screenshots, scroll-snap strip (R2). */
+.screens { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 12px; margin: 4px 0 16px; }
+.screens:focus-visible { outline: 3px solid var(--accent, #ffd166); outline-offset: 2px; }
+.screens img { flex: none; width: 150px; height: auto; border-radius: 14px; border: 1px solid var(--border-color); scroll-snap-align: start; }
+@media (min-width: 700px) { .screens img { width: 190px; } }
+.benefits { margin: 0 0 18px; padding-inline-start: 1.2em; line-height: 1.55; }
+.benefits li { margin: 4px 0; }

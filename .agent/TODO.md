@@ -12,11 +12,22 @@ Opened 2026-11-08. These need the founder's accounts or people. Agents handle co
   - a 5-second homepage test ("what does each app do?");
   - a logo legibility test (Route A against Route C at 16 px).
   - Include 2 Hebrew-speaking parents for Mila.
-- [ ] **After 28 days of counter data**, run the Phase 2 gate. Write down hub pageviews, Play listing visitors and conversion per app, Search Console impressions on `/ninely/strategy/*`, and the logo test result.
+- [ ] **GoatCounter settings.** Signed in, turn off optional data collection (screen size, region, language, sessions) so the dashboard matches the privacy page (pages, referring sites, Google Play clicks).
+- [ ] **Play Console privacy URLs.** Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.
+- [ ] **Protect `main`.** Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
+- [ ] **Decide: empty "Advertisements" boxes** on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
+- [ ] **Decide: public studio name**, "AVIISR Games" or "aviisr-games". Blocks the logo and a one-line studio intro on the homepage.
+- [ ] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning.
+- [ ] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
+- [ ] **Native read** of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
+- [ ] **Traffic.** Two genuinely useful posts a week (for example a technique guide where a community allows it), each link tagged `?utm_source=<channel>&utm_campaign=<app>-<post>`.
+- [ ] **Regenerate the Ninely daily pack before 2027-01-06** (it ends 2027-02-05). The weekly `store-links-and-names` workflow fails from that date as a reminder. Command under "Generators" in `.agent/HANDOFF.md`.
+- [ ] **After 28 days of counter data (around 2026-12-08)**, run the Phase 2 gate. Write down hub pageviews, Play listing visitors and conversion per app, Search Console impressions on `/ninely/strategy/*`, and the logo test result.
 
 ## Decisions already made (2026-11-08)
 
 - **Baylight public name:** "Baylight: Truck Sort Puzzle", matching the store.
 - **Mila pages:** no analytics, no ads, no cross-promotion, ever.
 - **No 14-day baseline before the badge release (T2).** The founder chose speed. The before/after read of T2 is therefore descriptive only.
+- **Visit counter:** on since 2026-11-09 (GoatCounter, cookieless; never on Mila, privacy or support pages).
 - **Website ads:** deferred. Revisit only at 50,000 or more eligible pageviews a month for 2 months, with a certified CMP in place.

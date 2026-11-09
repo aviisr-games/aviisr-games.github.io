@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ninely - Daily Web Sudoku & Smart Hints</title>
+<link rel="canonical" href="https://aviisrgames.com/ninely/play/">
 <meta name="description" content="Play the free Ninely Daily Sudoku warmup with smart hints explaining each move. Available on iOS & Android.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; connect-src 'self'; object-src 'none'; base-uri 'self';">
@@ -81,11 +82,11 @@
 
     <div id="hint-box" class="hint-box"></div>
     
-    <div id="win-box" class="win-card">
+    <div id="win-box" class="win-card" role="status" aria-live="polite">
       <h2>🎉 <span data-i18n="won">Board cleared in</span> <span id="win-time"></span>!</h2>
-      <p style="margin: 8px 0 14px; color: #d1fae5;" data-i18n="practiseMore">Practise more techniques and master thousands of boards in the full Ninely app:</p>
+      <p style="margin: 8px 0 14px; color: #d1fae5;" data-i18n="practiseMore">Keep going in Ninely: hints that explain every move, short drills for each technique, a new daily challenge and five levels from Easy to Master. Free on Google Play.</p>
       <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=playable-win&amp;utm_campaign=ninely-playable-win" target="_blank" rel="noopener noreferrer">Get on Google Play</a>
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=playable-win&amp;utm_campaign=ninely-playable-win" target="_blank" rel="noopener noreferrer"><img data-play-badge data-app="Ninely" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely" width="150" height="58"></a>
         <span class="store-note" data-i18n="iphoneSoon">Not on iPhone yet</span>
       </div>
     </div>
@@ -117,7 +118,7 @@
       restart: "↺ Restart",
       erase: "⌫",
       won: "Board cleared in",
-      practiseMore: "Practise more techniques and master thousands of boards in the full Ninely app:",
+      practiseMore: "Keep going in Ninely: hints that explain every move, short drills for each technique, a new daily challenge and five levels from Easy to Master. Free on Google Play.",
       learnGuide: "Learn this technique ➔"
     },
     he: {
@@ -129,7 +130,7 @@
       restart: "↺ התחלה מחדש",
       erase: "⌫ מחק",
       won: "הלוח הושלם תוך",
-      practiseMore: "תרגלו טכניקות מתקדמות באפליקציית Ninely המלאה:",
+      practiseMore: "ממשיכים ב-Ninely: רמזים שמסבירים כל צעד, תרגילים קצרים לכל טכניקה, אתגר יומי חדש וחמש רמות קושי, מקל ועד מאסטר. בחינם ב-Google Play.",
       learnGuide: "ללמוד את הטכניקה ➔"
     },
     ar: {
@@ -141,7 +142,7 @@
       restart: "↺ إعادة البدء",
       erase: "⌫ مسح",
       won: "تم حل اللوح في",
-      practiseMore: "تدرّب على المزيد من التقنيات في تطبيق Ninely الكامل:",
+      practiseMore: "تابع في Ninely: تلميحات تشرح كل خطوة، تمارين قصيرة لكل تقنية، تحدٍّ يومي جديد وخمسة مستويات من السهل إلى الخبير. مجاني على Google Play.",
       learnGuide: "تعلّم هذه التقنية ➔"
     }
   };
@@ -619,6 +620,7 @@
 
 })();
 </script>
+<script src="/assets/play-badge.js"></script>
 <script src="/assets/count.js" defer></script>
 </body>
 </html>

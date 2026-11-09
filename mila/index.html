@@ -113,6 +113,8 @@
     }
     .nav-links a { color: var(--text-muted); font-weight: 600; }
     .nav-links a:hover { color: var(--primary); }
+    /* Reserve the language switcher's box so the header does not jump when lang.js renders it (CLS). */
+    .nav-links nav.lang { min-width: 110px; min-height: 25px; vertical-align: middle; }
 
     /* Hero */
     .hero {
@@ -624,7 +626,7 @@
             מתחילים בחינם: 20 המילים הראשונות בכל כיתה, לוח ה-ABC ודוגמאות מהסיפורים פתוחים לכולם.
             רכישה חד-פעמית של הגרסה המלאה פותחת את כל המילים, הסיפורים ואתגר האלופים לכל הכיתות ולכל הילדים במכשיר, כולל כל העדכונים העתידיים.
           </p>
-          <p style="font-size: 0.95rem; color: var(--text-muted);">הרכישה מתבצעת ישירות דרך Apple App Store, מאחורי שער הורים מאובטח.</p>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">כשמילה תצא, הרכישה תתבצע דרך App Store או Google Play, מאחורי שער הורים מאובטח.</p>
         </div>
       </div>
     </section>
@@ -682,7 +684,7 @@
 
         <div class="faq-item">
           <div class="faq-q">האם הרכישה תומכת ב-Family Sharing (שיתוף משפחתי של Apple)?</div>
-          <div class="faq-a">כן. רכישת הגרסה המלאה ב-App Store נתמכת דרך שיתוף משפחתי של אפל בהתאם להגדרות החשבון שלכם.</div>
+          <div class="faq-a">כן. ב-App Store, רכישת הגרסה המלאה תתמוך בשיתוף משפחתי של אפל, בהתאם להגדרות החשבון שלכם.</div>
         </div>
 
         <div class="faq-item">

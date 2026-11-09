@@ -6,17 +6,14 @@ Opened 2026-11-08. These need the founder's accounts or people. Agents handle co
   - Create a free GoatCounter site (cookieless).
   - Put its count URL in `assets/count.js` (`var ENDPOINT = 'https://<code>.goatcounter.com/count';`), or send the code to an agent.
   - It never runs on `/mila/**` or on privacy and support pages.
-- [ ] **Export Search Console** performance data for the last 3 months: queries, pages, clicks, impressions. Keep the CSV private (not in this public repo).
-- [ ] **Play Console check.** Under Store listing acquisition, confirm that visits from links tagged `utm_source=aviisrgames&utm_campaign=<app>-<surface>` appear as a campaign or source. Record yes or no in `.agent/HANDOFF.md`.
-- [ ] **Book 5 people** for a 15-minute remote test:
-  - a 5-second homepage test ("what does each app do?");
-  - a logo legibility test (Route A against Route C at 16 px).
-  - Include 2 Hebrew-speaking parents for Mila.
+- [ ] **Export Search Console** performance data: Deferred (site has been live under 3 months; export once 3 months accumulate). Keep the CSV private (not in this public repo).
+- [ ] **Play Console check.** Under Store listing acquisition, confirm that visits from links tagged `utm_source=aviisrgames&utm_campaign=<app>-<surface>` appear as a campaign or source once traffic accumulates.
+- [ ] **Book 5 people** for a 15-minute remote test: Deferred by founder (not relevant currently).
 - [ ] **GoatCounter settings.** Signed in, turn off optional data collection (screen size, region, language, sessions) so the dashboard matches the privacy page (pages, referring sites, Google Play clicks).
 - [ ] **Play Console privacy URLs.** Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.
 - [ ] **Protect `main`.** Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
 - [ ] **Decide: empty "Advertisements" boxes** on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
-- [ ] **Decide: public studio name**, "AVIISR Games" or "aviisr-games". Blocks the logo and a one-line studio intro on the homepage.
+- [x] **Decide: public studio name:** Decided as "Aviisr Games" and standardized across the site, schema.org, footers, and app projects.
 - [ ] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning.
 - [ ] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
 - [ ] **Native read** of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
@@ -25,6 +22,8 @@ Opened 2026-11-08. These need the founder's accounts or people. Agents handle co
 - [ ] **After 28 days of counter data (around 2026-12-08)**, run the Phase 2 gate. Write down hub pageviews, Play listing visitors and conversion per app, Search Console impressions on `/ninely/strategy/*`, and the logo test result.
 
 ## Decisions already made (2026-11-08)
+
+- **Public studio name:** "Aviisr Games" (standardized across the site, schema.org, footers, and app projects).
 
 - **Baylight public name:** "Baylight: Truck Sort Puzzle", matching the store.
 - **Mila pages:** no analytics, no ads, no cross-promotion, ever.

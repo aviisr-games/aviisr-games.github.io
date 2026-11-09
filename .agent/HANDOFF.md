@@ -48,7 +48,7 @@ Merged and verified live on 2026-11-09. Visit counter turned on the same day (Go
 **Open (not code).**
 - Founder TODOs are in `.agent/TODO.md`: GoatCounter code, Search Console export, Play Console campaign check, a 5-person test, and the 28-day gate.
 - A real VoiceOver/TalkBack session is still to do. An accessibility-tree pass found no unnamed controls.
-- The public studio name ("Aviisr Games" or "aviisr-games") is undecided.
+- The public studio name is decided: **Aviisr Games** (standardized across the site and apps).
 
 **Gated (Phase 3).**
 - Hub redesign, more Ninely guides and logo Route C wait on 28 days of counter and Search Console data.

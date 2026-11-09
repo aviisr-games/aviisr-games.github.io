@@ -6,6 +6,18 @@
 
 ---
 
+## R2 branch (2026-11-09, not merged): acquisition fixes
+
+Branch `feat/website-acquisition-hybrid-r2`. Not live until the owner approves the merge (Pages deploys `main`).
+- Structured data no longer claims iOS on any hub; unreleased Mila has no Offer markup.
+- Homepage counts four games on Google Play; Mila is "coming". Middle East 2030 card and hub say adult players and fiction in en/he/ar; the hub notice no longer has `data-i18n`, so a shared string cannot replace it.
+- Ninely he/ar sections have the Play badge. Middle East 2030 offers en/he and Baylight en only, because those pages have no Arabic (or Hebrew) body.
+- Hubs show three real Google Play screenshots (`assets/screens/`, WebP, lazy) and lead with the game, not "Help and privacy".
+- Mila pages load only `mila/assets/lang.js` (engine copy, no studio strings). Rule: Mila pages never load a script from outside `/mila/`.
+- CI actions pinned by commit SHA.
+- Tests: `tools/test_r2_acquisition.py`.
+- Open for the owner: `/privacy.html` and `/support.html` at the root are not studio pages (out of scope here), yet this file and AGENTS.md name them as the studio's canonical Privacy and Support URLs. Decide the canonical studio URLs (`/privacy/`, `/support/`) and check which URL each Play listing uses.
+
 ## Current state (2026-11-08, end of day)
 
 **Live on aviisrgames.com.** Each of these PRs was squash-merged after CI passed, and the live site was checked after deploy.

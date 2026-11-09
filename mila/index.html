@@ -35,9 +35,7 @@
     "description": "English learning app for Hebrew-speaking children in grades 1–6. 100% offline, zero ads, no subscriptions.",
     "url": "https://aviisrgames.com/mila/",
     "applicationCategory": "EducationalApplication",
-    "operatingSystem": "iOS, Android",
     "inLanguage": ["he", "en"],
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" },
     "author": { "@type": "Organization", "name": "aviisr-games", "email": "aviisr@aviisrgames.com" }
   }
   </script>
@@ -446,8 +444,8 @@
         <img src="../assets/icons/mila.webp" alt="לוגו מילה" width="42" height="42">
         <span data-i18n="brandName">מילה</span>
       </div>
-      <nav class="nav-links">
-        <nav class="lang" style="display:inline-block; margin-left: 10px;"></nav>
+      <nav class="nav-links" aria-label="ניווט">
+        <nav class="lang" aria-label="שפה" style="display:inline-block; margin-left: 10px;"></nav>
         <a href="worksheets/">דפי עבודה להדפסה</a>
         <a href="support/" data-i18n="navSupport">תמיכה</a>
         <a href="privacy/" data-i18n="navPrivacy">פרטיות</a>
@@ -470,7 +468,7 @@
         </div>
 
         <!-- Screenshots Showcase -->
-        <div class="screenshots-row">
+        <div class="screenshots-row" role="group" aria-label="צילומי מסך מהאפליקציה" tabindex="0">
           <div class="screenshot-card">
             <img src="assets/screen-home.webp" alt="מסך הבית של מילה עם כוכבים ומסלול אימון" width="600" height="1305" fetchpriority="high">
             <div class="screenshot-caption">אימון מותאם אישית וכוכבים</div>
@@ -711,7 +709,7 @@
     </div>
   </footer>
 
-<script src="../assets/i18n.js"></script>
+<script src="assets/lang.js"></script>
 <script>
   AviisrI18n.init({
     supported: ['he', 'en'],

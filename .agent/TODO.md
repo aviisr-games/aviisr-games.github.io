@@ -36,7 +36,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 - [x] **Decide: public studio name:** Decided as "Aviisr Games" and standardized across the site, schema.org, footers, and app projects.
 - [x] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning. Decided 2026-11-10: keep 10+, copy made neutral.
 - [x] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
-- [ ] **Native read** of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
+- [x] **Native read** Done 2026-11-10 (owner-confirmed; no copy changes reported). Of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
 - [ ] **Traffic.** Two genuinely useful posts a week (for example a technique guide where a community allows it), each link tagged `?utm_source=<channel>&utm_campaign=<app>-<post>`.
 - [ ] **Regenerate the Ninely daily pack before 2027-01-06** (it ends 2027-02-05). The weekly `store-links-and-names` workflow fails from that date as a reminder. Command under "Generators" in `.agent/HANDOFF.md`.
 - [ ] **After 28 days of counter data (around 2026-12-08)**, run the Phase 2 gate. Write down hub pageviews, Play listing visitors and conversion per app, Search Console impressions on `/ninely/strategy/*`, and the logo test result.

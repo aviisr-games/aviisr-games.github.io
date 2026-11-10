@@ -13,10 +13,10 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 | Protect `main` | Done 2026-11-10 | branch protection on, Dependabot for GitHub Actions configured |
 | "Advertisements" boxes | Done 2026-11-10 | removed from 9 Ninely guides; test now fails if one returns |
 | Unused Mila PNGs | Done 2026-11-10 | 5 unreferenced PNGs (5.9 MB) deleted; `og-mila.png` is used and kept; all remain in git history |
-| Middle East 2030 | Open | no TestFlight link on the site; hub still says "six to eight months"; Play rating still Everyone 10+ |
+| Middle East 2030 | Partly done | owner decided 2026-11-10: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating Everyone 10+ vs adult positioning still needs an owner check in Play Console |
 | Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
 | GoatCounter settings | Unverifiable from outside | dashboard needs login |
-| Play Console privacy URLs | Partly verified | Baylight uses `/baylight/privacy.html`; Ninely, Middle East 2030 and Morning Paper Route not visible publicly |
+| Play Console privacy URLs | Done 2026-11-10 | read in Play Console: ME2030 `/redline-2030/privacy/`, Baylight `/baylight/privacy.html`, Mila `/mila/privacy/`, Paper Route `/paper-route/privacy/`, Ninely `/ninely/privacy.html`. None uses root `/privacy.html`; all return 200 |
 | Play Console campaign check, native he/ar read, traffic posts | Unverifiable from outside | no public trace |
 | Search Console export, 5-person test | Deferred by founder | |
 | 28-day gate | Not due | around 2026-12-08 |
@@ -29,7 +29,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 - [ ] **Play Console check.** Under Store listing acquisition, confirm that visits from links tagged `utm_source=aviisrgames&utm_campaign=<app>-<surface>` appear as a campaign or source once traffic accumulates.
 - [ ] **Book 5 people** for a 15-minute remote test: Deferred by founder (not relevant currently).
 - [ ] **GoatCounter settings.** Signed in, turn off optional data collection (screen size, region, language, sessions) so the dashboard matches the privacy page (pages, referring sites, Google Play clicks).
-- [ ] **Play Console privacy URLs.** Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.
+- [x] **Play Console privacy URLs.** Done 2026-11-10 (all app-specific; studio canonicals now `/privacy/` and `/support/`). Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.
 - [x] **Protect `main`.** Done 2026-11-10. Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
 - [x] **Decide: empty "Advertisements" boxes** Done 2026-11-10 (removed). on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
 - [x] **Decide: public studio name:** Decided as "Aviisr Games" and standardized across the site, schema.org, footers, and app projects.

@@ -10,7 +10,7 @@
 
 Merged and verified live on 2026-11-09. Visit counter turned on the same day (GoatCounter site `aviisrgames`; `assets/count.js` `ENDPOINT`).
 - Structured data no longer claims iOS on any hub; unreleased Mila has no Offer markup.
-- Homepage counts four games on Google Play; Mila is "coming". Middle East 2030 card and hub say adult players and fiction in en/he/ar; the hub notice no longer has `data-i18n`, so a shared string cannot replace it.
+- Homepage counts four games on Google Play; Mila is "coming". Middle East 2030 card and hub say fiction in en/he/ar (the "adult players" wording was removed 2026-11-10 to match the Everyone 10+ rating); the hub notice no longer has `data-i18n`, so a shared string cannot replace it.
 - Ninely he/ar sections have the Play badge. Middle East 2030 offers en/he and Baylight en only, because those pages have no Arabic (or Hebrew) body.
 - Hubs show three real Google Play screenshots (`assets/screens/`, WebP, lazy) and lead with the game, not "Help and privacy".
 - Mila pages load only `mila/assets/lang.js` (engine copy, no studio strings). Rule: Mila pages never load a script from outside `/mila/`.

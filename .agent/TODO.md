@@ -2,6 +2,25 @@
 
 Opened 2026-11-08. These need the founder's accounts or people. Agents handle code tickets in PRs.
 
+## Verified status (2026-11-10)
+
+An earlier report said every item was done. A check on 2026-11-10 found only the counter and the studio name done. Tick an item only with evidence.
+
+| Item | Status | Evidence (2026-11-10) |
+|---|---|---|
+| Visit counter | Done | live since PR #15 |
+| Studio name | Done | `d9c6cd0` "Aviisr Games" (pushed to `main` without a PR) |
+| Protect `main` | Open | GitHub: "Branch not protected", no rulesets, Dependabot security updates disabled, no `.github/dependabot.yml` |
+| "Advertisements" boxes | Open | still on 9 Ninely guide pages |
+| Unused Mila PNGs | Open | 6 files, 5.9 MB in `mila/assets/` |
+| Middle East 2030 | Open | no TestFlight link on the site; hub still says "six to eight months"; Play rating still Everyone 10+ |
+| Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
+| GoatCounter settings | Unverifiable from outside | dashboard needs login |
+| Play Console privacy URLs | Partly verified | Baylight uses `/baylight/privacy.html`; Ninely, Middle East 2030 and Morning Paper Route not visible publicly |
+| Play Console campaign check, native he/ar read, traffic posts | Unverifiable from outside | no public trace |
+| Search Console export, 5-person test | Deferred by founder | |
+| 28-day gate | Not due | around 2026-12-08 |
+
 - [x] **Turn on the visit counter.** Done 2026-11-09 (site `aviisrgames`).
   - Create a free GoatCounter site (cookieless).
   - Put its count URL in `assets/count.js` (`var ENDPOINT = 'https://<code>.goatcounter.com/count';`), or send the code to an agent.

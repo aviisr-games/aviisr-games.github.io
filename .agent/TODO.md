@@ -10,9 +10,9 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 |---|---|---|
 | Visit counter | Done | live since PR #15 |
 | Studio name | Done | `d9c6cd0` "Aviisr Games" (pushed to `main` without a PR) |
-| Protect `main` | Open | GitHub: "Branch not protected", no rulesets, Dependabot security updates disabled, no `.github/dependabot.yml` |
-| "Advertisements" boxes | Open | still on 9 Ninely guide pages |
-| Unused Mila PNGs | Open | 6 files, 5.9 MB in `mila/assets/` |
+| Protect `main` | Done 2026-11-10 | branch protection on, Dependabot for GitHub Actions configured |
+| "Advertisements" boxes | Done 2026-11-10 | removed from 9 Ninely guides; test now fails if one returns |
+| Unused Mila PNGs | Done 2026-11-10 | 5 unreferenced PNGs (5.9 MB) deleted; `og-mila.png` is used and kept; all remain in git history |
 | Middle East 2030 | Open | no TestFlight link on the site; hub still says "six to eight months"; Play rating still Everyone 10+ |
 | Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
 | GoatCounter settings | Unverifiable from outside | dashboard needs login |
@@ -30,11 +30,11 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 - [ ] **Book 5 people** for a 15-minute remote test: Deferred by founder (not relevant currently).
 - [ ] **GoatCounter settings.** Signed in, turn off optional data collection (screen size, region, language, sessions) so the dashboard matches the privacy page (pages, referring sites, Google Play clicks).
 - [ ] **Play Console privacy URLs.** Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.
-- [ ] **Protect `main`.** Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
-- [ ] **Decide: empty "Advertisements" boxes** on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
+- [x] **Protect `main`.** Done 2026-11-10. Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
+- [x] **Decide: empty "Advertisements" boxes** Done 2026-11-10 (removed). on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
 - [x] **Decide: public studio name:** Decided as "Aviisr Games" and standardized across the site, schema.org, footers, and app projects.
 - [ ] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning.
-- [ ] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
+- [x] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
 - [ ] **Native read** of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
 - [ ] **Traffic.** Two genuinely useful posts a week (for example a technique guide where a community allows it), each link tagged `?utm_source=<channel>&utm_campaign=<app>-<post>`.
 - [ ] **Regenerate the Ninely daily pack before 2027-01-06** (it ends 2027-02-05). The weekly `store-links-and-names` workflow fails from that date as a reminder. Command under "Generators" in `.agent/HANDOFF.md`.

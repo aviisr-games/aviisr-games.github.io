@@ -351,7 +351,8 @@ class MonetizationPilotTests(unittest.TestCase):
             self.assertTrue(g.exists(), f"Guide {g} must exist")
             content = g.read_text(encoding='utf-8')
             self.assertIn('https://aviisrgames.com/ninely/strategy/', content)
-            self.assertIn('Advertisements', content, "Must include reserved ad placeholder")
+            self.assertNotIn('Advertisements', content, "No empty ad placeholder while no ad script ships")
+            self.assertNotIn('ad-placeholder', content, "No empty ad placeholder while no ad script ships")
             if g.name != 'index.html':
                 self.assertIn('diagram-board', content, "Worked guide must render a static board")
                 self.assertIn('candidates-grid', content, "Worked guide must render before/after candidate pencil marks")

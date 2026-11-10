@@ -13,7 +13,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 | Protect `main` | Done 2026-11-10 | branch protection on, Dependabot for GitHub Actions configured |
 | "Advertisements" boxes | Done 2026-11-10 | removed from 9 Ninely guides; test now fails if one returns |
 | Unused Mila PNGs | Done 2026-11-10 | 5 unreferenced PNGs (5.9 MB) deleted; `og-mila.png` is used and kept; all remain in git history |
-| Middle East 2030 | Partly done | owner decided 2026-11-10: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating Everyone 10+ vs adult positioning still needs an owner check in Play Console |
+| Middle East 2030 | Partly done | owner decided 2026-11-10: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating stays Everyone 10+ (owner decision 2026-11-10); site copy no longer says "adult" (PR for 10+ positioning) |
 | Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
 | GoatCounter settings | Unverifiable from outside | dashboard needs login |
 | Play Console privacy URLs | Done 2026-11-10 | read in Play Console: ME2030 `/redline-2030/privacy/`, Baylight `/baylight/privacy.html`, Mila `/mila/privacy/`, Paper Route `/paper-route/privacy/`, Ninely `/ninely/privacy.html`. None uses root `/privacy.html`; all return 200 |
@@ -33,7 +33,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 - [x] **Protect `main`.** Done 2026-11-10. Repository settings: require a pull request with passing checks, block force-push and deletion; turn on Dependabot for GitHub Actions.
 - [x] **Decide: empty "Advertisements" boxes** Done 2026-11-10 (removed). on the 9 Ninely guide pages. Recommendation: remove them (they earn nothing). This would reverse the 2026-11-08 decision.
 - [x] **Decide: public studio name:** Decided as "Aviisr Games" and standardized across the site, schema.org, footers, and app projects.
-- [ ] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning.
+- [x] **Middle East 2030.** Decide whether iPhone visitors see the TestFlight beta link; confirm term length (site says 6 to 8 months, README says 6 to 10); review the Play content rating (Everyone 10+) against the adult positioning. Decided 2026-11-10: keep 10+, copy made neutral.
 - [x] **Confirm the 6.2 MB of unreferenced PNGs in `mila/assets/`** are unused (store tooling?) so an agent can delete them.
 - [ ] **Native read** of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
 - [ ] **Traffic.** Two genuinely useful posts a week (for example a technique guide where a community allows it), each link tagged `?utm_source=<channel>&utm_campaign=<app>-<post>`.

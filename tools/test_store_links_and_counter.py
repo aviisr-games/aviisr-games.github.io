@@ -38,7 +38,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
                     'middle-east-2030/guide/index.html', 'redline-2030/index.html',
                     'ninely/play/index.html', 'ninely/duel/index.html']:
             self.assertIn('class="store-note"', (ROOT / rel).read_text(encoding='utf-8'), rel)
-        self.assertIn('בקרוב ב-App Store וב-Google Play', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
+        self.assertIn('בקרוב ב-App Store', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
         self.assertNotIn('appstore-badge" href', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
 
     def test_counter_never_on_mila_privacy_or_support_pages(self):

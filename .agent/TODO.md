@@ -17,7 +17,8 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 | Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
 | GoatCounter settings | Unverifiable from outside | dashboard needs login |
 | Play Console privacy URLs | Done 2026-11-10 | read in Play Console: ME2030 `/redline-2030/privacy/`, Baylight `/baylight/privacy.html`, Mila `/mila/privacy/`, Paper Route `/paper-route/privacy/`, Ninely `/ninely/privacy.html`. None uses root `/privacy.html`; all return 200 |
-| Play Console campaign check, native he/ar read, traffic posts | Unverifiable from outside | no public trace |
+| Play Console campaign check | Checked 2026-11-10 | no UTM dimension in Grow users or Statistics; coarse sources only, too few installs to see anything |
+| Native he/ar read, traffic posts | Unverifiable from outside | no public trace |
 | Search Console export, 5-person test | Deferred by founder | |
 | 28-day gate | Not due | around 2026-12-08 |
 
@@ -26,7 +27,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
   - Put its count URL in `assets/count.js` (`var ENDPOINT = 'https://<code>.goatcounter.com/count';`), or send the code to an agent.
   - It never runs on `/mila/**` or on privacy and support pages.
 - [ ] **Export Search Console** performance data: Deferred (site has been live under 3 months; export once 3 months accumulate). Keep the CSV private (not in this public repo).
-- [ ] **Play Console check.** Under Store listing acquisition, confirm that visits from links tagged `utm_source=aviisrgames&utm_campaign=<app>-<surface>` appear as a campaign or source once traffic accumulates.
+- [ ] **Play Console check.** Checked 2026-11-10: Grow users shows only coarse traffic sources ("Google Play explore", "Paid and direct"); Ninely had 2 acquisitions in 28 days (1 explore, 1 paid and direct) and no UTM source or campaign dimension is offered in that report or in Statistics. So the UTM check cannot be confirmed in the console yet; judge posts by GoatCounter `store_click/<pkg>/<page>` and referrers instead, and re-check once a post has driven traffic.
 - [ ] **Book 5 people** for a 15-minute remote test: Deferred by founder (not relevant currently).
 - [ ] **GoatCounter settings.** Signed in, turn off optional data collection (screen size, region, language, sessions) so the dashboard matches the privacy page (pages, referring sites, Google Play clicks).
 - [x] **Play Console privacy URLs.** Done 2026-11-10 (all app-specific; studio canonicals now `/privacy/` and `/support/`). Check that each game's listing links to its own privacy page (`/ninely/privacy.html`, `/middle-east-2030/privacy/`, `/baylight/privacy.html`, `/paper-route/privacy/`), not the root `/privacy.html`. Then make `/privacy/` and `/support/` the studio canonicals in `AGENTS.md` and `.agent/context.md`.

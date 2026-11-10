@@ -13,7 +13,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 | Protect `main` | Done 2026-11-10 | branch protection on, Dependabot for GitHub Actions configured |
 | "Advertisements" boxes | Done 2026-11-10 | removed from 9 Ninely guides; test now fails if one returns |
 | Unused Mila PNGs | Done 2026-11-10 | 5 unreferenced PNGs (5.9 MB) deleted; `og-mila.png` is used and kept; all remain in git history |
-| Middle East 2030 | Partly done | owner decided 2026-11-10: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating stays Everyone 10+ (owner decision 2026-11-10); site copy no longer says "adult" (PR for 10+ positioning) |
+| Middle East 2030 | Done 2026-11-10 | owner decided: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating stays Everyone 10+ (owner decision 2026-11-10); site copy no longer says "adult" (PR for 10+ positioning) |
 | Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
 | GoatCounter settings | Done 2026-11-10 (owner-confirmed; dashboard needs login) | retention 400 days; sessions, individual pageviews, screen size, country, region, language off; referrer and browser/system on; dashboard private; public counter embed off |
 | Play Console privacy URLs | Done 2026-11-10 | read in Play Console: ME2030 `/redline-2030/privacy/`, Baylight `/baylight/privacy.html`, Mila `/mila/privacy/`, Paper Route `/paper-route/privacy/`, Ninely `/ninely/privacy.html`. None uses root `/privacy.html`; all return 200 |

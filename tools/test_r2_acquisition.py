@@ -25,6 +25,15 @@ class R2AcquisitionTests(unittest.TestCase):
                 text = json.dumps({k: data.get(k) for k in ('gamePlatform', 'operatingSystem')})
                 self.assertNotIn('iOS', text, rel)
 
+    def test_no_page_claims_ios_availability(self):
+        # Covers visible copy and meta/OG descriptions, in every language, outside policy pages.
+        pat = re.compile(r'(iOS (and|&amp;|&) Android|Android (and|&amp;|&) iOS|ל-iOS|closed test builds)')
+        for page in ROOT.rglob('*.html'):
+            rel = page.relative_to(ROOT).as_posix()
+            if rel.startswith('casino/') or 'privacy' in rel or 'support' in rel or rel in ('privacy.html', 'support.html'):
+                continue
+            self.assertIsNone(pat.search(page.read_text(encoding='utf-8')), rel)
+
     def test_unreleased_mila_has_no_offer_markup(self):
         block = re.search(r'<script type="application/ld\+json">(.*?)</script>', read('mila/index.html'), re.S).group(1)
         self.assertNotIn('offers', json.loads(block))

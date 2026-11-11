@@ -5,6 +5,9 @@ contact=aviisr@aviisrgames.com
 # LevelPlay / ironSource Ads
 ironsrc.com, 688473, DIRECT
 
+# Liftoff Monetize (formerly Vungle), added 2026-11-11.
+vungle.com, 6af4d7e9969a21bd301c782e, DIRECT, c107d686becd2d77
+
 # Unity Ads
 adwmg.com, 159512, RESELLER, c9688a22012618e7
 appads.in, 106246, RESELLER

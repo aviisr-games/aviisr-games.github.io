@@ -243,4 +243,9 @@
   transform: translateY(-2px);
 }
 
+.guide-store {
+  margin: 14px 0 0;
+  font-size: 0.95rem;
+}
+
 .diagram-board .diagram-cell { min-width: 0; overflow: hidden; }

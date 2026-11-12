@@ -9,5 +9,5 @@
   "min_version_code": 0,
   "latest_version_code": 0,
   "force_if_behind": 3,
-  "all_clear_hook": "https://script.google.com/macros/s/AKfycbzuICv2dSdusD_FXvdm5vVZYSTkZd2A48SPNPse7eWihrBPZhf06pqYAXjHNIc84J63lQ/exec?t=a6b63a8f5ef048c029fd2b26b60336ad"
+  "all_clear_hook": ""
 }

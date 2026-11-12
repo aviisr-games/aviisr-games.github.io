@@ -37,6 +37,7 @@
   .guide-callout { background: #faf8f5; border-left: 4px solid #7f1d1d; padding: 12px 14px; margin: 14px 0; font-size: 0.95rem; }
   .guide-callout a { color: #7f1d1d; font-weight: bold; }
   .store-banner { background: #1a1a1a; color: #fff; padding: 20px; border-radius: 6px; text-align: center; margin-top: 24px; }
+  .store-banner:focus { outline: 2px solid #fff; outline-offset: 3px; }
   .store-banner a { display: inline-block; background: #fff; color: #1a1a1a; padding: 8px 16px; border-radius: 4px; font-weight: bold; margin: 8px 6px; text-decoration: none; }
 </style>
 </head>
@@ -83,12 +84,13 @@
     <a id="guide-outcome-link" href="../guide/#path-AAA">Read Strategic Analysis for Path AAA in the Companion Guide ➔</a>
   </div>
   
-  <div class="store-banner">
+  <div class="store-banner" id="end-card" role="status" aria-live="polite" tabindex="-1">
     <h3 style="margin-bottom: 6px; color: #fff;" data-i18n="fullGameTitle">Govern a full multi-year term in Middle East 2030</h3>
     <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="fullGameSub">8 playable capitals, dozens of crises, daily newspaper printouts and deep geopolitical simulation.</p>
+    <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="endCardLine">In the full game you pick one of eight capitals, govern a term of six to eight months with one decision a month, read tomorrow's front page to see what your choices did, and build a career of ranks.</p>
     <div>
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=playable&amp;utm_campaign=middle-east-2030-playable"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-      <span class="store-note">Not on iPhone yet</span>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=playable-win&amp;utm_campaign=middle-east-2030-playable-win"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
+      <span class="store-note" data-i18n="iphoneSoon">Not on iPhone yet</span>
     </div>
   </div>
   
@@ -116,7 +118,8 @@
       termSummary: "Term Result · Special Front Page",
       fullGameTitle: "Govern a full term in Middle East 2030",
       fullGameSub: "8 playable capitals, regional rivalries, and daily morning paper printouts.",
-      playAgain: "↺ Try Another 3-Month Run"
+      playAgain: "↺ Try Another 3-Month Run",
+      endCardLine: "In the full game you pick one of eight capitals, govern a term of six to eight months with one decision a month, read tomorrow's front page to see what your choices did, and build a career of ranks."
     },
     he: {
       metaDate: "דסק אזורי · סימולציית משברים",
@@ -126,7 +129,8 @@
       termSummary: "סיכום קדנציה · עמוד ראשי מיוחד",
       fullGameTitle: "נהלו קדנציה מלאה ב'מזרח התיכון 2030'",
       fullGameSub: "8 ערי בירה לבחירה, עשרות משברים דיפלומטיים והדפסת שער עיתון מדי בוקר.",
-      playAgain: "↺ נסו קדנציה נוספת של 3 חודשים"
+      playAgain: "↺ נסו קדנציה נוספת של 3 חודשים",
+      endCardLine: "במשחק המלא בוחרים אחת מ-8 בירות, מנהלים קדנציה של שישה עד שמונה חודשים עם החלטה אחת בחודש, קוראים בעיתון של מחר את ההשפעה של הבחירות שלכם, ובונים קריירה של דרגות."
     },
     ar: {
       metaDate: "مكتب إقليمي · محاكاة الأزمات",
@@ -136,7 +140,8 @@
       termSummary: "نتائج الفترة · الصفحة الأولى الخاصة",
       fullGameTitle: "قُد ولاية كاملة في 'الشرق الأوسط 2030'",
       fullGameSub: "8 عواصم قابلة للعب، أزمات إقليمية، وصفحة أولى يومية مطبوعة.",
-      playAgain: "↺ خوض تجربة 3 أشهر أخرى"
+      playAgain: "↺ خوض تجربة 3 أشهر أخرى",
+      endCardLine: "في اللعبة الكاملة تختار إحدى ثماني عواصم، وتدير ولاية من ستة إلى ثمانية أشهر بقرار واحد كل شهر، وتقرأ الصفحة الأولى لليوم التالي لترى ما فعلته خياراتك، وتبني مسيرة من الرتب."
     }
   };
 
@@ -247,6 +252,8 @@
       linkEl.href = '../guide/#path-' + pathCode;
       linkEl.textContent = 'Read Strategic Analysis for Path ' + pathCode + ' in the Companion Guide ➔';
     }
+    var endCard = document.getElementById('end-card');
+    if (endCard) endCard.focus();
   }
 
   document.getElementById('replay-btn').addEventListener('click', function () {
@@ -258,6 +265,8 @@
     document.getElementById('game-container').style.display = 'block';
     document.getElementById('result-container').style.display = 'none';
     renderCurrentCrisis();
+    var firstChoice = document.querySelector('#choices-container .choice-btn');
+    if (firstChoice) firstChoice.focus();
   });
 
   renderCurrentCrisis();

@@ -5,6 +5,7 @@
 - **Canonical Domain:** `https://aviisrgames.com/` (never use legacy `.github.io` URLs).
 - **Studio Website (aviisrgames.com) Canonical URLs:** Root `https://aviisrgames.com/`, Support `https://aviisrgames.com/support/`, Privacy `https://aviisrgames.com/privacy/`, Seller files `https://aviisrgames.com/app-ads.txt` & `https://aviisrgames.com/ads.txt`.
 - **Git Commit Identity:** Repo-local `user.name = aviisr-games`, `user.email = aviisr@aviisrgames.com`.
+- **Studio name style (owner decision 2026-11-12):** always lower case, `aviisr games`, in page copy, titles, metadata and structured data. Never a capital A. The logo is the wordmark with the two coloured letters i (see `assets/logo/README.md`). The Google Play developer name and URLs are unchanged.
 - **COPPA & Privacy Safety:** Never place third-party ads or analytics trackers on `/mila/` or privacy pages.
 
 <!-- aviisr-agent-workflow:v1 -->

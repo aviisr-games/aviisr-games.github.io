@@ -17,7 +17,7 @@ a{color:inherit}
 /* header */
 .bar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;min-height:64px;padding-block:6px}
 .logo{display:flex;align-items:baseline;direction:ltr;padding-block:10px;font:800 1.7rem/1 var(--sans);letter-spacing:-.03em;text-decoration:none}
-.logo svg{overflow:visible;flex:none;width:.575em;height:.897em;margin-inline:.012em}
+.logo svg{overflow:visible;flex:none;width:.575em;height:.897em;margin-inline:.085em .012em}
 .logo .a{fill:var(--studio-coral)}.logo .b{fill:var(--studio-mint)}
 .logo .g{margin-inline-start:.42em;font-size:.46em;font-weight:600;letter-spacing:0!important;color:var(--studio-dim)}
 .links{display:flex;gap:20px;margin-inline-start:auto}

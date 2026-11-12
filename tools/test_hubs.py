@@ -10,12 +10,20 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
-HUBS = ['ninely/index.html']
+HUBS = ['ninely/index.html', 'baylight/index.html', 'paper-route/index.html']
+# Play-first hubs lead with a .btn (the browser version is the headline); badge-first hubs lead with the
+# Google Play badge and offer the browser preview as a plain text link, with no .btn in the mast.
+PLAY_FIRST = ['ninely/index.html']
+BADGE_FIRST = ['baylight/index.html', 'paper-route/index.html']
+# Languages each hub supports today (Baylight is English only).
+LANGS = {'ninely/index.html': ('en', 'he', 'ar'), 'baylight/index.html': ('en',), 'paper-route/index.html': ('en', 'he', 'ar')}
 # Play link as written in the page source (byte-identical to the pre-redesign hub, utm_medium=hub).
 EXPECTED_PLAY = {
     'ninely/index.html': 'https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=hub&amp;utm_campaign=ninely-hub',
+    'baylight/index.html': 'https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=hub&amp;utm_campaign=baylight-hub',
+    'paper-route/index.html': 'https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=hub&amp;utm_campaign=paper-route-hub',
 }
-SLUG = {'ninely/index.html': 'ninely'}
+SLUG = {'ninely/index.html': 'ninely', 'baylight/index.html': 'baylight', 'paper-route/index.html': 'paper-route'}
 GAMES = {g['hub'].rstrip('/'): g for g in json.loads((ROOT / 'site/games.json').read_text(encoding='utf-8'))['games']}
 
 
@@ -77,13 +85,36 @@ class HubTemplateTests(unittest.TestCase):
                 self.assertIn('height=', tag)
                 self.assertTrue((ROOT / re.search(r'src="/([^"]+)"', tag).group(1)).is_file(), tag)
 
-    def test_languages_share_one_masthead_and_keep_en_he_ar_copy(self):
+    def test_languages_share_one_masthead_and_keep_the_supported_copy(self):
         for rel in HUBS:
             page = read(rel)
-            for lang in ('en', 'he', 'ar'):
-                self.assertIn('data-lang="%s"' % lang, page, rel)
-            self.assertIn("supported: ['en', 'he', 'ar']", page, rel)
+            langs = LANGS[rel]
+            self.assertIn('supported: %s' % repr(list(langs)), page, rel)
+            if rel in PLAY_FIRST:
+                for lang in langs:
+                    self.assertIn('data-lang="%s"' % lang, page, rel)
             self.assertIn('html[lang=he] [data-lang=he]', read('assets/hub.css'))
+
+    def mast_acts(self, rel):
+        mast = re.search(r'<section class="mast".*?</section>', read(rel), re.S).group(0)
+        acts = re.search(r'<div class="acts">(.*?)</div>', mast, re.S).group(1)
+        first = re.match(r'\s*<(\w+)([^>]*)>', acts)
+        return mast, first
+
+    def test_play_first_hubs_lead_with_a_primary_button(self):
+        for rel in PLAY_FIRST:
+            mast, first = self.mast_acts(rel)
+            self.assertEqual(first.group(1), 'a', rel)
+            self.assertIn('class="btn"', first.group(2), rel)
+            self.assertEqual(len(re.findall(r'class="btn"', mast)), 1, rel)
+
+    def test_badge_first_hubs_lead_with_the_play_badge_and_have_no_btn(self):
+        for rel in BADGE_FIRST:
+            mast, first = self.mast_acts(rel)
+            self.assertEqual(first.group(1), 'a', rel)
+            self.assertIn('class="play-badge"', first.group(2), rel)
+            self.assertNotRegex(mast, r'class="btn[\s"]', rel)
+            self.assertIn('class="link"', mast, rel)
 
 
 if __name__ == '__main__':

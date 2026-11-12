@@ -43,6 +43,9 @@ class R2AcquisitionTests(unittest.TestCase):
             html = read(rel)
             for lang, body in re.findall(r'<section id="(en|he|ar)"[^>]*>(.*?)</section>', html, re.S):
                 self.assertIn('class="play-badge"', body, f'{rel} section {lang}')
+        # Middle East 2030 gives each language its own URL instead of a section: each page needs the badge.
+        for rel in ('middle-east-2030/index.html', 'middle-east-2030/he/index.html'):
+            self.assertIn('class="play-badge"', read(rel), rel)
 
     def test_hub_screenshots_exist_and_reserve_space(self):
         for rel in HUBS:
@@ -58,10 +61,12 @@ class R2AcquisitionTests(unittest.TestCase):
 
     def test_middle_east_fiction_notice_survives_translation(self):
         # A data-i18n attribute would let a shared string replace the notice at runtime.
-        sub = re.search(r'<p class="sub"[^>]*>.*?</p>', read('middle-east-2030/index.html'), re.S).group(0)
-        self.assertNotIn('data-i18n', sub)
-        self.assertIn('fiction', sub)
-        self.assertNotIn('iOS', sub)
+        # English and Hebrew have their own URLs; each carries the notice in a p.fiction banner.
+        for rel, word in (('middle-east-2030/index.html', 'fiction'), ('middle-east-2030/he/index.html', 'בדיון')):
+            sub = re.search(r'<p class="fiction"[^>]*>.*?</p>', read(rel), re.S).group(0)
+            self.assertNotIn('data-i18n', sub, rel)
+            self.assertIn(word, sub, rel)
+            self.assertNotIn('iOS', sub, rel)
 
     def test_homepage_does_not_count_mila_as_released(self):
         html = read('index.html')

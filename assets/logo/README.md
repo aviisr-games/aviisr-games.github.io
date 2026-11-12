@@ -15,4 +15,9 @@ Rules
 - Never recolour or stretch the mark; keep the jump dot.
 - Keep clear space of at least one stem width around it.
 
-The wordmark is live text ("aviisr" weight 800, "games" smaller, muted) plus the drawn ii. An outlined wordmark file does not exist yet.
+Wordmark files (pure outlines, no text or fonts)
+- wordmark-dark.svg / wordmark-light.svg: full "aviisr games" lockup, transparent.
+- wordmark-short-dark.svg / wordmark-short-light.svg: "aviisr" only, for small spaces.
+- OFL-Inter.txt: licence of the typeface.
+
+The wordmark is set in Inter (SIL Open Font License 1.1), weight 800 for aviisr and 600 for games, converted to outlines. The two i shapes are drawn, not font glyphs.

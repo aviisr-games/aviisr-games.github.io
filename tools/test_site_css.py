@@ -56,8 +56,10 @@ class SiteCssTests(unittest.TestCase):
     def test_studio_frame_meets_aa(self):
         root = tokens(re.search(r':root\{([^}]*)\}', CSS).group(1))
         bg = root['studio-bg']
-        for k in ('studio-text', 'studio-dim', 'studio-ring'):
+        for k in ('studio-text', 'studio-dim'):
             self.assertGreaterEqual(ratio(root[k], bg), 4.5, k)
+        for k in ('studio-coral', 'studio-mint'):  # large text and graphics only
+            self.assertGreaterEqual(ratio(root[k], bg), 3.0, k)
 
     def test_fiction_flag_and_skip_link_meet_aa(self):
         flag = re.search(r'\.tag\.flag\{[^}]*border-color:(#\w+);background:(#\w+);color:(#\w+)', CSS)

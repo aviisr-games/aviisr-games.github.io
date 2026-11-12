@@ -114,7 +114,12 @@ class HubTemplateTests(unittest.TestCase):
             self.assertEqual(first.group(1), 'a', rel)
             self.assertIn('class="play-badge"', first.group(2), rel)
             self.assertNotRegex(mast, r'class="btn[\s"]', rel)
-            self.assertIn('class="link"', mast, rel)
+            if rel == 'paper-route/index.html':
+                # Browser preview retired: no secondary browser link (needs the paper-route/index.html edit).
+                self.assertNotIn('class="link"', mast, rel)
+                self.assertNotIn('morning-route/preview', read(rel), rel)
+            else:
+                self.assertIn('class="link"', mast, rel)
 
 
 if __name__ == '__main__':

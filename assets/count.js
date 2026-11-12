@@ -70,7 +70,7 @@
     '/ninely/play/': ['ninely', 'play'], '/ninely/': ['ninely', 'hub'],
     '/middle-east-2030/briefing/': ['me2030', 'play'], '/middle-east-2030/': ['me2030', 'hub'],
     '/baylight/dock/': ['baylight', 'play'], '/baylight/': ['baylight', 'hub'],
-    '/morning-route/preview/': ['paper-route', 'play'], '/paper-route/': ['paper-route', 'hub']
+    '/paper-route/': ['paper-route', 'hub']
   };
   var onHome = /^\/(index\.html)?$/.test(location.pathname);
 

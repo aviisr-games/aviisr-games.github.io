@@ -84,7 +84,7 @@ Merged and verified live on 2026-11-09. Visit counter turned on the same day (Go
 4. **Middle East 2030 Companion (`665f236`), Baylight Dock (`b55dc50`), Morning Route Preview (`b55dc50`), and Mila Multi-Grade Worksheets (`fc3e4d9`):**
    - `/middle-east-2030/briefing/` & `/middle-east-2030/guide/`: 3-step interactive crisis briefing routing into 8 end-state paths (`A1_DOVE`..`B2_CONTAIN`) and 8 cabinet chair profiles.
    - `/baylight/dock/`: 13-move solver-verified dock puzzle with live in-browser BFS solver (`findNextWinningMove`) and matching-color bay priority.
-   - `/morning-route/preview/`: 5-stop route preview with aligned `.zone-porch` (35%–60%) and pause-safe animation loop.
+   - `/morning-route/preview/` (retired 2026-11-13, now a noindex stub pointing to `/paper-route/`): 5-stop route preview with aligned `.zone-porch` (35%–60%) and pause-safe animation loop.
    - `/mila/worksheets/` & `/mila/worksheets/answer-key/`: Multi-grade printable packs (`pack-grade3.json`, `pack-grade4.json`, `pack-grade5.json`) with RTL layout and `<span class="bidi-eng" lang="en">` isolation.
 
 ---

@@ -11,7 +11,6 @@ PLAYABLES = {
     'ninely/play/index.html': True,
     'middle-east-2030/briefing/index.html': True,
     'baylight/dock/index.html': True,
-    'morning-route/preview/index.html': False,  # no end state: play_start only
 }
 
 

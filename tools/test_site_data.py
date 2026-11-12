@@ -38,7 +38,10 @@ class SiteDataTests(unittest.TestCase):
             self.assertEqual(title, g['storeTitle'])
             self.assertIn(f'<a class="app-more" href="{g["hub"]}">', body)
             self.assertTrue((ROOT / g['hub'] / 'index.html').is_file(), g['hub'])
-            self.assertIn(f'href="{g["browser"]}"', body)
+            if g['browser']:
+                self.assertIn(f'href="{g["browser"]}"', body)
+            else:
+                self.assertNotIn('class="link"', body, g['id'])
 
     def test_play_badges_exist_exactly_for_live_products_with_the_exact_link(self):
         for g in GAMES:

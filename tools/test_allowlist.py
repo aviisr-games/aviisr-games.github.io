@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import build_sitemap as sm  # noqa: E402
 
 STUDIO_FILES = ['/', 'support/', 'privacy/', 'app-ads.txt', 'ads.txt', '.well-known/security.txt',
-                'favicon.svg', 'style.css', 'assets/']
+                'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'style.css', 'assets/']
 APP_NAMES = {name for name, _ in sm.ALLOWLIST}
 
 

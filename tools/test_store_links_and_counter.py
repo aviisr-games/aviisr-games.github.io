@@ -62,6 +62,23 @@ class StoreLinksAndCounterTests(unittest.TestCase):
             self.assertRegex(csp, r"img-src 'self' data: https://\*\.goatcounter\.com", p)
             self.assertNotRegex(csp, r'connect-src[^;]*goatcounter', p)  # pixel only, no XHR/beacon
 
+    def test_every_html_file_has_no_app_store_link_and_only_known_play_ids(self):
+        """Scans EVERY *.html in the repo, not only allowlisted folders (legacy casino ids bit us)."""
+        known = {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
+                 'com.aviisrgames.baylight', 'com.aviisr.paperroute'}
+        problems = []
+        for path in ROOT.rglob('*.html'):
+            if '.git' in path.relative_to(ROOT).parts:
+                continue
+            text = path.read_text(encoding='utf-8', errors='replace')
+            rel = path.relative_to(ROOT).as_posix()
+            if 'apps.apple.com' in text:
+                problems.append(f'{rel}: apps.apple.com link')
+            for pid in re.findall(r'play\.google\.com/store/apps/details\?id=([A-Za-z0-9_.]+)', text):
+                if pid not in known:
+                    problems.append(f'{rel}: unknown Play id {pid}')
+        self.assertEqual(problems, [])
+
     def test_counter_endpoint_is_owner_approved_and_guarded(self):
         js = (ROOT / 'assets/count.js').read_text(encoding='utf-8')
         # Enabled by the founder on 2026-11-09. Only this GoatCounter site (or off) is allowed.

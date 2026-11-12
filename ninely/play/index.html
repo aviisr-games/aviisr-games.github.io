@@ -327,6 +327,7 @@
 
   function handleNumInput(val) {
     if (selectedCell === -1 || puzzleGivens[selectedCell] !== 0 || gameWon) return;
+    if (val > 0 && window.aviisrCount) window.aviisrCount('play_start/ninely');
     currentBoard[selectedCell] = val;
     cells[selectedCell].textContent = val === 0 ? '' : String(val);
     cells[selectedCell].classList.remove('hinted');
@@ -368,6 +369,7 @@
     }
 
     gameWon = true;
+    if (window.aviisrCount) window.aviisrCount('play_complete/ninely');
     if (timerInterval) clearInterval(timerInterval);
     var winBox = document.getElementById('win-box');
     var winTime = document.getElementById('win-time');
@@ -541,6 +543,7 @@
     var hint = computeDynamicSmartHint(currentBoard);
     var hintBox = document.getElementById('hint-box');
     if (!hint) return;
+    if (window.aviisrCount) window.aviisrCount('play_start/ninely');
 
     var r = hint.targetRow, c = hint.targetCol, val = hint.targetDigit;
     var targetIdx = r * 9 + c;

@@ -780,6 +780,7 @@
 
     select.addEventListener('change', function () {
       applyLanguage(this.value, options);
+      if (supported.indexOf(this.value) !== -1 && window.aviisrCount) window.aviisrCount('lang/' + this.value);
     });
 
     while (container.firstChild) {

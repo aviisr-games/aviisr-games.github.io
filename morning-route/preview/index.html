@@ -490,6 +490,7 @@
   }
 
   function throwPaper() {
+    if (window.aviisrCount) window.aviisrCount('play_start/paper-route');
     // 0-35: Early Miss
     // 35-60: Porch (Good, +50)
     // 60-80: Mailbox (Perfect, +100, streak++)

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif">
+  <rect width="960" height="300" fill="#15171C"/>
+  <!-- Direction 1: the ring, refined (current favicon mark + wordmark) -->
+  <g transform="translate(40,60)">
+    <circle cx="44" cy="44" r="30" fill="none" stroke="#FFB547" stroke-width="16"/>
+    <text x="96" y="56" fill="#F5F2EA" font-size="34" font-weight="800">Aviisr Games</text>
+    <text x="0" y="130" fill="#A7AFBD" font-size="15">1. Ring: keep the favicon mark, pair it with the name</text>
+    <rect x="0" y="150" width="56" height="56" rx="13" fill="#F5F2EA"/><circle cx="28" cy="178" r="13" fill="none" stroke="#FFB547" stroke-width="8"/>
+    <rect x="70" y="150" width="56" height="56" rx="28" fill="#FFB547"/><circle cx="98" cy="178" r="13" fill="none" stroke="#15171C" stroke-width="8"/>
+  </g>
+  <!-- Direction 2: five-part ring, one arc per product -->
+  <g transform="translate(360,60)">
+    <g fill="none" stroke-width="16" stroke-linecap="butt" transform="translate(44,44)">
+      <path d="M0-30A30 30 0 0 1 28.5-9.3" stroke="#2F6FED"/>
+      <path d="M28.5-9.3A30 30 0 0 1 17.6 24.3" stroke="#E9E2D0"/>
+      <path d="M17.6 24.3A30 30 0 0 1-17.6 24.3" stroke="#FFD23F"/>
+      <path d="M-17.6 24.3A30 30 0 0 1-28.5-9.3" stroke="#F4743B"/>
+      <path d="M-28.5-9.3A30 30 0 0 1 0-30" stroke="#6D3BDB"/>
+    </g>
+    <text x="96" y="56" fill="#F5F2EA" font-size="34" font-weight="800">Aviisr Games</text>
+    <text x="0" y="130" fill="#A7AFBD" font-size="15">2. Five worlds: one arc per product colour</text>
+  </g>
+  <!-- Direction 3: wordmark with the ring as a letter -->
+  <g transform="translate(40,250)">
+    <text x="640" y="-134" fill="#F5F2EA" font-size="44" font-weight="900" letter-spacing="-1">aviisr</text>
+    <circle cx="806" cy="-150" r="15" fill="none" stroke="#FFB547" stroke-width="9"/>
+    <text x="640" y="-70" fill="#A7AFBD" font-size="15">3. Wordmark: lower-case name, ring as a full stop</text>
+  </g>
+</svg>

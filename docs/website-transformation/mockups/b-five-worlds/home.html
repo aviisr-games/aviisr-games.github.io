@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept B · Five Worlds · Home</title><link rel="stylesheet" href="../base.css">
+<style>
+:root{--studio:#15171C;--ring:#FFB547;--text:#F5F2EA}
+body{background:var(--studio);color:var(--text);font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;text-decoration:none}.logo i{width:24px;height:24px;border-radius:50%;border:6px solid var(--ring)}
+nav a{margin-inline-start:20px;text-decoration:none;opacity:.8;font-weight:600}
+.hero{padding:44px 0 30px;text-align:center}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:900;letter-spacing:-.03em;line-height:1}
+.hero h1 em{font-style:normal;color:var(--ring)}
+.hero p{margin:16px auto 0;max-width:620px;font-size:1.15rem;opacity:.85}
+.rail{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:30px 0 8px}
+.rail a{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.85rem;width:92px}
+.rail img{width:76px;height:76px;border-radius:19px;box-shadow:0 8px 18px rgba(0,0,0,.4);transition:transform .18s cubic-bezier(.2,.8,.2,1)}
+.rail a:hover img{transform:translateY(-6px) rotate(-3deg)}
+.world{padding:64px 0;position:relative;overflow:hidden}
+.world .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.world:nth-of-type(even) .copy{order:2}
+.tag{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.14)}
+.world h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;font-weight:900;margin:14px 0 12px;letter-spacing:-.02em}
+.world p{font-size:1.12rem;max-width:480px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:22px}
+.play{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:0 22px;border-radius:14px;font-weight:800;text-decoration:none;font-size:1.05rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.more{font-weight:700;font-size:.95rem}
+.fan{display:flex;justify-content:center}
+.fan .phone{width:44%;max-width:210px}.fan .phone:nth-child(1){transform:rotate(-6deg) translate(18px,10px)}.fan .phone:nth-child(2){transform:rotate(5deg) translate(-18px,-6px);z-index:1}
+/* per-world tokens */
+.w-ninely{background:#2F6FED;color:#fff}.w-ninely .play{background:#fff;color:#1746B0}
+.w-me{background:#F3EDE0;color:#1B1A17;font-family:"Iowan Old Style",Georgia,serif}.w-me .play{background:#1B1A17;color:#F3EDE0;font-family:inherit}.w-me h2{font-weight:700}.w-me .tag{background:#B3261E;color:#fff}
+.w-bay{background:#101A33;color:#EAF0FF}.w-bay .play{background:#FFD23F;color:#101A33}.w-bay .tag{background:rgba(255,255,255,.12)}
+.w-mpr{background:linear-gradient(180deg,#FF9A3D 0%,#F4743B 100%);color:#1E2433}.w-mpr .play{background:#1E2433;color:#fff}
+.w-mila{background:#F7F2FF;color:#3B1E7A}.w-mila .play{background:#6D3BDB;color:#fff}.w-mila .tag{background:#E5D9FF}
+footer{padding:36px 0 56px;opacity:.75;font-size:.9rem;text-align:center}
+@media (max-width:760px){.world{padding:44px 0}.world .wrap{grid-template-columns:1fr;gap:26px}.world:nth-of-type(even) .copy{order:0}nav a:not(:last-child){display:none}.rail a{width:64px;font-size:.72rem}.rail img{width:56px;height:56px;border-radius:14px}}
+</style></head><body>
+<div class="mock-note">MOCKUP · Concept B "Five Worlds" · each game keeps its own colours and type inside one studio frame</div>
+<div class="wrap"><header class="top"><a class="logo" href="#"><i></i>Aviisr Games</a><nav><a href="#">Games</a><a href="#">Play now</a><a href="#">Support</a><a href="#">EN</a></nav></header>
+<section class="hero"><h1>Pick a <em>world</em>.</h1><p>Sudoku that teaches. A region to govern. Trucks to load. Papers to throw. English for kids. Small mobile games, made with care.</p>
+<div class="rail"><a href="#ninely"><img src="../../../../assets/icons/ninely.webp" alt="">Ninely</a><a href="#me"><img src="../../../../assets/icons/middle-east-2030.webp" alt="">Middle East 2030</a><a href="#bay"><img src="../../../../assets/icons/baylight.webp" alt="">Baylight</a><a href="#mpr"><img src="../../../../assets/icons/paper-route.webp" alt="">Paper Route</a><a href="#mila"><img src="../../../../assets/icons/mila.webp" alt="">Mila</a></div></section></div>
+
+<section class="world w-ninely" id="ninely"><div class="wrap"><div class="copy"><span class="tag">Logic puzzle</span><h2>Sudoku that explains every move.</h2><p>Smart Hints teach the logic step by step. A new daily puzzle every day.</p><div class="cta"><a class="play" href="#">▶ Play today's puzzle</a><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely"></a></div></div><div class="fan"><div class="phone"><img src="../../../../assets/screens/ninely-1.webp" alt=""></div><div class="phone"><img src="../../../../assets/screens/ninely-2.webp" alt=""></div></div></div></section>
+<section class="world w-me" id="me"><div class="wrap"><div class="copy"><span class="tag">Fiction · politics sim</span><h2>2030. Can you hold the region for one term?</h2><p>Pick one of 8 capitals and read tomorrow's front page. All events are fiction.</p><div class="cta"><a class="play" href="#">Read the 3-month briefing</a><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030"></a></div></div><div class="fan"><div class="phone"><img src="../../../../assets/screens/middle-east-2030-1.webp" alt=""></div><div class="phone"><img src="../../../../assets/screens/middle-east-2030-2.webp" alt=""></div></div></div></section>
+<section class="world w-bay" id="bay"><div class="wrap"><div class="copy"><span class="tag">One-thumb sorting</span><h2>Stack three. Ship the truck.</h2><p>Tap a bay, stack three of a kind, ship the truck. Short rounds.</p><div class="cta"><a class="play" href="#">▶ Load a dock</a><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight"></a></div></div><div class="fan"><div class="phone"><img src="../../../../assets/screens/baylight-1.webp" alt=""></div><div class="phone"><img src="../../../../assets/screens/baylight-3.webp" alt=""></div></div></div></section>
+<section class="world w-mpr" id="mpr"><div class="wrap"><div class="copy"><span class="tag">Bike arcade</span><h2>Deliver before sunrise.</h2><p>Ride your morning route and throw the paper. No forced ads during rides.</p><div class="cta"><a class="play" href="#">▶ Try the throw</a><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route"></a></div></div><div class="fan"><div class="phone"><img src="../../../../assets/screens/paper-route-1.webp" alt=""></div><div class="phone"><img src="../../../../assets/screens/paper-route-2.webp" alt=""></div></div></div></section>
+<section class="world w-mila" id="mila" lang="he" dir="rtl"><div class="wrap"><div class="copy"><span class="tag">להורים · כיתות א׳–ו׳</span><h2>אנגלית לילדים דוברי עברית.</h2><p>בלי פרסומות, בלי חשבון, ושום מידע לא יוצא מהמכשיר.</p><div class="cta"><a class="play" href="#">דפי עבודה להדפסה, בחינם</a><span class="more">בקרוב ב-App Store וב-Google Play</span></div></div><div class="fan"><div class="phone"><img src="../../../../mila/assets/screen-home.webp" alt=""></div><div class="phone"><img src="../../../../mila/assets/screen-story.webp" alt=""></div></div></div></section>
+<footer>© Aviisr Games · Support · Privacy · aviisr@aviisrgames.com</footer>
+</body></html>

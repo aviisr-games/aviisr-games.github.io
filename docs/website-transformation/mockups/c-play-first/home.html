@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept C · Play First · Home</title><link rel="stylesheet" href="../base.css">
+<style>
+:root{--bg:#0F1115;--panel:#191C23;--line:#2A2F3A;--text:#F2F4F8;--dim:#A7AFBD;--go:#35D07F;--ring:#FFB547}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:84px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none}.logo i{width:20px;height:20px;border-radius:50%;border:5px solid var(--ring)}
+nav a{margin-inline-start:18px;text-decoration:none;color:var(--dim);font-weight:600;font-size:.95rem}
+.feat{display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:34px;margin-top:8px}
+.pill{display:inline-block;background:rgba(53,208,127,.14);color:var(--go);font-weight:700;font-size:.8rem;padding:5px 10px;border-radius:999px}
+.feat h1{font-size:clamp(2rem,5.4vw,3.3rem);line-height:1.06;font-weight:800;letter-spacing:-.02em;margin:14px 0 12px}
+.feat p{color:var(--dim);font-size:1.1rem;max-width:500px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+.go{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;background:var(--go);color:#062A17;font-weight:800;font-size:1.05rem;border-radius:12px;text-decoration:none}
+.hint{font-size:.88rem;color:var(--dim);margin-top:10px}
+h2{font-size:1.3rem;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.tile .shot{aspect-ratio:1/1;overflow:hidden}.tile .shot img{width:100%;object-fit:cover;object-position:50% 38%;height:100%}
+.tile .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tile h3{font-size:1rem;line-height:1.25}.tile p{font-size:.88rem;color:var(--dim);flex:1}
+.tile .row{display:flex;gap:8px}.tile a{flex:1;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-weight:700;font-size:.88rem;text-decoration:none}
+.tile a.p{background:var(--go);color:#062A17}.tile a.s{border:1px solid var(--line)}
+.mila{display:flex;gap:18px;align-items:center;background:#F7F2FF;color:#3B1E7A;border-radius:16px;padding:18px 20px;margin-top:14px}.mila img{width:64px;height:64px;border-radius:16px}.mila a{font-weight:700}
+.sticky{position:fixed;inset-inline:0;bottom:0;background:rgba(15,17,21,.94);border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center}
+.sticky span{font-weight:700;font-size:.92rem}.sticky img{height:46px}
+footer{color:var(--dim);font-size:.9rem;padding:34px 0}
+@media (max-width:860px){.feat{grid-template-columns:1fr;padding:22px}.feat .phone{max-width:200px;margin:0 auto}.grid{grid-template-columns:repeat(2,1fr)}nav a:not(:last-child){display:none}}
+</style></head><body>
+<div class="mock-note">MOCKUP · Concept C "Play First" · featured playable, tiles with two actions, device-aware sticky bar (Android view shown)</div>
+<div class="wrap"><header class="top"><a class="logo" href="#"><i></i>Aviisr Games</a><nav><a href="#">Play now</a><a href="#">Games</a><a href="#">Support</a><a href="#">EN</a></nav></header>
+<section class="feat"><div><span class="pill">Today's puzzle · Easy</span><h1>Play a Sudoku that explains every move.</h1><p>Ninely's Smart Hints teach the logic step by step. Today's board is ready, no install and no sign-up.</p><div class="cta"><a class="go" href="#">▶ Play in your browser</a><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely"></a></div><p class="hint">On iPhone? The apps are not on the App Store yet, the browser versions work today.</p></div><div class="phone"><img src="../../../../assets/screens/ninely-1.webp" alt="Ninely hint screen"></div></section>
+<h2>Play now, install later</h2>
+<div class="grid">
+<div class="tile"><div class="shot"><img src="../../../../assets/screens/middle-east-2030-1.webp" alt=""></div><div class="b"><h3>Middle East 2030: Politics Sim</h3><p>Govern an invented 2030. All events are fiction.</p><div class="row"><a class="p" href="#">▶ Briefing</a><a class="s" href="#">Google Play</a></div></div></div>
+<div class="tile"><div class="shot"><img src="../../../../assets/screens/baylight-1.webp" alt=""></div><div class="b"><h3>Baylight: Truck Sort Puzzle</h3><p>Stack three of a kind, ship the truck.</p><div class="row"><a class="p" href="#">▶ Load a dock</a><a class="s" href="#">Google Play</a></div></div></div>
+<div class="tile"><div class="shot"><img src="../../../../assets/screens/paper-route-1.webp" alt=""></div><div class="b"><h3>Morning Paper Route: Bike Game</h3><p>Throw the paper, deliver before sunrise.</p><div class="row"><a class="p" href="#">▶ Try the throw</a><a class="s" href="#">Google Play</a></div></div></div>
+<div class="tile"><div class="shot"><img src="../../../../assets/screens/ninely-2.webp" alt=""></div><div class="b"><h3>Ninely: Sudoku &amp; Logic Puzzle</h3><p>Daily puzzle, drills and technique guides.</p><div class="row"><a class="p" href="#">▶ Daily</a><a class="s" href="#">Google Play</a></div></div></div>
+</div>
+<div class="mila" lang="he" dir="rtl"><img src="../../../../assets/icons/mila.webp" alt=""><div><strong>מילה · Mila</strong> · אנגלית לילדים דוברי עברית, כיתות א׳–ו׳. בלי פרסומות ובלי חשבון. בקרוב בחנויות. <a href="#">מידע להורים ודפי עבודה</a></div></div>
+<footer>© Aviisr Games · Support · Privacy · aviisr@aviisrgames.com</footer></div>
+<div class="sticky"><span>Ninely is free on Google Play</span><a class="badge" href="#"><img src="../../../../assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely"></a></div>
+</body></html>

@@ -1,0 +1,12 @@
+/* Shared reset for the three concept mockups. Concept styling lives in each page. */
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;line-height:1.5}
+img{max-width:100%;height:auto;display:block}a{color:inherit}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.badge img{height:54px;width:auto}
+.phone{border-radius:28px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28);border:6px solid #111;background:#111}
+.phone img{border-radius:22px;width:100%}
+.mock-note{font:12px/1.4 ui-monospace,Menlo,monospace;background:#111;color:#ddd;padding:6px 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

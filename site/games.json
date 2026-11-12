@@ -38,7 +38,7 @@
       "id": "paper-route",
       "storeTitle": "Morning Paper Route: Bike Game",
       "hub": "paper-route/",
-      "browser": "morning-route/preview/",
+      "browser": null,
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=home&utm_campaign=paper-route-home",
       "googlePlay": { "package": "com.aviisr.paperroute", "status": "live" },
       "appStore": { "status": "none" },

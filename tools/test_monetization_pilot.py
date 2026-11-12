@@ -603,7 +603,6 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/mila/worksheets/answer-key/',
             'https://aviisrgames.com/baylight/',
             'https://aviisrgames.com/baylight/dock/',
-            'https://aviisrgames.com/morning-route/preview/',
             'https://aviisrgames.com/privacy/',
             'https://aviisrgames.com/support/'
         ]
@@ -923,46 +922,35 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('findNextWinningMove', dock_html)
         self.assertIn('stopReplayTimer', dock_html)
 
-    def test_slice5b_morning_route_preview_and_canonicalization(self):
-        """Verify Slice 5B Morning Route map preview, throw prototype, hazard counter-moves, and canonicalization."""
-        preview_path = ROOT / 'morning-route/preview/index.html'
-        mr_path = ROOT / 'morning-route/index.html'
-        pr_path = ROOT / 'paper-route/index.html'
+    def test_morning_route_preview_is_a_retired_noindex_stub(self):
+        """The browser preview is retired: a noindex stub canonicalising to /paper-route/, no game code, no links to it."""
+        preview_html = (ROOT / 'morning-route/preview/index.html').read_text(encoding='utf-8')
+        mr_html = (ROOT / 'morning-route/index.html').read_text(encoding='utf-8')
+        pr_html = (ROOT / 'paper-route/index.html').read_text(encoding='utf-8')
 
-        self.assertTrue(preview_path.exists(), "morning-route/preview/index.html must exist")
-        self.assertTrue(mr_path.exists(), "morning-route/index.html must exist")
-        self.assertTrue(pr_path.exists(), "paper-route/index.html must exist")
-
-        preview_html = preview_path.read_text(encoding='utf-8')
-        mr_html = mr_path.read_text(encoding='utf-8')
-        pr_html = pr_path.read_text(encoding='utf-8')
-
-        # Canonical links and self-only CSP
         for h in [preview_html, mr_html, pr_html]:
             self.assertIn("default-src 'self'", h)
             self.assertNotIn("pagead2.googlesyndication.com", h)
             self.assertNotIn("fonts.googleapis.com", h)
             self.assertIn('<link rel="canonical"', h)
 
-        # Cross links
-        self.assertIn('href="preview/"', mr_html)
-        self.assertIn('href="../morning-route/preview/"', pr_html)
-
-        # 7 days and 6 hazards
-        for d in range(1, 8):
-            self.assertIn(f'Day {d}', preview_html)
-        for hazard in ['Bins', 'Pedestrians', 'Chasing Dogs', 'Reversing Cars', 'Drones', 'Skaters']:
-            self.assertIn(hazard, preview_html)
-
-        # Throw timing zones and reduced motion step controls (including Defect 3 alignment check)
-        self.assertIn('zone-porch', preview_html)
-        self.assertIn('left: 35%;\n    width: 25%;', preview_html)
-        self.assertNotIn('pos * 0.85', preview_html)
-        self.assertIn('cancelAnimationFrame', preview_html)
-        self.assertIn('zone-mailbox', preview_html)
-        self.assertIn('zone-window', preview_html)
-        self.assertIn('btn-step-frame', preview_html)
-        self.assertIn('prefers-reduced-motion', preview_html)
+        self.assertIn('<link rel="canonical" href="https://aviisrgames.com/paper-route/">', preview_html)
+        self.assertIn('<meta name="robots" content="noindex">', preview_html)
+        self.assertIn('href="../../paper-route/"', preview_html)
+        self.assertIn('class="play-badge"', preview_html)
+        self.assertIn('id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=hub', preview_html)
+        self.assertIn('aviisr games', preview_html)
+        self.assertNotIn('play_start', preview_html)
+        self.assertNotIn('aviisrCount', preview_html)
+        self.assertLess(len(preview_html), 3000)
+        # Only the shared helpers run; no inline script.
+        self.assertEqual(re.findall(r'<script[^>]*\ssrc="([^"]+)"', preview_html),
+                         ['/assets/play-badge.js', '/assets/count.js'])
+        self.assertEqual(len(re.findall(r'<script(?![^>]*src=)[^>]*>', preview_html)), 0)
+        self.assertNotIn('/morning-route/preview/', (ROOT / 'sitemap.xml').read_text(encoding='utf-8'))
+        # Nothing links to the retired page any more.
+        self.assertNotIn('href="preview/"', mr_html)
+        self.assertNotIn('morning-route/preview', pr_html)
 
 
 if __name__ == '__main__':

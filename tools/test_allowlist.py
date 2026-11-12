@@ -62,8 +62,9 @@ class AllowlistTests(unittest.TestCase):
 
     def test_homepage_app_cards_are_exactly_the_allowlist(self):
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
-        cards = re.findall(r'<li class="app-card"[^>]*>.*?<h3>(.*?)</h3>', html, re.S)
-        names = {c.replace('&amp;', '&') for c in cards}
+        cards = re.findall(r'<section\b[^>]*\bdata-world="[\w-]+"[^>]*>.*?<h3>(.*?)</h3>', html, re.S)
+        names = {re.sub(r'</?bdi>', '', c).replace('&amp;', '&') for c in cards}
+        self.assertEqual(len(cards), len(APP_NAMES))
         self.assertEqual(names, APP_NAMES)
 
     def test_homepage_store_links_are_allowlisted_packages(self):

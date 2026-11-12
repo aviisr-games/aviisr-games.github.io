@@ -46,8 +46,13 @@ class R2AcquisitionTests(unittest.TestCase):
 
     def test_hub_screenshots_exist_and_reserve_space(self):
         for rel in HUBS:
-            imgs = re.findall(r'<img src="(/assets/screens/[^"]+)" width="\d+" height="\d+" loading="lazy"', read(rel))
+            # The first screenshot is the LCP element: eager with fetchpriority. The rest stay lazy.
+            imgs = re.findall(r'<img src="(/assets/screens/[^"]+)" width="\d+" height="\d+" (?:loading="lazy"|fetchpriority="high")', read(rel))
             self.assertGreaterEqual(len(imgs), 3, rel)
+            strip = re.search(r'<div class="screens"[^>]*>\s*(<img[^>]*>)', read(rel)).group(1)
+            self.assertIn('fetchpriority="high"', strip, rel)
+            self.assertNotIn('loading="lazy"', strip, rel)
+            self.assertEqual(read(rel).count('fetchpriority="high"'), 1, rel)
             for src in imgs:
                 self.assertTrue((ROOT / src.lstrip('/')).is_file(), src)
 

@@ -20,10 +20,12 @@ PLAY = ('https://play.google.com/store/apps/details?id=com.aviisrgames.middleeas
 
 # Real-world names most likely to slip into copy, alt text or metadata during an edit:
 # current regional leaders, armed groups and parties, and places that are in the news.
-# Kept short on purpose; it is a tripwire, not a censor. The screenshots are not checked
+# Kept short on purpose; it is a tripwire, not a censor, and it cannot prove the copy is clean:
+# a human read of both pages stays mandatory for every copy change. The screenshots are not checked
 # (they are pixels from the shipped game).
-DENY_EN = ['netanyahu', 'khamenei', 'erdogan', 'hamas', 'hezbollah', 'likud', 'gaza', 'idf', 'west bank']
-DENY_HE = ['נתניהו', 'חמאס', 'חיזבאללה', 'ליכוד', 'עזה', 'צה"ל']
+DENY_EN = ['netanyahu', 'khamenei', 'erdogan', 'assad', 'trump', 'hamas', 'hezbollah', 'likud', 'gaza', 'idf',
+           'west bank', 'israel', 'iran', 'saudi', 'tehran', 'jerusalem']
+DENY_HE = ['נתניהו', 'חמאס', 'חיזבאללה', 'ליכוד', 'עזה', 'צה"ל', 'צה״ל', 'ישראל', 'איראן', 'ירושלים']
 FLAG_EMOJI = re.compile('[\U0001F1E6-\U0001F1FF]')
 
 

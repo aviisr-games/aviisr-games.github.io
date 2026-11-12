@@ -35,12 +35,20 @@ class EndCardTests(unittest.TestCase):
                 'com.aviisrgames.baylight': 'baylight'}[pkg] + '-playable-win', wins[0], rel)
 
     def test_card_is_announced_and_focusable(self):
+        # Dock: the card itself is the result, so it is announced and takes focus.
+        dock = card_open_tag(read('baylight/dock/index.html'))
+        self.assertRegex(dock, r'role="status"|aria-live="polite"')
+        self.assertIn('tabindex="-1"', dock)
+        # Briefing: the term result comes first. Focus goes to the headline, and the store card is a
+        # plain labelled region (a live region around a whole card reads everything or nothing).
+        text = read('middle-east-2030/briefing/index.html')
+        card = card_open_tag(text)
+        self.assertIn('role="region"', card)
+        self.assertNotIn('aria-live', card)
+        self.assertRegex(text, r'id="final-headline"[^>]*tabindex="-1"')
+        self.assertIn("getElementById('final-headline')", text)
         for rel in PAGES:
-            tag = card_open_tag(read(rel))
-            self.assertTrue(tag, rel)
-            self.assertRegex(tag, r'role="status"|aria-live="polite"', rel)
-            self.assertIn('tabindex="-1"', tag, rel)
-            self.assertNotIn('role="dialog"', tag, rel)
+            self.assertNotIn('role="dialog"', card_open_tag(read(rel)), rel)
 
     def test_no_app_store_and_iphone_note(self):
         for rel in PAGES:

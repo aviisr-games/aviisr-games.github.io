@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Automated verification suite for AVIISR Games Web Monetization & Growth Pilot."""
+"""Automated verification suite for aviisr games Web Monetization & Growth Pilot."""
 
 from html.parser import HTMLParser
 import json

@@ -48,7 +48,7 @@
       qrText: 'On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.',
       iphoneSoon: 'Not on iPhone yet',
       tryInBrowser: 'Play in your browser',
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Independent mobile games studio. Strategy, puzzles, and arcade games crafted for iOS and Android.',
       playablesTitle: '🎮 Play In Your Browser',
       playablesSub: 'Experience quick playable web teasers and trainers without installing an app:',
@@ -90,7 +90,7 @@
       qrText: 'במחשב? כוונו את מצלמת הטלפון לקוד כדי לפתוח את הדף הזה בטלפון, ואז הקישו על כפתור Google Play.',
       iphoneSoon: 'עדיין לא ב-iPhone',
       tryInBrowser: 'לשחק בדפדפן',
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'סטודיו עצמאי למשחקי מובייל. אסטרטגיה, פאזלים וארקייד ל-iOS ו-Android.',
       playablesTitle: '🎮 לשחק עכשיו בדפדפן',
       playablesSub: 'התנסו במשחקים קצרים ומאמנים ישירות בדפדפן, ללא צורך בהתקנה:',
@@ -132,7 +132,7 @@
       qrText: 'على الكمبيوتر؟ وجّه كاميرا هاتفك نحو الرمز لفتح هذه الصفحة على هاتفك، ثم اضغط زر Google Play.',
       iphoneSoon: 'ليست على iPhone بعد',
       tryInBrowser: 'العب في المتصفح',
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'استوديو مستقل لألعاب الهواتف المحمولة. ألعاب استراتيجية، ألغاز وأركيد لنظامي iOS و Android.',
       playablesTitle: '🎮 العب الآن في المتصفح',
       playablesSub: 'جرّب ألعاباً مصغرة ومدرّبات تفاعلية مباشرة في متصفحك دون الحاجة لتثبيت تطبيق:',
@@ -171,7 +171,7 @@
       actSplit: 'تقسيم (Split)'
     },
     'es': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Estudio independiente de juegos móviles. Estrategia, puzles y arcade para iOS y Android.',
       playablesTitle: '🎮 Juega en tu navegador',
       playablesSub: 'Prueba avances interactivos y entrenadores directamente en la web sin instalar nada:',
@@ -206,7 +206,7 @@
       actSplit: 'DIVIDIR'
     },
     'fr': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Studio indépendant de jeux mobiles. Stratégie, puzzles et arcade sur iOS et Android.',
       playablesTitle: '🎮 Jouez dans votre navigateur',
       playablesSub: 'Découvrez nos mini-jeux et entraîneurs interactifs sans installation :',
@@ -241,7 +241,7 @@
       actSplit: 'SÉPARER'
     },
     'de': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Unabhängiges Mobile-Games-Studio. Strategie-, Puzzle- und Arcade-Spiele für iOS und Android.',
       playablesTitle: '🎮 Direkt im Browser spielen',
       playablesSub: 'Teste unsere interaktiven Web-Demos und Trainer ohne App-Installation:',
@@ -276,7 +276,7 @@
       actSplit: 'TEILEN'
     },
     'it': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Studio indipendente di giochi mobile. Strategia, puzzle e arcade per iOS e Android.',
       playablesTitle: '🎮 Gioca nel browser',
       playablesSub: 'Prova le demo interattive senza installare alcuna app:',
@@ -302,7 +302,7 @@
       statStability: 'Stabilità'
     },
     'nl': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Onafhankelijke mobiele gamestudio. Strategie-, puzzel- en arcadegames voor iOS en Android.',
       playablesTitle: '🎮 Speel in je browser',
       playablesSub: 'Probeer interactieve webdemo’s zonder een app te installeren:',
@@ -328,7 +328,7 @@
       statStability: 'Stabiliteit'
     },
     'pt-BR': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Estúdio independente de jogos mobile. Estratégia, quebra-cabeças e arcade para iOS e Android.',
       playablesTitle: '🎮 Jogue no Navegador',
       playablesSub: 'Experimente prévias interativas e treinadores sem instalar nenhum aplicativo:',
@@ -354,7 +354,7 @@
       statStability: 'Estabilidade'
     },
     'tr': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Bağımsız mobil oyun stüdyosu. iOS ve Android için strateji, bulmaca ve arcade oyunları.',
       playablesTitle: '🎮 Tarayıcıda Oyna',
       playablesSub: 'Uygulama indirmeden etkileşimli web demolarını ve eğiticileri deneyin:',
@@ -389,7 +389,7 @@
       actSplit: 'BÖL'
     },
     'ru': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Независимая студия мобильных игр. Стратегии, головоломки и аркады для iOS и Android.',
       playablesTitle: '🎮 Играть в браузере',
       playablesSub: 'Попробуйте интерактивные мини-игры и тренажеры прямо на сайте без установки:',
@@ -415,7 +415,7 @@
       statStability: 'Стабильность'
     },
     'ja': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'インディーモバイルゲームスタジオ。iOS・Android向けの戦略、パズル、アーケードゲーム。',
       playablesTitle: '🎮 ブラウザで今すぐプレイ',
       playablesSub: 'アプリをインストールせずに、ブラウザ上で体験版やトレーナーをプレイできます：',
@@ -450,7 +450,7 @@
       actSplit: 'スプリット (Split)'
     },
     'ko': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: '인디 모바일 게임 스튜디오. iOS 및 Android용 전략, 퍼즐, 아케이드 게임.',
       playablesTitle: '🎮 브라우저에서 바로 플레이',
       playablesSub: '앱 설치 없이 웹에서 미니 게임과 트레이너를 체험해 보세요:',
@@ -485,7 +485,7 @@
       actSplit: '스플릿 (Split)'
     },
     'zh-TW': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: '獨立手機遊戲工作室。為 iOS 與 Android 打造策略、益智與街機遊戲。',
       playablesTitle: '🎮 在瀏覽器中立即試玩',
       playablesSub: '無需安裝應用程式，直接在網頁上體驗互動試玩版與訓練器：',
@@ -511,7 +511,7 @@
       statStability: '穩定度'
     },
     'zh-CN': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: '独立手游工作室。专为 iOS 和 Android 打造的策略、解谜与街机游戏。',
       playablesTitle: '🎮 在浏览器中畅玩',
       playablesSub: '无需安装应用，即可在网页中体验互动试玩与策略训练器：',
@@ -543,7 +543,7 @@
       actSplit: '分牌 (Split)'
     },
     'sv': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Oberoende mobilspelsstudio. Strategi-, pussel- och arkadspel för iOS och Android.',
       playablesTitle: '🎮 Spela i webbläsaren',
       playablesSub: 'Prova snabba spelbara webbdemos utan att installera en app:',
@@ -566,7 +566,7 @@
       won: 'Löst!'
     },
     'da': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Uafhængigt mobilspilstudie. Strategi-, puslespil og arkadespil til iOS og Android.',
       playablesTitle: '🎮 Spil i din browser',
       playablesSub: 'Prøv interaktive webdemoer uden at installere en app:',
@@ -589,7 +589,7 @@
       won: 'Løst!'
     },
     'nb': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Uavhengig mobilspillstudio. Strategi-, pusle- og arkadespill for iOS og Android.',
       playablesTitle: '🎮 Spill i nettleseren',
       playablesSub: 'Prøv interaktive nettdemoer uten å installere en app:',
@@ -612,7 +612,7 @@
       won: 'Løst!'
     },
     'fi': {
-      heroTitle: 'Aviisr Games',
+      heroTitle: 'aviisr games',
       heroSub: 'Itsenäinen mobiilipelistudio. Strategia-, pulma- ja arcade-pelejä iOS- ja Android-laitteille.',
       playablesTitle: '🎮 Pelaa selaimessa',
       playablesSub: 'Kokeile pelattavia verkkodemoja asentamatta sovellusta:',

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aviisr Games · Small mobile games, made with care</title>
-<meta name="description" content="Aviisr Games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Four games on Google Play now; Mila and iPhone versions coming.">
+<title>aviisr games · Small mobile games, made with care</title>
+<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Four games on Google Play now; Mila and iPhone versions coming.">
 <meta name="google-site-verification" content="oh0yHwl6YiX3dvIZYH5wIyc5pM6vJMYK3q-frBAYXlY">
 <meta name="google-site-verification" content="oOOd1kEtVYr2Y1KLxcsYjZZEJLcLkjKQKhZO3RPxahU">
 <meta name="facebook-domain-verification" content="ujlw9q4t20ufpcquni2zjk27ozhi6c">
@@ -12,7 +12,7 @@
 <meta name="google-adsense-account" content="ca-pub-2451365263828795">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
 <link rel="canonical" href="https://aviisrgames.com/">
-<meta property="og:title" content="Aviisr Games · Small mobile games, made with care">
+<meta property="og:title" content="aviisr games · Small mobile games, made with care">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aviisrgames.com/">
 <meta property="og:image" content="https://aviisrgames.com/assets/og/studio.jpg">
@@ -20,24 +20,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
-<style>
-  .app-list { list-style: none; padding: 0; margin: 20px 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  .app-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
-  .app-head { display: flex; align-items: center; gap: 12px; }
-  .app-head img { width: 56px; height: 56px; border-radius: 13px; flex: none; }
-  .app-head h3 { margin: 0; font-size: 1.1rem; line-height: 1.3; }
-  .app-desc { color: var(--dim); margin: 0; font-size: 0.95rem; line-height: 1.5; flex-grow: 1; }
-  .app-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
-  .app-more { font-size: 0.9rem; display: inline-block; padding-block: 4px; }
-  .platform-line { color: var(--dim); font-size: 0.95rem; margin: 0 0 6px; }
-  .soon { display: inline-block; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; color: var(--text); font-weight: 600; font-size: 0.92rem; }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Aviisr Games",
+  "name": "aviisr games",
   "url": "https://aviisrgames.com/",
   "logo": "https://aviisrgames.com/favicon.svg",
   "email": "aviisr@aviisrgames.com",
@@ -48,93 +36,154 @@
 </script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<main id="main">
-<nav class="lang"></nav>
-
+<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
 <header>
-  <h1 data-i18n="heroTitle">Aviisr Games</h1>
-  <p class="sub" data-i18n="heroSub2">Small mobile games, made with care. Four games on Google Play now; Mila and iPhone versions are coming.</p>
+<div class="col bar">
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-dark.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="#games" data-i18n="w_games">Games</a><a href="support/" data-i18n="navSupport">Support</a></nav>
+  <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
+</div>
 </header>
-
-<h2 data-i18n="gamesTitle">Our Games</h2>
-<p class="platform-line" data-i18n="platformLine">On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.</p>
-
-<ul class="app-list">
-  <li class="app-card">
-    <div class="app-head">
-      <img src="assets/icons/ninely.webp" alt="" width="56" height="56">
-      <h3>Ninely: Sudoku &amp; Logic Puzzle</h3>
-    </div>
-    <p class="app-desc" data-i18n="ninelyDesc">Sudoku that explains every move. Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
-    <div class="app-cta">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=ninely-home"><img data-play-badge data-app="Ninely" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely" width="150" height="58"></a>
-      <a href="ninely/play/" data-i18n="ninelyTry">Play today's puzzle in your browser</a>
-    </div>
-    <a class="app-more" href="ninely/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Ninely</span></a>
-  </li>
-
-  <li class="app-card">
-    <div class="app-head">
-      <img src="assets/icons/middle-east-2030.webp" alt="" width="56" height="56">
-      <h3>Middle East 2030: Politics Sim</h3>
-    </div>
-    <p class="app-desc" data-i18n="me2030Desc">A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.</p>
-    <div class="app-cta">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=middle-east-2030-home"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-      <a href="middle-east-2030/briefing/" data-i18n="meTry">Try the 3-month briefing in your browser</a>
-    </div>
-    <a class="app-more" href="middle-east-2030/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Middle East 2030</span></a>
-  </li>
-
-  <li class="app-card">
-    <div class="app-head">
-      <img src="assets/icons/baylight.webp" alt="" width="56" height="56">
-      <h3>Baylight: Truck Sort Puzzle</h3>
-    </div>
-    <p class="app-desc" data-i18n="baylightDesc">Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.</p>
-    <div class="app-cta">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=baylight-home"><img data-play-badge data-app="Baylight" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight" width="150" height="58"></a>
-      <a href="baylight/dock/" data-i18n="baylightTry">Load a dock in your browser</a>
-    </div>
-    <a class="app-more" href="baylight/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Baylight</span></a>
-  </li>
-
-  <li class="app-card">
-    <div class="app-head">
-      <img src="assets/icons/paper-route.webp" alt="" width="56" height="56">
-      <h3>Morning Paper Route: Bike Game</h3>
-    </div>
-    <p class="app-desc" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
-    <div class="app-cta">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=paper-route-home"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
-      <a href="morning-route/preview/" data-i18n="mprTry">See the route preview</a>
-    </div>
-    <a class="app-more" href="paper-route/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Morning Paper Route</span></a>
-  </li>
-
-  <li class="app-card" lang="he" dir="rtl">
-    <div class="app-head">
-      <img src="assets/icons/mila.webp" alt="" width="56" height="56">
-      <h3>מילה · Mila</h3>
-    </div>
-    <p class="app-desc">אנגלית לילדים דוברי עברית בכיתות א׳–ו׳. בלי פרסומות, בלי חשבון, ושום מידע לא יוצא מהמכשיר.</p>
-    <div class="app-cta">
-      <span class="soon">בקרוב ב-App Store וב-Google Play</span>
-      <a href="mila/worksheets/">דפי עבודה להדפסה, בחינם</a>
-    </div>
-    <a class="app-more" href="mila/">מידע להורים<span class="sr-only">: מילה</span></a>
-  </li>
-</ul>
-
-<div class="card">
-  <h2 style="margin-top: 0;" data-i18n="contactTitle">Studio Contact &amp; Support</h2>
-  <p data-i18n="contactSub">Player inquiries, bug reports, ad privacy requests, or business correspondence:</p>
-  <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+<main id="main">
+<div class="col hero">
+  <h1><span data-i18n="w_pick">Pick a</span> <em data-i18n="w_world">world</em>.</h1>
+  <p data-i18n="w_heroLine">Small mobile games, made with care: Ninely, Middle East 2030, Baylight, Morning Paper Route and Mila.</p>
+  <ul class="rail">
+    <li><a href="#ninely"><img src="assets/icons/ninely.webp" alt="" width="128" height="128"><span>Ninely</span></a></li>
+    <li><a href="#middle-east-2030"><img src="assets/icons/middle-east-2030.webp" alt="" width="128" height="128"><span>Middle East 2030</span></a></li>
+    <li><a href="#baylight"><img src="assets/icons/baylight.webp" alt="" width="128" height="128"><span>Baylight</span></a></li>
+    <li><a href="#paper-route"><img src="assets/icons/paper-route.webp" alt="" width="128" height="128"><span>Paper Route</span></a></li>
+    <li><a href="#mila"><img src="assets/icons/mila.webp" alt="" width="256" height="256"><span>Mila</span></a></li>
+  </ul>
+  <p class="note" data-i18n="platformLine">On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.</p>
 </div>
 
-<footer>
-  <div>© Aviisr Games · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a></div>
+<div id="games">
+<section id="ninely" data-world="ninely" aria-labelledby="h-ninely">
+  <div class="col wrap">
+    <div class="copy">
+      <span class="tag" data-i18n="w_tagNinely">Logic puzzle</span>
+      <h2 id="h-ninely" data-i18n="w_ninelyH">Sudoku that explains every move.</h2>
+      <p class="lead" data-i18n="w_ninelyP">Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
+      <div class="get">
+        <div class="id"><img src="assets/icons/ninely.webp" alt="" width="28" height="28"><h3>Ninely: Sudoku &amp; Logic Puzzle</h3></div>
+        <div class="acts">
+          <a class="btn" href="ninely/play/" data-i18n="w_ninelyBtn">Play today's puzzle</a>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=ninely-home"><img data-play-badge data-app="Ninely" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely" width="150" height="58"></a>
+          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
+        </div>
+      </div>
+      <a class="app-more" href="ninely/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Ninely</span></a>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="assets/screens/ninely-1.webp" alt="Hint: Smart Hints explain each move" width="480" height="853" fetchpriority="high" decoding="async"></div>
+      <div class="phone"><img src="assets/screens/ninely-2.webp" alt="Practice each technique in short drills" width="480" height="853" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section id="middle-east-2030" data-world="middle-east-2030" aria-labelledby="h-me">
+  <div class="col wrap">
+    <div class="copy">
+      <span class="tag" data-i18n="w_tagMe">Politics sim</span><span class="tag flag" data-i18n="w_fiction">Fiction</span>
+      <h2 id="h-me" data-i18n="w_meH">2030. Can you hold the region for one term?</h2>
+      <p class="lead" data-i18n="me2030Desc">A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.</p>
+      <div class="get">
+        <div class="id"><img src="assets/icons/middle-east-2030.webp" alt="" width="28" height="28"><h3>Middle East 2030: Politics Sim</h3></div>
+        <div class="acts">
+          <a class="btn" href="middle-east-2030/briefing/" data-i18n="w_meBtn">Try the 3-month briefing</a>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=middle-east-2030-home"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
+          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
+        </div>
+      </div>
+      <a class="app-more" href="middle-east-2030/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Middle East 2030</span></a>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="assets/screens/middle-east-2030-1.webp" alt="2030. Can you hold the region for one term?" width="480" height="960" loading="lazy" decoding="async"></div>
+      <div class="phone"><img src="assets/screens/middle-east-2030-2.webp" alt="Every month opens with its biggest problem" width="480" height="960" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section id="baylight" data-world="baylight" aria-labelledby="h-bay">
+  <div class="col wrap">
+    <div class="copy">
+      <span class="tag" data-i18n="w_tagBay">Sorting puzzle</span>
+      <h2 id="h-bay" data-i18n="w_bayH">Stack three. Ship the truck.</h2>
+      <p class="lead" data-i18n="baylightDesc">Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.</p>
+      <div class="get">
+        <div class="id"><img src="assets/icons/baylight.webp" alt="" width="28" height="28"><h3>Baylight: Truck Sort Puzzle</h3></div>
+        <div class="acts">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=baylight-home"><img data-play-badge data-app="Baylight" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight" width="150" height="58"></a>
+          <a class="link" href="baylight/dock/" data-i18n="baylightTry">Load a dock in your browser</a>
+          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
+        </div>
+      </div>
+      <a class="app-more" href="baylight/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Baylight</span></a>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="assets/screens/baylight-1.webp" alt="Bay 4: stack three matching parcels to fill a truck" width="480" height="960" loading="lazy" decoding="async"></div>
+      <div class="phone"><img src="assets/screens/baylight-2.webp" alt="Watch the next parcels and plan where each one goes" width="480" height="960" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section id="paper-route" data-world="paper-route" aria-labelledby="h-mpr">
+  <div class="col wrap">
+    <div class="copy">
+      <span class="tag" data-i18n="w_tagMpr">Bike arcade</span>
+      <h2 id="h-mpr" data-i18n="w_mprH">Deliver before sunrise.</h2>
+      <p class="lead" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
+      <div class="get">
+        <div class="id"><img src="assets/icons/paper-route.webp" alt="" width="28" height="28"><h3>Morning Paper Route: Bike Game</h3></div>
+        <div class="acts">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=paper-route-home"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
+          <a class="link" href="morning-route/preview/" data-i18n="mprTry">See the route preview</a>
+          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
+        </div>
+      </div>
+      <a class="app-more" href="paper-route/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Morning Paper Route</span></a>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="assets/screens/paper-route-1.webp" alt="Deliver the morning paper: steer with one thumb, throw with the other" width="480" height="960" loading="lazy" decoding="async"></div>
+      <div class="phone"><img src="assets/screens/paper-route-2.webp" alt="Dodge dogs, cars and drones, with something new every day of the week" width="480" height="960" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section id="mila" data-world="mila" lang="he" dir="rtl" aria-labelledby="h-mila">
+  <div class="col wrap">
+    <div class="copy">
+      <span class="tag">אנגלית לילדים</span>
+      <h2 id="h-mila">אנגלית לילדים דוברי עברית בכיתות א׳-ו׳.</h2>
+      <p class="lead">בלי פרסומות, בלי חשבון, ושום מידע לא יוצא מהמכשיר.</p>
+      <div class="get">
+        <div class="id"><img src="assets/icons/mila.webp" alt="" width="28" height="28"><h3>מילה · <bdi>Mila</bdi></h3></div>
+        <div class="acts">
+          <span class="soon">בקרוב ב-<bdi>App Store</bdi> וב-<bdi>Google Play</bdi></span>
+          <a class="btn" href="mila/worksheets/">דפי עבודה להדפסה, בחינם</a>
+        </div>
+      </div>
+      <a class="app-more" href="mila/">מידע להורים<span class="sr-only">: מילה</span></a>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="mila/assets/screen-home.webp" alt="מסך הבית של מילה עם כוכבים ומסלול אימון" width="600" height="1305" loading="lazy" decoding="async"></div>
+      <div class="phone"><img src="mila/assets/screen-story.webp" alt="סיפור קצר עם הקראה ותרגום לעברית" width="600" height="1298" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="col studio" aria-labelledby="h-studio">
+  <div class="card">
+    <h2 id="h-studio" data-i18n="contactTitle">Studio Contact &amp; Support</h2>
+    <p data-i18n="contactSub">Player inquiries, bug reports, ad privacy requests, or business correspondence:</p>
+    <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+  </div>
+</section>
+
+<footer class="col">
+  <div>© aviisr games · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a></div>
 </footer>
 </main>
 
@@ -145,7 +194,6 @@
 
   var translations = {
     en: {
-      heroTitle: "Aviisr Games",
       heroSub2: "Small mobile games, made with care. Four games on Google Play now; Mila and iPhone versions are coming.",
       gamesTitle: "Our Games",
       platformLine: "On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.",
@@ -156,11 +204,29 @@
       me2030Desc: "A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.",
       moreAbout: "About, help and privacy",
       contactTitle: "Studio Contact & Support",
-      contactSub: "Player inquiries, bug reports, ad privacy requests, or business correspondence:"
+      contactSub: "Player inquiries, bug reports, ad privacy requests, or business correspondence:",
+      w_skip: "Skip to content",
+      w_games: "Games",
+      w_lang: "Language",
+      w_pick: "Pick a",
+      w_world: "world",
+      w_heroLine: "Small mobile games, made with care: Ninely, Middle East 2030, Baylight, Morning Paper Route and Mila.",
+      w_ios: "Not on the App Store yet.",
+      w_tagNinely: "Logic puzzle",
+      w_ninelyH: "Sudoku that explains every move.",
+      w_ninelyP: "Smart Hints teach the logic step by step, with a new daily puzzle every day.",
+      w_ninelyBtn: "Play today's puzzle",
+      w_tagMe: "Politics sim",
+      w_fiction: "Fiction",
+      w_meH: "2030. Can you hold the region for one term?",
+      w_meBtn: "Try the 3-month briefing",
+      w_tagBay: "Sorting puzzle",
+      w_bayH: "Stack three. Ship the truck.",
+      w_tagMpr: "Bike arcade",
+      w_mprH: "Deliver before sunrise."
     },
     he: {
-      heroTitle: "Aviisr Games",
-      heroSub2: "משחקי מובייל קטנים שנעשו באהבה. ארבעה משחקים כבר ב-Google Play; מילה וגרסאות ה-iPhone בדרך.",
+      heroSub2: "משחקי מובייל קטנים שנוצרו בקפידה. ארבעה משחקים כבר ב-Google Play; מילה וגרסאות ה-iPhone בדרך.",
       gamesTitle: "המשחקים שלנו",
       platformLine: "ב-iPhone? המשחקים שלנו עדיין לא ב-App Store. בינתיים אפשר לנסות את הגרסאות לדפדפן.",
       ninelyTry: "לשחק בפאזל של היום בדפדפן",
@@ -170,10 +236,28 @@
       me2030Desc: "סימולציית אסטרטגיה פוליטית בשנת 2030 בדיונית. בחרו אחת מ-8 בירות וקראו את העיתון של מחר. כל האירועים בדיוניים.",
       moreAbout: "מידע, עזרה ופרטיות",
       contactTitle: "יצירת קשר ותמיכה",
-      contactSub: "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:"
+      contactSub: "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:",
+      w_skip: "דלגו לתוכן",
+      w_games: "משחקים",
+      w_lang: "שפה",
+      w_pick: "בחרו",
+      w_world: "עולם",
+      w_heroLine: "משחקי מובייל קטנים שנוצרו בקפידה: ⁦Ninely, Middle East 2030, Baylight, Morning Paper Route⁩ ו-⁦Mila⁩.",
+      w_ios: "עדיין לא ב-App Store.",
+      w_tagNinely: "פאזל היגיון",
+      w_ninelyH: "סודוקו שמסביר כל צעד.",
+      w_ninelyP: "רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.",
+      w_ninelyBtn: "לשחק בפאזל של היום",
+      w_tagMe: "סימולציה פוליטית",
+      w_fiction: "בדיוני",
+      w_meH: "2030. תצליחו לשמור על יציבות האזור במשך כהונה אחת?",
+      w_meBtn: "לנסות את התדריך בן 3 החודשים",
+      w_tagBay: "פאזל מיון",
+      w_bayH: "ערמו שלושה. שלחו את המשאית.",
+      w_tagMpr: "ארקייד אופניים",
+      w_mprH: "חלקו את העיתונים לפני הזריחה."
     },
     ar: {
-      heroTitle: "Aviisr Games",
       heroSub2: "ألعاب صغيرة للهواتف مصنوعة بعناية. أربع ألعاب على Google Play الآن، وMila ونسخ iPhone قادمة.",
       gamesTitle: "ألعابنا",
       platformLine: "تستخدم iPhone؟ ألعابنا ليست على App Store بعد. جرّب نسخ المتصفح أدناه في الأثناء.",
@@ -184,7 +268,26 @@
       me2030Desc: "لعبة استراتيجية سياسية في عام 2030 متخيَّل. اختر إحدى 8 عواصم واقرأ صحيفة الغد. كل الأحداث خيالية.",
       moreAbout: "معلومات ومساعدة وخصوصية",
       contactTitle: "التواصل والدعم",
-      contactSub: "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:"
+      contactSub: "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:",
+      w_skip: "تخطَّ إلى المحتوى",
+      w_games: "الألعاب",
+      w_lang: "اللغة",
+      w_pick: "اختر",
+      w_world: "عالماً",
+      w_heroLine: "ألعاب صغيرة للهواتف مصنوعة بعناية: ⁦Ninely, Middle East 2030, Baylight, Morning Paper Route⁩ و⁦Mila⁩.",
+      w_ios: "ليست على App Store بعد.",
+      w_tagNinely: "لغز منطقي",
+      w_ninelyH: "سودوكو يشرح كل خطوة.",
+      w_ninelyP: "تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.",
+      w_ninelyBtn: "العب لغز اليوم",
+      w_tagMe: "محاكاة سياسية",
+      w_fiction: "خيالي",
+      w_meH: "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟",
+      w_meBtn: "جرّب إحاطة الأشهر الثلاثة",
+      w_tagBay: "لغز فرز",
+      w_bayH: "كدّس ثلاثة. أرسل الشاحنة.",
+      w_tagMpr: "أركيد دراجات",
+      w_mprH: "وزّع الصحف قبل شروق الشمس."
     }
   };
 
@@ -198,5 +301,6 @@
 </script>
 <script src="/assets/play-badge.js"></script>
 <script src="/assets/count.js" defer></script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

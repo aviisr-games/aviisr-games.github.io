@@ -1,0 +1,60 @@
+{
+  "note": "Single source for the five products, in home page band order. tools/test_site_data.py checks index.html against this file. Edit here first, then the page.",
+  "games": [
+    {
+      "id": "ninely",
+      "storeTitle": "Ninely: Sudoku & Logic Puzzle",
+      "hub": "ninely/",
+      "browser": "ninely/play/",
+      "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=aviisrgames&utm_medium=home&utm_campaign=ninely-home",
+      "googlePlay": { "package": "com.aviisrgames.ninely", "status": "live" },
+      "appStore": { "status": "none" },
+      "analytics": true,
+      "crossPromo": true
+    },
+    {
+      "id": "middle-east-2030",
+      "storeTitle": "Middle East 2030: Politics Sim",
+      "hub": "middle-east-2030/",
+      "browser": "middle-east-2030/briefing/",
+      "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=home&utm_campaign=middle-east-2030-home",
+      "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live" },
+      "appStore": { "status": "none" },
+      "analytics": true,
+      "crossPromo": true
+    },
+    {
+      "id": "baylight",
+      "storeTitle": "Baylight: Truck Sort Puzzle",
+      "hub": "baylight/",
+      "browser": "baylight/dock/",
+      "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=home&utm_campaign=baylight-home",
+      "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live" },
+      "appStore": { "status": "none" },
+      "analytics": true,
+      "crossPromo": true
+    },
+    {
+      "id": "paper-route",
+      "storeTitle": "Morning Paper Route: Bike Game",
+      "hub": "paper-route/",
+      "browser": "morning-route/preview/",
+      "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=home&utm_campaign=paper-route-home",
+      "googlePlay": { "package": "com.aviisr.paperroute", "status": "live" },
+      "appStore": { "status": "none" },
+      "analytics": true,
+      "crossPromo": true
+    },
+    {
+      "id": "mila",
+      "storeTitle": "מילה · Mila",
+      "hub": "mila/",
+      "browser": "mila/worksheets/",
+      "playLink": null,
+      "googlePlay": { "package": null, "status": "soon" },
+      "appStore": { "status": "none" },
+      "analytics": false,
+      "crossPromo": false
+    }
+  ]
+}

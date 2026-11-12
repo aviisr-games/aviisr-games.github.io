@@ -1,0 +1,32 @@
+/* Middle East 2030 hub skin: a newspaper front page. Loads after site.css and hub.css.
+ * Colours: ink #1B1A17 on newsprint #F3EDE0 (14.9:1), red #B3261E on newsprint (5.6:1), white on red (6.5:1).
+ * Logical properties only, so the Hebrew page mirrors. */
+.me{--red:#B3261E;--rule:#1B1A17}
+.langbox a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.me .plate{text-align:center}
+.me h1{margin:0;font:700 clamp(1.4rem,5.4vw,2.6rem)/1.12 var(--serif);letter-spacing:.04em;text-transform:uppercase}
+.me .dateline{display:flex;justify-content:space-between;gap:12px;margin:10px 0 0;padding-block:5px;border-block-start:3px double var(--rule);border-block-end:1px solid var(--rule);font:400 .85rem/1.3 var(--serif)}
+.me .fiction{margin:14px 0 0;padding:9px 14px;background:var(--red);color:#fff;font:700 .95rem/1.4 var(--sans);text-align:center}
+.me .wrap{margin-top:22px}
+.me .hl{margin:0 0 14px;font:700 clamp(2rem,8vw,3.7rem)/1.05 var(--serif);letter-spacing:-.01em}
+.me .lead{max-width:36rem;font-family:var(--serif);font-size:1.08rem}
+.me .lead+.lead{margin-top:10px}
+.me .btn{border-radius:4px;font-family:var(--serif);font-weight:700}
+.me .store-note{flex-basis:100%;margin:0;font-size:.9rem}
+.me .guide{margin:6px 0 0}
+.me .screens img{border-color:var(--rule);border-radius:16px}
+.me .cols{display:grid;margin-top:30px;border-block:1px solid var(--rule)}
+.me .cols>div{padding-block:18px;border-block-start:1px solid var(--rule)}
+.me .cols>div:first-child{border-block-start:0}
+.me .k{display:block;margin-bottom:6px;color:var(--red);font:700 .74rem/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.me .cols h2{margin:0 0 6px;font:700 1.3rem/1.2 var(--serif);letter-spacing:0}
+.me .cols p{margin:0;font-family:var(--serif)}
+@media (max-width:599px){.me .dateline span:nth-child(2){display:none}}
+@media (min-width:760px){
+.me.mast[data-world]{padding-block:36px 48px}
+.me .wrap{margin-top:36px}
+.me .cols{grid-template-columns:repeat(3,1fr);margin-top:44px}
+.me .cols>div{padding:22px;border-block-start:0;border-inline-start:1px solid var(--rule)}
+.me .cols>div:first-child{padding-inline-start:0;border-inline-start:0}
+.me .cols>div:last-child{padding-inline-end:0}
+}

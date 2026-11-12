@@ -38,11 +38,22 @@ class R2AcquisitionTests(unittest.TestCase):
         block = re.search(r'<script type="application/ld\+json">(.*?)</script>', read('mila/index.html'), re.S).group(1)
         self.assertNotIn('offers', json.loads(block))
 
-    def test_every_language_section_has_a_store_button(self):
+    def test_every_language_sees_a_store_button(self):
+        # Template hubs: one badge in the masthead, outside every per-language block, so each language sees it.
         for rel in HUBS:
             html = read(rel)
-            for lang, body in re.findall(r'<section id="(en|he|ar)"[^>]*>(.*?)</section>', html, re.S):
-                self.assertIn('class="play-badge"', body, f'{rel} section {lang}')
+            if '<section class="mast"' not in html:
+                continue
+            mast = re.search(r'<section class="mast".*?</section>', html, re.S).group(0)
+            self.assertEqual(mast.count('class="play-badge"'), 1, rel)
+            for m in re.finditer(r'<[a-z0-9]+[^>]*\bdata-lang="[a-z-]+"[^>]*>', mast):
+                # No language block in the masthead may open before the badge and still be open at it.
+                start = m.end(); tag = re.match(r'<([a-z0-9]+)', m.group(0)).group(1)
+                end = mast.find('</' + tag + '>', start)
+                self.assertNotIn('class="play-badge"', mast[start:end], f'{rel}: badge inside a data-lang block')
+        # Middle East 2030 gives each language its own URL: each page needs the badge.
+        for rel in ('middle-east-2030/index.html', 'middle-east-2030/he/index.html'):
+            self.assertIn('class="play-badge"', read(rel), rel)
 
     def test_hub_screenshots_exist_and_reserve_space(self):
         for rel in HUBS:
@@ -58,10 +69,12 @@ class R2AcquisitionTests(unittest.TestCase):
 
     def test_middle_east_fiction_notice_survives_translation(self):
         # A data-i18n attribute would let a shared string replace the notice at runtime.
-        sub = re.search(r'<p class="sub"[^>]*>.*?</p>', read('middle-east-2030/index.html'), re.S).group(0)
-        self.assertNotIn('data-i18n', sub)
-        self.assertIn('fiction', sub)
-        self.assertNotIn('iOS', sub)
+        # English and Hebrew have their own URLs; each carries the notice in a p.fiction banner.
+        for rel, word in (('middle-east-2030/index.html', 'fiction'), ('middle-east-2030/he/index.html', 'בדיון')):
+            sub = re.search(r'<p class="fiction"[^>]*>.*?</p>', read(rel), re.S).group(0)
+            self.assertNotIn('data-i18n', sub, rel)
+            self.assertIn(word, sub, rel)
+            self.assertNotIn('iOS', sub, rel)
 
     def test_homepage_does_not_count_mila_as_released(self):
         html = read('index.html')

@@ -303,6 +303,19 @@
     font-weight: bold;
   }
 
+  /* End-of-dock card */
+  .end-card {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid #22c55e;
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .end-card:focus { outline: 2px solid #38bdf8; outline-offset: 3px; }
+  .end-card p { margin: 0 0 12px; color: #f8fafc; }
+  .end-card-row { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
@@ -360,6 +373,16 @@
   <!-- Status / Win Banner -->
   <div id="status-banner" class="status-banner" aria-live="polite">
     Select an empty bay or a bay matching the front parcel's color.
+  </div>
+
+  <!-- End-of-dock card: shown only after a hand-played win -->
+  <div id="end-card" class="end-card" role="status" aria-live="polite" tabindex="-1" hidden>
+    <p>Baylight on Google Play is the same game: tap a bay, stack three of a kind, ship the truck, in short rounds you can play with one thumb.</p>
+    <div class="end-card-row">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=playable-win&amp;utm_campaign=baylight-playable-win"><img data-play-badge data-app="Baylight" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight" width="150" height="58"></a>
+      <span class="store-note">Not on iPhone yet</span>
+    </div>
+    <button type="button" id="btn-play-again" class="btn-dock btn-primary">Play again</button>
   </div>
 
   <!-- Interactive Controls -->
@@ -502,6 +525,7 @@
       pallet: []
     };
     history = [];
+    hideEndCard();
     document.getElementById('btn-lvl-5').classList.toggle('active', lvlId === 5);
     document.getElementById('btn-lvl-6').classList.toggle('active', lvlId === 6);
     document.getElementById('tip-text').textContent = "💡 " + lvl.tip;
@@ -594,6 +618,18 @@
     return state.pallet.length === 0;
   }
 
+  function showEndCard() {
+    var card = document.getElementById('end-card');
+    if (!card) return;
+    card.hidden = false;
+    card.focus();
+  }
+
+  function hideEndCard() {
+    var card = document.getElementById('end-card');
+    if (card) card.hidden = true;
+  }
+
   function executeMove(action, target, auto) {
     var lvl = LEVELS[currentLevelId];
     if (state.i >= lvl.belt.length) return;
@@ -625,6 +661,7 @@
       window.aviisrCount('play_start/baylight');
       if (isWon()) window.aviisrCount('play_complete/baylight');
     }
+    if (!auto && isWon()) showEndCard();
     render();
   }
 
@@ -842,8 +879,14 @@
     stopReplayTimer();
     if (history.length > 0) {
       state = history.pop();
+      hideEndCard();
       render();
     }
+  });
+  document.getElementById('btn-play-again').addEventListener('click', function() {
+    initLevel(currentLevelId);
+    document.getElementById('bays-display').scrollIntoView({ block: 'nearest' });
+    document.getElementById('btn-reset').focus();
   });
   document.getElementById('btn-reset').addEventListener('click', function() { initLevel(currentLevelId); });
 
@@ -893,7 +936,7 @@
       executeMove('pallet', null);
     } else if (e.key === 'u' || e.key === 'U') {
       stopReplayTimer();
-      if (history.length > 0) { state = history.pop(); render(); }
+      if (history.length > 0) { state = history.pop(); hideEndCard(); render(); }
     } else if (e.key === 'r' || e.key === 'R') {
       initLevel(currentLevelId);
     }

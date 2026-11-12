@@ -1,0 +1,58 @@
+/* Game hub pages (load after site.css). Template: masthead band, body, more-from, help, footer.
+ * Per-language blocks use [data-lang] and show by <html lang>, which assets/i18n.js sets. Logical properties only. */
+[data-lang]{display:none}
+html[lang=en] [data-lang=en],html[lang=he] [data-lang=he],html[lang=ar] [data-lang=ar]{display:block}
+
+/* masthead band: [data-world] colours come from site.css */
+.mast[data-world]{padding-block:26px 30px}
+.mast .copy{order:0}
+.mast .id{gap:12px;margin-top:14px}
+.mast .id img{width:40px;height:40px;border-radius:10px}
+.mast h1{margin:0;font:800 clamp(1.05rem,3.6vw,1.45rem)/1.2 var(--round)}
+.mast .hl{margin:14px 0 10px;font:900 clamp(2.1rem,8vw,3.6rem)/1.04 var(--round);letter-spacing:-.025em}
+.mast .acts{margin-top:16px}
+.mast .lead{margin:0}
+
+/* screenshots: a swipe strip on phones, three frames side by side from 760px */
+.shots{min-width:0}
+.screens{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 14px;margin:0}
+.screens img{flex:none;width:150px;height:auto;border:5px solid #0B0D12;border-radius:22px;background:#0B0D12;box-shadow:var(--e-2);scroll-snap-align:start}
+
+/* body */
+.hubbody{padding-block:36px 8px}
+.hubbody h2{margin:0 0 14px;font:900 1.35rem/1.2 var(--round)}
+.benefits{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.benefits li{padding:16px 18px;border:1px solid var(--studio-dim);border-radius:16px}
+.hublinks{display:flex;flex-wrap:wrap;gap:4px 22px;margin:22px 0 0;padding:0;list-style:none}
+.hublinks a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.qr-handoff{display:none;align-items:center;gap:16px;max-width:480px;margin:22px 0 0;padding:14px;border:1px solid var(--studio-dim);border-radius:16px}
+.qr-handoff img{flex:none;width:112px;height:112px;border-radius:8px;background:#fff}
+.qr-handoff p{margin:0;color:var(--studio-dim);font-size:.95rem}
+
+/* more from aviisr games: each card wears its own world colours */
+.more{padding-block:34px 0}
+.minis{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.mini[data-world]{display:flex;align-items:center;gap:14px;min-height:76px;padding:14px 16px;border-radius:18px;color:var(--w-text);text-decoration:none;box-shadow:var(--e-1);transition:transform var(--m-fast) var(--ease)}
+.mini:hover{transform:translateY(-2px)}
+.mini img{flex:none;width:48px;height:48px;border-radius:12px}
+.mini b{display:block;font:800 1rem/1.25 var(--round)}
+.mini span span{display:block;font-size:.9rem;line-height:1.35}
+
+/* help: calmer, smaller */
+.help{margin-top:40px;padding-block:24px 0;border-top:1px solid var(--studio-dim);color:var(--studio-dim);font-size:.95rem}
+.help h2{margin:20px 0 6px;font:800 1rem/1.3 var(--round);color:var(--studio-text)}
+.help h2:first-child{margin-top:0}
+.help p{max-width:42rem;margin:0 0 10px}
+.help b,.help a{color:var(--studio-text)}
+.help .mail{font-size:1.1rem}
+
+@media (min-width:600px){.minis{grid-template-columns:1fr 1fr}.benefits{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:760px){
+.mast[data-world]{padding-block:56px}
+.mast .wrap{align-items:center}
+.screens{overflow:visible;gap:14px;padding:0}
+.screens img{width:calc((100% - 28px)/3);min-width:0}
+.screens img:nth-child(2){margin-block-start:28px}
+}
+@media (min-width:900px) and (hover:hover){.qr-handoff{display:flex}}
+@media (hover:hover) and (prefers-reduced-motion:reduce){.mini:hover{transform:none}}

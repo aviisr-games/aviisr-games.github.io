@@ -208,6 +208,7 @@
       btn.textContent = choice.text;
 
       btn.addEventListener('click', function () {
+        if (window.aviisrCount) window.aviisrCount('play_start/me2030');
         stats.coalition = Math.max(10, Math.min(100, stats.coalition + choice.dC));
         stats.economy = Math.max(10, Math.min(100, stats.economy + choice.dE));
         stats.stability = Math.max(10, Math.min(100, stats.stability + choice.dS));
@@ -238,6 +239,7 @@
     document.getElementById('final-editorial').textContent = editorial;
 
     var pathCode = choiceCodes.join('') || 'AAA';
+    if (/^[A-Z0-9_]{1,16}$/.test(pathCode) && window.aviisrCount) window.aviisrCount('play_complete/me2030/' + pathCode);
     var labelEl = document.getElementById('path-summary-label');
     var linkEl = document.getElementById('guide-outcome-link');
     if (labelEl) labelEl.textContent = 'Decision Path: ' + pathCode;

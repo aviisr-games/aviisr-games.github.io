@@ -594,7 +594,7 @@
     return state.pallet.length === 0;
   }
 
-  function executeMove(action, target) {
+  function executeMove(action, target, auto) {
     var lvl = LEVELS[currentLevelId];
     if (state.i >= lvl.belt.length) return;
     var frontColor = lvl.belt[state.i];
@@ -620,6 +620,10 @@
       state.i++;
       shipAndPull(lvl, state);
       if (state.i >= lvl.belt.length) finishBelt(lvl, state);
+    }
+    if (!auto && window.aviisrCount) {
+      window.aviisrCount('play_start/baylight');
+      if (isWon()) window.aviisrCount('play_complete/baylight');
     }
     render();
   }
@@ -854,7 +858,7 @@
       banner.textContent = '⚠️ Dead-end state reached! Click "↶ Undo" or "↺ Reset Dock" to recover.';
       return;
     }
-    executeMove(nextMove.action, nextMove.target);
+    executeMove(nextMove.action, nextMove.target, true);
   });
 
   document.getElementById('btn-replay-all').addEventListener('click', function() {
@@ -864,14 +868,14 @@
     var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) {
       while (stepIdx < lvl.moves.length) {
-        executeMove(lvl.moves[stepIdx].action, lvl.moves[stepIdx].target);
+        executeMove(lvl.moves[stepIdx].action, lvl.moves[stepIdx].target, true);
         stepIdx++;
       }
       return;
     }
     replayTimer = setInterval(function() {
       if (stepIdx < lvl.moves.length) {
-        executeMove(lvl.moves[stepIdx].action, lvl.moves[stepIdx].target);
+        executeMove(lvl.moves[stepIdx].action, lvl.moves[stepIdx].target, true);
         stepIdx++;
       } else {
         stopReplayTimer();

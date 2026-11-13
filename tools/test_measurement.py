@@ -6,7 +6,7 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
-ALLOWED = {'store_click', 'qr_land', 'card_click', 'play_start', 'play_complete', 'lang', 'contact_click'}
+ALLOWED = {'store_click', 'qr_land', 'yt_land', 'card_click', 'play_start', 'play_complete', 'lang', 'contact_click'}
 PLAYABLES = {
     'ninely/play/index.html': True,
     'middle-east-2030/briefing/index.html': True,
@@ -53,6 +53,11 @@ class MeasurementTests(unittest.TestCase):
         self.assertIn(r"/^[a-z_]+(\/[A-Za-z0-9_-][A-Za-z0-9_.-]*){1,3}$/", js)
         card = js[js.index('card_click/<game>'):]
         self.assertRegex(card, r"/\^\\/mila\(\\/\|\$\)/\.test\(path\)")
+
+    def test_youtube_landing_uses_src_yt(self):
+        js = read('assets/count.js')
+        self.assertIn(r"src=yt(&|$)", js)
+        self.assertIn("send('yt_land' + location.pathname, true)", js)
 
     def test_i18n_lang_event_is_validated(self):
         js = read('assets/i18n.js')

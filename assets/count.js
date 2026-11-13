@@ -52,6 +52,8 @@
 
   // qr_land/<page>: a phone opened this page from the desktop QR code (?src=qr).
   if (/[?&]src=qr(&|$)/.test(location.search)) send('qr_land' + location.pathname, true);
+  // yt_land/<page>: the visitor came from a link on the aviisr games YouTube channel (?src=yt).
+  if (/[?&]src=yt(&|$)/.test(location.search)) send('yt_land' + location.pathname, true);
 
   // store_click/<package>/<page>: counted once per link per page view.
   var clicked = {};

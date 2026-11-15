@@ -1180,3 +1180,9 @@ zetaglobal.com,815,RESELLER
 zmaticoo.com,114490,RESELLER
 zmaticoo.com,5135224,RESELLER
 zoomd.com,88478941,RESELLER
+# Google Open Bidding exchanges for AdMob mediation, added 2026-11-15 (Baylight AdMob move).
+# Equativ (formerly Smart AdServer)
+smartadserver.com, 4194-OB, RESELLER, 060d053dcf45cbf3
+smartadserver.com, 4194, RESELLER, 060d053dcf45cbf3
+# Magnite DV+
+rubiconproject.com, 22884, DIRECT, 0bfd66d529a55807

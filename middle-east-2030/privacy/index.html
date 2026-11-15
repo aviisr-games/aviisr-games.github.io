@@ -23,6 +23,7 @@
 <ul>
 <li>Game analytics (from version 1.6): the Game sends anonymous usage events to Unity Gaming Services Analytics (for example: a term started, a month printed, a term ended and how, a code entered, a purchase completed), with a random install identifier created by Unity. No name, email, contacts or free text. They are sent only if you chose "Allow relevant ads", or if your region does not require consent; choosing "Limit ad data" in "Ad privacy" stops them. Unity&#x27;s policy: <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">https://unity.com/legal/game-player-and-app-user-privacy-policy</a></li>
 <li>Platform game services and leaderboards (Game Center on iOS, Google Play Games Services on Android): when a term ends or when you open achievements/leaderboards, the Game connects to Apple&#x27;s Game Center (iOS) or Google Play Games Services (Android) to authenticate your gamer profile and submit your scores or achievements. These services operate under Apple&#x27;s and Google&#x27;s respective privacy policies. If you are not signed in to Game Center or Google Play Games, nothing is sent. Saved games in the cloud are not enabled on Android; your gameplay progress remains stored locally on your device.</li>
+<li>Remote settings (Unity Remote Config): after your ad privacy choice, the Game fetches a few settings (ad pacing, minimum and latest app version) from Unity Gaming Services with the random Unity installation identifier. No gameplay data is sent.</li>
 <li>Reminders: if you allow notifications, the Game schedules up to three reminders on your device when you leave. They are local notifications: nothing is sent to a server, and opening the Game cancels them. You can turn them off on the title screen.</li>
 </ul>
 <h2>2. Advertising</h2>
@@ -39,7 +40,7 @@
 <li>ad interactions (which ads were shown or tapped) and app interactions,</li>
 <li>diagnostic and performance data.</li>
 </ul>
-<p>Before any ad is requested, the Game asks you once whether ads may use data to be more relevant. You can change this at any time under "Ad privacy" on the title screen.</p>
+<p>Before any ad is requested, the Game asks you once whether ads may use data to be more relevant. You can change this at any time under "Ad privacy" on the title screen. In the EEA, the UK and Switzerland, Google&#x27;s consent form (UMP) is shown first; you can reopen it under Ad privacy.</p>
 <ul>
 <li>If you choose limited ads, the Game tells the ad services that you did not consent to personalized advertising.</li>
 <li>On iPhone and iPad, Apple&#x27;s tracking prompt appears only if you chose personalized ads, and your answer to Apple&#x27;s prompt always wins.</li>
@@ -67,7 +68,7 @@
 <li>We do not sell your personal information.</li>
 <li>We do not ask for your name, email, contacts, photos, or precise location.</li>
 
-<li>"Send feedback" opens your device's default email client with a draft addressed to us, including technical diagnostics (app version and build number, operating system and device model, language, active screen, stage context, recent session event trail, and an encoded month replay state). You review the full email draft before sending it; we use this information exclusively to troubleshoot issues and respond to your inquiries.</li>
+<li>"Send feedback" opens your device's default email client with a draft addressed to us, including technical diagnostics (app version and build number, operating system and device model, language, active screen, stage context, recent session event trail, and an encoded month replay state). You review the full email draft before sending it; we use this information exclusively to troubleshoot issues and respond to your inquiries. A second feedback button opens a Google Form in your browser; what you type there goes to Google Forms under Google&#x27;s terms and to us.</li>
 </ul>
 <h2>5. Sharing a front page</h2>
 <p>If you tap "Share", the Game creates a picture of your final front page and opens your device&#x27;s share sheet. Nothing is sent unless you choose where to share it.</p>

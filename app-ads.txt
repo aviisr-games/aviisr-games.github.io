@@ -2,6 +2,9 @@
 # Authorized sellers. Unity Ads list from the Unity dashboard (Organization settings > App-ads.txt), 2026-10-09.
 contact=aviisr@aviisrgames.com
 
+# Owner domain declaration (IAB app-ads.txt 1.1), added 2026-11-15.
+OWNERDOMAIN=aviisrgames.com
+
 # LevelPlay / ironSource Ads
 ironsrc.com, 688473, DIRECT
 
@@ -120,7 +123,6 @@ smaato.com, 1100058938, RESELLER, 07bcf65f187117b4
 smaato.com, 1100059345, RESELLER, 07bcf65f187117b4
 smaato.com, 1100059563, RESELLER, 07bcf65f187117b4
 smartadserver.com, 3964, RESELLER
-smartadserver.com, 4456, RESELLER
 smartadserver.com, 4525, RESELLER, 060d053dcf45cbf3
 smartadserver.com, 4578, RESELLER, 060d053dcf45cbf3
 smartadserver.com, 4610, RESELLER, 060d053dcf45cbf3

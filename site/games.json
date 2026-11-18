@@ -50,9 +50,9 @@
       "storeTitle": "מילה · Mila",
       "hub": "mila/",
       "browser": "mila/worksheets/",
-      "playLink": null,
-      "googlePlay": { "package": null, "status": "soon" },
-      "appStore": { "status": "none" },
+      "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.mila&utm_source=aviisrgames&utm_medium=home&utm_campaign=mila-home",
+      "googlePlay": { "package": "com.aviisr.mila", "status": "live" },
+      "appStore": { "id": "6827490842", "url": "https://apps.apple.com/app/id6827490842", "status": "live" },
       "analytics": false,
       "crossPromo": false
     }

@@ -76,10 +76,9 @@ class R2AcquisitionTests(unittest.TestCase):
             self.assertIn(word, sub, rel)
             self.assertNotIn('iOS', sub, rel)
 
-    def test_homepage_does_not_count_mila_as_released(self):
+    def test_homepage_counts_mila_as_released(self):
         html = read('index.html')
-        self.assertNotIn('Five apps: Android now', html)
-        self.assertIn('Four games on Google Play now', html)
+        self.assertIn('Five games on Google Play now', html)
 
     def test_mila_pages_load_no_shared_studio_scripts(self):
         self.assertTrue(MILA_PAGES)

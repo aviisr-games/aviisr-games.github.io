@@ -71,8 +71,9 @@ class AllowlistTests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
         pkgs = set(re.findall(r'play\.google\.com/store/apps/details\?id=([\w.]+)', html))
         self.assertEqual(pkgs, {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
-                                'com.aviisrgames.baylight', 'com.aviisr.paperroute'})
-        self.assertNotIn('apps.apple.com', html)
+                                'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'})
+        apple_ids = set(re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', html))
+        self.assertEqual(apple_ids, {'6827490842'})
 
     def test_sitemap_is_generated_from_the_allowlist(self):
         self.assertEqual((ROOT / 'sitemap.xml').read_text(encoding='utf-8'), sm.render(),

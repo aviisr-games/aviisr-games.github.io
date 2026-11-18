@@ -17,17 +17,16 @@ COUNTER_TAG = '<script src="/assets/count.js" defer></script>'
 class StoreLinksAndCounterTests(unittest.TestCase):
 
     def test_no_app_store_links_while_no_app_is_live(self):
-        """On 8 Nov 2026 no studio app is public on the App Store, so allowlisted pages must not
-        link to one. When an app launches, add its id here and its badge to the page."""
-        live_app_store_ids = set()
+        """When an app launches, add its id here and its badge to the page."""
+        live_app_store_ids = {'6827490842'}
         _, apple = links.collect()
         self.assertEqual(set(apple) - live_app_store_ids, set(),
                          f"App Store links to apps that are not live: {apple}")
 
     def test_link_regexes_match_both_app_store_url_forms(self):
         self.assertEqual(links.APPLE_RE.findall('https://apps.apple.com/app/id6820597256'), ['6820597256'])
-        self.assertEqual(links.APPLE_RE.findall('https://apps.apple.com/app/mila-english-for-kids/id6738379495'),
-                         ['6738379495'])
+        self.assertEqual(links.APPLE_RE.findall('https://apps.apple.com/app/id6827490842'),
+                         ['6827490842'])
         self.assertEqual(links.APPLE_RE.findall('https://apps.apple.com/il/app/x/id1'), ['1'])
         self.assertEqual(links.PLAY_RE.findall(
             'https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web'),
@@ -38,8 +37,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
                     'middle-east-2030/guide/index.html', 'redline-2030/index.html',
                     'ninely/play/index.html', 'ninely/duel/index.html']:
             self.assertIn('class="store-note"', (ROOT / rel).read_text(encoding='utf-8'), rel)
-        self.assertIn('בקרוב ב-App Store', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
-        self.assertNotIn('appstore-badge" href', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
+        self.assertIn('appstore-badge', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
 
     def test_counter_never_on_mila_privacy_or_support_pages(self):
         excluded = list((ROOT / 'mila').rglob('*.html'))
@@ -65,15 +63,17 @@ class StoreLinksAndCounterTests(unittest.TestCase):
     def test_every_html_file_has_no_app_store_link_and_only_known_play_ids(self):
         """Scans EVERY *.html in the repo, not only allowlisted folders (legacy casino ids bit us)."""
         known = {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
-                 'com.aviisrgames.baylight', 'com.aviisr.paperroute'}
+                 'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'}
+        allowed_apple = {'6827490842'}
         problems = []
         for path in ROOT.rglob('*.html'):
             if '.git' in path.relative_to(ROOT).parts:
                 continue
             text = path.read_text(encoding='utf-8', errors='replace')
             rel = path.relative_to(ROOT).as_posix()
-            if 'apps.apple.com' in text:
-                problems.append(f'{rel}: apps.apple.com link')
+            for aid in re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', text):
+                if aid not in allowed_apple:
+                    problems.append(f'{rel}: unexpected apps.apple.com link id{aid}')
             for pid in re.findall(r'play\.google\.com/store/apps/details\?id=([A-Za-z0-9_.]+)', text):
                 if pid not in known:
                     problems.append(f'{rel}: unknown Play id {pid}')

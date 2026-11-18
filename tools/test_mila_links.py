@@ -53,15 +53,15 @@ class MilaIsolationTests(unittest.TestCase):
                 self.assertNotIn(rel.split('/')[0], OTHER_PRODUCTS, f'{rel_of(page)} links to {href}')
 
     def test_no_store_listing_links_until_mila_launches(self):
-        """Mila is not released, so its pages may not link to any Play or App Store listing.
-
-        This must be relaxed deliberately when Mila launches: then assert the exact Mila
-        package id and store URL instead of forbidding store links outright.
-        """
+        """Mila is now released: its pages may only link to the official Mila listings."""
         for page in MILA_PAGES:
             html = read(rel_of(page))
-            self.assertNotIn('play.google.com', html, rel_of(page))
-            self.assertNotIn('apps.apple.com', html, rel_of(page))
+            play_pkgs = re.findall(r'play\.google\.com/store/apps/details\?id=([\w.]+)', html)
+            for pkg in play_pkgs:
+                self.assertEqual(pkg, 'com.aviisr.mila', rel_of(page))
+            apple_ids = re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', html)
+            for aid in apple_ids:
+                self.assertEqual(aid, '6827490842', rel_of(page))
 
     def test_scripts_and_stylesheets_stay_inside_mila(self):
         for page in MILA_PAGES:

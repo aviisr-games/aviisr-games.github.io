@@ -64,28 +64,27 @@ class SiteDataTests(unittest.TestCase):
         self.assertEqual(on_page, live)
 
     def test_no_app_store_link_anywhere_and_statuses_say_none(self):
-        self.assertNotIn('apps.apple.com', HOME)
-        self.assertNotIn('apps.apple.com', (ROOT / 'site/games.json').read_text(encoding='utf-8'))
         for g in GAMES:
-            self.assertEqual(g['appStore']['status'], 'none', g['id'])
+            if g['id'] == 'mila' and g['appStore'].get('status') == 'live':
+                self.assertEqual(g['appStore']['id'], '6827490842')
+                self.assertIn('apps.apple.com/app/id6827490842', HOME)
+            else:
+                self.assertEqual(g['appStore']['status'], 'none', g['id'])
 
     def test_mila_is_isolated(self):
         g = next(x for x in GAMES if x['id'] == 'mila')
         self.assertFalse(g['analytics'])
         self.assertFalse(g['crossPromo'])
-        self.assertIsNone(g['playLink'])
+        self.assertIsNotNone(g['playLink'])
         body = band('mila')
         self.assertIn('lang="he" dir="rtl"', re.search(r'<section id="mila"[^>]*>', HOME).group(0))
-        self.assertNotIn('play.google.com', body)
-        self.assertNotIn('apple.com', body)
-        self.assertNotIn('data-play-badge', body)
 
     def test_only_the_existing_scripts_run_on_the_page(self):
         srcs = re.findall(r'<script[^>]*\ssrc="([^"]+)"', HOME)
         self.assertEqual(srcs, ['assets/i18n.js', '/assets/play-badge.js', '/assets/count.js', 'assets/site.js'])
         self.assertEqual(len(re.findall(r'<script(?![^>]*(?:src=|ld\+json))[^>]*>', HOME)), 1)
         self.assertNotRegex(HOME, r'\son[a-z]+=')
-        self.assertNotRegex(HOME.split('<body>')[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/)')
+        self.assertNotRegex(HOME.split('<body>')[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/|apps\.apple\.com/)')
 
 
 if __name__ == '__main__':

@@ -32,6 +32,13 @@ class StoreLinksAndCounterTests(unittest.TestCase):
             'https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=web'),
             ['com.aviisrgames.ninely'])
 
+    def test_mila_app_store_links_use_israel_storefront_with_visible_note(self):
+        want = 'https://apps.apple.com/il/app/id6827490842'
+        for rel in ('index.html', 'mila/index.html', 'mila/worksheets/index.html'):
+            text = (ROOT / rel).read_text(encoding='utf-8')
+            self.assertEqual(re.findall(r'https://apps\.apple\.com/[^"\s]+', text), [want], rel)
+            self.assertIn('(ישראל / Israel)', text, rel)
+
     def test_iphone_fallback_shown_where_app_store_links_were(self):
         for rel in ['middle-east-2030/index.html', 'middle-east-2030/briefing/index.html',
                     'middle-east-2030/guide/index.html', 'redline-2030/index.html',

@@ -67,7 +67,7 @@ class SiteDataTests(unittest.TestCase):
         for g in GAMES:
             if g['id'] == 'mila' and g['appStore'].get('status') == 'live':
                 self.assertEqual(g['appStore']['id'], '6827490842')
-                self.assertIn('apps.apple.com/app/id6827490842', HOME)
+                self.assertIn('apps.apple.com/il/app/id6827490842', HOME)
             else:
                 self.assertEqual(g['appStore']['status'], 'none', g['id'])
 

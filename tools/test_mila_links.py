@@ -62,6 +62,9 @@ class MilaIsolationTests(unittest.TestCase):
             apple_ids = re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', html)
             for aid in apple_ids:
                 self.assertEqual(aid, '6827490842', rel_of(page))
+            # Mila 1.1 is live on the Israel storefront only; the generic URL 404s elsewhere.
+            for url in re.findall(r'https://apps\.apple\.com/[^"\s]+', html):
+                self.assertEqual(url, 'https://apps.apple.com/il/app/id6827490842', rel_of(page))
 
     def test_scripts_and_stylesheets_stay_inside_mila(self):
         for page in MILA_PAGES:

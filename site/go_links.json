@@ -1,0 +1,41 @@
+{
+  "note": "Allowlisted campaign redirect slugs generated into go/<slug>/index.html by tools/build_go_links.py. Never add Mila links here.",
+  "links": [
+    {
+      "slug": "me2030-yt",
+      "appName": "Middle East 2030: Politics Sim",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=youtube&utm_medium=organic&utm_campaign=me2030-yt"
+    },
+    {
+      "slug": "me2030-reddit",
+      "appName": "Middle East 2030: Politics Sim",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=reddit&utm_medium=organic&utm_campaign=me2030-reddit"
+    },
+    {
+      "slug": "ninely-yt",
+      "appName": "Ninely: Sudoku & Logic Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=youtube&utm_medium=organic&utm_campaign=ninely-yt"
+    },
+    {
+      "slug": "ninely-reddit",
+      "appName": "Ninely: Sudoku & Logic Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=reddit&utm_medium=organic&utm_campaign=ninely-reddit"
+    },
+    {
+      "slug": "baylight-yt",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=youtube&utm_medium=organic&utm_campaign=baylight-yt"
+    },
+    {
+      "slug": "mpr-yt",
+      "appName": "Morning Paper Route: Bike Game",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=youtube&utm_medium=organic&utm_campaign=mpr-yt"
+    }
+  ]
+}

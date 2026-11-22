@@ -147,6 +147,32 @@
       </div>
     </div>
 
+    <div class="guide-section">
+      <h2>When to look for it</h2>
+      <p>X-Wing is a mid-to-late technique. Reach for it when most of the grid is filled and a single digit still has several scattered candidates. Choose one digit and look at it across all nine rows. Find two rows where that digit has exactly two candidate cells, in the same two columns. Those four cells form a rectangle, and the pattern is complete.</p>
+      <p>The same test works with columns as the base and rows as the cover. Run it for one digit at a time, rather than hunting for all patterns at once.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Accepting rows with three candidates.</strong> Each base row must have exactly two candidates for the digit. Three would break the logic.</li>
+        <li><strong>Columns that do not line up.</strong> The two cells in each row must sit in the same two columns.</li>
+        <li><strong>Eliminating in the wrong lines.</strong> If the base lines are rows, the digit is removed from the two <em>columns</em>, never from the rows, and not from the four corner cells.</li>
+        <li><strong>Using stale candidates.</strong> One missed elimination can fake a pattern. Confirm the digit's marks before trusting the rectangle.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How it connects to other techniques</h2>
+      <p>An X-Wing is a fish of size two. Its larger relative, covered in the <a href="../swordfish/">Swordfish</a> guide, uses three rows and three columns. Eliminations from an X-Wing often leave a <a href="../hidden-singles/">Hidden Single</a> or a pair behind, so go back to the simpler techniques afterwards.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice routine</h2>
+      <p>Take a nearly finished grid and pick the digit with the most remaining candidates. Mark its candidates in a different colour, then list each row's count. Any row with exactly two is a possible base. Repeat for columns. This single-digit drill is how X-Wings are found in practice.</p>
+    </div>
+
     <div class="practice-cta">
       <h3>Ready to Master Advanced Sudoku?</h3>
       <p>Put multi-line deductions to work on today's free daily puzzle:</p>
@@ -222,5 +248,6 @@
 })();
 </script>
 <script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
 </body>
 </html>

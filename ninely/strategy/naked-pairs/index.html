@@ -140,6 +140,32 @@
       </div>
     </div>
 
+    <div class="guide-section">
+      <h2>When to Look for Naked Pairs</h2>
+      <p>Naked pairs show up in medium and hard puzzles after singles and locked candidates have been used. They need complete pencil marks, so build the notes before searching. The most productive houses are those with many empty cells, because a pair there can clear candidates from several neighbours.</p>
+      <p>Scan each row, column and box for cells that hold exactly two candidates, then look for another cell in the same house with the same two. Two cells with <code>&#123;3, 4&#125;</code> in one house mean those two digits must fill those two cells, so no other cell in the house can hold a 3 or a 4.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common Mistakes</h2>
+      <ul>
+        <li><strong>Pairing cells that share no house.</strong> The two cells must lie in the same row, column or box. Matching marks in unrelated cells prove nothing.</li>
+        <li><strong>Matching only one digit.</strong> Cells with <code>&#123;3, 4&#125;</code> and <code>&#123;3, 5&#125;</code> are not a naked pair. Both candidates must be identical.</li>
+        <li><strong>Removing the digits from the pair itself.</strong> The eliminations apply to the other cells in the house, not to the two cells that form the pair.</li>
+        <li><strong>Forgetting the second house.</strong> Two cells in one row that are also in one box form a pair in both houses, so you can eliminate in both.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How It Connects to Other Techniques</h2>
+      <p>Naked pairs are the next step after <a href="../locked-candidates/">locked candidates</a>, since both remove candidates rather than place digits. A pair is the same idea as a naked single stretched across two cells: two digits, two cells. The mirror version is the <a href="../hidden-pairs/">hidden pair</a>, where two digits are confined to two cells that also hold other candidates. Larger groups follow the same logic, as in <a href="../naked-triples/">naked triples</a>.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice Routine</h2>
+      <p>Fill in all candidates on a medium puzzle. Highlight every cell with exactly two candidates. For each house, check whether any two highlighted cells match. When you find a pair, cross out its two digits from the other cells in the house, then see whether a single appears. Write down how many pairs you found and which eliminations mattered.</p>
+    </div>
+
     <div class="practice-cta">
       <h3>Ready to Spot Naked Pairs?</h3>
       <p>Test your candidate reading skills on today's free daily puzzle:</p>
@@ -215,5 +241,6 @@
 })();
 </script>
 <script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
 </body>
 </html>

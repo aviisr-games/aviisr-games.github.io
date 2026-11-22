@@ -585,7 +585,6 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/ninely/',
             'https://aviisrgames.com/ninely/privacy.html',
             'https://aviisrgames.com/ninely/play/',
-            'https://aviisrgames.com/ninely/duel/',
             'https://aviisrgames.com/ninely/strategy/',
             'https://aviisrgames.com/ninely/strategy/naked-singles/',
             'https://aviisrgames.com/ninely/strategy/hidden-singles/',
@@ -611,6 +610,11 @@ class MonetizationPilotTests(unittest.TestCase):
         # Duplicate hubs canonicalise to the survivor (T9) and are not listed themselves.
         for dup in ('https://aviisrgames.com/redline-2030/', 'https://aviisrgames.com/morning-route/'):
             self.assertNotIn(f'<loc>{dup}</loc>', sitemap)
+
+    def test_duel_noindex_and_not_in_sitemap(self):
+        duel = (ROOT / 'ninely/duel/index.html').read_text(encoding='utf-8')
+        self.assertIn('<meta name="robots" content="noindex', duel)
+        self.assertNotIn('/ninely/duel/', (ROOT / 'sitemap.xml').read_text(encoding='utf-8'))
 
     def test_duel_no_auto_redirect(self):
         """Verify duel/index.html removed the automatic mobile redirect timer and has copy link button."""

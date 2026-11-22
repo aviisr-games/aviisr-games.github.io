@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aviisrgames.com/</loc></url>
+  <url><loc>https://aviisrgames.com/about/</loc></url>
   <url><loc>https://aviisrgames.com/support/</loc></url>
   <url><loc>https://aviisrgames.com/privacy/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/</loc></url>
-  <url><loc>https://aviisrgames.com/ninely/duel/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/play/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/privacy.html</loc></url>
   <url><loc>https://aviisrgames.com/ninely/strategy/hidden-pairs/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/strategy/hidden-singles/</loc></url>
+  <url><loc>https://aviisrgames.com/ninely/strategy/how-to-solve-sudoku/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/strategy/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/strategy/locked-candidates/</loc></url>
   <url><loc>https://aviisrgames.com/ninely/strategy/naked-pairs/</loc></url>

@@ -38,6 +38,8 @@
   .action-btn:hover { background: #fbbf24; }
   .hint-box { background: rgba(15, 23, 42, 0.85); border: 1px solid #38bdf8; border-radius: 8px; padding: 14px; margin: 14px 0; font-size: 0.95rem; text-align: left; display: none; line-height: 1.5; }
   [dir="rtl"] .hint-box { text-align: right; }
+  .daily-notice { margin: 0 0 12px; padding: 10px 12px; border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.12); color: #fde68a; border-radius: 8px; font-size: 0.95rem; font-weight: 600; }
+  .daily-notice[hidden] { display: none; }
   .hint-tech { font-weight: bold; color: #38bdf8; display: block; margin-bottom: 4px; }
   .hint-link { display: inline-block; margin-top: 8px; color: var(--gold); font-weight: 600; text-decoration: underline; }
   .win-card { display: none; margin-top: 16px; padding: 18px; background: #064e3b; border: 1px solid #10b981; color: #fff; border-radius: 10px; font-size: 1rem; }
@@ -56,6 +58,7 @@
   <div class="badge-pill" data-i18n="badge">Daily Sudoku Warmup</div>
   <div id="date-label" class="date-pill">Loading puzzle...</div>
   <h1 data-i18n="title">Ninely: Daily Web Puzzle</h1>
+  <p id="daily-notice" class="daily-notice" role="status" data-i18n="noDaily" hidden>Today's daily is not available yet. Here is a practice puzzle.</p>
   <p class="sub" data-i18n="sub">Train your logic with smart hints. Clear the board in your browser, or download the full game for thousands of puzzles!</p>
 
   <div class="card" style="padding: 16px;">
@@ -119,7 +122,8 @@
       erase: "⌫",
       won: "Board cleared in",
       practiseMore: "Keep going in Ninely: hints that explain every move, short drills for each technique, a new daily challenge and five levels from Easy to Master. Free on Google Play.",
-      learnGuide: "Learn this technique ➔"
+      learnGuide: "Learn this technique ➔",
+      noDaily: "Today's daily is not available yet. Here is a practice puzzle."
     },
     he: {
       iphoneSoon: "עדיין לא ב-iPhone",
@@ -131,7 +135,8 @@
       erase: "⌫ מחק",
       won: "הלוח הושלם תוך",
       practiseMore: "ממשיכים ב-Ninely: רמזים שמסבירים כל צעד, תרגילים קצרים לכל טכניקה, אתגר יומי חדש וחמש רמות קושי, מקל ועד מאסטר. בחינם ב-Google Play.",
-      learnGuide: "ללמוד את הטכניקה ➔"
+      learnGuide: "ללמוד את הטכניקה ➔",
+      noDaily: "האתגר היומי של היום עדיין לא זמין. הנה לוח אימון."
     },
     ar: {
       iphoneSoon: "ليست على iPhone بعد",
@@ -143,7 +148,8 @@
       erase: "⌫ مسح",
       won: "تم حل اللوح في",
       practiseMore: "تابع في Ninely: تلميحات تشرح كل خطوة، تمارين قصيرة لكل تقنية، تحدٍّ يومي جديد وخمسة مستويات من السهل إلى الخبير. مجاني على Google Play.",
-      learnGuide: "تعلّم هذه التقنية ➔"
+      learnGuide: "تعلّم هذه التقنية ➔",
+      noDaily: "تحدي اليوم غير متاح بعد. إليك لغزًا للتدريب."
     }
   };
 
@@ -243,9 +249,11 @@
       if (isDaily && entry.date) {
         dateLabel.textContent = 'Daily Puzzle · ' + entry.date + ' (' + (entry.difficulty || 'Medium') + ')';
       } else {
-        dateLabel.textContent = 'Evergreen Practice Board · ' + (entry.difficulty || 'Medium');
+        dateLabel.textContent = 'Practice Board · ' + (entry.difficulty || 'Medium');
       }
     }
+    var noticeEl = document.getElementById('daily-notice');
+    if (noticeEl) noticeEl.hidden = !!isDaily;
 
     renderBoard();
     startTimer();
@@ -610,14 +618,14 @@
       loadedPackData = data;
       if (data && data.days && data.days[currentDateKey]) {
         setupBoard(data.days[currentDateKey], true);
-      } else if (data && data.fallback) {
-        setupBoard(data.fallback, false);
       } else {
-        setupBoard(fallbackPackEntry, false);
+        // Visible, never silent: the notice shows whenever today's daily is not in the pack.
+        console.warn('Daily pack has no entry for ' + currentDateKey + (data && data.lastDate ? ' (pack ends ' + data.lastDate + ')' : '') + '; showing the practice puzzle with a notice');
+        setupBoard((data && data.fallback) || fallbackPackEntry, false);
       }
     })
     .catch(function (err) {
-      console.warn('Offline or pack missing; using evergreen practice fallback', err);
+      console.warn('Daily pack unavailable (' + err + '); showing the practice puzzle with a notice');
       setupBoard(fallbackPackEntry, false);
     });
 

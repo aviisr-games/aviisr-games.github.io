@@ -14,7 +14,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 | "Advertisements" boxes | Done 2026-11-10 | removed from 9 Ninely guides; test now fails if one returns |
 | Unused Mila PNGs | Done 2026-11-10 | 5 unreferenced PNGs (5.9 MB) deleted; `og-mila.png` is used and kept; all remain in git history |
 | Middle East 2030 | Done 2026-11-10 | owner decided: no TestFlight link for now; term is 6 to 8 months (README fixed); Play rating stays Everyone 10+ (owner decision 2026-11-10); site copy no longer says "adult" (PR for 10+ positioning) |
-| Daily pack | Open, not due | ends 2027-02-05; regenerate before 2027-01-06 |
+| Daily pack | Open, not due | from the Ninely pipeline, ends 2027-12-26; refresh before 2027-10-27 (see below) |
 | GoatCounter settings | Done 2026-11-10 (owner-confirmed; dashboard needs login) | retention 400 days; sessions, individual pageviews, screen size, country, region, language off; referrer and browser/system on; dashboard private; public counter embed off |
 | Play Console privacy URLs | Done 2026-11-10 | read in Play Console: ME2030 `/redline-2030/privacy/`, Baylight `/baylight/privacy.html`, Mila `/mila/privacy/`, Paper Route `/paper-route/privacy/`, Ninely `/ninely/privacy.html`. None uses root `/privacy.html`; all return 200 |
 | Play Console campaign check | Checked 2026-11-10 | no UTM dimension in Grow users or Statistics; coarse sources only, too few installs to see anything |
@@ -39,7 +39,7 @@ An earlier report said every item was done. A check on 2026-11-10 found only the
 - [x] **Native read** Done 2026-11-10 (owner-confirmed; no copy changes reported). Of the Hebrew and Arabic copy added on 2026-11-09 (homepage hero, Ninely benefits and post-solve card, Middle East 2030 card).
 - [ ] **Disable the Baylight all-clear Apps Script deployment.** Added 2026-11-13. `baylight/flags.json` no longer carries the webhook URL (PR #39), but the old URL and token remain in git history, so anyone can still call it. In the Google account that owns the script: Apps Script > the all-clear project > Deploy > Manage deployments > archive the web app deployment. Only the owner can do this.
 - [ ] **Traffic.** Two genuinely useful posts a week (for example a technique guide where a community allows it), each link tagged `?utm_source=<channel>&utm_campaign=<app>-<post>`.
-- [ ] **Regenerate the Ninely daily pack before 2027-01-06** (it ends 2027-02-05). The weekly `store-links-and-names` workflow fails from that date as a reminder. Command under "Generators" in `.agent/HANDOFF.md`.
+- [ ] **Refresh the Ninely daily pack before 2027-10-27** (it ends 2027-12-26). The pack now comes from the app's own Daily via `Tools/WebDaily/run.sh <start> 400` in the Ninely repo (not `tools/pack_generator`), validated there; `python3 tools/check_pack_runway.py` here fails when fewer than 30 days remain.
 - [ ] **After 28 days of counter data (around 2026-12-08)**, run the Phase 2 gate. Write down hub pageviews, Play listing visitors and conversion per app, Search Console impressions on `/ninely/strategy/*`, and the logo test result.
 
 ## Decisions already made (2026-11-08)

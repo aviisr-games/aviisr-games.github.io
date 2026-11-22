@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Fail when the Ninely daily puzzle pack is about to run out.
 
-After the last dated day, /ninely/play/ silently falls back to one practice puzzle, so the
-"daily" promise breaks without any error. The weekly workflow runs this check and fails
-when fewer than MIN_DAYS days of puzzles remain, which leaves time to regenerate the pack
-(see .agent/HANDOFF.md, "Generators").
+After the last dated day, /ninely/play/ shows a visible "not available yet" notice with a practice
+puzzle, so the "daily" promise breaks. The weekly workflow runs this check and fails
+when fewer than MIN_DAYS days of puzzles remain, which leaves time to refresh the pack from the
+Ninely pipeline (Tools/WebDaily/run.sh in aviisr-games/Ninely; see tools/pack_generator/README.md).
 """
 
 from datetime import date, timedelta

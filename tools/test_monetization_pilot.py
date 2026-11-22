@@ -186,27 +186,18 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertGreaterEqual(solutions, 2, "Legacy generator must reproduce >=2 solutions on seed 20261101")
 
     def test_daily_pack_uniqueness_and_hints(self):
-        """Verifies all 90 days and fallback in daily-pack.json have exactly 1 valid solution and localized hints."""
+        """Verifies every day in daily-pack.json (exported from the Ninely app's Daily by Tools/WebDaily)
+        has exactly 1 valid solution and localized hints. The pack carries no silent fallback entry."""
         pack_path = ROOT / 'ninely/play/daily-pack.json'
         self.assertTrue(pack_path.exists(), "daily-pack.json must exist")
         data = json.loads(pack_path.read_text(encoding='utf-8'))
 
-        self.assertEqual(data.get('schemaVersion'), 1)
-        self.assertEqual(data.get('sourceCommit'), '4fa5c68')
-        self.assertIn('fallback', data)
+        self.assertEqual(data.get('schemaVersion'), 2)
+        self.assertIn('engineTree', data)
+        self.assertNotIn('fallback', data, "The pack must not carry a practice fallback: the page shows a visible notice instead")
         self.assertIn('days', data)
-        self.assertEqual(len(data['days']), 90, "Must contain exactly 90 dated puzzle days")
+        self.assertEqual(len(data['days']), data['dayCount'], "dayCount must equal the number of dated puzzle days")
 
-        # Test fallback
-        fb = data['fallback']
-        fb_givens = [int(c) for c in fb['puzzle']]
-        self.assertEqual(count_sudoku_solutions(fb_givens, limit=2), 1, "Fallback board must have exactly 1 solution")
-        self.assertTrue(fb.get('hint'), "Fallback board must have smart hint")
-        self.assertIn('en', fb['hint'].get('explanation', {}))
-        self.assertIn('he', fb['hint'].get('explanation', {}))
-        self.assertIn('ar', fb['hint'].get('explanation', {}))
-
-        # Test each day
         for date_str, entry in data['days'].items():
             givens = [int(c) for c in entry['puzzle']]
             self.assertEqual(len(givens), 81)
@@ -220,7 +211,6 @@ class MonetizationPilotTests(unittest.TestCase):
     def test_inline_fallback_in_play_html_is_unique_and_dynamic(self):
         """Regression test for Defects 2 & 3: inline fallbackPackEntry in ninely/play/index.html is unique and dynamic hints exist."""
         play_html = (ROOT / 'ninely/play/index.html').read_text(encoding='utf-8')
-        pack_data = json.loads((ROOT / 'ninely/play/daily-pack.json').read_text(encoding='utf-8'))
 
         match = re.search(r'var\s+fallbackPackEntry\s*=\s*(\{.*?\n\s*\});', play_html, re.DOTALL)
         self.assertIsNotNone(match, "fallbackPackEntry must be present in ninely/play/index.html")
@@ -228,11 +218,6 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIsNotNone(puzzle_match, "fallbackPackEntry must contain an 81-char puzzle string")
         inline_puzzle = puzzle_match.group(1)
 
-        self.assertEqual(
-            inline_puzzle,
-            pack_data['fallback']['puzzle'],
-            "Inline fallbackPackEntry puzzle must match daily-pack.json['fallback']['puzzle']"
-        )
         givens = [int(c) for c in inline_puzzle]
         self.assertEqual(
             count_sudoku_solutions(givens, limit=2),
@@ -241,6 +226,13 @@ class MonetizationPilotTests(unittest.TestCase):
         )
         self.assertIn('computeDynamicSmartHint', play_html, "Play page must compute dynamic smart hints as board progresses")
         self.assertIn('setInterval', play_html, "Play page must monitor UTC midnight rollover")
+        # End-of-pack: no silent practice fallback, a visible localized notice instead.
+        self.assertIn('id="daily-notice"', play_html)
+        for lang_text in ("Today's daily is not available yet. Here is a practice puzzle.",
+                          "האתגר היומי של היום עדיין לא זמין. הנה לוח אימון.",
+                          "تحدي اليوم غير متاح بعد. إليك لغزًا للتدريب."):
+            self.assertIn(lang_text, play_html)
+        self.assertIn('noticeEl.hidden = !!isDaily', play_html)
 
     def test_golden_duel_fixtures_exported_and_embedded_uniquely(self):
         """Regression test for Defect 4: golden duel fixtures in tools/ and embedded in ninely/duel/index.html have 1 solution."""
@@ -601,11 +593,11 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('hintBox.appendChild(guideLink);', html)
         # Every technique the daily pack can emit has a guide.
         pack = json.loads((ROOT / 'ninely/play/daily-pack.json').read_text(encoding='utf-8'))
-        for entry in list(pack['days'].values()) + [pack['fallback']]:
+        for entry in list(pack['days'].values()):
             self.assertIn(entry['hint']['technique'], mapping)
             self.assertIn(entry['hardestTechnique'], mapping)
 
-    # Mirrors Ninely.SudokuEngine (aviisr-games/Ninely @ 4fa5c68, the pack's sourceCommit):
+    # Mirrors Ninely.SudokuEngine (aviisr-games/Ninely; the pack's engineTree):
     # SudokuGenerator.ClueRange and SmartHintSolver.DifficultyFor. TryGenerate only accepts a board
     # whose graded tier equals the requested tier, so hardestTechnique must map back to its tier.
     ENGINE_CLUE_RANGE = {'Easy': (36, 42), 'Medium': (32, 35), 'Hard': (28, 31)}
@@ -615,21 +607,28 @@ class MonetizationPilotTests(unittest.TestCase):
         'Hard': {'NakedPair', 'HiddenPair'},
     }
 
-    def test_daily_pack_90_days_tier_progression(self):
-        """90-day pack from SudokuGenerator.TryGenerate: Easy (0-29), Medium (30-59), Hard (60-89),
-        clue counts inside ClueRange, engine-graded technique per tier, 180-degree symmetric clues,
-        givens consistent with a valid solution, unique solution."""
+    def test_daily_pack_tier_ramp_and_range(self):
+        """Pack from the app's Daily (Tools/WebDaily in aviisr-games/Ninely): contiguous dates from firstDate to
+        lastDate, weekday ramp (Mon Easy, Tue/Wed Medium, Thu-Sun Hard), clue counts inside ClueRange,
+        engine-graded technique per tier, 180-degree symmetric clues, valid solution, unique solution."""
+        from datetime import date, timedelta
         pack_path = ROOT / 'ninely/play/daily-pack.json'
         data = json.loads(pack_path.read_text(encoding='utf-8'))
         days = list(data['days'].keys())
-        self.assertEqual(len(days), 90)
-        self.assertEqual(days[0], '2026-11-08')
-        self.assertEqual(days[-1], '2027-02-05')
+        first, last = date.fromisoformat(data['firstDate']), date.fromisoformat(data['lastDate'])
+        self.assertEqual(days[0], data['firstDate'])
+        self.assertEqual(days[-1], data['lastDate'])
+        self.assertEqual(len(days), data['dayCount'])
+        self.assertEqual(len(days), (last - first).days + 1)
+        self.assertGreaterEqual(len(days), 365, "The pack must cover at least a year")
 
+        ramp = ['Easy', 'Medium', 'Medium', 'Hard', 'Hard', 'Hard', 'Hard']  # Monday first
         for idx, date_key in enumerate(days):
+            self.assertEqual(date_key, (first + timedelta(days=idx)).isoformat(), "Dates must be contiguous")
             entry = data['days'][date_key]
-            expected = 'Easy' if idx < 30 else 'Medium' if idx < 60 else 'Hard'
+            expected = ramp[date.fromisoformat(date_key).weekday()]
             self.assertEqual(entry['difficulty'], expected, f"Day {date_key} (index {idx}) must be {expected}")
+            self.assertEqual(entry['seed'], int(date_key.replace('-', '')))
 
             puzzle, solution = entry['puzzle'], entry['solution']
             self.assertEqual(len(puzzle), 81)
@@ -654,10 +653,6 @@ class MonetizationPilotTests(unittest.TestCase):
             for unit in units:
                 self.assertEqual(sorted(sol[i] for i in unit), list(range(1, 10)), f"Day {date_key}: invalid solution")
             self.assertEqual(count_sudoku_solutions([int(c) for c in puzzle], 2), 1, f"Day {date_key} must be unique")
-
-            self.assertIn('hint_en', entry, f"Day {date_key} must have hint_en")
-            self.assertIn('hint_he', entry, f"Day {date_key} must have hint_he")
-            self.assertIn('hint_ar', entry, f"Day {date_key} must have hint_ar")
 
     def test_sitemap_urls_preserved_and_expanded(self):
         """Verify the allowlist sitemap keeps every allowlisted URL plus the studio support/privacy pages."""

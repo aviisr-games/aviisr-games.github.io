@@ -22,6 +22,26 @@ class AdsIsolation(unittest.TestCase):
         js = (ROOT / 'assets/ads.js').read_text(encoding='utf-8')
         self.assertRegex(js, r'var ADS_ENABLED = false;')
 
+    def test_ads_js_has_cmp_and_no_slot_ids_yet(self):
+        js = (ROOT / 'assets/ads.js').read_text(encoding='utf-8')
+        self.assertIn('fundingchoicesmessages.google.com', js)
+        self.assertIn('googlefcPresent', js)
+        self.assertIn("var SLOTS = { intro: '', end: '' };", js)
+        self.assertLess(js.index('var ADS_ENABLED'), js.index('fundingchoicesmessages'), 'switch must come first')
+        self.assertLess(js.index('if (!ADS_ENABLED) { return; }'), js.index('adsbygoogle.js'))
+
+    def test_allowlisted_pages_carry_widened_csp_and_others_do_not(self):
+        for p in html_files():
+            rel = str(p.relative_to(ROOT))
+            text = p.read_text(encoding='utf-8')
+            m = re.search(r'Content-Security-Policy" content="([^"]*)"', text)
+            csp = m.group(1) if m else ''
+            if rel in AD_PAGES:
+                for host in ('pagead2.googlesyndication.com', 'fundingchoicesmessages.google.com', 'googleads.g.doubleclick.net'):
+                    self.assertIn(host, csp, f'{rel} CSP must allow {host}')
+            else:
+                self.assertNotIn('google', csp, f'{rel} CSP must stay self-only')
+
     def test_only_allowlisted_pages_load_ads_js(self):
         loaders = {str(p.relative_to(ROOT)) for p in html_files()
                    if 'assets/ads.js' in p.read_text(encoding='utf-8')}

@@ -122,8 +122,10 @@ class GoLinksGeneratedPagesTests(unittest.TestCase):
         data = json.loads(go_links.CONFIG_PATH.read_text(encoding='utf-8'))
         entries = go_links.validate_links(data)
         expected_slugs = {slug for slug, _, _, _ in entries}
+        group_slugs = {slug for slug, _, _, _ in go_links.validate_groups(data)}
         actual_slugs = {p.name for p in go_links.GO_DIR.iterdir() if p.is_dir()}
-        self.assertEqual(actual_slugs, expected_slugs)
+        self.assertTrue(expected_slugs.isdisjoint(group_slugs))
+        self.assertEqual(actual_slugs - group_slugs, expected_slugs)
 
         for slug, app_name, store_name, target in entries:
             page_path = go_links.GO_DIR / slug / 'index.html'
@@ -153,6 +155,124 @@ class GoLinksGeneratedPagesTests(unittest.TestCase):
     def test_go_pages_are_excluded_from_sitemap(self):
         sitemap_xml = sm.render()
         self.assertNotIn('/go/', sitemap_xml)
+
+
+EN_GROUP = 'https://www.facebook.com/groups/learnsudokutechniques'
+DE_GROUP = 'https://www.facebook.com/groups/sudokutechnikenlernen'
+GROUP_SLUGS = {
+    'nfb-en-site': 'en',
+    'nfb-en-hub': 'en',
+    'nfb-en-playable': 'en',
+    'nfb-en-page': 'en',
+    'nfb-en-play': 'en',
+    'nfb-en-app': 'en',
+    'nfb-en-yt': 'en',
+    'nfb-en-reply': 'en',
+    'nfb-de-site': 'de',
+    'nfb-de-page': 'de',
+    'nfb-de-play': 'de',
+    'nfb-de-app': 'de',
+    'nfb-de-yt': 'de',
+    'nfb-de-reply': 'de',
+}
+STRATEGY_LINE = (
+    'Want to talk through these techniques with other players? '
+    '<a href="/go/nfb-en-site/">Learn Sudoku Techniques</a> is a small public Facebook group '
+    'run by the solo developer of Ninely at aviisr games. You do not need the app to join.'
+)
+HUB_LINE = (
+    'Want to talk through techniques with other players? '
+    '<a href="/go/nfb-en-hub/">Learn Sudoku Techniques</a> is a small public Facebook group '
+    'run by the solo developer of Ninely at aviisr games. You do not need the app to join.'
+)
+PLAY_LINE = (
+    'If you want company on the techniques, there is a small public group here: '
+    '<a href="/go/nfb-en-playable/">Learn Sudoku Techniques</a>.'
+)
+
+
+class GroupHopTests(unittest.TestCase):
+
+    def test_config_lists_every_touchpoint_and_only_the_two_groups(self):
+        data = json.loads(go_links.CONFIG_PATH.read_text(encoding='utf-8'))
+        groups = go_links.validate_groups(data)
+        self.assertEqual({slug: lang for slug, lang, _, _ in groups}, GROUP_SLUGS)
+        for slug, lang, name, target in groups:
+            self.assertEqual(target, EN_GROUP if lang == 'en' else DE_GROUP, slug)
+            self.assertNotIn('?', target, slug)
+            self.assertNotIn('mila', slug)
+            self.assertNotIn('com.aviisr.mila', target)
+            if lang == 'en':
+                self.assertEqual(name, 'Learn Sudoku Techniques')
+            else:
+                self.assertEqual(name, 'Sudoku-Techniken lernen')
+
+    def test_rejects_open_redirects_and_mismatched_language(self):
+        with self.assertRaises(ValueError):
+            go_links.validate_groups({
+                'links': [],
+                'groups': [{'slug': 'nfb-en-reply', 'lang': 'de'}],
+            })
+        with self.assertRaises(ValueError):
+            go_links.validate_groups({
+                'links': [],
+                'groups': [{'slug': 'nfb-en-mila', 'lang': 'en'}],
+            })
+        with self.assertRaises(ValueError):
+            go_links.validate_groups({
+                'links': [],
+                'groups': [{'slug': 'custom-url', 'lang': 'en'}],
+            })
+
+    def test_generated_hops_count_with_count_js_then_redirect(self):
+        data = json.loads(go_links.CONFIG_PATH.read_text(encoding='utf-8'))
+        for slug, lang, _, target in go_links.validate_groups(data):
+            page = go_links.GO_DIR / slug / 'index.html'
+            html = page.read_text(encoding='utf-8')
+            self.assertEqual(html, go_links.render_group_page(slug, lang), slug)
+            self.assertIn('<meta name="robots" content="noindex, nofollow">', html, slug)
+            self.assertIn('<script src="/assets/count.js" defer></script>', html, slug)
+            self.assertIn(f'content="2; url={htmllib.escape(target, quote=True)}"', html, slug)
+            self.assertIn(f'href="{htmllib.escape(target, quote=True)}"', html, slug)
+            self.assertIn('window.location.replace', html, slug)
+            self.assertIn('}, 2000);', html, slug)
+            self.assertNotIn('location.search', html, slug)
+            self.assertNotIn('URLSearchParams', html, slug)
+            self.assertNotIn('document.cookie', html, slug)
+            self.assertNotIn('goatcounter.com/count?', html, slug)
+            self.assertIn('aviisr games', html, slug)
+            self.assertNotIn('\u2014', html, slug)
+            self.assertNotIn('\u2013', html, slug)
+            if lang == 'en':
+                self.assertIn('Taking you to the Ninely sudoku group on Facebook', html, slug)
+            else:
+                self.assertIn('öffentliche Facebook-Gruppe', html, slug)
+
+    def test_group_hops_stay_out_of_the_sitemap(self):
+        sitemap_xml = sm.render()
+        for slug in GROUP_SLUGS:
+            self.assertNotIn(slug, sitemap_xml)
+            page = (go_links.GO_DIR / slug / 'index.html').read_text(encoding='utf-8')
+            self.assertIn('noindex', page, slug)
+
+    def test_ninely_pages_use_one_matching_hop_line(self):
+        strategy_pages = sorted((ROOT / 'ninely' / 'strategy').rglob('index.html'))
+        self.assertGreaterEqual(len(strategy_pages), 11)
+        for page in strategy_pages:
+            text = page.read_text(encoding='utf-8')
+            self.assertIn(STRATEGY_LINE, text, page)
+            self.assertNotIn('facebook.com', text, page)
+            self.assertNotIn('/go/nfb-de-', text, page)
+            self.assertNotIn('/go/nfb-en-hub/', text, page)
+            self.assertNotIn('/go/nfb-en-playable/', text, page)
+        hub = (ROOT / 'ninely' / 'index.html').read_text(encoding='utf-8')
+        self.assertIn(HUB_LINE, hub)
+        self.assertNotIn('/go/nfb-en-site/', hub)
+        play = (ROOT / 'ninely' / 'play' / 'index.html').read_text(encoding='utf-8')
+        self.assertIn(PLAY_LINE, play)
+        win = play[play.index('id="win-box"'):play.index('class="store-links"')]
+        self.assertIn(PLAY_LINE, win)
+        self.assertNotIn('/go/nfb-en-site/', play)
 
 
 if __name__ == '__main__':

@@ -13,7 +13,7 @@
 <meta property="og:description" content="Learn what a Naked Single is in Sudoku, how to spot it by eliminating peer digits, and how to avoid the common wrong move trap. Interactive worked example.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://www.googletagservices.com https://partner.googleadservices.com https://*.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com https:; object-src 'none'; base-uri 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com; connect-src 'self' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com https://*.doubleclick.net;">
 <link rel="stylesheet" href="../../../style.css">
 <link rel="stylesheet" href="../strategy.css">
 <script type="application/ld+json">
@@ -128,6 +128,32 @@
       </div>
     </div>
 
+    <div class="guide-section">
+      <h2>When to Look for Naked Singles</h2>
+      <p>Naked singles do most of the work at the start and the end of a puzzle. Early on, a cell that sits where a crowded row, column and box meet often has only one digit left. Late in the solve, nearly every cell has few candidates, so naked singles appear one after another and finish the grid.</p>
+      <p>A good habit is to start with the most crowded houses. A row, column or box that already holds six or seven digits leaves only two or three empty cells, and each of those cells is easy to check against its other two units. Work outward from the fullest houses instead of scanning the grid cell by cell.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common Mistakes</h2>
+      <ul>
+        <li><strong>Checking only two of the three units.</strong> A digit can be blocked by the row, the column or the box. Skipping one of them is how a wrong placement slips in.</li>
+        <li><strong>Trusting incomplete notes.</strong> If a pencil mark was never crossed off after a placement, a real naked single will look like a cell with two candidates. Update the notes after every digit you place.</li>
+        <li><strong>Confusing it with a hidden single.</strong> A naked single is about one cell having one candidate. If the cell still has several candidates, the answer lies in a different technique.</li>
+        <li><strong>Stopping after one find.</strong> Placing a digit removes that candidate from up to 20 peers, so the cells around it often become naked singles at once. Look at them straight away.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How It Connects to Other Techniques</h2>
+      <p>Naked singles and <a href="../hidden-singles/">hidden singles</a> are two views of the same idea. One asks what a cell can hold, the other asks where a digit can go. When you run out of both, the next step is to remove candidates, which is what <a href="../locked-candidates/">locked candidates</a> and <a href="../naked-pairs/">naked pairs</a> do. Those eliminations usually leave a cell with a single candidate, so you end up back at a naked single.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice Routine</h2>
+      <p>Take an easy puzzle and fill in every candidate for each empty cell. Then go through the grid and place only the cells with exactly one candidate. After each placement, update the notes of its row, column and box before moving on. Stop when no cell has a single candidate, and count how many digits you placed this way.</p>
+    </div>
+
     <div class="practice-cta">
       <h3>Put It Into Practice</h3>
       <p>Try spotting naked singles in real time on today's Ninely daily board:</p>
@@ -199,5 +225,6 @@
 })();
 </script>
 <script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
 </body>
 </html>

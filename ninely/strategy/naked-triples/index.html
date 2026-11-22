@@ -14,7 +14,7 @@
 <meta property="og:description" content="Learn the Naked Triple Sudoku technique: three cells sharing three candidates lock those digits and eliminate them elsewhere in the unit. Interactive diagram.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://www.googletagservices.com https://partner.googleadservices.com https://*.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com https:; object-src 'none'; base-uri 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com; connect-src 'self' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com https://*.doubleclick.net;">
 <link rel="stylesheet" href="../../../style.css">
 <link rel="stylesheet" href="../strategy.css">
 <script type="application/ld+json">
@@ -130,6 +130,32 @@
       </div>
     </div>
 
+    <div class="guide-section">
+      <h2>When to look for it</h2>
+      <p>Naked triples appear in the middle of a harder puzzle, once pairs and singles have been exhausted. Look in units that already have several cells with two or three candidates. Pick a cell with two or three candidates, then search the same unit for other cells whose candidates all come from the same three digits. If three cells together use only three digits, the triple is complete.</p>
+      <p>Rows and columns with about four to six empty cells are the most productive, because there are few enough cells to compare by hand.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Demanding every cell show all three digits.</strong> A valid triple can look like &#123;1, 2&#125;, &#123;2, 3&#125; and &#123;1, 3&#125;, or &#123;1, 2, 3&#125;, &#123;1, 2&#125; and &#123;2, 3&#125;. Each cell may hold two or three of the digits.</li>
+        <li><strong>Counting four digits.</strong> If the union of the three cells has four digits, it is not a naked triple.</li>
+        <li><strong>Eliminating inside the triple.</strong> Only cells outside the triple lose the three digits.</li>
+        <li><strong>Forgetting the second unit.</strong> If all three cells also share a box, the digits can be removed from the rest of that box as well.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How it connects to other techniques</h2>
+      <p>The logic is the same as a <a href="../naked-pairs/">Naked Pair</a>, extended by one cell: n cells that hold only n digits own those digits. The mirror image is the hidden triple, whose related smaller form is the <a href="../hidden-pairs/">Hidden Pair</a>. When a triple is not available, a fish pattern such as <a href="../x-wing/">X-Wing</a> may still make progress.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice routine</h2>
+      <p>On a puzzle where you are stuck, choose one row and write the candidate list of every empty cell. Then try each three-digit combination that appears in at least two cells, and see whether a third cell completes it. Checking one unit fully is more reliable than skimming the whole grid.</p>
+    </div>
+
     <div class="practice-cta">
       <h3>Ready to Master Advanced Sudoku?</h3>
       <p>Put three-cell locks to work on today's free daily puzzle:</p>
@@ -205,5 +231,6 @@
 })();
 </script>
 <script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
 </body>
 </html>

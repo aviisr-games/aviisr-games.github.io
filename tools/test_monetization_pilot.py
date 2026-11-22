@@ -295,8 +295,13 @@ class MonetizationPilotTests(unittest.TestCase):
         """Regression test for Defect 5: zero live AdSense scripts, no sticky ad rail, single ad container per page."""
         html_files = list(ROOT.rglob('*.html'))
         self.assertGreater(len(html_files), 10)
+        ad_pages = {str(d / 'index.html') for d in (ROOT / 'ninely/strategy').iterdir() if d.is_dir()}
+        ad_pages.add('middle-east-2030/guide/index.html')
         for h in html_files:
             content = h.read_text(encoding='utf-8')
+            if str(h.relative_to(ROOT)) in {pg.replace(str(ROOT) + '/', '') for pg in ad_pages}:
+                # Guide pages carry the widened CSP for the (disabled) ad loader; nothing else may mention ad hosts.
+                content = re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>', '', content)
             self.assertNotIn(
                 'pagead2.googlesyndication.com',
                 content,
@@ -498,6 +503,83 @@ class MonetizationPilotTests(unittest.TestCase):
         self.assertIn('href="naked-triples/"', hub)
         self.assertIn('href="swordfish/"', hub)
 
+    def test_wave4_hidden_triples_and_y_wing_boards(self):
+        """Hidden Triples and Y-Wing boards: unique solution and the pattern holds on givens-only candidates."""
+        def parse(slug):
+            content = (ROOT / f'ninely/strategy/{slug}/index.html').read_text(encoding='utf-8')
+            parser = DiagramBoardParser()
+            parser.feed(content)
+            return content, parser.cells
+
+        def cands(cells, i):
+            r, c = divmod(i, 9)
+            br, bc = (r // 3) * 3, (c // 3) * 3
+            used = {cells[r * 9 + k] for k in range(9)} | {cells[k * 9 + c] for k in range(9)} | \
+                   {cells[(br + k // 3) * 9 + bc + k % 3] for k in range(9)}
+            return set() if cells[i] else set(range(1, 10)) - used
+
+        def sees(a, b):
+            ra, ca = divmod(a, 9)
+            rb, cb = divmod(b, 9)
+            return a != b and (ra == rb or ca == cb or (ra // 3, ca // 3) == (rb // 3, cb // 3))
+
+        def solve(cells):
+            board = list(cells)
+            def bt(idx):
+                while idx < 81 and board[idx]:
+                    idx += 1
+                if idx == 81:
+                    return True
+                for d in sorted(cands(board, idx)):
+                    board[idx] = d
+                    if bt(idx + 1):
+                        return True
+                    board[idx] = 0
+                return False
+            self.assertTrue(bt(0))
+            return board
+
+        cell = lambda r, c: (r - 1) * 9 + (c - 1)
+
+        # Hidden Triple {2, 4, 5} in Row 5: only R5C4, R5C7, R5C9 can take them; 8 then only fits R5C6.
+        content, cells = parse('hidden-triples')
+        self.assertEqual(count_sudoku_solutions(cells, 2), 1, "hidden-triples board must have a unique solution")
+        row = [cell(5, c) for c in range(1, 10)]
+        homes = {d: [c for c, i in enumerate(row, 1) if d in cands(cells, i)] for d in (2, 4, 5)}
+        self.assertEqual(set().union(*homes.values()), {4, 7, 9})
+        for d, hs in homes.items():
+            self.assertGreaterEqual(len(hs), 2, "no triple digit may be a hidden single")
+        for a, b in ((2, 4), (2, 5), (4, 5)):
+            self.assertEqual(len(set(homes[a]) | set(homes[b])), 3, "must not reduce to a hidden pair")
+        self.assertEqual([c for c, i in enumerate(row, 1) if 8 in cands(cells, i)], [4, 6, 7, 9])
+        solved = solve(cells)
+        self.assertEqual(solved[cell(5, 6)], 8)
+
+        # Y-Wing: pivot R5C3 {2, 6}, pincers R3C3 {2, 3} and R6C1 {3, 6}; R2C1 {3, 7} sees both -> 7.
+        content, cells = parse('y-wing')
+        self.assertEqual(count_sudoku_solutions(cells, 2), 1, "y-wing board must have a unique solution")
+        pivot, p1, p2, tgt = cell(5, 3), cell(3, 3), cell(6, 1), cell(2, 1)
+        self.assertEqual(cands(cells, pivot), {2, 6})
+        self.assertEqual(cands(cells, p1), {2, 3})
+        self.assertEqual(cands(cells, p2), {3, 6})
+        self.assertEqual(cands(cells, tgt), {3, 7})
+        self.assertTrue(sees(pivot, p1) and sees(pivot, p2))
+        self.assertFalse(sees(p1, p2), "pincers must not see each other")
+        self.assertTrue(sees(tgt, p1) and sees(tgt, p2))
+        self.assertEqual(solve(cells)[tgt], 7)
+        self.assertIn("html: '7'", content)
+
+        hub = (ROOT / 'ninely/strategy/index.html').read_text(encoding='utf-8')
+        self.assertIn('href="hidden-triples/"', hub)
+        self.assertIn('href="y-wing/"', hub)
+        for slug in ('hidden-triples', 'y-wing'):
+            html = (ROOT / f'ninely/strategy/{slug}/index.html').read_text(encoding='utf-8')
+            self.assertRegex(html, r'var\s+currentStep\s*=\s*2;')
+            self.assertIn('Step 2 of 3:', html)
+            self.assertIn('cand-num elim', html)
+            self.assertNotIn('\u2014', html)
+            self.assertNotIn('\u2013', html)
+
     def test_play_hint_deep_links_to_strategy_guides(self):
         """#hint-box renders a localized "Learn this technique" link mapped from the hint technique to an
         existing /ninely/strategy/<slug>/ guide (or the hub when no guide exists)."""
@@ -585,7 +667,6 @@ class MonetizationPilotTests(unittest.TestCase):
             'https://aviisrgames.com/ninely/',
             'https://aviisrgames.com/ninely/privacy.html',
             'https://aviisrgames.com/ninely/play/',
-            'https://aviisrgames.com/ninely/duel/',
             'https://aviisrgames.com/ninely/strategy/',
             'https://aviisrgames.com/ninely/strategy/naked-singles/',
             'https://aviisrgames.com/ninely/strategy/hidden-singles/',
@@ -611,6 +692,11 @@ class MonetizationPilotTests(unittest.TestCase):
         # Duplicate hubs canonicalise to the survivor (T9) and are not listed themselves.
         for dup in ('https://aviisrgames.com/redline-2030/', 'https://aviisrgames.com/morning-route/'):
             self.assertNotIn(f'<loc>{dup}</loc>', sitemap)
+
+    def test_duel_noindex_and_not_in_sitemap(self):
+        duel = (ROOT / 'ninely/duel/index.html').read_text(encoding='utf-8')
+        self.assertIn('<meta name="robots" content="noindex', duel)
+        self.assertNotIn('/ninely/duel/', (ROOT / 'sitemap.xml').read_text(encoding='utf-8'))
 
     def test_duel_no_auto_redirect(self):
         """Verify duel/index.html removed the automatic mobile redirect timer and has copy link button."""

@@ -13,7 +13,7 @@
 <meta property="og:description" content="Discover how to spot Hidden Singles in Sudoku rows, columns, and 3x3 boxes. Learn the difference between naked and hidden singles with an interactive board.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://www.googletagservices.com https://partner.googleadservices.com https://*.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com https:; object-src 'none'; base-uri 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com; connect-src 'self' https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com https://*.doubleclick.net;">
 <link rel="stylesheet" href="../../../style.css">
 <link rel="stylesheet" href="../strategy.css">
 <script type="application/ld+json">
@@ -125,6 +125,32 @@
       </div>
     </div>
 
+    <div class="guide-section">
+      <h2>When to Look for Hidden Singles</h2>
+      <p>Hidden singles are usually the first technique to try once the obvious naked singles run out. They are strongest in boxes, because a box is crossed by three rows and three columns that can each block a digit. They also work well in rows and columns that are nearly full.</p>
+      <p>Pick the digit that appears most often on the grid, since it has the most blockers. If eight copies of a digit are placed, the ninth is forced. Digits with six or seven placed copies are also good targets, because each placed copy blocks a whole row, column and box.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common Mistakes</h2>
+      <ul>
+        <li><strong>Counting a filled cell as a possible spot.</strong> Only empty cells can take the digit. Check that each cell you count is actually open.</li>
+        <li><strong>Forgetting that a house has to contain every digit.</strong> The single is forced because the house needs that digit somewhere and only one cell is left for it. Looking only at one cell's pencil marks misses this.</li>
+        <li><strong>Scanning only boxes.</strong> Rows and columns hide singles too. Run the same check on each of the three house types.</li>
+        <li><strong>Placing the wrong digit in the cell.</strong> If a cell has marks like <code>&#123;2, 3, 8&#125;</code>, the hidden single tells you which one belongs. It is the digit that has nowhere else to go in the house, not the first one you notice.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How It Connects to Other Techniques</h2>
+      <p>A hidden single is the mirror image of a <a href="../naked-singles/">naked single</a>. Once you place it, the cell has a known value, and the new digit blocks candidates in its peers, which often creates the next single. When both kinds of singles dry up, <a href="../locked-candidates/">locked candidates</a> are the usual next step, because their eliminations remove the extra candidates that were hiding a single.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice Routine</h2>
+      <p>Choose one digit and find every row, column and box that does not yet contain it. For each of those houses, mark the empty cells where the digit is still allowed. Any house with exactly one such cell gives you a placement. Repeat for the next digit, and then go around the nine digits again, because each placement can create a new single for a digit you already checked.</p>
+    </div>
+
     <div class="practice-cta">
       <h3>Ready to Spot Hidden Singles?</h3>
       <p>Test your cross-hatching speed on today's free daily puzzle:</p>
@@ -196,5 +222,6 @@
 })();
 </script>
 <script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
 </body>
 </html>

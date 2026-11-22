@@ -18,15 +18,15 @@ def html_files():
 
 
 class AdsIsolation(unittest.TestCase):
-    def test_ads_js_is_off_by_default(self):
+    def test_ads_js_switch_is_on_with_real_slots(self):
         js = (ROOT / 'assets/ads.js').read_text(encoding='utf-8')
-        self.assertRegex(js, r'var ADS_ENABLED = false;')
+        self.assertRegex(js, r'var ADS_ENABLED = true;')
 
-    def test_ads_js_has_cmp_and_no_slot_ids_yet(self):
+    def test_ads_js_has_cmp_and_slot_ids(self):
         js = (ROOT / 'assets/ads.js').read_text(encoding='utf-8')
         self.assertIn('fundingchoicesmessages.google.com', js)
         self.assertIn('googlefcPresent', js)
-        self.assertIn("var SLOTS = { intro: '', end: '' };", js)
+        self.assertRegex(js, r"var SLOTS = \{ intro: '\d{10}', end: '\d{10}' \};")
         self.assertLess(js.index('var ADS_ENABLED'), js.index('fundingchoicesmessages'), 'switch must come first')
         self.assertLess(js.index('if (!ADS_ENABLED) { return; }'), js.index('adsbygoogle.js'))
 

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Y-Wing in Sudoku: The Three-Cell Bent Triple | Ninely</title>
+<meta name="description" content="Learn the Y-Wing (XY-Wing) Sudoku technique: a pivot cell and two pincer cells force one digit into a pincer, so any cell seeing both pincers loses it. Interactive worked example.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/y-wing/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Y-Wing in Sudoku: The Three-Cell Bent Triple | Ninely">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aviisrgames.com/ninely/strategy/y-wing/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/ninely.jpg">
+<meta property="og:description" content="Learn the Y-Wing (XY-Wing) Sudoku technique: a pivot cell and two pincer cells force one digit into a pincer, so any cell seeing both pincers loses it. Interactive worked example.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Y-Wing in Sudoku: The Three-Cell Bent Triple",
+  "description": "Learn how a pivot with two candidates and two pincer cells force one digit into a pincer, removing that digit from every cell that sees both pincers.",
+  "url": "https://aviisrgames.com/ninely/strategy/y-wing/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-22"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Y-Wing in Sudoku: How the Three-Cell Bent Triple Works</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Y-Wing?</h2>
+      <p>A <strong>Y-Wing</strong> (also called an XY-Wing) uses three cells that each hold exactly two candidates, linked in a chain. Call the digits A, B and C:</p>
+      <ol>
+        <li>The <strong>pivot</strong> holds <code>&#123;A, B&#125;</code>.</li>
+        <li>One <strong>pincer</strong> holds <code>&#123;A, C&#125;</code> and sees the pivot (same row, column or box).</li>
+        <li>The other <strong>pincer</strong> holds <code>&#123;B, C&#125;</code> and also sees the pivot.</li>
+        <li>The two pincers do <em>not</em> see each other. If they did, the three cells would simply be a Naked Triple.</li>
+      </ol>
+      <p>Whatever the pivot turns out to be, one of the pincers is forced to be <strong>C</strong>. If the pivot is A, the first pincer cannot be A and so becomes C. If the pivot is B, the second pincer becomes C. Either way, a C lands in one of the two pincers. So <strong>any cell that sees both pincers can never be C</strong>.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Y-Wing at R5C3 Removes 3 from Cell R2C1</h2>
+      <p>The three wing cells on the board below (from the given digits only, with no earlier eliminations):</p>
+      <ul>
+        <li><strong>The pivot, R5C3:</strong> <code>&#123;2, 6&#125;</code> (A = 2, B = 6).</li>
+        <li><strong>Pincer 1, R3C3:</strong> <code>&#123;2, 3&#125;</code>. It shares Column 3 with the pivot, and holds the 2 plus the shared digit C = 3.</li>
+        <li><strong>Pincer 2, R6C1:</strong> <code>&#123;3, 6&#125;</code>. It shares Box 4 with the pivot, and holds the 6 plus the same C = 3.</li>
+        <li><strong>The pincers do not see each other:</strong> R3C3 and R6C1 are in different rows, columns and boxes.</li>
+        <li><strong>The logic:</strong> If R5C3 is 2, then R3C3 cannot be 2, so it is 3. If R5C3 is 6, then R6C1 cannot be 6, so it is 3. Either way <strong>a 3 sits in R3C3 or R6C1</strong>.</li>
+        <li><strong>Target R2C1:</strong> It holds <code>&#123;3, 7&#125;</code> and sees R3C3 (same box) and R6C1 (same column). Because one of those two cells is a 3, <strong>R2C1 cannot be 3</strong>. That leaves <strong>7</strong> as a Naked Single.</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Y-Wing: pivot {2, 6} with pincers {2, 3} and {3, 6}</div>
+          <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;"><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div></div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Target Cell R2C1 (3 Eliminated)</div>
+          <div class="diagram-cell danger" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num"></span></div></div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell fixed">1</div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell danger" id="target-cell"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">6</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 5 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 6 -->
+          <div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">6</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 9 -->
+          <div class="diagram-cell fixed">2</div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn">◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 2 of 3: One of the two pincers must be a 3, so R2C1 cannot be a 3</span>
+          <button type="button" id="next-step" class="step-btn">Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: The pivot R5C3 {2, 6} and the pincers R3C3 {2, 3} and R6C1 {3, 6} form a Y-Wing on the digit 3. R2C1 sees both pincers, so it loses its 3 and becomes 7.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h3>⚠️ The Tempting Wrong Move: Placing 3 in R2C1</h3>
+        <p>R2C1 has just two candidates, <code>&#123;3, 7&#125;</code>, so a quick guess of <code>3</code> looks harmless.</p>
+        <p><strong>Why this fails:</strong> A 3 in R2C1 removes the 3 from R3C3 (same box) and from R6C1 (same column). R3C3 is then forced to be <code>2</code> and R6C1 to be <code>6</code>. The pivot R5C3 sees both of them, so it can be neither a 2 nor a 6, and it has no legal digit. That is a contradiction, so R2C1 is not a 3.</p>
+      </div>
+
+      <div class="tip-box">
+        <h3>💡 Solving Tip: Start From Two-Candidate Cells</h3>
+        <p>List the cells that have exactly two candidates. Pick one as a possible pivot, find two of its peers that share one digit each with it and a third digit with each other, and check that the pincers do not see each other. Only then look for cells that see both pincers and still hold the shared digit.</p>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>When to look for it</h2>
+      <p>A Y-Wing is a good tool when the grid is full of two-candidate cells (bivalue cells) and the pair, triple and locked-candidate techniques have not moved the puzzle. It is a step above a Naked Pair in difficulty, because the cells do not sit in a single unit; they are connected by sight lines instead.</p>
+      <p>Pivot cells are the easiest to find, so start there. Scan a box or a line that has several bivalue cells, check the pivot's peers, and test whether any pair of them completes the A-C, B-C pattern.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Using pincers that see each other.</strong> If the two pincers share a unit, the three cells are a Naked Triple, a different pattern with different eliminations.</li>
+        <li><strong>Eliminating the wrong digit.</strong> Only the shared digit C is removed, from cells that see <em>both</em> pincers. The pivot's digits A and B are not touched.</li>
+        <li><strong>Counting a cell that sees only one pincer.</strong> Seeing one pincer is not enough. The cell must see both.</li>
+        <li><strong>Choosing a pivot with three candidates.</strong> All three wing cells hold exactly two candidates.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How it connects to other techniques</h2>
+      <p>The reasoning is the same as in an <a href="../x-wing/">X-Wing</a>: you do not need to know which of two possibilities is true, because both lead to the same elimination. A Y-Wing replaces the rectangle of an X-Wing with a bent chain of three cells. If the chain collapses into a single unit, you are back to a <a href="../naked-triples/">Naked Triple</a>. After the elimination, look for a <a href="../naked-singles/">Naked Single</a>, as in this example.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice routine</h2>
+      <p>Mark every two-candidate cell on a stalled puzzle. For each one, write the digits it shares with the other bivalue cells it can see. Look for a closed chain A-B, A-C, B-C, then list the cells that see both pincers. Repeat with a new pivot until you find one that removes a digit. Finding the pattern gets quicker after about ten puzzles.</p>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Chain Two-Candidate Cells?</h3>
+      <p>Look for pivots and pincers on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+      <p class="guide-store">Prefer the app? Ninely's Smart Hints explain each move the same way. <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=guide&amp;utm_campaign=ninely-guide">Get Ninely on Google Play</a></p>
+    </div>
+  </article>
+
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../hidden-triples/">Hidden Triples Guide</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 2;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: Pivot R5C3 {2, 6} sees pincer R3C3 {2, 3} and pincer R6C1 {3, 6}; R2C1 sees both pincers",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">7</span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: One of the two pincers must be a 3, so R2C1 cannot be a 3",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">3</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">7</span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: R2C1 is left with 7 as a Naked Single",
+      html: '7',
+      cls: "fixed highlight"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  // Initialize stepper state for Step 2
+  stepText.textContent = steps[1].text;
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+<script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
+</body>
+</html>

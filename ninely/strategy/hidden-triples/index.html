@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hidden Triples in Sudoku: Three Digits, Three Cells | Ninely</title>
+<meta name="description" content="Learn the Hidden Triple Sudoku technique: three digits confined to the same three cells in a unit remove every other candidate from those cells. Worked example with an interactive board.">
+<link rel="canonical" href="https://aviisrgames.com/ninely/strategy/hidden-triples/">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Hidden Triples in Sudoku: Three Digits, Three Cells | Ninely">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aviisrgames.com/ninely/strategy/hidden-triples/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/ninely.jpg">
+<meta property="og:description" content="Learn the Hidden Triple Sudoku technique: three digits confined to the same three cells in a unit remove every other candidate from those cells. Worked example with an interactive board.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<link rel="stylesheet" href="../../../style.css">
+<link rel="stylesheet" href="../strategy.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Hidden Triples in Sudoku: Three Digits, Three Cells",
+  "description": "Learn how three digits that can only go in the same three cells of a unit remove all other candidates from those cells.",
+  "url": "https://aviisrgames.com/ninely/strategy/hidden-triples/",
+  "author": { "@type": "Person", "name": "Avi Israeli", "email": "aviisr@aviisrgames.com" },
+  "publisher": { "@type": "Organization", "name": "aviisr games", "url": "https://aviisrgames.com/" },
+  "datePublished": "2026-11-22"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<nav class="lang"><a href="../">Strategy Hub</a> · <a href="../../play/">Play Daily</a> · <a href="../../../">All Games</a></nav>
+
+<div class="guide-container">
+  <article class="guide-main">
+    <header>
+      <h1>Hidden Triples in Sudoku: Find Three Digits Hiding in Three Cells</h1>
+      <div class="guide-meta">
+        By <strong>Avi Israeli</strong> · Reviewed by <strong>Ninely Engine Logic Council</strong> · Updated November 2026
+      </div>
+    </header>
+
+    <div class="guide-section">
+      <h2>What is a Hidden Triple?</h2>
+      <p>A <strong>Hidden Triple</strong> is the three-digit relative of the <a href="../hidden-pairs/">Hidden Pair</a>. Pick one unit (a row, a column or a 3&times;3 box) and look at where each digit can still go. If <em>three digits</em> can be placed only in the <em>same three cells</em>, those cells must hold exactly those digits, in some order.</p>
+      <ol>
+        <li>Three digits each need a home in the unit, and between them they can only use three cells.</li>
+        <li>Three digits fill three cells completely, so the cells cannot take anything else.</li>
+        <li>Every other candidate in those three cells is therefore impossible and can be erased.</li>
+        <li>The digits do not need to appear in all three cells. A digit may be confined to just two of them, as long as the three digits together touch only those three cells.</li>
+      </ol>
+      <p>The technique is called <em>hidden</em> because the triple is buried among extra candidates. The three cells in the example below each carry four or five pencil marks, and nothing about them looks special until you count where the digits can go.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Worked Example: Hidden Triple &#123;2, 4, 5&#125; in Row 5 Unlocks an 8 at R5C6</h2>
+      <p>Look at <strong>Row 5</strong> on the board below. Row 5 has these candidates (from the given digits only, with no earlier eliminations):</p>
+      <ul>
+        <li><strong>R5C4:</strong> <code>&#123;4, 5, 6, 8&#125;</code>, <strong>R5C7:</strong> <code>&#123;2, 4, 5, 6, 8&#125;</code>, <strong>R5C9:</strong> <code>&#123;2, 4, 5, 8&#125;</code>.</li>
+        <li><strong>Where can the 2 go?</strong> Only R5C7 and R5C9. <strong>The 4?</strong> Only R5C4, R5C7 and R5C9. <strong>The 5?</strong> Only R5C4, R5C7 and R5C9. No other cell in Row 5 can take a 2, a 4 or a 5.</li>
+        <li><strong>The Hidden Triple:</strong> Digits <strong>2, 4 and 5</strong> are confined to <strong>R5C4, R5C7 and R5C9</strong>. Three digits, three cells: those cells belong to 2, 4 and 5.</li>
+        <li><strong>Not a smaller pattern:</strong> No two of the three digits are confined to just two cells, so this is not a Hidden Pair, and none of them is a Hidden Single.</li>
+        <li><strong>Clean-up:</strong> Remove every other candidate from the three cells. R5C9 loses its <code>8</code>, and R5C4 and R5C7 lose their <code>6</code> and <code>8</code>.</li>
+        <li><strong>The payoff:</strong> Row 5 still needs an 8, and the triple's cells can no longer hold it. The only cell left for an 8 in Row 5 is <strong>R5C6</strong>, so <strong>R5C6 = 8</strong> (a Hidden Single that only appears after the triple clears the row).</li>
+      </ul>
+
+      <!-- Candidate Pencil Marks Before & After -->
+      <div style="display:flex; justify-content:center; gap:24px; margin:14px 0; align-items:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Hidden Triple in Row 5: &#123;2, 4, 5&#125;</div>
+          <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;"><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div><div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div></div>
+        </div>
+        <div style="font-size:1.4rem; color:var(--gold); font-weight:bold;">➔</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.8rem; color:var(--dim); margin-bottom:4px;">Payoff Cell R5C6 (the only 8 left in the row)</div>
+          <div class="diagram-cell highlight" style="width:58px; height:58px; border-radius:6px;"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num">9</span></div></div>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="interactive-board" class="diagram-board">
+          <!-- Row 1 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">1</div><div class="diagram-cell fixed">7</div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div>
+          <!-- Row 2 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">9</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div>
+          <!-- Row 3 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div>
+          <!-- Row 4 -->
+          <div class="diagram-cell fixed">8</div><div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div>
+          <!-- Row 5 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell"></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">1</div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">6</span><span class="cand-num"></span><span class="cand-num keep">8</span><span class="cand-num">9</span></div></div><div class="diagram-cell highlight"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num elim">6</span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div><div class="diagram-cell fixed">7</div><div class="diagram-cell danger" id="target-cell"><div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div></div>
+          <!-- Row 6 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">4</div><div class="diagram-cell fixed">2</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 7 -->
+          <div class="diagram-cell"></div><div class="diagram-cell fixed">5</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell fixed">4</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+          <!-- Row 8 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">3</div><div class="diagram-cell fixed">9</div><div class="diagram-cell"></div><div class="diagram-cell fixed">7</div><div class="diagram-cell"></div><div class="diagram-cell fixed">8</div><div class="diagram-cell"></div>
+          <!-- Row 9 -->
+          <div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell fixed">6</div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div><div class="diagram-cell"></div>
+        </div>
+
+        <div class="step-controls">
+          <button type="button" id="prev-step" class="step-btn">◀ Previous</button>
+          <span id="step-text" class="step-indicator">Step 2 of 3: Those three cells must hold 2, 4 and 5, so every other candidate is removed from them, here the 8 in R5C9</span>
+          <button type="button" id="next-step" class="step-btn">Next ▶</button>
+        </div>
+      </div>
+
+      <noscript>
+        <p><em>(Static View: In Row 5, the digits 2, 4 and 5 can only go in R5C4, R5C7 and R5C9. That is a Hidden Triple, so all other candidates, including every 8, are removed from those cells. R5C6 is then the only cell in Row 5 that can hold an 8.)</em></p>
+      </noscript>
+    </div>
+
+    <div class="guide-section">
+      <div class="wrong-move-box">
+        <h3>⚠️ The Tempting Wrong Move: Placing 8 in R5C9</h3>
+        <p>R5C9 has the candidates <code>&#123;2, 4, 5, 8&#125;</code>, and an 8 looks as plausible as any other digit.</p>
+        <p><strong>Why this fails:</strong> If R5C9 were an 8, the digits 2, 4 and 5 would have only R5C4 and R5C7 left in Row 5, because no other cell in the row can take them. Three digits cannot fit into two cells, so the board would break. The same argument rules out every non-triple candidate in R5C4, R5C7 and R5C9.</p>
+      </div>
+
+      <div class="tip-box">
+        <h3>💡 Solving Tip: Count Homes, Not Candidates</h3>
+        <p>When a unit has many crowded cells, write out the cells available to each digit instead of the digits available to each cell. A digit with only two or three possible cells is a lead. If two or three such digits share the same set of cells, you have found a Hidden Pair or Hidden Triple.</p>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h2>When to look for it</h2>
+      <p>Hidden Triples are a mid-to-late technique. They show up when several cells in one unit hold four or five candidates each and the easier tools have run out. Rows, columns and boxes with only five or six empty cells are the best places to look, because the digit-by-digit list stays short.</p>
+      <p>The search runs the other way round from a Naked Triple: for each unplaced digit, list its possible cells in the unit. Then look for three digits whose lists together cover exactly three cells.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Demanding every digit in every cell.</strong> A valid triple can look like &#123;2, 4&#125;, &#123;4, 5&#125; and &#123;2, 5&#125; spread over three cells. Each digit needs at least two possible cells (a digit with one cell is a Hidden Single), but it does not need all three.</li>
+        <li><strong>Touching the triple digits.</strong> The elimination removes the <em>other</em> candidates from the three cells. The digits 2, 4 and 5 stay in them.</li>
+        <li><strong>Counting a fourth cell.</strong> If the three digits can also go in a fourth cell of the unit, there is no triple.</li>
+        <li><strong>Missing a smaller pattern.</strong> If two of the three digits are confined to the same two cells, that is a Hidden Pair, and it is simpler to apply.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h2>How it connects to other techniques</h2>
+      <p>A Hidden Triple is the mirror image of a <a href="../naked-triples/">Naked Triple</a>: n digits that can only go in n cells are the same fact as n cells that can only hold n digits, seen from the other side. Once the extra candidates are erased, the three cells often turn into a Naked Triple. The two-digit version is the <a href="../hidden-pairs/">Hidden Pair</a>, and the clean-up often creates a <a href="../hidden-singles/">Hidden Single</a>, as it does in this example. If one digit of the group is confined to a single cell, that is simply a Hidden Single.</p>
+    </div>
+
+    <div class="guide-section">
+      <h2>Practice routine</h2>
+      <p>On a puzzle where you are stuck, pick one row or box with few empty cells. For each missing digit write the cells that can take it. Mark every digit that has two or three possible cells, then check whether three of those lists use the same three cells. Do one unit carefully before moving to the next; skimming the whole grid misses most triples.</p>
+    </div>
+
+    <div class="practice-cta">
+      <h3>Ready to Spot Hidden Triples?</h3>
+      <p>Try counting homes for each digit on today's free daily puzzle:</p>
+      <a class="cta-btn" href="../../play/">Play Today's Daily Warmup ➔</a>
+      <p class="guide-store">Prefer the app? Ninely's Smart Hints explain each move the same way. <a href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=guide&amp;utm_campaign=ninely-guide">Get Ninely on Google Play</a></p>
+    </div>
+  </article>
+
+</div>
+
+<footer>
+  <a href="../">Strategy Hub</a> · <a href="../naked-triples/">Naked Triples Guide</a> · <a href="../../play/">Play Daily</a> · <a href="../../">Ninely Home</a>
+</footer>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var currentStep = 2;
+  var target = document.getElementById('target-cell');
+  var prevBtn = document.getElementById('prev-step');
+  var nextBtn = document.getElementById('next-step');
+  var stepText = document.getElementById('step-text');
+
+  if (!prevBtn || !nextBtn || !target) return;
+
+  var steps = [
+    {
+      num: 1,
+      text: "Step 1 of 3: Digits 2, 4 and 5 appear in Row 5 only in R5C4, R5C7 and R5C9",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num">2</span><span class="cand-num"></span><span class="cand-num">4</span><span class="cand-num">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num">8</span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    },
+    {
+      num: 2,
+      text: "Step 2 of 3: Those three cells must hold 2, 4 and 5, so every other candidate is removed from them, here the 8 in R5C9",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num elim">8</span><span class="cand-num"></span></div>',
+      cls: "danger"
+    },
+    {
+      num: 3,
+      text: "Step 3 of 3: With 8 gone from the triple's cells, R5C6 is the only cell in Row 5 that can hold an 8",
+      html: '<div class="candidates-grid"><span class="cand-num"></span><span class="cand-num keep">2</span><span class="cand-num"></span><span class="cand-num keep">4</span><span class="cand-num keep">5</span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span><span class="cand-num"></span></div>',
+      cls: "highlight"
+    }
+  ];
+
+  function update() {
+    var s = steps[currentStep - 1];
+    stepText.textContent = s.text;
+    target.innerHTML = s.html;
+    target.className = "diagram-cell " + s.cls;
+    prevBtn.disabled = (currentStep === 1);
+    nextBtn.disabled = (currentStep === steps.length);
+  }
+
+  // Initialize stepper state for Step 2
+  stepText.textContent = steps[1].text;
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+
+  prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) { currentStep--; update(); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < steps.length) { currentStep++; update(); }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft' && currentStep > 1) { currentStep--; update(); }
+    else if (e.key === 'ArrowRight' && currentStep < steps.length) { currentStep++; update(); }
+  });
+})();
+</script>
+<script src="/assets/count.js" defer></script>
+<script src="/assets/ads.js" defer></script>
+</body>
+</html>

@@ -2,7 +2,8 @@
  * (see tools/test_ads_isolation.py). Never include this file on /mila/, privacy, support, 404,
  * game or hub pages.
  *
- * OFF by default: ADS_ENABLED is false, so this file does nothing and no request leaves the page.
+ * ON since 2026-11-22: consent message published in AdSense Privacy & messaging; units guide-intro and guide-end.
+ * Set ADS_ENABLED to false to switch every ad and the consent loader off at once.
  *
  * To turn ads on (a separate, reviewed change, after AdSense approval):
  *  1. In AdSense, create the consent message under Privacy & messaging for aviisrgames.com
@@ -13,9 +14,9 @@
  */
 (function () {
   'use strict';
-  var ADS_ENABLED = false;
+  var ADS_ENABLED = true;
   var CLIENT = 'ca-pub-2451365263828795';
-  var SLOTS = { intro: '', end: '' }; // AdSense display unit ids; an empty id means no unit
+  var SLOTS = { intro: '7834835868', end: '3475507198' }; // AdSense display units guide-intro and guide-end
   if (!ADS_ENABLED) { return; }
 
   // Respect Global Privacy Control: no ad code at all for visitors who send it.

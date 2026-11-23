@@ -1,6 +1,7 @@
 @AGENTS.md
 
 > **Canonical Brand Notice (2026-11-23):** **`RayVane`** is the official consumer name for `one-spark` (formerly `Beamwise` / `One Spark`). Keep `/beamwise/privacy.html` live as a compatibility URL until store consoles are updated to `/rayvane/`.
+> **Canonical Brand Notice (2026-11-23):** **`PageTease`** is the canonical consumer brand for `AVIISR Romance` (replacing retired `AMORUSH`, owner decision `2026-11-23`).
 
 Project context: @.agent/context.md
 Current handoff & audit checklist: @.agent/HANDOFF.md

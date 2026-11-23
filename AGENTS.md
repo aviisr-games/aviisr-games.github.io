@@ -7,6 +7,7 @@
 - **Git Commit Identity:** Repo-local `user.name = aviisr-games`, `user.email = aviisr@aviisrgames.com`.
 - **Studio name style (owner decision 2026-11-12):** always lower case, `aviisr games`, in page copy, titles, metadata and structured data. Never a capital A. The logo is the wordmark with the two coloured letters i (see `assets/logo/README.md`). The Google Play developer name and URLs are unchanged.
 - **Canonical Brand — `RayVane` (owner decision 2026-11-23):** **`RayVane`** is the official consumer brand for the `one-spark` light-beam puzzle game (formerly `Beamwise` / internal codename `One Spark`; `Beamwise` was retired due to trademark/title collision with LIVE US Reg. `4,694,291` and Northwise Games' `Beamwise`). Use **`RayVane`** in all new user-facing copy, titles, and metadata. **URL Compatibility Rule:** Keep `/beamwise/privacy.html` and `/beamwise/` live and working (titled `RayVane (formerly Beamwise)`) until App Store Connect, Google Play Console, and app binaries (`com.aviisrgames.beamwise`) are migrated to `/rayvane/` and `/rayvane/privacy.html`.
+- **Canonical Brand — `PageTease` (owner decision 2026-11-23):** **`PageTease`** is the canonical consumer brand for `AVIISR Romance` (replacing retired `AMORUSH`, owner decision `2026-11-23`).
 - **COPPA & Privacy Safety:** Never place third-party ads or analytics trackers on `/mila/` or privacy pages.
 
 <!-- aviisr-agent-workflow:v1 -->

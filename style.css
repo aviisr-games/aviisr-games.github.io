@@ -196,3 +196,13 @@ main, footer, nav.lang { overflow-wrap: anywhere; }
 @media (min-width: 700px) { .screens img { width: 190px; } }
 .benefits { margin: 0 0 18px; padding-inline-start: 1.2em; line-height: 1.55; }
 .benefits li { margin: 4px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .game-card:hover { transform: none; }
+}

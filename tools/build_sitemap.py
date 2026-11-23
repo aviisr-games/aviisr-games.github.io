@@ -23,7 +23,7 @@ ALLOWLIST = [
     ('Morning Paper Route: Bike Game', ['paper-route', 'morning-route']),
     ('מילה · Mila', ['mila']),
 ]
-STUDIO_PAGES = ['index.html', 'about/index.html', 'support/index.html', 'privacy/index.html']
+STUDIO_PAGES = ['index.html', 'about/index.html', 'support/index.html', 'privacy/index.html', 'terms/index.html', 'accessibility/index.html']
 # Apps with a privacy page but not yet on the homepage (unreleased): allowed, not listed as cards.
 UNRELEASED_DIRS = ['beamwise']
 ALLOWED_PREFIXES = [d for _, dirs in ALLOWLIST for d in dirs] + UNRELEASED_DIRS

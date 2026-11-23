@@ -24,14 +24,19 @@
     p, li { color: #374151; }
     a { color: #2563eb; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    footer { margin-top: 2.5em; font-size: 0.9em; color: #777; border-top: 1px solid #e5e5e5; padding-top: 1em; }
+    :focus-visible { outline: 3px solid #1e3a5f; outline-offset: 3px; border-radius: 3px; }
+    .skip-link { position: absolute; inset-inline-start: 8px; top: -64px; z-index: 100; padding: 8px 14px; border-radius: 6px; background: #1e3a5f; color: #faf8f5; font-weight: 700; text-decoration: none; }
+    .skip-link:focus { top: 8px; }
+    footer { margin-top: 2.5em; font-size: 0.9em; color: #595959; border-top: 1px solid #e5e5e5; padding-top: 1em; }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
   <nav class="lang"><a href="../">Morning Paper Route</a> <a href="../../">All Games</a></nav>
   <h1 data-i18n="navPrivacy">Privacy Policy: Morning Paper Route</h1>
-  <p><strong>Last updated:</strong> November 18, 2026</p>
-  <p>This Privacy Policy explains how "Morning Paper Route" (the "Game"), developed and published by Aviisr ("we", "us", or "our"), handles your information. Morning Paper Route has no user accounts, no sign-in requirements, no chat functionality, and operates without custom remote game servers.</p>
+  <p><strong>Last updated:</strong> November 23, 2026</p>
+  <p>This Privacy Policy explains how "Morning Paper Route" (the "Game"), developed and published by aviisr games (Avi Israeli Rozin, Israel; "we", "us", or "our"), handles your information. Morning Paper Route has no user accounts, no sign-in requirements, no chat functionality, and operates without custom remote game servers.</p>
 
   <h2>1. Information Stored Locally on Your Device</h2>
   <p>The Game stores only gameplay progress and local preferences directly on your device storage (such as in local JSON save files or player preferences). This data is never sent to our own servers:</p>
@@ -113,8 +118,8 @@
   <h2>5. Children and Age Rating</h2>
   <p>Morning Paper Route is a general-audience mobile arcade game made for teens and adults. The Game is not directed to children under 13 years of age, and we do not knowingly collect personal data from children under 13. If you believe that an ad provider has collected data from a child under 13, please contact us immediately and we will coordinate deletion with the provider.</p>
 
-  <h2>6. Your Privacy Rights (GDPR, UK GDPR, CCPA / CPRA)</h2>
-  <p>Depending on your jurisdiction, you may have legal rights to access, delete, or limit the processing and sharing of your personal data for targeted advertising. Because we do not operate user accounts or retain user data on remote servers, you can exercise these rights directly by:</p>
+  <h2>6. Your Privacy Rights (GDPR, UK GDPR, CCPA / CPRA, Israeli Privacy Protection Law)</h2>
+  <p>Depending on your jurisdiction, you may have legal rights to access, inspect, correct, delete, or limit the processing and sharing of your personal data for targeted advertising. Because we do not operate user accounts or retain user data on remote servers, you can exercise these rights directly by:</p>
   <ul>
     <li>Adjusting your privacy, ad consent, and "Share gameplay statistics" choices inside the in-game Settings menu;</li>
     <li>Resetting or deleting your Advertising ID via your device settings (Android: Settings &gt; Google &gt; Ads; iOS: Settings &gt; Privacy &amp; Security &gt; Tracking);</li>
@@ -122,6 +127,15 @@
     <li>Contacting us at the email address below for any privacy inquiries.</li>
   </ul>
   <p>For step-by-step deletion instructions, see <a href="#delete-your-data">Delete Your Data</a> below.</p>
+
+  <h3>Israeli Privacy Protection Law (Amendment 13)</h3>
+  <p>In accordance with Israel's Protection of Privacy Law, 5741-1981 (as amended by Amendment 13, effective August 14, 2025):</p>
+  <ul>
+    <li><strong>Controller &amp; contact:</strong> aviisr games (Avi Israeli Rozin, Israel), <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>.</li>
+    <li><strong>Voluntary provision &amp; consequences:</strong> You are not legally required to provide personal data. Core offline gameplay continues even if you decline personalized ads, turn off gameplay statistics, and stay signed out of leaderboards; optional features such as personalized advertising, Game Center / Google Play Games leaderboards, or feedback replies require the relevant data described above.</li>
+    <li><strong>Third-party recipients &amp; cross-border transfers:</strong> Advertising mediation and ad networks (Google AdMob, Unity Ads, Meta Audience Network, Liftoff, InMobi, Chartboost, and legacy LevelPlay networks), Unity Gaming Services (Remote Config and optional Analytics), Apple Game Center / Google Play Games, and Google (Forms/Gmail for voluntary feedback) may process data on servers outside Israel, including in the United States and the European Union.</li>
+    <li><strong>Statutory rights:</strong> Under Section 13 (right to inspect personal data) and Section 14 (right to request correction or deletion of personal data) of the Protection of Privacy Law, you may contact <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a> at any time.</li>
+  </ul>
 
   <h2 id="delete-your-data">Delete Your Data</h2>
   <p>To delete your data from Morning Paper Route, use whichever of these applies to you:</p>
@@ -139,11 +153,12 @@
 
   <h2>8. Contact Us</h2>
   <p>If you have any questions or feedback regarding this Privacy Policy, please contact us at:</p>
-  <p><strong>Email:</strong> <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+  <p><strong>Controller:</strong> aviisr games (Avi Israeli Rozin, Israel)<br><strong>Email:</strong> <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
 
   <footer>
     <p>&copy; 2026 aviisr games. All rights reserved. | <a href="../">Back to Morning Paper Route</a></p>
   </footer>
+  </main>
   <script src="../../assets/i18n.js"></script>
   <script>
     AviisrI18n.init({

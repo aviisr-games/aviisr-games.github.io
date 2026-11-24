@@ -20,8 +20,9 @@
   .badge-pill { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 12px; font-size: 0.9rem; }
   .date-pill { display: inline-block; background: rgba(242, 201, 76, 0.15); color: var(--gold); border: 1px solid rgba(242, 201, 76, 0.3); padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; }
   .sudoku-board { display: grid; grid-template-columns: repeat(9, 1fr); gap: 1px; background: #334155; border: 3px solid #0f172a; border-radius: 8px; margin: 16px auto; max-width: 360px; aspect-ratio: 1; padding: 2px; direction: ltr; }
-  .sudoku-cell { background: #1e293b; color: #f8fafc; font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.1s; }
+  .sudoku-cell { background: #1e293b; color: #f8fafc; font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.1s; position: relative; }
   .sudoku-cell:hover { background: #334155; }
+  .sudoku-cell:focus-visible { outline: 3px solid #facc15; outline-offset: -3px; z-index: 2; }
   .sudoku-cell.selected { background: #0284c7; color: #fff; }
   .sudoku-cell.fixed { background: #0f172a; color: #94a3b8; cursor: default; }
   .sudoku-cell.hinted { background: #f59e0b; color: #000; font-weight: 800; }
@@ -63,7 +64,8 @@
 
   <div class="card" style="padding: 16px;">
     <div style="font-weight: bold; color: var(--gold); margin-bottom: 8px;">⏱️ <span id="game-timer">00:00</span></div>
-    <div id="board" class="sudoku-board"></div>
+    <div id="board" class="sudoku-board" role="grid" aria-label="Sudoku board"></div>
+    <div id="board-status" class="sr-only" aria-live="polite"></div>
     
     <div class="numpad">
       <button type="button" class="num-btn" data-val="1">1</button>
@@ -75,7 +77,7 @@
       <button type="button" class="num-btn" data-val="7">7</button>
       <button type="button" class="num-btn" data-val="8">8</button>
       <button type="button" class="num-btn" data-val="9">9</button>
-      <button type="button" class="num-btn" data-val="0" title="Erase" data-i18n="erase">⌫</button>
+      <button type="button" class="num-btn" data-val="0" title="Erase" aria-label="Erase" data-i18n="erase">⌫</button>
     </div>
 
     <div>
@@ -153,12 +155,6 @@
     }
   };
 
-  AviisrI18n.init({
-    supported: ['en', 'he', 'ar'],
-    translations: translations,
-    defaultLang: 'en'
-  });
-
   // Evergreen practice fallback puzzle (strictly 1 unique solution, exported from Ninely.SudokuEngine commit 4fa5c68)
   var fallbackPackEntry = {
     id: "practice-fallback",
@@ -186,12 +182,81 @@
   var puzzleGivens = [];
   var currentBoard = [];
   var selectedCell = -1;
+  var activeCell = 0;
   var boardEl = document.getElementById('board');
+  var boardStatusEl = document.getElementById('board-status');
   var dateLabel = document.getElementById('date-label');
   var cells = [];
   var secondsElapsed = 0;
   var timerInterval = null;
   var gameWon = false;
+
+  var CELL_I18N = {
+    en: { board: 'Sudoku board', row: 'Row', col: 'Column', empty: 'empty', given: 'given', hint: 'hint', conflict: 'conflict', erase: 'Erase' },
+    he: { board: 'לוח סודוקו', row: 'שורה', col: 'עמודה', empty: 'ריק', given: 'קבוע', hint: 'רמז', conflict: 'התנגשות', erase: 'מחק' },
+    ar: { board: 'لوح سودوكو', row: 'الصف', col: 'العمود', empty: 'فارغ', given: 'ثابت', hint: 'تلميح', conflict: 'تعارض', erase: 'مسح' }
+  };
+
+  function cellLabel(idx) {
+    var lang = getActiveLang();
+    var t = CELL_I18N[lang] || CELL_I18N.en;
+    var r = Math.floor(idx / 9) + 1;
+    var c = (idx % 9) + 1;
+    var val = currentBoard[idx] || 0;
+    var parts = [t.row + ' ' + r, t.col + ' ' + c, val ? String(val) : t.empty];
+    if (puzzleGivens[idx] !== 0) parts.push(t.given);
+    else if (cells[idx] && cells[idx].classList.contains('hinted')) parts.push(t.hint);
+    if (cells[idx] && cells[idx].classList.contains('conflict')) parts.push(t.conflict);
+    return parts.join(', ');
+  }
+
+  function updateCellA11y(idx) {
+    if (!cells[idx]) return;
+    cells[idx].setAttribute('aria-label', cellLabel(idx));
+    cells[idx].setAttribute('aria-selected', idx === selectedCell ? 'true' : 'false');
+    cells[idx].setAttribute('aria-readonly', puzzleGivens[idx] !== 0 ? 'true' : 'false');
+    cells[idx].setAttribute('tabindex', idx === activeCell ? '0' : '-1');
+  }
+
+  function refreshBoardA11y() {
+    var lang = getActiveLang();
+    var t = CELL_I18N[lang] || CELL_I18N.en;
+    if (boardEl) boardEl.setAttribute('aria-label', t.board);
+    var eraseBtn = document.querySelector('.num-btn[data-val="0"]');
+    if (eraseBtn) eraseBtn.setAttribute('aria-label', t.erase);
+    for (var i = 0; i < cells.length; i++) updateCellA11y(i);
+  }
+
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar'],
+    translations: translations,
+    defaultLang: 'en',
+    onLanguageChange: function () {
+      refreshBoardA11y();
+    }
+  });
+
+  function setActiveCell(idx, shouldFocus) {
+    if (idx < 0 || idx > 80 || !cells[idx]) return;
+    var prevActive = activeCell;
+    activeCell = idx;
+    if (prevActive >= 0 && prevActive < cells.length && cells[prevActive]) {
+      cells[prevActive].setAttribute('tabindex', '-1');
+    }
+    if (selectedCell !== -1 && cells[selectedCell]) {
+      cells[selectedCell].classList.remove('selected');
+      cells[selectedCell].setAttribute('aria-selected', 'false');
+    }
+    if (puzzleGivens[idx] === 0) {
+      selectedCell = idx;
+      cells[idx].classList.add('selected');
+      cells[idx].setAttribute('aria-selected', 'true');
+    } else {
+      selectedCell = -1;
+    }
+    cells[idx].setAttribute('tabindex', '0');
+    if (shouldFocus) cells[idx].focus();
+  }
 
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
@@ -236,6 +301,7 @@
   function setupBoard(entry, isDaily) {
     activePuzzle = entry;
     gameWon = false;
+    selectedCell = -1;
     puzzleGivens = [];
     currentBoard = [];
     var pStr = entry.puzzle;
@@ -264,32 +330,43 @@
   }
 
   function renderBoard() {
+    var hadFocus = boardEl && boardEl.contains(document.activeElement);
     boardEl.replaceChildren();
     cells = [];
+    if (activeCell < 0 || activeCell > 80) activeCell = 0;
     for (var idx = 0; idx < 81; idx++) {
       var cell = document.createElement('div');
       cell.className = 'sudoku-cell';
+      cell.setAttribute('role', 'gridcell');
       if (puzzleGivens[idx] !== 0) {
         cell.classList.add('fixed');
         cell.textContent = String(puzzleGivens[idx]);
       } else if (currentBoard[idx] !== 0) {
         cell.textContent = String(currentBoard[idx]);
       }
+      if (idx === selectedCell && puzzleGivens[idx] === 0) {
+        cell.classList.add('selected');
+      }
       cell.setAttribute('data-idx', idx);
       cell.addEventListener('click', onCellClick);
+      cell.addEventListener('focus', onCellFocus);
       boardEl.appendChild(cell);
       cells.push(cell);
     }
+    refreshBoardA11y();
+    if (hadFocus && cells[activeCell]) {
+      cells[activeCell].focus();
+    }
+  }
+
+  function onCellFocus() {
+    var idx = parseInt(this.getAttribute('data-idx'), 10);
+    setActiveCell(idx, false);
   }
 
   function onCellClick() {
     var idx = parseInt(this.getAttribute('data-idx'), 10);
-    if (puzzleGivens[idx] !== 0) return;
-    if (selectedCell !== -1 && cells[selectedCell]) {
-      cells[selectedCell].classList.remove('selected');
-    }
-    selectedCell = idx;
-    this.classList.add('selected');
+    setActiveCell(idx, true);
   }
 
   function clearHighlights() {
@@ -331,6 +408,7 @@
         cells[idx].classList.add('conflict');
       }
     }
+    for (var j = 0; j < 81; j++) updateCellA11y(j);
   }
 
   function handleNumInput(val) {
@@ -341,6 +419,9 @@
     cells[selectedCell].classList.remove('hinted');
     clearHighlights();
     updateConflicts();
+    if (boardStatusEl && cells[selectedCell]) {
+      boardStatusEl.textContent = cellLabel(selectedCell);
+    }
     checkWin();
   }
 
@@ -537,7 +618,41 @@
     });
   });
 
+  boardEl.addEventListener('keydown', function (e) {
+    var cell = e.target && e.target.closest ? e.target.closest('.sudoku-cell') : null;
+    if (!cell) return;
+    var idx = parseInt(cell.getAttribute('data-idx'), 10);
+    var r = Math.floor(idx / 9), c = idx % 9;
+    var next = -1;
+    if (e.key === 'ArrowRight') next = c < 8 ? idx + 1 : idx;
+    else if (e.key === 'ArrowLeft') next = c > 0 ? idx - 1 : idx;
+    else if (e.key === 'ArrowDown') next = r < 8 ? idx + 9 : idx;
+    else if (e.key === 'ArrowUp') next = r > 0 ? idx - 9 : idx;
+    else if (e.key === 'Home') next = e.ctrlKey ? 0 : r * 9;
+    else if (e.key === 'End') next = e.ctrlKey ? 80 : r * 9 + 8;
+
+    if (next !== -1) {
+      e.preventDefault();
+      setActiveCell(next, true);
+      return;
+    }
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setActiveCell(idx, false);
+      return;
+    }
+    if (e.key >= '1' && e.key <= '9') {
+      e.preventDefault();
+      handleNumInput(parseInt(e.key, 10));
+    } else if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') {
+      e.preventDefault();
+      handleNumInput(0);
+    }
+  });
+
   window.addEventListener('keydown', function (e) {
+    if (boardEl && boardEl.contains(e.target)) return;
+    if (e.target && /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
     if (e.key >= '1' && e.key <= '9') {
       handleNumInput(parseInt(e.key, 10));
     } else if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') {

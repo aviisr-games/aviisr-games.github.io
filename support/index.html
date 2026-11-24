@@ -6,37 +6,106 @@
 <title>Support · aviisr games</title>
 <meta name="description" content="Help for aviisr games apps: Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
 <link rel="canonical" href="https://aviisrgames.com/support/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
 </head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<main id="main">
-<nav class="lang"><a href="../">All Games</a> · <a href="../privacy/">Privacy</a></nav>
-
-<h1>Support</h1>
-<p class="sub">Help for each of our apps, or write to the studio directly.</p>
-
-<div class="card">
-<h2 style="margin-top:0">Pick your app</h2>
-<ul>
-<li><a href="../ninely/">Ninely: Sudoku &amp; Logic Puzzle</a></li>
-<li><a href="../middle-east-2030/support/">Middle East 2030: Politics Sim</a></li>
-<li><a href="../paper-route/">Morning Paper Route: Bike Game</a></li>
-<li><a href="../baylight/">Baylight: Truck Sort Puzzle</a></li>
-<li><a href="../mila/support/" lang="he" dir="rtl">מילה · Mila (תמיכה בעברית)</a></li>
-</ul>
+<body class="edition page-studio">
+<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="../" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="../" data-i18n="w_games">Games</a><a href="../ninely/strategy/" data-i18n="w_guides">Guides</a><a href="../notes/" data-i18n="w_notes">Notes</a><a href="../about/" data-i18n="w_about">About</a><a href="../support/" data-i18n="navSupport">Support</a></nav>
+  <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
 </div>
+</header>
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 data-i18n="h1" style="font-size:clamp(2rem,4.5vw,3.1rem)">Support</h1>
+  <p class="lead" data-i18n="sub" style="margin-bottom:24px">Help for each of our apps, or write to the studio directly.</p>
 
-<div class="card">
-<h2 style="margin-top:0">Write to us</h2>
-<p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
-<p>Tell us the app, your device model, the operating system version and what happened. We reply by email.</p>
-<p>Purchases are made through Google Play or the App Store. To get a purchase back after reinstalling, use <b>Restore purchases</b> in the app's settings.</p>
-</div>
-<footer>© aviisr games · <a href="../">All Games</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></footer>
+  <section class="card">
+    <h2 data-i18n="pickH">Pick your app</h2>
+    <ul>
+      <li><a href="../ninely/">Ninely: Sudoku &amp; Logic Puzzle</a></li>
+      <li><a href="../middle-east-2030/support/">Middle East 2030: Politics Sim</a></li>
+      <li><a href="../paper-route/">Morning Paper Route: Bike Game</a></li>
+      <li><a href="../baylight/">Baylight: Truck Sort Puzzle</a></li>
+      <li><a href="../mila/support/" lang="he" dir="rtl">מילה · Mila (תמיכה בעברית)</a></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="writeH">Write to us</h2>
+    <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+    <p data-i18n="write1">Tell us the app, your device model, the operating system version and what happened. We reply by email.</p>
+    <p data-i18n="write2">Purchases are made through Google Play or the App Store. To restore an eligible purchase after reinstalling or switching devices, use Restore purchases inside the app Settings screen.</p>
+  </section>
 </main>
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="../" data-i18n="w_games">Games</a> · <a href="../about/" data-i18n="w_about">About</a> · <a href="../notes/" data-i18n="w_notes">Notes</a> · <a href="../support/" data-i18n="navSupport">Support</a> · <a href="../privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></div>
+  </div>
+</footer>
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar'],
+    defaultLang: 'en',
+    translations: {
+    "en": {
+        "w_skip": "Skip to content",
+        "w_games": "Games",
+        "w_guides": "Guides",
+        "w_notes": "Notes",
+        "w_about": "About",
+        "navSupport": "Support",
+        "navPrivacy": "Privacy Policy",
+        "w_lang": "Language",
+        "h1": "Support",
+        "sub": "Help for each of our apps, or write to the studio directly.",
+        "pickH": "Pick your app",
+        "writeH": "Write to us",
+        "write1": "Tell us the app, your device model, the operating system version and what happened. We reply by email.",
+        "write2": "Purchases are made through Google Play or the App Store. To restore an eligible purchase after reinstalling or switching devices, use Restore purchases inside the app Settings screen."
+    },
+    "he": {
+        "w_skip": "דלגו לתוכן",
+        "w_games": "משחקים",
+        "w_guides": "מדריכים",
+        "w_notes": "רשימות",
+        "w_about": "אודות",
+        "navSupport": "תמיכה",
+        "navPrivacy": "מדיניות פרטיות",
+        "w_lang": "שפה",
+        "h1": "תמיכה ועזרה",
+        "sub": "בחרו את המשחק או האפליקציה לקבלת עזרה, או כתבו לנו ישירות.",
+        "pickH": "בחרו אפליקציה",
+        "writeH": "כתבו לנו",
+        "write1": "ציינו את שם האפליקציה, דגם המכשיר, גרסת מערכת ההפעלה ומה קרה. אנו עונים בדוא״ל.",
+        "write2": "רכישות מתבצעות דרך Google Play או App Store. לשחזור רכישה אחרי התקנה מחדש או החלפת מכשיר, השתמשו באפשרות שחזור רכישות (Restore purchases) במסך ההגדרות באפליקציה."
+    },
+    "ar": {
+        "w_skip": "تخطَّ إلى المحتوى",
+        "w_games": "الألعاب",
+        "w_guides": "الأدلة",
+        "w_notes": "الملاحظات",
+        "w_about": "عن الاستوديو",
+        "navSupport": "الدعم",
+        "navPrivacy": "سياسة الخصوصية",
+        "w_lang": "اللغة",
+        "h1": "الدعم",
+        "sub": "المساعدة لكل تطبيق أو تواصل معنا مباشرة.",
+        "pickH": "اختر التطبيق",
+        "writeH": "راسلنا",
+        "write1": "اذكر اسم التطبيق وطراز الجهاز وإصدار النظام وما حدث وسنرد عبر البريد الإلكتروني.",
+        "write2": "تتم المشتريات عبر Google Play أو App Store. لاستعادة المشتريات بعد إعادة التثبيت، استخدم خيار استعادة المشتريات في إعدادات التطبيق."
+    }
+}
+  });
+</script>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>

@@ -1750,6 +1750,340 @@ def render_me2030_he(reg):
 '''
 
 
+def studio_header_and_footer(has_lang=False):
+    lang_nav = '<div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>' if has_lang else ''
+    header = f'''<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="../" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="../" data-i18n="w_games">Games</a><a href="../ninely/strategy/" data-i18n="w_guides">Guides</a><a href="../notes/" data-i18n="w_notes">Notes</a><a href="../about/" data-i18n="w_about">About</a><a href="../support/" data-i18n="navSupport">Support</a></nav>
+  {lang_nav}
+</div>
+</header>'''
+    footer = '''<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="../" data-i18n="w_games">Games</a> · <a href="../about/" data-i18n="w_about">About</a> · <a href="../notes/" data-i18n="w_notes">Notes</a> · <a href="../support/" data-i18n="navSupport">Support</a> · <a href="../privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></div>
+  </div>
+</footer>'''
+    return header, footer
+
+
+def render_about(reg):
+    header, footer = studio_header_and_footer(has_lang=True)
+    translations = {
+        'en': {
+            'w_skip': 'Skip to content', 'w_games': 'Games', 'w_guides': 'Guides', 'w_notes': 'Notes',
+            'w_about': 'About', 'navSupport': 'Support', 'navPrivacy': 'Privacy Policy', 'w_lang': 'Language',
+            'h1': 'About aviisr games',
+            'sub': 'An independent studio making small mobile games, and writing about how they work.',
+            'whoH': 'Who we are',
+            'who1': 'aviisr games is a one-person studio run by Avi Israeli. We publish all five titles on Google Play (IL, US), with Baylight (IL, US) and Mila (on the App Store in Israel) also available on the App Store: Ninely (a sudoku game that explains every move), Middle East 2030 (a political strategy simulation set in an invented 2030), Baylight (a one-thumb truck-sorting puzzle), Morning Paper Route (a bike arcade game) and Mila (an English-learning app for children in Hebrew-speaking families).',
+            'who2': 'The games are small on purpose. Each one tries to do one thing well, to start fast and to respect the player\'s time and privacy. This website follows the same rule: static pages, no accounts, no sign-up forms, and an aggregate visit counter that excludes children\'s and policy pages.',
+            'whatH': 'What you will find here',
+            'what1': 'Game pages: each public title has its own hub with verified store links, real screenshots and, where available, a browser version you can try without installing anything.',
+            'what2': 'Sudoku guides: twelve step-by-step guides to human-logic solving techniques, from naked singles to Swordfish and Y-Wing, with solver-checked example boards.',
+            'what3': 'Strategy guide: a companion dossier for Middle East 2030 covering the eight playable capitals, monthly choices and briefing outcomes.',
+            'what4': 'Devlog notes: short notes on how we generate puzzles, verify browser solvers and design game rules.',
+            'what5': 'Printable worksheets: free Hebrew and English flashcards and practice sheets for Mila learners, with matched answer keys.',
+            'adsH': 'Advertising and privacy',
+            'adsP': 'Our mobile games on Google Play (and Baylight on the App Store) are free and may show ads or offer optional purchases, as described in each game\'s privacy policy; Mila is available on Google Play and the App Store in Israel with no ads and a one-time unlock. On this website, only the 12 Sudoku strategy guide pages and the Middle East 2030 strategy guide load advertising via Google AdSense (when permitted by consent and Global Privacy Control). Game hubs, browser playables, notes, About, support pages, privacy pages and every Mila page are ad-free.',
+            'contactH': 'Contact',
+            'contactP': 'Questions, bug reports, corrections to a guide, or business enquiries are all welcome. Tell us the page or app, your device and what happened. We reply by email.',
+        },
+        'he': {
+            'w_skip': 'דלגו לתוכן', 'w_games': 'משחקים', 'w_guides': 'מדריכים', 'w_notes': 'רשימות',
+            'w_about': 'אודות', 'navSupport': 'תמיכה', 'navPrivacy': 'מדיניות פרטיות', 'w_lang': 'שפה',
+            'h1': 'אודות aviisr games',
+            'sub': 'סטודיו עצמאי שיוצר משחקי מובייל קטנים וכותב בשקיפות על אופן הפיתוח שלהם.',
+            'whoH': 'מי אנחנו',
+            'who1': 'aviisr games הוא סטודיו עצמאי של אבי ישראלי. חמשת הכותרים הפומביים שלנו זמינים ב-Google Play (ישראל וארה״ב), כאשר Baylight (ישראל וארה״ב) ומילה (ב-App Store בישראל) זמינות גם ב-App Store: Ninely (סודוקו שמסביר כל צעד), Middle East 2030 (סימולציית אסטרטגיה בדיונית), Baylight (פאזל מיון משלוחים), Morning Paper Route (ארקייד אופניים) ומילה (לימוד אנגלית לילדים דוברי עברית).',
+            'who2': 'המשחקים קצרים וממוקדים בכוונה. גם האתר בנוי באותה גישה: דפים סטטיים, בלי חשבונות משתמש, בלי טפסי הרשמה ועם מונה כללי שמחריג לחלוטין דפי ילדים, תמיכה ופרטיות.',
+            'whatH': 'מה תמצאו באתר',
+            'what1': 'דפי משחקים: דף ייעודי לכל כותר עם קישורי חנויות מאומתים, צילומי מסך אמיתיים וגרסאות דפדפן להתנסות מיידית.',
+            'what2': 'מדריכי סודוקו: תריסר מדריכים לשיטות פתרון מבוססות היגיון, עם לוחות דוגמה שנבדקו בתוכנה לפתרון יחיד.',
+            'what3': 'מדריך אסטרטגיה: מדריך נלווה ל-Middle East 2030 הכולל את שמונה הבירות ו-8 תוצאות התדריך.',
+            'what4': 'רשימות פיתוח (Notes): הסברים טכניים על מחולל הסודוקו היומי, בודק הפתרונות של Baylight ותכנון המשחקים.',
+            'what5': 'דפי עבודה להדפסה: כרטיסיות ודפי תרגול בעברית ובאנגלית לתלמידי מילה, עם מפתחות תשובות תואמים.',
+            'adsH': 'פרסום ופרטיות',
+            'adsP': 'המשחקים החינמיים בחנויות עשויים להציג פרסומות או הצעות רכישה כמפורט במדיניות הפרטיות של כל משחק; מילה זמינה ב-Google Play וב-App Store בישראל ללא פרסומות ובמודל רכישה חד-פעמית. באתר עצמו, פרסומות Google AdSense נטענות אך ורק ב-12 מדריכי הסודוקו ובמדריך האסטרטגיה של Middle East 2030 (בכפוף להסכמה ול-Global Privacy Control). דפי הבית, המשחקים, התמיכה, הפרטיות, אודות וכל דפי מילה נקיים מפרסומות.',
+            'contactH': 'יצירת קשר',
+            'contactP': 'שאלות, דיווחים על תקלות, הערות למדריכים או פניות עסקיות יתקבלו בברכה. ציינו את האפליקציה או העמוד ואת דגם המכשיר ונחזור אליכם בדוא״ל.',
+        },
+        'ar': {
+            'w_skip': 'تخطَّ إلى المحتوى', 'w_games': 'الألعاب', 'w_guides': 'الأدلة', 'w_notes': 'الملاحظات',
+            'w_about': 'عن الاستوديو', 'navSupport': 'الدعم', 'navPrivacy': 'سياسة الخصوصية', 'w_lang': 'اللغة',
+            'h1': 'عن aviisr games',
+            'sub': 'استوديو مستقل يصنع ألعاب هاتف صغيرة ويشرح آلية عملها بوضوح.',
+            'whoH': 'من نحن',
+            'who1': 'aviisr games استوديو مستقل يديره آفي إسرائيلي. تتوفر عناويننا الخمسة على Google Play، كما تتوفر Baylight (عالمياً وإسرائيل والولايات المتحدة) وميلا (في إسرائيل) على App Store أيضاً: Ninely وMiddle East 2030 وBaylight وMorning Paper Route وميلا.',
+            'who2': 'صُممت الألعاب لتكون خفيفة وسريعة وتحترم وقت اللاعب وخصوصيته. وهذا الموقع يتبع المبدأ نفسه: صفحات ثابتة بلا حسابات وبلا تتبع شخصي.',
+            'whatH': 'ماذا ستجد هنا',
+            'what1': 'صفحات الألعاب: صفحة لكل عنوان مع روابط متاجر موثقة ولقطات حقيقية وتجارب متصفح.',
+            'what2': 'أدلة السودوكو: 12 دليلاً لتقنيات الحل المنطقي بأمثلة متحقق منها برمجياً.',
+            'what3': 'دليل الاستراتيجية لـ Middle East 2030 وتفاصيل العواصم الثماني.',
+            'what4': 'ملاحظات التطوير حول توليد الألغاز وبرامج التحقق.',
+            'what5': 'أوراق عمل قابلة للطباعة لتطبيق ميلا مع مفاتيح الحل.',
+            'adsH': 'الإعلانات والخصوصية',
+            'adsP': 'على هذا الموقع، تظهر إعلانات Google AdSense فقط على صفحات أدلة السودوكو الـ12 ودليل Middle East 2030 (وفق إعدادات الخصوصية والموافقة). أما صفحات الألعاب والدعم والخصوصية وعن الاستوديو وجميع صفحات ميلا فهي خالية من الإعلانات تماماً.',
+            'contactH': 'التواصل',
+            'contactP': 'نرحب بأسئلتكم وتقارير الأخطاء واقتراحات التحسين عبر البريد الإلكتروني.',
+        },
+    }
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About aviisr games · Small mobile games, made with care</title>
+<meta name="description" content="Who makes aviisr games, verified store availability across Google Play and the App Store, and advertising and privacy practices.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/about/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+</head>
+<body class="edition page-studio">
+{header}
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 data-i18n="h1" style="font-size:clamp(2rem,4.5vw,3.1rem)">About aviisr games</h1>
+  <p class="lead" data-i18n="sub" style="margin-bottom:24px">An independent studio making small mobile games, and writing about how they work.</p>
+
+  <section class="card">
+    <h2 data-i18n="whoH">Who we are</h2>
+    <p data-i18n="who1">{esc(translations["en"]["who1"])}</p>
+    <p data-i18n="who2">{esc(translations["en"]["who2"])}</p>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="whatH">What you will find here</h2>
+    <ul>
+      <li data-i18n="what1">{esc(translations["en"]["what1"])}</li>
+      <li data-i18n="what2">{esc(translations["en"]["what2"])}</li>
+      <li data-i18n="what3">{esc(translations["en"]["what3"])}</li>
+      <li data-i18n="what4">{esc(translations["en"]["what4"])}</li>
+      <li data-i18n="what5">{esc(translations["en"]["what5"])}</li>
+    </ul>
+    <p style="margin-top:12px"><a href="../ninely/strategy/">Sudoku guides</a> · <a href="../middle-east-2030/guide/">Middle East 2030 guide</a> · <a href="../notes/">Studio notes</a></p>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="adsH">Advertising and privacy</h2>
+    <p data-i18n="adsP">{esc(translations["en"]["adsP"])}</p>
+    <p><a href="../privacy/" data-i18n="navPrivacy">Privacy Policy</a></p>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="contactH">Contact</h2>
+    <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+    <p data-i18n="contactP">{esc(translations["en"]["contactP"])}</p>
+    <p><a href="../support/" data-i18n="navSupport">Support</a></p>
+  </section>
+</main>
+{footer}
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({{
+    supported: ['en', 'he', 'ar'],
+    defaultLang: 'en',
+    translations: {json.dumps(translations, ensure_ascii=False, indent=4)}
+  }});
+</script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
+def render_support(reg):
+    header, footer = studio_header_and_footer(has_lang=True)
+    translations = {
+        'en': {
+            'w_skip': 'Skip to content', 'w_games': 'Games', 'w_guides': 'Guides', 'w_notes': 'Notes',
+            'w_about': 'About', 'navSupport': 'Support', 'navPrivacy': 'Privacy Policy', 'w_lang': 'Language',
+            'h1': 'Support',
+            'sub': 'Help for each of our apps, or write to the studio directly.',
+            'pickH': 'Pick your app',
+            'writeH': 'Write to us',
+            'write1': 'Tell us the app, your device model, the operating system version and what happened. We reply by email.',
+            'write2': 'Purchases are made through Google Play or the App Store. To restore an eligible purchase after reinstalling or switching devices, use Restore purchases inside the app Settings screen.',
+        },
+        'he': {
+            'w_skip': 'דלגו לתוכן', 'w_games': 'משחקים', 'w_guides': 'מדריכים', 'w_notes': 'רשימות',
+            'w_about': 'אודות', 'navSupport': 'תמיכה', 'navPrivacy': 'מדיניות פרטיות', 'w_lang': 'שפה',
+            'h1': 'תמיכה ועזרה',
+            'sub': 'בחרו את המשחק או האפליקציה לקבלת עזרה, או כתבו לנו ישירות.',
+            'pickH': 'בחרו אפליקציה',
+            'writeH': 'כתבו לנו',
+            'write1': 'ציינו את שם האפליקציה, דגם המכשיר, גרסת מערכת ההפעלה ומה קרה. אנו עונים בדוא״ל.',
+            'write2': 'רכישות מתבצעות דרך Google Play או App Store. לשחזור רכישה אחרי התקנה מחדש או החלפת מכשיר, השתמשו באפשרות שחזור רכישות (Restore purchases) במסך ההגדרות באפליקציה.',
+        },
+        'ar': {
+            'w_skip': 'تخطَّ إلى المحتوى', 'w_games': 'الألعاب', 'w_guides': 'الأدلة', 'w_notes': 'الملاحظات',
+            'w_about': 'عن الاستوديو', 'navSupport': 'الدعم', 'navPrivacy': 'سياسة الخصوصية', 'w_lang': 'اللغة',
+            'h1': 'الدعم',
+            'sub': 'المساعدة لكل تطبيق أو تواصل معنا مباشرة.',
+            'pickH': 'اختر التطبيق',
+            'writeH': 'راسلنا',
+            'write1': 'اذكر اسم التطبيق وطراز الجهاز وإصدار النظام وما حدث وسنرد عبر البريد الإلكتروني.',
+            'write2': 'تتم المشتريات عبر Google Play أو App Store. لاستعادة المشتريات بعد إعادة التثبيت، استخدم خيار استعادة المشتريات في إعدادات التطبيق.',
+        },
+    }
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · aviisr games</title>
+<meta name="description" content="Help for aviisr games apps: Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/support/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+</head>
+<body class="edition page-studio">
+{header}
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 data-i18n="h1" style="font-size:clamp(2rem,4.5vw,3.1rem)">Support</h1>
+  <p class="lead" data-i18n="sub" style="margin-bottom:24px">Help for each of our apps, or write to the studio directly.</p>
+
+  <section class="card">
+    <h2 data-i18n="pickH">Pick your app</h2>
+    <ul>
+      <li><a href="../ninely/">Ninely: Sudoku &amp; Logic Puzzle</a></li>
+      <li><a href="../middle-east-2030/support/">Middle East 2030: Politics Sim</a></li>
+      <li><a href="../paper-route/">Morning Paper Route: Bike Game</a></li>
+      <li><a href="../baylight/">Baylight: Truck Sort Puzzle</a></li>
+      <li><a href="../mila/support/" lang="he" dir="rtl">מילה · Mila (תמיכה בעברית)</a></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="writeH">Write to us</h2>
+    <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+    <p data-i18n="write1">{esc(translations["en"]["write1"])}</p>
+    <p data-i18n="write2">{esc(translations["en"]["write2"])}</p>
+  </section>
+</main>
+{footer}
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({{
+    supported: ['en', 'he', 'ar'],
+    defaultLang: 'en',
+    translations: {json.dumps(translations, ensure_ascii=False, indent=4)}
+  }});
+</script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
+def render_privacy(reg):
+    header, footer = studio_header_and_footer(has_lang=False)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · aviisr games</title>
+<meta name="description" content="Privacy policies for each aviisr games app, and for this website, which has no accounts and no forms, and loads ads only on the 13 reviewed guide pages.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/privacy/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+</head>
+<body class="edition page-studio">
+{header}
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 style="font-size:clamp(2rem,4.5vw,3.1rem)">Privacy</h1>
+  <p class="lead" style="margin-bottom:24px">Each app has its own privacy policy. This page also explains what this website collects.</p>
+
+  <section class="card">
+    <h2>App privacy policies</h2>
+    <ul>
+      <li><a href="../ninely/privacy.html">Ninely: Sudoku &amp; Logic Puzzle</a></li>
+      <li><a href="../middle-east-2030/privacy/">Middle East 2030: Politics Sim</a></li>
+      <li><a href="../paper-route/privacy/">Morning Paper Route: Bike Game</a></li>
+      <li><a href="../baylight/privacy.html">Baylight: Truck Sort Puzzle</a></li>
+      <li><a href="../beamwise/privacy.html">Beamwise: Light Puzzle</a></li>
+      <li><a href="../mila/privacy/" lang="he" dir="rtl">מילה · Mila (מדיניות פרטיות בעברית)</a></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>This website</h2>
+    <ul>
+      <li><b>No accounts, no forms.</b> The site loads no third-party fonts or cross-site trackers. Apart from the advertising described below, which runs only on 13 specific guide pages, the website sets no cookies.</li>
+      <li><b>Visit counting.</b> Selected studio, game and guide pages include an aggregate counter (GoatCounter) that adds up totals only. It records page paths, referring origin, browser/OS family (from headers without saving raw headers), Google Play outbound clicks, home game-card clicks, QR/YouTube entry tags, first browser move/hint/completion events, language switcher picks, and contact email clicks. Nothing links events together or identifies visitors. It never loads on any Mila page, support page or privacy page, ignores visitors with Do Not Track or Global Privacy Control, and excludes Mila links on shared pages.</li>
+      <li><b>Advertising on 13 reviewed guide pages.</b> Only the 12 Sudoku strategy guides (<code>/ninely/strategy/how-to-solve-sudoku/</code>, <code>glossary/</code>, and the 10 technique guides) and the Middle East 2030 strategy guide (<code>/middle-east-2030/guide/</code>) load Google AdSense and Google Funding Choices. Where loaded and permitted, Google and its partners may use cookies, beacons or IP addresses to serve and measure ads. See <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses partner-site data</a>, manage ad personalization at <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>, or opt out via <a href="https://www.aboutads.info" rel="noopener">aboutads.info</a>. Ads are never loaded on home, game hubs, playables, privacy or support pages, or any Mila page.</li>
+      <li><b>Your choice in the EEA, the UK and Switzerland, and Global Privacy Control.</b> Visitors with Global Privacy Control enabled never load ad code. In consent-required regions, Google's TCF consent dialog asks before personalized/cookie-based ads load, and an on-page <b>Privacy settings</b> link lets you revisit or withdraw consent at any time.</li>
+      <li><b>Language choice.</b> Your selected display language is stored locally in your browser (<code>localStorage</code>) and never leaves your device.</li>
+      <li><b>Hosting.</b> Hosted on GitHub Pages, which keeps standard edge/server access logs under GitHub's privacy statement.</li>
+    </ul>
+    <p>Questions: <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+  </section>
+</main>
+{footer}
+</body>
+</html>
+'''
+
+
+def render_notes(reg):
+    header, footer = studio_header_and_footer(has_lang=False)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes from aviisr games · Devlogs and design notes</title>
+<meta name="description" content="Devlogs and design notes from aviisr games: how our puzzles are made, checked and designed.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/notes/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+</head>
+<body class="edition page-studio">
+{header}
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 style="font-size:clamp(2rem,4.5vw,3.1rem)">Notes from aviisr games</h1>
+  <p class="lead" style="margin-bottom:24px">Devlogs and design notes from a small studio.</p>
+
+  <section class="card">
+    <h2>About these notes</h2>
+    <p>We make small mobile games, and we like to explain how they work. These notes cover real engineering and design decisions in more detail than a store listing allows.</p>
+    <p>They are written in plain language about what our puzzle generators, browser solvers and game rules actually do. Spot an error or want a note on a topic? Write to <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Notes</h2>
+    <ul>
+      <li><a href="./ninely-daily-puzzle/"><b>How the Ninely daily puzzle is made</b></a><br>How each day's Ninely puzzle is generated, verified for a unique solution, and graded by solver technique tier.</li>
+      <li><a href="./baylight-dock-solver/"><b>Building a solver-checked puzzle for the browser</b></a><br>How the Baylight browser dock uses a BFS state solver to validate winnable docks and step hints.</li>
+      <li><a href="./middle-east-2030-design/"><b>Designing Middle East 2030: one decision a month and a morning paper</b></a><br>Why the game is set in an invented 2030, its monthly decision loop, and the guided first term.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>More to read</h2>
+    <p>Explore the <a href="../ninely/strategy/">Sudoku guides hub</a> and the <a href="../ninely/strategy/glossary/">Sudoku glossary</a>, or read the <a href="../middle-east-2030/guide/">Middle East 2030 strategy guide</a>.</p>
+  </section>
+</main>
+{footer}
+</body>
+</html>
+'''
+
+
 TARGETS = [
     ('index.html', render_home),
     ('ninely/index.html', render_ninely),
@@ -1758,6 +2092,10 @@ TARGETS = [
     ('paper-route/index.html', render_paper_route),
     ('middle-east-2030/index.html', render_me2030_en),
     ('middle-east-2030/he/index.html', render_me2030_he),
+    ('about/index.html', render_about),
+    ('support/index.html', render_support),
+    ('privacy/index.html', render_privacy),
+    ('notes/index.html', render_notes),
 ]
 
 

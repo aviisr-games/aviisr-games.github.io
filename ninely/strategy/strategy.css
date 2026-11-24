@@ -1,4 +1,6 @@
 /* Ninely Strategy Hub & Guide Styles */
+*, *::before, *::after { box-sizing: border-box; }
+a, li, code, td, th { overflow-wrap: anywhere; }
 :root {
   --guide-bg: #0c1a14;
   --guide-card: #13271e;

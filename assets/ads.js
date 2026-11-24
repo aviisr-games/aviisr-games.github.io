@@ -66,7 +66,7 @@
     if (!slot || !before || !before.parentNode) { return; }
     var wrap = document.createElement('div');
     wrap.className = 'ad-unit';
-    wrap.style.cssText = 'min-height:280px;margin:24px 0;text-align:center';
+    wrap.style.cssText = 'min-height:90px;margin:20px 0;text-align:center';
     var ins = document.createElement('ins');
     ins.className = 'adsbygoogle';
     ins.style.display = 'block';
@@ -76,6 +76,21 @@
     ins.setAttribute('data-full-width-responsive', 'true');
     wrap.appendChild(ins);
     before.parentNode.insertBefore(wrap, before);
+    if (window.MutationObserver) {
+      var mo = new MutationObserver(function () {
+        if (ins.getAttribute('data-ad-status') === 'unfilled') {
+          var rect = wrap.getBoundingClientRect();
+          if (rect.top >= 0) {
+            ins.style.display = 'none';
+            wrap.style.display = 'none';
+          } else {
+            wrap.style.minHeight = '0';
+          }
+          mo.disconnect();
+        }
+      });
+      mo.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+    }
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
   // Ninely guides use .guide-main > .guide-section; the Middle East 2030 guide uses section.guide-card.

@@ -43,6 +43,21 @@
     'fi': { nativeName: 'Suomi', englishName: 'Finnish', dir: 'ltr' }
   };
 
+  if (!document.body) {
+    try {
+      var mPre = /[?&]lang=([a-z]{2}(?:-[A-Z]{2})?)(?:&|$)/.exec(window.location.search || '');
+      var earlyLang = mPre ? mPre[1] : window.localStorage.getItem('aviisr_lang');
+      if (earlyLang && earlyLang !== 'en' && AVIISR_LANGS[earlyLang]) {
+        document.documentElement.lang = earlyLang;
+        document.documentElement.dir = AVIISR_LANGS[earlyLang].dir;
+        document.documentElement.classList.add('i18n-wait');
+        document.addEventListener('DOMContentLoaded', function () {
+          document.documentElement.classList.remove('i18n-wait');
+        });
+      }
+    } catch (e) { /* ignore storage restrictions */ }
+  }
+
   var AVIISR_STRINGS = {
     'en': {
       qrText: 'On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.',
@@ -746,6 +761,7 @@
     if (typeof options.onLanguageChange === 'function') {
       options.onLanguageChange(lang, meta);
     }
+    document.documentElement.classList.remove('i18n-wait');
   }
 
   function renderSwitcher(container, options) {

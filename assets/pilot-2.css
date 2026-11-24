@@ -68,7 +68,7 @@ header{background:var(--cream);border-block-end:1px solid var(--line)}
 .hubbody{padding-block:32px 24px}.hubbody h2{color:var(--ink);font-family:var(--serif);font-weight:600}
 .benefits li,.qr-handoff,.studio .card{background:#fff;border-color:var(--line);color:var(--ink)}
 .help{border-block-start-color:var(--line)}.help h2,.help b,.help a,.about{color:var(--ink)}
-.studio{padding-block:12px 42px}.studio .card{border-radius:12px}.studio .card+.card{margin-top:18px}.edition main{overflow-wrap:anywhere}
+.studio{padding-block:12px 42px}.studio .card{border-radius:12px}.studio .card+.card{margin-top:18px}.edition main{overflow-wrap:anywhere}html.i18n-wait body{visibility:hidden}
 footer{background:#101426;color:#e7dfd1;padding-block:28px 34px;margin-top:24px}
 footer .col{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
 .foot-brand{height:30px;width:auto}

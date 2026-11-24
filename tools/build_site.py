@@ -340,6 +340,7 @@ def render_home(reg):
   ]
 }}
 </script>
+<script src="assets/i18n.js"></script>
 </head>
 <body class="edition page-home">
 <a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
@@ -367,7 +368,7 @@ def render_home(reg):
     <div class="poster" style="--paper:{esc(ninely["paperColor"])}">
       <span class="poster-letter" aria-hidden="true" dir="ltr">{esc(ninely["posterLetter"])}</span>
       <span class="poster-ring" aria-hidden="true"></span>
-      <img class="capture" src="{esc(n_shot["src"])}" alt="{esc(n_shot["alt"]["en"])}" width="{n_shot["width"]}" height="{n_shot["height"]}" fetchpriority="high" decoding="async">
+      <img class="capture" src="{esc(n_shot["src"])}" alt="{esc(n_shot["alt"]["en"])}" width="{n_shot["width"]}" height="{n_shot["height"]}" fetchpriority="high">
     </div>
     <figcaption><span data-i18n="w_heroCaption">Ninely</span><span data-i18n="w_heroCaptionSub">{esc(ninely["copy"]["en"]["caption"])}</span></figcaption>
   </figure>
@@ -415,8 +416,6 @@ def render_home(reg):
   </div>
 </footer>
 </main>
-
-<script src="assets/i18n.js"></script>
 <script>
 (function () {{
   'use strict';

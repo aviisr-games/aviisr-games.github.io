@@ -41,7 +41,7 @@
 <header>
 <div class="col bar">
   <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-dark.svg" alt="" width="128" height="36"></a>
-  <nav class="links" aria-label="Main"><a href="#games" data-i18n="w_games">Games</a><a href="ninely/strategy/">Guides</a><a href="notes/">Notes</a><a href="about/">About</a><a href="support/" data-i18n="navSupport">Support</a></nav>
+  <nav class="links" aria-label="Main"><a href="#games" data-i18n="w_games">Games</a><a href="ninely/strategy/" data-i18n="w_guides">Guides</a><a href="notes/" data-i18n="w_notes">Notes</a><a href="about/" data-i18n="w_about">About</a><a href="support/" data-i18n="navSupport">Support</a></nav>
   <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
 </div>
 </header>
@@ -184,7 +184,7 @@
 </section>
 
 <footer class="col">
-  <div>© aviisr games · <a href="about/">About</a> · <a href="notes/">Notes</a> · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a></div>
+  <div>© aviisr games · <a href="about/" data-i18n="w_about">About</a> · <a href="notes/" data-i18n="w_notes">Notes</a> · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt" data-i18n="w_security">Security</a></div>
 </footer>
 </main>
 
@@ -207,6 +207,10 @@
       contactSub: "Player inquiries, bug reports, ad privacy requests, or business correspondence:",
       w_skip: "Skip to content",
       w_games: "Games",
+      w_guides: "Guides",
+      w_notes: "Notes",
+      w_about: "About",
+      w_security: "Security",
       w_lang: "Language",
       w_pick: "Pick a",
       w_world: "world",
@@ -238,6 +242,10 @@
       contactSub: "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:",
       w_skip: "דלגו לתוכן",
       w_games: "משחקים",
+      w_guides: "מדריכים",
+      w_notes: "רשימות",
+      w_about: "אודות",
+      w_security: "אבטחה",
       w_lang: "שפה",
       w_pick: "בחרו",
       w_world: "עולם",
@@ -269,6 +277,10 @@
       contactSub: "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:",
       w_skip: "تخطَّ إلى المحتوى",
       w_games: "الألعاب",
+      w_guides: "الأدلة",
+      w_notes: "الملاحظات",
+      w_about: "عن الاستوديو",
+      w_security: "الأمان",
       w_lang: "اللغة",
       w_pick: "اختر",
       w_world: "عالماً",
@@ -289,10 +301,19 @@
     }
   };
 
+  var TITLES = {
+    en: "aviisr games · Small mobile games, made with care",
+    he: "aviisr games · משחקי מובייל קטנים, עשויים בקפידה",
+    ar: "aviisr games · ألعاب هاتف صغيرة، مصنوعة بعناية"
+  };
+
   AviisrI18n.init({
     supported: ['en', 'he', 'ar'],
     translations: translations,
-    defaultLang: 'en'
+    defaultLang: 'en',
+    onLanguageChange: function (lang) {
+      document.title = TITLES[lang] || TITLES.en;
+    }
   });
 
 })();

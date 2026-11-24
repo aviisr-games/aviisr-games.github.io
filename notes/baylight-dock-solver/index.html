@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building a solver-checked puzzle for the browser · aviisr games</title>
+<meta name="description" content="How we check every Baylight browser dock with a breadth-first search, what a game state is, and how exported fixtures keep the web and app rules the same.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/notes/baylight-dock-solver/">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<nav class="lang"><a href="../../">All Games</a> · <a href="../">Notes</a> · <a href="../../baylight/">Baylight</a></nav>
+
+<h1>Building a solver-checked puzzle for the browser</h1>
+<p class="sub">Devlog · November 2026</p>
+
+<div class="card">
+<h2 style="margin-top:0">Why we check every dock</h2>
+<p>A sorting puzzle has one way to fail that players feel immediately: a level that cannot be won. You make a reasonable move, then another, and somewhere along the way the dock becomes a dead end without any warning. For the browser version of Baylight we decided that no dock would ship unless a program had first found a winning sequence for it. That is what we mean by solver-verified.</p>
+<p>The browser docks are small on purpose: two levels, one with a locked lane and one with a pallet. Small does not mean unchecked, and a short puzzle is a bad place to hide a broken level.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">What a state is</h2>
+<p>To search a game, you first need to say exactly what a position is. In Baylight a state is a handful of facts: how far along the belt we are, what each bay holds (a colour and a count from zero to three), how many bays are still locked, how many trucks have shipped, and what is parked on the pallet. Nothing else matters. The belt order is fixed for a dock, so the position on the belt tells us every parcel still to come.</p>
+<p>Two different move orders can reach the very same state. For example, parking one parcel and then filling a bay can end up identical to the other order when no ship happens in between. A good search notices this and does not explore the same state twice. To do that, we turn each state into a short text key and remember the keys we have already seen.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Breadth-first search in plain words</h2>
+<p>Imagine standing at the start of a dock with a notebook. You write down every legal move from here: put the front parcel in a bay that matches or is empty, or park it on the pallet if there is room. Each move leads to a new state. You add those states to the end of a waiting list.</p>
+<p>Then you take the first state from the front of the list, write down its moves, and add the results to the end. You keep doing that. Because the list is first in, first out, you finish every state that is one move away before touching any that is two moves away, and so on. That order is what breadth-first means.</p>
+<p>Two things follow. First, if any winning sequence exists, the search will eventually reach it, because it does not give up on a branch halfway. Second, the first winning state it reaches is one that needs the fewest moves, which gives a short sequence to replay. When the waiting list runs dry without a win, the starting position cannot be won.</p>
+<p>The game has a useful rhythm that keeps the search small: every move uses exactly one parcel from the belt, so the search never goes around in circles. Add the memory of seen states and the search stays tiny for docks of this size.</p>
+<p>One detail matters for the readability of results. When there are several options, our search tries matching bays first, then empty bays, then the pallet. That does not change whether a dock can be won; it changes which of several equally good answers we show, and it favours the natural play of stacking like with like.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">How the buttons use it</h2>
+<p>The Step Solver Move button runs the same search from whatever position is on the screen, not only from the start. It finds a winning path, plays only the first move of it, and stops. Press it again and it searches again from the new position. This is why it still helps after you have made your own mistakes: it never trusts an old answer. If the position cannot be won, the search finds nothing and the page tells you it is a dead end, and Undo or Reset gets you out.</p>
+<p>The Replay Full Sequence button is different. It plays a stored list of moves from the start of the dock, one move at a time, with a short pause between moves, or all at once if the visitor has asked their device for reduced motion. The stored list is what the search found ahead of time, so the replay does not need to search at all.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Keeping web and app rules in sync</h2>
+<p>The browser version is a second implementation of rules that already exist in the game. Two copies of rules drift apart unless you tie them together. We do this with fixtures. A small script runs the game's own rule engine, solves both docks, and writes out a data file with each level and its winning moves, including the state after every move. The web page's level data and replay lists come from that file.</p>
+<p>Our automated tests then replay the stored moves against the game's rules and compare the results state for state. If the web page's rules ever disagree with the game, even in a corner such as a parcel leaving the pallet at the wrong time, the test fails before the page goes out. The same tests also check that every stored sequence ends with an empty dock.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">What we learned</h2>
+<ul>
+<li><b>Write the state down first.</b> Once we could list exactly what a position is, the search almost wrote itself, and so did the test.</li>
+<li><b>Deduplicate states.</b> Remembering what you have seen is the difference between an instant answer and a slow page.</li>
+<li><b>Search from the current position.</b> A hint that only works from the start is not a hint.</li>
+<li><b>Generate, do not retype.</b> Level data copied by hand drifts. Level data exported from the game does not.</li>
+<li><b>Say when it cannot be won.</b> A clear dead-end message is kinder than a silent failure.</li>
+</ul>
+<p>If you spot a dock that behaves differently from what we describe here, tell us at <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>. You can play both docks on the <a href="../../baylight/dock/">browser dock page</a>.</p>
+</div>
+
+<footer>© aviisr games · <a href="../../">All Games</a> · <a href="../../support/">Support</a> · <a href="../../privacy/">Privacy</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></footer>
+</main>
+</body>
+</html>

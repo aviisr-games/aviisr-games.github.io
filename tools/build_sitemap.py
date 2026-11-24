@@ -45,6 +45,8 @@ def canonical_of(path):
 
 def pages():
     rels = list(STUDIO_PAGES)
+    # Studio notes (devlogs): /notes/ and every /notes/<slug>/.
+    rels.extend(str(p.relative_to(ROOT)) for p in sorted((ROOT / 'notes').rglob('index.html'), key=lambda p: (p.parent != ROOT / 'notes', str(p))))
     for d in ALLOWED_PREFIXES:
         files = sorted((ROOT / d).rglob('*.html'), key=lambda p: (p.name != 'index.html' or p.parent != ROOT / d, str(p)))
         rels.extend(str(p.relative_to(ROOT)) for p in files)

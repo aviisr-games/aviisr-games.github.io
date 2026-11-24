@@ -78,9 +78,12 @@
     before.parentNode.insertBefore(wrap, before);
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
-  var sections = document.querySelectorAll('.guide-main > .guide-section');
+  // Ninely guides use .guide-main > .guide-section; the Middle East 2030 guide uses section.guide-card.
+  var sections = document.querySelectorAll('.guide-main > .guide-section, main section.guide-card');
   if (sections.length > 1) { unit(SLOTS.intro, sections[1]); }
-  unit(SLOTS.end, document.querySelector('.guide-main > .practice-cta'));
+  var end = document.querySelector('.guide-main > .practice-cta');
+  if (!end && sections.length > 3) { end = sections[sections.length - 1]; }
+  unit(SLOTS.end, end);
 
   var s = document.createElement('script');
   s.async = true;

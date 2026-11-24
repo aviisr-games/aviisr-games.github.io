@@ -1098,10 +1098,666 @@ def render_mila(reg):
 '''
 
 
+def render_baylight(reg):
+    games = reg['games']
+    by_id = {g['id']: g for g in games}
+    b = by_id['baylight']
+    siblings = [by_id['ninely'], by_id['paper-route']]
+    shots = b['assets']['screenshots']
+    imgs = []
+    for idx, s in enumerate(shots):
+        attr = 'fetchpriority="high"' if idx == 0 else 'loading="lazy"'
+        imgs.append(
+            f'<img src="/{esc(s["src"])}" width="{s["width"]}" height="{s["height"]}" '
+            f'{attr} decoding="async" alt="{esc(s["alt"]["en"])}">'
+        )
+    more_items = []
+    for sib in siblings:
+        key = 'w_ninelyH' if sib['id'] == 'ninely' else 'w_mprH'
+        more_items.append(
+            f'      <li><a class="mini" data-world="{esc(sib["id"])}" href="/{esc(sib["hub"])}">'
+            f'<img src="/{esc(sib["assets"]["icon"])}" alt="" width="{sib["assets"]["iconWidth"]}" height="{sib["assets"]["iconHeight"]}">'
+            f'<span><b>{esc(sib["storeTitle"])}</b><span data-i18n="{key}">{esc(sib["copy"]["en"]["headline"])}</span></span></a></li>'
+        )
+    store_status = f'{b["copy"]["en"]["storeStatus"]} · Verified {b["verifiedOn"]}'
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(b["storeTitle"])} · One-thumb sorting puzzle</title>
+<link rel="canonical" href="https://aviisrgames.com/baylight/">
+<meta name="description" content="Baylight: Truck Sort Puzzle. Tap a bay, stack three of a kind, ship the truck. Get it on Google Play, the App Store, or load a dock in your browser.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="{esc(b["storeTitle"])}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aviisrgames.com/baylight/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/baylight.jpg">
+<meta property="og:description" content="{esc(b["copy"]["en"]["lead"])}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/hub.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Baylight: Truck Sort Puzzle",
+  "description": "Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.",
+  "url": "https://aviisrgames.com/baylight/",
+  "genre": ["Puzzle", "Casual"],
+  "gamePlatform": ["Android", "iOS"],
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android, iOS",
+  "inLanguage": ["en", "he", "ar"],
+  "offers": {{ "@type": "Offer", "price": "0", "priceCurrency": "USD" }},
+  "author": {{ "@type": "Organization", "name": "aviisr games", "email": "aviisr@aviisrgames.com" }}
+}}
+</script>
+</head>
+<body class="edition page-game">
+<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="/" data-i18n="w_games">Games</a><a href="tips/">Baylight tips</a><a href="/support/" data-i18n="navSupport">Support</a></nav>
+  <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
+</div>
+</header>
+<main id="main">
+<section class="mast" data-world="baylight" aria-labelledby="h-hub">
+  <div class="col wrap">
+    <div class="spread">
+      <div class="copy">
+        <span class="tag" data-i18n="w_tagBay">{esc(b["copy"]["en"]["tag"])}</span>
+        <div class="id"><img src="/{esc(b["assets"]["icon"])}" alt="" width="{b["assets"]["iconWidth"]}" height="{b["assets"]["iconHeight"]}"><h1 id="h-hub">{esc(b["storeTitle"])}</h1></div>
+        <p class="hl" data-i18n="w_bayH">{esc(b["copy"]["en"]["headline"])}</p>
+        <p class="lead" data-i18n="baylightDesc">{esc(b["copy"]["en"]["lead"])}</p>
+        <p class="note">{esc(store_status)}</p>
+        <div class="acts">
+          <a class="play-badge" href="{esc(b["hubPlayLink"])}"><img data-play-badge data-app="Baylight" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight" width="150" height="58"></a>
+          <a class="appstore-badge" href="{esc(b["appStore"]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="Download Baylight on the App Store">{appstore_svg(18)}<bdi>App Store</bdi></a>
+          <a class="link" href="dock/">{esc(b["copy"]["en"]["ctaBrowser"])}</a>
+        </div>
+      </div>
+      <div class="shots">
+        <div class="screens" role="region" aria-label="Baylight screenshots" tabindex="0">{''.join(imgs)}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="col hubbody">
+  <ul class="benefits"><li>No timers, no lives, no pressure: a calm puzzle you play with one thumb.</li><li>Every color has its own pattern, so the game is fully playable with colorblindness.</li><li>Plays offline with no account or sign-in, across 100 short levels.</li></ul>
+  <ul class="hublinks"><li><a href="dock/">Load a dock in your browser</a></li><li><a href="tips/">Baylight tips</a></li></ul>
+  <div class="qr-handoff"><img src="/assets/qr/baylight.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p data-i18n="qrText">On a computer? Point your phone camera at the code to open this page on your phone, then tap Google Play or App Store.</p></div>
+
+  <section class="more" aria-labelledby="h-more">
+    <h2 id="h-more" data-i18n="w_more">More from aviisr games</h2>
+    <ul class="minis">
+{chr(10).join(more_items)}
+    </ul>
+  </section>
+
+  <section class="help" aria-labelledby="h-help">
+    <h2 id="h-help" data-i18n="navSupport">Support</h2>
+    <h2>Help and contact</h2>
+    <p>Email <a href="mailto:aviisr@aviisrgames.com?subject=Baylight%20support">aviisr@aviisrgames.com</a>. Tell us your device model, your operating system version and what happened. We reply by email.</p>
+    <h2>Common questions</h2>
+    <p><b>A bay jammed.</b> Nothing is lost. Undo is free twice at first, then once after ads start, or restart the level.</p>
+    <p><b>Ads.</b> After Bay 5: a small banner at the top, an occasional full-screen ad after Next, and optional videos for bonuses. No Ads in the shop removes ads.</p>
+    <p><b>I want to stop the usage data.</b> Turn off <b>Settings &gt; Share usage data</b>.</p>
+    <p><b>I want my data deleted.</b> Delete the game to remove everything on your device. For data held by Unity, email us and we will help.</p>
+    <h2>Privacy</h2>
+    <p>Read the <a href="privacy.html">Privacy Policy</a>.</p>
+  </section>
+  <section class="about" aria-labelledby="h-about">
+    <h2 id="h-about">What makes Baylight different</h2>
+    <p>Many sorting puzzles reward speed or punish a single mistake. Baylight was designed to feel like tidying a loading dock at the end of a shift: slow, satisfying and forgiving. There are no timers and no lives, so you can stop mid-level, think, and come back without losing anything.</p>
+    <p>The rule is simple. Parcels arrive one after another, you tap a bay to place the next one, and three matching parcels fill a truck that drives away. The challenge comes from limited space. Every parcel you place changes what the next few moves can do, so the game rewards looking ahead rather than reacting.</p>
+    <p>A few habits make levels easier. Look at the queue of upcoming parcels before you tap, and decide where each of the next two or three will go. Keep one bay for the color you see most. Use the pallet to park a parcel only when it buys you a better move, since it is a limited resource and a bay that jams is harder to recover than one you left open.</p>
+    <p>Accessibility shaped the design from the start. Each color carries its own pattern, so players with color blindness can tell parcels apart by shape alone, and nothing in a level depends on reaction speed. Rounds are short, and the game works offline, which makes it a good fit for a commute or a waiting room.</p>
+    <p>If you want a taste first, the <a href="dock/">browser dock</a> lets you load a puzzle without installing anything. For strategy, read <a href="tips/">Baylight tips: how to clear a dock</a>.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="/support/" data-i18n="navSupport">Support</a> · <a href="privacy.html" data-i18n="navPrivacy">Privacy Policy</a> · <a href="/" data-i18n="navAllGames">All Games</a></div>
+  </div>
+</footer>
+</main>
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({{
+    supported: ['en'],
+    defaultLang: 'en',
+    translations: {{
+      en: {{ w_skip: "Skip to content", w_games: "Games", w_lang: "Language", w_tagBay: "Sorting puzzle", w_bayH: "Stack three. Ship the truck.", w_ninelyH: "Sudoku that explains every move.", w_mprH: "Deliver before sunrise.", w_more: "More from aviisr games" }}
+    }}
+  }});
+</script>
+<script src="/assets/play-badge.js"></script>
+<script src="/assets/count.js" defer></script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
+def render_paper_route(reg):
+    games = reg['games']
+    by_id = {g['id']: g for g in games}
+    p = by_id['paper-route']
+    siblings = [by_id['ninely'], by_id['baylight']]
+    shots = p['assets']['screenshots']
+    imgs = []
+    for idx, s in enumerate(shots):
+        attr = 'fetchpriority="high"' if idx == 0 else 'loading="lazy"'
+        imgs.append(
+            f'<img src="/{esc(s["src"])}" width="{s["width"]}" height="{s["height"]}" '
+            f'{attr} decoding="async" alt="{esc(s["alt"]["en"])}">'
+        )
+    more_items = []
+    for sib in siblings:
+        key = 'w_ninelyH' if sib['id'] == 'ninely' else 'w_bayH'
+        more_items.append(
+            f'      <li><a class="mini" data-world="{esc(sib["id"])}" href="/{esc(sib["hub"])}">'
+            f'<img src="/{esc(sib["assets"]["icon"])}" alt="" width="{sib["assets"]["iconWidth"]}" height="{sib["assets"]["iconHeight"]}">'
+            f'<span><b>{esc(sib["storeTitle"])}</b><span data-i18n="{key}">{esc(sib["copy"]["en"]["headline"])}</span></span></a></li>'
+        )
+    translations = {
+        'en': {
+            'w_skip': 'Skip to content',
+            'w_games': 'Games',
+            'navSupport': 'Support',
+            'w_lang': 'Language',
+            'w_tagMpr': p['copy']['en']['tag'],
+            'w_mprH': p['copy']['en']['headline'],
+            'mprDesc': p['copy']['en']['lead'],
+            'w_storeStatus': f'{p["copy"]["en"]["storeStatus"]} · Not on iPhone yet · Verified {p["verifiedOn"]}',
+            'iphoneSoon': 'Not on iPhone yet',
+            'w_ninelyH': siblings[0]['copy']['en']['headline'],
+            'w_bayH': siblings[1]['copy']['en']['headline'],
+            'w_more': 'More from aviisr games',
+            'navPrivacy': 'Privacy Policy',
+            'navAllGames': 'All Games',
+        },
+        'he': {
+            'w_skip': 'דלגו לתוכן',
+            'w_games': 'משחקים',
+            'navSupport': 'תמיכה',
+            'w_lang': 'שפה',
+            'w_tagMpr': p['copy']['he']['tag'],
+            'w_mprH': p['copy']['he']['headline'],
+            'mprDesc': p['copy']['he']['lead'],
+            'w_storeStatus': f'{p["copy"]["he"]["storeStatus"]} · עדיין לא ב-iPhone · אומת {p["verifiedOn"]}',
+            'iphoneSoon': 'עדיין לא ב-iPhone',
+            'w_ninelyH': siblings[0]['copy']['he']['headline'],
+            'w_bayH': siblings[1]['copy']['he']['headline'],
+            'w_more': 'עוד מ-aviisr games',
+            'navPrivacy': 'מדיניות פרטיות',
+            'navAllGames': 'כל המשחקים',
+        },
+        'ar': {
+            'w_skip': 'تخطَّ إلى المحتوى',
+            'w_games': 'الألعاب',
+            'navSupport': 'الدعم',
+            'w_lang': 'اللغة',
+            'w_tagMpr': p['copy']['ar']['tag'],
+            'w_mprH': p['copy']['ar']['headline'],
+            'mprDesc': p['copy']['ar']['lead'],
+            'w_storeStatus': f'{p["copy"]["ar"]["storeStatus"]} · ليست على iPhone بعد · {p["verifiedOn"]}',
+            'iphoneSoon': 'ليست على iPhone بعد',
+            'w_ninelyH': siblings[0]['copy']['ar']['headline'],
+            'w_bayH': siblings[1]['copy']['ar']['headline'],
+            'w_more': 'المزيد من aviisr games',
+            'navPrivacy': 'سياسة الخصوصية',
+            'navAllGames': 'جميع الألعاب',
+        },
+    }
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(p["storeTitle"])} · One-thumb arcade</title>
+<meta name="description" content="Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game on Google Play.">
+<link rel="canonical" href="https://aviisrgames.com/paper-route/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="{esc(p["storeTitle"])}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aviisrgames.com/paper-route/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/paper-route.jpg">
+<meta property="og:description" content="{esc(p["copy"]["en"]["headline"])}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/hub.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Morning Paper Route: Bike Game",
+  "description": "Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game on Google Play.",
+  "url": "https://aviisrgames.com/paper-route/",
+  "genre": ["Arcade", "Action"],
+  "gamePlatform": ["Android"],
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "inLanguage": ["en", "he", "ar", "tr", "de", "fr", "es", "ja", "ko", "pt-BR", "ru"],
+  "offers": {{ "@type": "Offer", "price": "0", "priceCurrency": "USD" }},
+  "author": {{ "@type": "Organization", "name": "aviisr games", "email": "aviisr@aviisrgames.com" }}
+}}
+</script>
+</head>
+<body class="edition page-game">
+<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="/" data-i18n="w_games">Games</a><a href="/support/" data-i18n="navSupport">Support</a></nav>
+  <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
+</div>
+</header>
+<main id="main">
+<section class="mast" data-world="paper-route" aria-labelledby="h-hub">
+  <div class="col wrap">
+    <div class="spread">
+      <div class="copy">
+        <span class="tag" data-i18n="w_tagMpr">{esc(p["copy"]["en"]["tag"])}</span>
+        <div class="id"><img src="/{esc(p["assets"]["icon"])}" alt="" width="{p["assets"]["iconWidth"]}" height="{p["assets"]["iconHeight"]}"><h1 id="h-hub">{esc(p["storeTitle"])}</h1></div>
+        <p class="hl" data-i18n="w_mprH">{esc(p["copy"]["en"]["headline"])}</p>
+        <p class="lead" data-i18n="mprDesc">{esc(p["copy"]["en"]["lead"])}</p>
+        <p class="note" data-i18n="w_storeStatus">{esc(translations["en"]["w_storeStatus"])}</p>
+        <div class="acts">
+          <a class="play-badge" href="{esc(p["hubPlayLink"])}"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
+          <p class="ios-note" data-i18n="iphoneSoon">Not on iPhone yet</p>
+        </div>
+      </div>
+      <div class="shots">
+        <div class="screens" role="region" aria-label="Morning Paper Route screenshots" tabindex="0">{''.join(imgs)}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="col hubbody">
+  <div data-lang="en" lang="en" dir="ltr" class="about">
+    <h2>About the Game</h2>
+    <p>Steer with one thumb, throw with the other, and land the morning paper in every subscriber's mailbox.</p>
+    <ul class="benefits">
+      <li>7 days that get faster and busier: chasing dogs, cars backing out, drones, skaters</li>
+      <li>Mailbox or porch, combos, wheelie throws, close calls, window bonuses and a bonus run at the end of each day</li>
+      <li>3 stars per day, personal bests, daily missions, and a week that loops at a higher speed</li>
+      <li>Cosmetics earned with in-game coins only</li>
+      <li>Throw-path preview, one-handed and left-handed controls, haptics, Reduced Motion, 11 languages</li>
+    </ul>
+  </div>
+  <div data-lang="he" lang="he" dir="rtl" class="about">
+    <h2>על המשחק</h2>
+    <p>כוונו באגודל אחד, זרקו עם השני, והנחיתו את עיתון הבוקר בתיבת הדואר של כל מנוי.</p>
+    <ul class="benefits">
+      <li>7 ימים שהולכים והופכים מהירים ועמוסים יותר: כלבים רודפים, מכוניות שיוצאות ברוורס, רחפנים, גולשי סקייטבורד</li>
+      <li>תיבת דואר או מרפסת, קומבואים, זריקות בזמן רכיבה על גלגל אחד, חמיקות בקושי, בונוסי חלונות וסבב בונוס בסוף כל יום</li>
+      <li>3 כוכבים בכל יום, שיאים אישיים, משימות יומיות, ושבוע שחוזר על עצמו במהירות גבוהה יותר</li>
+      <li>פריטי עיצוב שמרוויחים במטבעות המשחק בלבד</li>
+      <li>תצוגה מקדימה של מסלול הזריקה, שליטה ביד אחת ומצב לשמאליים, רטט, הפחתת תנועה, 11 שפות</li>
+    </ul>
+  </div>
+  <div data-lang="ar" lang="ar" dir="rtl" class="about">
+    <h2>عن اللعبة</h2>
+    <p>وجّه الدراجة بإبهام واحد، وارمِ الصحيفة بالآخر، واجعلها تهبط في صندوق بريد كل مشترك.</p>
+    <ul class="benefits">
+      <li>7 أيام تزداد سرعةً وازدحامًا: كلاب تطارد، وسيارات تخرج إلى الخلف، وطائرات مسيّرة، ومتزلجون</li>
+      <li>صندوق بريد أو شرفة، وسلاسل متتالية، ورميات أثناء رفع العجلة، ونجاة بشق الأنفس، ومكافآت النوافذ، وجولة مكافأة في نهاية كل يوم</li>
+      <li>3 نجوم في كل يوم، وأفضل نتائجك الشخصية، ومهام يومية، وأسبوع يتكرر بسرعة أعلى</li>
+      <li>عناصر تجميلية تُكسب بعملات اللعبة فقط</li>
+      <li>معاينة مسار الرمي، وتحكم بيد واحدة ووضع لمستخدمي اليد اليسرى، واهتزاز لمسي، وتقليل الحركة، و11 لغة</li>
+    </ul>
+  </div>
+  <ul class="hublinks"><li><a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a></li></ul>
+  <div class="qr-handoff"><img src="/assets/qr/paper-route.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p data-i18n="qrText">On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.</p></div>
+
+  <section class="more" aria-labelledby="h-more">
+    <h2 id="h-more" data-i18n="w_more">More from aviisr games</h2>
+    <ul class="minis">
+{chr(10).join(more_items)}
+    </ul>
+  </section>
+
+  <section class="help" aria-labelledby="h-help">
+    <h2 id="h-help" data-i18n="navSupport">Support</h2>
+    <div data-lang="en" lang="en" dir="ltr">
+      <h2>Questions</h2>
+      <p><strong>Are there ads?</strong> Optional video ads can revive you, refill your papers or double your coins, and a short ad can play between days, never during a ride.</p>
+      <p><strong>How do I remove ads?</strong> Buy "Remove ads" once in Settings or the Cosmetics shop. It turns off the ad between days. The optional reward videos (revive, extra papers, double coins) stay available whenever you want them.</p>
+      <p><strong>I reinstalled or changed phones.</strong> Open Settings and tap "Restore purchases" (signed in to the same Google Play or App Store account).</p>
+      <p><strong>How do I turn off personalized ads?</strong> Settings &gt; Ad privacy choices &gt; Non-personalized ads. On iPhone you can also turn off tracking in the system Settings.</p>
+      <p><strong>Does the game need the internet?</strong> No, you can play offline. Ads and purchases need a connection.</p>
+      <p><strong>I saw an inappropriate ad.</strong> Use "Report an ad" in Settings, or email us.</p>
+      <h2>Support and Contact</h2>
+      <p>Found a problem or have an idea? Use "Send feedback" in Settings, or write to us:</p>
+      <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+      <p><a href="privacy/">Read our Privacy Policy →</a></p>
+    </div>
+    <div data-lang="he" lang="he" dir="rtl">
+      <h2>שאלות</h2>
+      <p><strong>יש פרסומות?</strong> פרסומות וידאו אופציונליות יכולות להחיות אתכם, למלא את מלאי העיתונים או להכפיל את המטבעות, ופרסומת קצרה עשויה להופיע בין הימים, אף פעם לא באמצע רכיבה.</p>
+      <p><strong>איך מסירים פרסומות?</strong> קנו פעם אחת "הסרת פרסומות" בהגדרות או בחנות פריטי העיצוב. זה מבטל את הפרסומת שבין הימים. סרטוני התגמול האופציונליים (החייאה, עיתונים נוספים, הכפלת מטבעות) נשארים זמינים בכל עת שתרצו.</p>
+      <p><strong>התקנתי מחדש או החלפתי טלפון.</strong> פתחו את ההגדרות והקישו על "שחזור רכישות" (מחוברים לאותו חשבון <bdi>Google Play</bdi> או <bdi>App Store</bdi>).</p>
+      <p><strong>איך מכבים פרסומות מותאמות אישית?</strong> הגדרות &gt; בחירות פרטיות לפרסומות &gt; פרסומות לא מותאמות אישית. ב<bdi>iPhone</bdi> אפשר גם לכבות מעקב בהגדרות המערכת.</p>
+      <p><strong>האם המשחק צריך אינטרנט?</strong> לא, אפשר לשחק ללא חיבור. פרסומות ורכישות דורשות חיבור.</p>
+      <p><strong>ראיתי פרסומת לא הולמת.</strong> השתמשו ב"דיווח על פרסומת" בהגדרות, או כתבו לנו בדוא"ל.</p>
+      <h2>תמיכה ויצירת קשר</h2>
+      <p>מצאתם בעיה או יש לכם רעיון? השתמשו ב"שליחת משוב" בהגדרות, או כתבו לנו:</p>
+      <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+      <p><a href="privacy/">לקריאת מדיניות הפרטיות שלנו ←</a></p>
+    </div>
+    <div data-lang="ar" lang="ar" dir="rtl">
+      <h2>أسئلة</h2>
+      <p><strong>هل توجد إعلانات؟</strong> يمكن لإعلانات الفيديو الاختيارية أن تعيدك إلى اللعب، أو تملأ مخزون الصحف، أو تضاعف عملاتك. وقد يظهر إعلان قصير بين الأيام، ولا يظهر أبدًا أثناء الجولة.</p>
+      <p><strong>كيف أزيل الإعلانات؟</strong> اشترِ "إزالة الإعلانات" مرة واحدة من الإعدادات أو من متجر العناصر التجميلية. يوقف ذلك الإعلان بين الأيام. تبقى إعلانات المكافآت الاختيارية (الإحياء، وصحف إضافية، ومضاعفة العملات) متاحة متى شئت.</p>
+      <p><strong>أعدت التثبيت أو غيّرت الهاتف.</strong> افتح الإعدادات واضغط "استعادة المشتريات" (مع تسجيل الدخول إلى حساب <bdi>Google Play</bdi> أو <bdi>App Store</bdi> نفسه).</p>
+      <p><strong>كيف أوقف الإعلانات المخصصة؟</strong> الإعدادات &gt; خيارات خصوصية الإعلانات &gt; إعلانات غير مخصصة. على <bdi>iPhone</bdi> يمكنك أيضًا إيقاف التتبع من إعدادات النظام.</p>
+      <p><strong>هل تحتاج اللعبة إلى الإنترنت؟</strong> لا، يمكنك اللعب دون اتصال. الإعلانات والمشتريات تحتاج إلى اتصال.</p>
+      <p><strong>رأيت إعلانًا غير لائق.</strong> استخدم "الإبلاغ عن إعلان" في الإعدادات، أو راسلنا بالبريد.</p>
+      <h2>الدعم والتواصل</h2>
+      <p>وجدت مشكلة أو لديك فكرة؟ استخدم "إرسال ملاحظات" في الإعدادات، أو راسلنا:</p>
+      <p class="mail"><a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></p>
+      <p><a href="privacy/">اقرأ سياسة الخصوصية ←</a></p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="/support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="/" data-i18n="navAllGames">All Games</a></div>
+  </div>
+</footer>
+</main>
+<script src="../assets/i18n.js"></script>
+<script>
+  AviisrI18n.init({{
+    supported: ['en', 'he', 'ar'],
+    defaultLang: 'en',
+    translations: {json.dumps(translations, ensure_ascii=False, indent=6)}
+  }});
+</script>
+<script src="/assets/play-badge.js"></script>
+<script src="/assets/count.js" defer></script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
+def render_me2030_en(reg):
+    games = reg['games']
+    by_id = {g['id']: g for g in games}
+    me = by_id['middle-east-2030']
+    siblings = [by_id['ninely'], by_id['baylight']]
+    shots = me['assets']['screenshots']
+    imgs = []
+    for idx, s in enumerate(shots):
+        attr = 'fetchpriority="high"' if idx == 0 else 'loading="lazy"'
+        imgs.append(
+            f'<img src="/{esc(s["src"])}" width="{s["width"]}" height="{s["height"]}" '
+            f'{attr} decoding="async" alt="{esc(s["alt"]["en"])}">'
+        )
+    more_items = []
+    for sib in siblings:
+        more_items.append(
+            f'      <li><a class="mini" data-world="{esc(sib["id"])}" href="/{esc(sib["hub"])}">'
+            f'<img src="/{esc(sib["assets"]["icon"])}" alt="" width="{sib["assets"]["iconWidth"]}" height="{sib["assets"]["iconHeight"]}">'
+            f'<span><b>{esc(sib["storeTitle"])}</b><span>{esc(sib["copy"]["en"]["headline"])}</span></span></a></li>'
+        )
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(me["storeTitle"])}</title>
+<meta name="description" content="Middle East 2030 is a geopolitical strategy game and political simulator for Android. A work of fiction. Lead a nation and see tomorrow's front page.">
+<link rel="canonical" href="https://aviisrgames.com/middle-east-2030/">
+<link rel="alternate" hreflang="en" href="https://aviisrgames.com/middle-east-2030/">
+<link rel="alternate" hreflang="he" href="https://aviisrgames.com/middle-east-2030/he/">
+<link rel="alternate" hreflang="x-default" href="https://aviisrgames.com/middle-east-2030/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="{esc(me["storeTitle"])}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aviisrgames.com/middle-east-2030/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/middle-east-2030.jpg">
+<meta property="og:description" content="Govern one month at a time and read tomorrow's front page on your term.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/hub.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+<link rel="stylesheet" href="../assets/hub-me2030.css">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Middle East 2030: Politics Sim",
+  "description": "Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.",
+  "url": "https://aviisrgames.com/middle-east-2030/",
+  "genre": ["Strategy", "Simulation"],
+  "gamePlatform": ["Android"],
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "inLanguage": ["en", "he", "ar", "tr", "de", "fr", "es", "ja", "ko", "pt-BR", "ru", "nl", "it", "zh-TW"],
+  "offers": {{ "@type": "Offer", "price": "0", "priceCurrency": "USD" }},
+  "author": {{ "@type": "Organization", "name": "aviisr games", "email": "aviisr@aviisrgames.com" }}
+}}
+</script>
+</head>
+<body class="edition page-game">
+<a class="skip-link" href="#main">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="/">Games</a><a href="guide/">Strategy guide</a><a href="/support/">Support</a></nav>
+  <nav class="langbox" aria-label="Language"><a id="he" href="he/" hreflang="he" lang="he">עברית</a></nav>
+</div>
+</header>
+<main id="main">
+<section class="mast me" data-world="middle-east-2030" aria-labelledby="h-hub">
+  <div class="col">
+    <div class="plate">
+      <h1 id="h-hub">{esc(me["storeTitle"])}</h1>
+      <p class="dateline"><span>Morning edition</span><span>An invented 2030</span><span>aviisr games</span></p>
+    </div>
+    <p class="fiction" role="note">A political strategy game for Android. A work of fiction set in an invented 2030: no event, headline or leader in it is real.</p>
+    <div class="wrap">
+      <div class="copy">
+        <p class="hl">{esc(me["copy"]["en"]["headline"])}</p>
+        <p class="lead">Pick one of eight capitals, take the chair, and govern one month at a time through a term of six to eight months. Each month one decision is enough (a second is optional), then one tap prints the morning paper and tomorrow's front page shows what your choices did.</p>
+        <p class="lead">New players get a short guided first term that ends at their first paper, and every finished term builds a career: Rising Leader, Negotiator, Strategist, Veteran, Statesman.</p>
+        <p class="note">Google Play (IL, US) - Verified {esc(me["verifiedOn"])}</p>
+        <div class="acts">
+          <a class="btn" href="briefing/">Play the 3-month briefing</a>
+          <a class="play-badge" href="{esc(me["hubPlayLink"])}"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
+          <p class="store-note">Not on iPhone yet</p>
+        </div>
+        <p class="guide"><a class="link" href="guide/">Coalition Strategy &amp; Chair Guide</a></p>
+      </div>
+      <div class="shots">
+        <div class="screens" role="region" aria-label="Middle East 2030 screenshots" tabindex="0">{''.join(imgs)}</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><span class="k">Each month</span><h2>One decision is enough</h2><p>A second is optional. Then one tap prints the morning paper.</p></div>
+      <div><span class="k">The morning after</span><h2>Read what you did</h2><p>Tomorrow's front page shows what your choices did.</p></div>
+      <div><span class="k">Term after term</span><h2>Build a career</h2><p>Rising Leader, Negotiator, Strategist, Veteran, Statesman.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="col hubbody">
+  <ul class="hublinks"><li><a href="guide/">Scenario Timeline &amp; Chair Guide</a></li><li><a href="support/">Support &amp; Help</a></li><li><a href="privacy/">Privacy Policy</a></li></ul>
+  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p>On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.</p></div>
+
+  <section class="more" aria-labelledby="h-more">
+    <h2 id="h-more">More from aviisr games</h2>
+    <ul class="minis">
+{chr(10).join(more_items)}
+    </ul>
+  </section>
+  <section class="about" lang="en" dir="ltr" aria-labelledby="h-about">
+    <h2 id="h-about">About the game and how to play it well</h2>
+    <p>Middle East 2030 is a work of fiction. It takes place in an invented 2030, and every event, headline and leader in it is made up for the game. It is a strategy simulation meant to be read and thought about, and its tone fits an Everyone 10+ rating: the consequences are shown through newspaper headlines and numbers, not through graphic scenes.</p>
+    <p>We chose a morning newspaper as the main screen because it makes cause and effect easy to see. You act in the evening, and the next front page tells you what happened. That loop teaches the central lesson of the game: a choice that helps one group can cost you trust with another, and the bill often arrives a month later.</p>
+    <p>Each term is short, six to eight months, so you can finish one in a sitting and try a different approach straight away. The eight capitals start with different pressures, which is why the same decision can work well in one chair and badly in another.</p>
+    <p>To do well, avoid chasing a single measure. Check every gauge before you commit, notice which problem is growing fastest and deal with it early, and keep the optional second decision for the month when you can afford it. Losing a term is useful, because the paper explains why. The <a href="briefing/">3-month briefing</a> runs in your browser, and the <a href="guide/">chair guide</a> describes each starting position.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="support/">Support</a> · <a href="privacy/">Privacy Policy</a> · <a href="/">All Games</a></div>
+  </div>
+</footer>
+</main>
+<script src="/assets/play-badge.js"></script>
+<script src="/assets/count.js" defer></script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
+def render_me2030_he(reg):
+    games = reg['games']
+    by_id = {g['id']: g for g in games}
+    me = by_id['middle-east-2030']
+    siblings = [by_id['ninely'], by_id['baylight']]
+    shots = me['assets']['screenshots']
+    imgs = []
+    for idx, s in enumerate(shots):
+        attr = 'fetchpriority="high"' if idx == 0 else 'loading="lazy"'
+        imgs.append(
+            f'<img src="/{esc(s["src"])}" width="{s["width"]}" height="{s["height"]}" '
+            f'{attr} decoding="async" alt="{esc(s["alt"]["he"])}">'
+        )
+    more_items = []
+    for sib in siblings:
+        more_items.append(
+            f'      <li><a class="mini" data-world="{esc(sib["id"])}" href="/{esc(sib["hub"])}">'
+            f'<img src="/{esc(sib["assets"]["icon"])}" alt="" width="{sib["assets"]["iconWidth"]}" height="{sib["assets"]["iconHeight"]}">'
+            f'<span><b><bdi>{esc(sib["storeTitle"])}</bdi></b><span>{esc(sib["copy"]["he"]["headline"])}</span></span></a></li>'
+        )
+    return f'''<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>המזרח התיכון 2030: משחק פוליטי</title>
+<meta name="description" content="משחק אסטרטגיה וסימולציה פוליטית ל-Android. יצירת בדיון המתרחשת בשנת 2030 מומצאת. בחרו אחת משמונה בירות, החליטו חודש אחר חודש וקראו את עיתון הבוקר.">
+<link rel="canonical" href="https://aviisrgames.com/middle-east-2030/he/">
+<link rel="alternate" hreflang="en" href="https://aviisrgames.com/middle-east-2030/">
+<link rel="alternate" hreflang="he" href="https://aviisrgames.com/middle-east-2030/he/">
+<link rel="alternate" hreflang="x-default" href="https://aviisrgames.com/middle-east-2030/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="המזרח התיכון 2030: משחק פוליטי">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:url" content="https://aviisrgames.com/middle-east-2030/he/">
+<meta property="og:image" content="https://aviisrgames.com/assets/og/middle-east-2030.jpg">
+<meta property="og:description" content="הובילו את המדינה חודש אחר חודש, והכותרת של מחר מראה את ההשפעה של ההחלטות שלכם.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hub.css">
+<link rel="stylesheet" href="/assets/pilot-2.css">
+<link rel="stylesheet" href="/assets/hub-me2030.css">
+</head>
+<body class="edition page-game">
+<a class="skip-link" href="#main">דלגו לתוכן</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="ראשי"><a href="/">משחקים</a><a href="/middle-east-2030/guide/">מדריך אסטרטגיה</a><a href="/support/">תמיכה</a></nav>
+  <nav class="langbox" aria-label="שפה"><a href="/middle-east-2030/" hreflang="en" lang="en" dir="ltr">English</a></nav>
+</div>
+</header>
+<main id="main">
+<section class="mast me" data-world="middle-east-2030" aria-labelledby="h-hub">
+  <div class="col">
+    <div class="plate">
+      <h1 id="h-hub">המזרח התיכון 2030: משחק פוליטי</h1>
+      <p class="dateline"><span>מהדורת הבוקר</span><span>2030 מומצאת</span><span><bdi>aviisr games</bdi></span></p>
+    </div>
+    <p class="fiction" role="note">משחק אסטרטגיה וסימולציה פוליטית ל-<bdi>Android</bdi>. יצירת בדיון המתרחשת בשנת 2030 מומצאת. שום אירוע, כותרת או מנהיג במשחק אינם אמיתיים.</p>
+    <div class="wrap">
+      <div class="copy">
+        <p class="hl">{esc(me["copy"]["he"]["headline"])}</p>
+        <p class="lead">בחרו אחת משמונה בירות, שבו בכיסא המנהיג והובילו את המדינה חודש אחר חודש לאורך קדנציה מלאה. בכל חודש מספיקה החלטה אחת (השנייה רשות), ואז הקשה אחת מדפיסה את עיתון הבוקר, והכותרת של מחר מראה את ההשפעה של ההחלטות שלכם.</p>
+        <p class="lead">שחקנים חדשים מקבלים קדנציה ראשונה מודרכת וקצרה שמסתיימת בעיתון הראשון, וכל קדנציה שמסתיימת בונה קריירה: כוכב עולה, מגשר, אסטרטג, ותיק, מדינאי.</p>
+        <p class="note">Google Play (IL, US) - אומת {esc(me["verifiedOn"])}</p>
+        <div class="acts">
+          <a class="btn" href="/middle-east-2030/briefing/">שחקו בתדרוך המשברים</a>
+          <a class="play-badge" href="{esc(me["hubPlayLink"])}"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-iw.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
+          <p class="store-note">עדיין לא ב-<bdi>iPhone</bdi></p>
+        </div>
+        <p class="guide"><a class="link" href="/middle-east-2030/guide/">מדריך אסטרטגיה וכיסאות (<bdi>EN</bdi>)</a></p>
+      </div>
+      <div class="shots">
+        <div class="screens" role="region" aria-label="צילומי מסך מהמשחק" tabindex="0">{''.join(imgs)}</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><span class="k">בכל חודש</span><h2>החלטה אחת מספיקה</h2><p>השנייה רשות. ואז הקשה אחת מדפיסה את עיתון הבוקר.</p></div>
+      <div><span class="k">בבוקר שאחרי</span><h2>קראו מה עשיתם</h2><p>הכותרת של מחר מראה את ההשפעה של ההחלטות שלכם.</p></div>
+      <div><span class="k">קדנציה אחר קדנציה</span><h2>בנו קריירה</h2><p>כוכב עולה, מגשר, אסטרטג, ותיק, מדינאי.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="col hubbody">
+  <ul class="hublinks"><li><a href="/middle-east-2030/guide/">מדריך אסטרטגיה</a></li><li><a href="/middle-east-2030/support/#he">תמיכה ושירות</a></li><li><a href="/middle-east-2030/privacy/">מדיניות פרטיות</a></li></ul>
+  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="קוד QR שפותח את דף המשחק בטלפון" width="112" height="112"><p>במחשב? כוונו את מצלמת הטלפון לקוד כדי לפתוח את הדף הזה בטלפון, ואז הקישו על כפתור <bdi>Google Play</bdi>.</p></div>
+
+  <section class="more" aria-labelledby="h-more">
+    <h2 id="h-more">עוד מ-<bdi>aviisr games</bdi></h2>
+    <ul class="minis">
+{chr(10).join(more_items)}
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© <bdi>aviisr games</bdi> · <a href="/middle-east-2030/support/#he">תמיכה</a> · <a href="/middle-east-2030/privacy/">מדיניות פרטיות</a> · <a href="/">כל המשחקים</a></div>
+  </div>
+</footer>
+</main>
+<script src="/assets/play-badge.js"></script>
+<script src="/assets/count.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+
 TARGETS = [
     ('index.html', render_home),
     ('ninely/index.html', render_ninely),
     ('mila/index.html', render_mila),
+    ('baylight/index.html', render_baylight),
+    ('paper-route/index.html', render_paper_route),
+    ('middle-east-2030/index.html', render_me2030_en),
+    ('middle-east-2030/he/index.html', render_me2030_he),
 ]
 
 

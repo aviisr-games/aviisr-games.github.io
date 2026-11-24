@@ -126,6 +126,7 @@
       "support": "middle-east-2030/support/",
       "privacy": "middle-east-2030/privacy/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=home&utm_campaign=middle-east-2030-home",
+      "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=hub&utm_campaign=middle-east-2030-hub",
       "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
@@ -148,6 +149,28 @@
               "en": "2030. Can you hold the region for one term?",
               "he": "2030. תצליחו להחזיק את האזור קדנציה אחת?",
               "ar": "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟"
+            }
+          },
+          {
+            "src": "assets/screens/middle-east-2030-2.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 2 (com.aviisrgames.middleeast2030)",
+            "alt": {
+              "en": "Every month opens with its biggest problem",
+              "he": "כל חודש נפתח בבעיה הגדולה ביותר שלו",
+              "ar": "كل شهر يبدأ بأبرز تحدٍّ فيه"
+            }
+          },
+          {
+            "src": "assets/screens/middle-east-2030-3.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 3 (com.aviisrgames.middleeast2030)",
+            "alt": {
+              "en": "Two decisions a month. See what each one moves.",
+              "he": "שתי החלטות בחודש. רואים מה כל אחת מזיזה.",
+              "ar": "قراران كل شهر. شاهد أثر كل قرار."
             }
           }
         ]
@@ -285,6 +308,7 @@
       "support": "paper-route/#h-help",
       "privacy": "paper-route/privacy/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=home&utm_campaign=paper-route-home",
+      "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=hub&utm_campaign=paper-route-hub",
       "googlePlay": { "package": "com.aviisr.paperroute", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
@@ -307,6 +331,28 @@
               "en": "Deliver the morning paper: steer with one thumb, throw with the other",
               "he": "חלקו את עיתון הבוקר: נווטו באגודל אחת וזרקו בשנייה",
               "ar": "وزّع صحيفة الصباح: قُد بإبهام وارمِ بالآخر"
+            }
+          },
+          {
+            "src": "assets/screens/paper-route-2.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 2 (com.aviisr.paperroute)",
+            "alt": {
+              "en": "Dodge dogs, cars and drones, with something new every day of the week",
+              "he": "התחמקו מכלבים, מכוניות ורחפנים, עם אתגר חדש בכל יום בשבוע",
+              "ar": "تفادَ الكلاب والسيارات والطائرات المسيرة مع تحدٍّ جديد كل يوم"
+            }
+          },
+          {
+            "src": "assets/screens/paper-route-3.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 3 (com.aviisr.paperroute)",
+            "alt": {
+              "en": "Ride four living cities: London, Tokyo, New York and San Francisco",
+              "he": "רכבו בארבע ערים חיות: לונדון, טוקיו, ניו יורק וסן פרנסיסקו",
+              "ar": "قُد في أربع مدن نابضة بالحياة: لندن وطوكيو ونيويورك وسان فرانسيسكو"
             }
           }
         ]

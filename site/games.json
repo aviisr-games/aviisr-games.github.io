@@ -1,5 +1,6 @@
 {
   "note": "Single source for the five products, in home page band order. tools/test_site_data.py checks index.html against this file. Edit here first, then the page.",
+  "verifiedOn": "2026-11-24",
   "games": [
     {
       "id": "ninely",
@@ -7,8 +8,8 @@
       "hub": "ninely/",
       "browser": "ninely/play/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=aviisrgames&utm_medium=home&utm_campaign=ninely-home",
-      "googlePlay": { "package": "com.aviisrgames.ninely", "status": "live" },
-      "appStore": { "status": "none" },
+      "googlePlay": { "package": "com.aviisrgames.ninely", "status": "live", "markets": ["IL", "US"] },
+      "appStore": { "status": "none", "markets": [] },
       "analytics": true,
       "crossPromo": true
     },
@@ -18,8 +19,8 @@
       "hub": "middle-east-2030/",
       "browser": "middle-east-2030/briefing/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=home&utm_campaign=middle-east-2030-home",
-      "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live" },
-      "appStore": { "status": "none" },
+      "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live", "markets": ["IL", "US"] },
+      "appStore": { "status": "none", "markets": [] },
       "analytics": true,
       "crossPromo": true
     },
@@ -29,8 +30,8 @@
       "hub": "baylight/",
       "browser": "baylight/dock/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=home&utm_campaign=baylight-home",
-      "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live" },
-      "appStore": { "status": "none" },
+      "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live", "markets": ["IL", "US"] },
+      "appStore": { "status": "none", "markets": [] },
       "analytics": true,
       "crossPromo": true
     },
@@ -40,8 +41,8 @@
       "hub": "paper-route/",
       "browser": null,
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=home&utm_campaign=paper-route-home",
-      "googlePlay": { "package": "com.aviisr.paperroute", "status": "live" },
-      "appStore": { "status": "none" },
+      "googlePlay": { "package": "com.aviisr.paperroute", "status": "live", "markets": ["IL", "US"] },
+      "appStore": { "status": "none", "markets": [] },
       "analytics": true,
       "crossPromo": true
     },
@@ -51,8 +52,8 @@
       "hub": "mila/",
       "browser": "mila/worksheets/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.mila&utm_source=aviisrgames&utm_medium=home&utm_campaign=mila-home",
-      "googlePlay": { "package": "com.aviisr.mila", "status": "live" },
-      "appStore": { "id": "6827490842", "url": "https://apps.apple.com/il/app/id6827490842", "status": "live" },
+      "googlePlay": { "package": "com.aviisr.mila", "status": "live", "markets": ["IL", "US"] },
+      "appStore": { "id": "6827490842", "url": "https://apps.apple.com/il/app/id6827490842", "status": "live", "markets": ["IL"] },
       "analytics": false,
       "crossPromo": false
     }

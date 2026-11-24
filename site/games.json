@@ -30,7 +30,7 @@
       "browser": "baylight/dock/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=home&utm_campaign=baylight-home",
       "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live" },
-      "appStore": { "status": "none" },
+      "appStore": { "id": "6826672657", "url": "https://apps.apple.com/app/id6826672657", "status": "live" },
       "analytics": true,
       "crossPromo": true
     },

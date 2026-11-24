@@ -55,6 +55,8 @@ a{color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding-inline:22px;border-radius:14px;background:var(--w-accent);color:var(--w-on-accent);font:800 1.05rem var(--round);text-decoration:none;box-shadow:var(--e-1);transition:transform var(--m-fast) var(--ease)}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(2px);box-shadow:none}
+.appstore-badge{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:0 16px;border-radius:10px;background:#000;color:#fff;border:1px solid #a6a6a6;font-weight:600;text-decoration:none;box-sizing:border-box}
+.appstore-badge svg{flex:none}
 .play-badge{display:block}
 .play-badge img{display:block;width:auto;height:54px}
 .link,.app-more{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-underline-offset:3px}

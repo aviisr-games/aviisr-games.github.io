@@ -68,6 +68,9 @@ class SiteDataTests(unittest.TestCase):
             if g['id'] == 'mila' and g['appStore'].get('status') == 'live':
                 self.assertEqual(g['appStore']['id'], '6827490842')
                 self.assertIn('apps.apple.com/il/app/id6827490842', HOME)
+            elif g['id'] == 'baylight' and g['appStore'].get('status') == 'live':
+                self.assertEqual(g['appStore']['id'], '6826672657')
+                self.assertIn('apps.apple.com/app/id6826672657', HOME)
             else:
                 self.assertEqual(g['appStore']['status'], 'none', g['id'])
 

@@ -18,7 +18,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
 
     def test_no_app_store_links_while_no_app_is_live(self):
         """When an app launches, add its id here and its badge to the page."""
-        live_app_store_ids = {'6827490842'}
+        live_app_store_ids = {'6827490842', '6826672657'}
         _, apple = links.collect()
         self.assertEqual(set(apple) - live_app_store_ids, set(),
                          f"App Store links to apps that are not live: {apple}")
@@ -36,7 +36,9 @@ class StoreLinksAndCounterTests(unittest.TestCase):
         want = 'https://apps.apple.com/il/app/id6827490842'
         for rel in ('index.html', 'mila/index.html', 'mila/worksheets/index.html'):
             text = (ROOT / rel).read_text(encoding='utf-8')
-            self.assertEqual(re.findall(r'https://apps\.apple\.com/[^"\s]+', text), [want], rel)
+            found = [u for u in re.findall(r'https://apps\.apple\.com/[^"\s]+', text)
+                     if 'id6826672657' not in u]  # Baylight's own App Store link is allowed on the home page
+            self.assertEqual(found, [want], rel)
             self.assertIn('(ישראל / Israel)', text, rel)
 
     def test_iphone_fallback_shown_where_app_store_links_were(self):
@@ -71,7 +73,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
         """Scans EVERY *.html in the repo, not only allowlisted folders (legacy casino ids bit us)."""
         known = {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
                  'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'}
-        allowed_apple = {'6827490842'}
+        allowed_apple = {'6827490842', '6826672657'}
         problems = []
         for path in ROOT.rglob('*.html'):
             if '.git' in path.relative_to(ROOT).parts:

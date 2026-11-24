@@ -18,8 +18,8 @@ def read(rel):
 class R2AcquisitionTests(unittest.TestCase):
 
     def test_structured_data_claims_only_live_platforms(self):
-        # No app is on the App Store yet, so no page may tell search engines it runs on iOS.
-        for rel in HUBS + ['morning-route/index.html', 'redline-2030/index.html', 'mila/index.html']:
+        # Only Baylight is on the App Store (its hub may claim iOS); no other page may claim it.
+        for rel in [h for h in HUBS if h != 'baylight/index.html'] + ['morning-route/index.html', 'redline-2030/index.html', 'mila/index.html']:
             for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', read(rel), re.S):
                 data = json.loads(block)
                 text = json.dumps({k: data.get(k) for k in ('gamePlatform', 'operatingSystem')})

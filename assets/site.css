@@ -78,7 +78,7 @@ a{color:inherit}
 footer{padding-block:20px 56px;color:var(--studio-dim);font-size:.9rem}
 footer a{display:inline-block;padding-block:6px}
 
-@media (max-width:759px){.links{display:none}.langbox{margin-inline-start:auto}.lang-switcher{max-width:none}.bar{gap:0 12px}.btn{min-height:48px;padding-inline:16px;font-size:.98rem}.play-badge img{height:48px}.phones{justify-content:flex-end;pointer-events:none}.phone{width:160px}[data-world] h2{margin:10px 0 10px}.lead{font-size:1rem}}
+@media (max-width:759px){.links{order:3;width:100%;flex-wrap:wrap;gap:2px 14px;margin-inline-start:0;padding-block:4px;border-block-start:1px solid rgba(151,160,191,.28)}.links a{font-size:.94rem}.langbox{margin-inline-start:auto;max-width:100%}.langbox .lang{min-width:0}.lang-switcher{max-width:165px}.bar{gap:4px 10px}.logo img{height:30px}.btn{min-height:48px;padding-inline:16px;font-size:.98rem}.play-badge img{height:48px}.phones{justify-content:flex-end;pointer-events:none}.phone{width:160px}[data-world] h2{margin:10px 0 10px}.lead{font-size:1rem}}
 @media (min-width:380px) and (max-width:759px){.phones{margin-top:-44px}}
 @media (min-width:760px){
 .bar{min-height:72px}

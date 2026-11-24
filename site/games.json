@@ -191,8 +191,15 @@
       "support": "baylight/#h-help",
       "privacy": "baylight/privacy.html",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=home&utm_campaign=baylight-home",
+      "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=hub&utm_campaign=baylight-hub",
       "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live", "markets": ["IL", "US"] },
-      "appStore": { "status": "none", "markets": [] },
+      "appStore": {
+        "id": "6826672657",
+        "url": "https://apps.apple.com/app/id6826672657",
+        "status": "live",
+        "markets": ["IL", "US"],
+        "territoriesCount": 173
+      },
       "analytics": true,
       "crossPromo": true,
       "paperColor": "#ffcf66",
@@ -202,17 +209,39 @@
         "icon": "assets/icons/baylight.webp",
         "iconWidth": 128,
         "iconHeight": 128,
-        "iconOrigin": "Public Google Play listing (com.aviisrgames.baylight)",
+        "iconOrigin": "Public Google Play and App Store listing (com.aviisrgames.baylight / id6826672657)",
         "screenshots": [
           {
             "src": "assets/screens/baylight-1.webp",
             "width": 480,
             "height": 960,
-            "origin": "Website gameplay capture (verify against Play creatives before hub redesign)",
+            "origin": "Website gameplay capture (baylight-1)",
             "alt": {
               "en": "Bay 4: stack three matching parcels to fill a truck",
               "he": "רציף 4: ערמו שלושה משלוחים תואמים למילוי המשאית",
               "ar": "الرصيف 4: كدّس ثلاثة طرود متطابقة لملء الشاحنة"
+            }
+          },
+          {
+            "src": "assets/screens/baylight-2.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Website gameplay capture (baylight-2)",
+            "alt": {
+              "en": "Watch the next parcels and plan where each one goes",
+              "he": "צפו במשלוחים הבאים ותכננו לאן כל אחד ילך",
+              "ar": "راقب الطرود القادمة وخطّط لمكان كل منها"
+            }
+          },
+          {
+            "src": "assets/screens/baylight-3.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Website gameplay capture (baylight-3)",
+            "alt": {
+              "en": "Tap the pallet to park a parcel until a bay frees up",
+              "he": "הקישו על המשטח כדי להחנות משלוח עד שיתפנה רציף",
+              "ar": "انقر على المنصّة لإيقاف طرد مؤقتاً حتى يتفرّغ رصيف"
             }
           }
         ]
@@ -224,7 +253,7 @@
           "headline": "Stack three. Ship the truck.",
           "lead": "Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.",
           "ctaBrowser": "Load a dock in your browser",
-          "storeStatus": "Google Play (IL, US)"
+          "storeStatus": "Google Play & App Store (IL, US)"
         },
         "he": {
           "tag": "פאזל מיון",
@@ -232,7 +261,7 @@
           "headline": "ערמו שלושה. שלחו את המשאית.",
           "lead": "הקישו על רציף, ערמו שלושה זהים ושלחו את המשאית. פאזל מיון באגודל אחת בסבבים קצרים.",
           "ctaBrowser": "לנסות רציף בדפדפן",
-          "storeStatus": "Google Play (ישראל וארה״ב)"
+          "storeStatus": "Google Play ו-App Store (ישראל וארה״ב)"
         },
         "ar": {
           "tag": "لغز فرز",
@@ -240,7 +269,7 @@
           "headline": "كدّس ثلاثة. أرسل الشاحنة.",
           "lead": "انقر على رصيف، كدّس ثلاثة متطابقة وأرسل الشاحنة. لغز فرز بإبهام واحد في جولات قصيرة.",
           "ctaBrowser": "جرّب رصيفاً في المتصفح",
-          "storeStatus": "Google Play"
+          "storeStatus": "Google Play و App Store"
         }
       }
     },

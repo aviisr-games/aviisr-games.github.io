@@ -51,10 +51,12 @@ class EndCardTests(unittest.TestCase):
             self.assertNotIn('role="dialog"', card_open_tag(read(rel)), rel)
 
     def test_no_app_store_and_iphone_note(self):
-        for rel in PAGES:
-            text = read(rel)
-            self.assertNotIn('apps.apple.com', text, rel)
-            self.assertIn('Not on iPhone yet', text, rel)
+        me = read('middle-east-2030/briefing/index.html')
+        self.assertNotIn('apps.apple.com', me)
+        self.assertIn('Not on iPhone yet', me)
+        dock = read('baylight/dock/index.html')
+        self.assertIn('https://apps.apple.com/app/id6826672657', dock)
+        self.assertNotIn('Not on iPhone yet', dock)
 
     def test_briefing_keeps_fiction_notice(self):
         text = read('middle-east-2030/briefing/index.html')

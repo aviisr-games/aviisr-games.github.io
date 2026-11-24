@@ -26,20 +26,36 @@ def load_registry():
 def platform_lines(games):
     gp_live = sum(1 for g in games if g.get('googlePlay', {}).get('status') == 'live')
     ios_apps = [g for g in games if g.get('appStore', {}).get('status') == 'live']
-    ios_names_en = ', '.join(g['shortTitle'] for g in ios_apps) or 'None'
-    ios_names_he = ', '.join(g['storeTitle'].split(' · ')[0] for g in ios_apps) or 'אין'
-    ios_names_ar = ios_names_en
+    android_only = gp_live - len(ios_apps)
+
+    def fmt_ios(g, lang):
+        mkts = g.get('appStore', {}).get('markets', [])
+        if lang == 'en':
+            name = g['shortTitle']
+            scope = 'Israel' if mkts == ['IL'] else ', '.join(mkts)
+        elif lang == 'he':
+            name = g['storeTitle'].split(' · ')[0]
+            scope = 'ישראל' if mkts == ['IL'] else 'ישראל וארה״ב'
+        else:
+            name = g['shortTitle']
+            scope = 'إسرائيل' if mkts == ['IL'] else 'متاح عالمياً'
+        return f'{name} ({scope})' if scope else name
+
+    ios_en = ' and '.join(fmt_ios(g, 'en') for g in ios_apps) if len(ios_apps) == 2 else ', '.join(fmt_ios(g, 'en') for g in ios_apps)
+    ios_he = ' ו-'.join(fmt_ios(g, 'he') for g in ios_apps) if len(ios_apps) == 2 else ', '.join(fmt_ios(g, 'he') for g in ios_apps)
+    ios_ar = ' و'.join(fmt_ios(g, 'ar') for g in ios_apps) if len(ios_apps) == 2 else '، '.join(fmt_ios(g, 'ar') for g in ios_apps)
+
     en = (
         f'{gp_live} apps on Google Play (IL, US). '
-        f'{ios_names_en} is also on the App Store in Israel; the other {gp_live - len(ios_apps)} games are Android-only for now, with browser previews below.'
+        f'{ios_en} are also on the App Store; the other {android_only} games are Android-only for now, with browser previews below.'
     )
     he = (
         f'{gp_live} אפליקציות ב-Google Play (ישראל וארה״ב). '
-        f'{ios_names_he} זמינה גם ב-App Store בישראל; {gp_live - len(ios_apps)} המשחקים האחרים זמינים כרגע ל-Android בלבד, עם גרסאות דפדפן להלן.'
+        f'{ios_he} זמינות גם ב-App Store; {android_only} המשחקים האחרים זמינים כרגע ל-Android בלבד, עם גרסאות דפדפן להלן.'
     )
     ar = (
         f'{gp_live} تطبيقات على Google Play. '
-        f'{ios_names_ar} متوفرة أيضاً على App Store في إسرائيل؛ الألعاب الأخرى لنظام Android حالياً مع نسخ متصفح أدناه.'
+        f'{ios_ar} متوفرتان أيضاً على App Store؛ والألعاب الـ{android_only} الأخرى لنظام Android حالياً مع نسخ متصفح أدناه.'
     )
     return {'en': en, 'he': he, 'ar': ar}
 
@@ -131,13 +147,22 @@ def render_home(reg):
             if g['appStore']['status'] != 'live':
                 acts.append('          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>')
         if g['appStore']['status'] == 'live':
-            acts.append(
-                f'          <a class="appstore-badge" href="{esc(g["appStore"]["url"])}" '
-                'target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" '
-                'aria-label="הורדה ב-App Store (ישראל)">'
-                + appstore_svg(18) +
-                '<bdi>App Store</bdi> <bdi class="store-note">(ישראל / Israel)</bdi></a>'
-            )
+            if is_mila:
+                acts.append(
+                    f'          <a class="appstore-badge" href="{esc(g["appStore"]["url"])}" '
+                    'target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" '
+                    'aria-label="הורדה ב-App Store (ישראל)">'
+                    + appstore_svg(18) +
+                    '<bdi>App Store</bdi> <bdi class="store-note">(ישראל / Israel)</bdi></a>'
+                )
+            else:
+                acts.append(
+                    f'          <a class="appstore-badge" href="{esc(g["appStore"]["url"])}" '
+                    'target="_blank" rel="noopener noreferrer" '
+                    f'aria-label="Download {esc(g["shortTitle"])} on the App Store">'
+                    + appstore_svg(18) +
+                    '<bdi>App Store</bdi></a>'
+                )
 
         more_label = 'מידע להורים' if is_mila else 'About, help and privacy'
         more_attr = '' if is_mila else ' data-i18n="moreAbout"'
@@ -283,7 +308,7 @@ def render_home(reg):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>aviisr games · Small mobile games, made with care</title>
-<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Mila also on iPhone in Israel.">
+<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Baylight and Mila (Israel) also on iPhone.">
 <meta name="google-site-verification" content="oh0yHwl6YiX3dvIZYH5wIyc5pM6vJMYK3q-frBAYXlY">
 <meta name="google-site-verification" content="oOOd1kEtVYr2Y1KLxcsYjZZEJLcLkjKQKhZO3RPxahU">
 <meta name="facebook-domain-verification" content="ujlw9q4t20ufpcquni2zjk27ozhi6c">

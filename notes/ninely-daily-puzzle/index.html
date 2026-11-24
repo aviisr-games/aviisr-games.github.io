@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Ninely daily puzzle is made | aviisr games</title>
+<meta name="description" content="A devlog on how the Ninely daily sudoku is generated from a date seed, checked for a unique solution, graded by technique and delivered to the browser without a server.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/notes/ninely-daily-puzzle/">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
+<nav class="lang"><a href="../../">All Games</a> · <a href="../">Notes</a> · <a href="../../ninely/strategy/">Sudoku Guides</a></nav>
+
+<h1>How the Ninely daily puzzle is made</h1>
+<p class="sub">Devlog · November 2026</p>
+
+<div class="card">
+<h2 style="margin-top:0">One puzzle per day, the same for everyone</h2>
+<p>Ninely's daily puzzle is a single sudoku that every player gets on a given calendar day. It is not picked by hand and it is not random on each visit. Each puzzle is built from a number: the date, written as year, month and day, so 22 November 2026 becomes 20261122. Feed the same number to the generator and it returns the same board every time. That is what lets the app and the browser warmup on this website show an identical puzzle for the same date.</p>
+<p>This note walks through how that board is produced and checked, why the website does not need a server to deliver it, and how the hints work.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Building a board that has one answer</h2>
+<p>The generator starts from a complete, valid grid and then removes clues, which is called digging. Two rules govern the digging.</p>
+<p>The first is symmetry. Clues are removed in pairs that sit opposite each other through the centre of the grid, so the finished pattern looks the same when turned upside down (180-degree rotational symmetry). Symmetry is only about looks, but players tend to notice a lopsided grid, and a tidy one feels designed rather than scraped together.</p>
+<p>The second rule matters much more: the puzzle must have exactly one solution. After digging, a solver counts the solutions, but it stops counting at two. We do not care whether a bad puzzle has two answers or two thousand, only that it has more than one, so the search can quit early and stay fast. If the count is anything other than one, the board is thrown away. A puzzle with two solutions would be unfair, because no amount of logic could tell you which one we meant.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Grading by what a person would need</h2>
+<p>Counting clues is a poor measure of difficulty. A board with 30 clues can be easy and a board with 36 can be vicious. So we grade each puzzle by solving it the way a person would, with a solver that only uses named techniques and never guesses. The grade is the hardest technique that solver has to use to finish the board.</p>
+<p>The engine maps techniques to five tiers. Easy means full houses and hidden singles. Medium means naked singles. Hard means naked pairs and hidden pairs. Expert covers pointing pairs and naked triples, and Master covers X-Wing and Swordfish. You can read about each in our <a href="../../ninely/strategy/">Sudoku Guides</a>.</p>
+<p>The generator only accepts a board if that solver can finish it completely and the hardest step lands in exactly the requested tier. A board that needs a harder technique, or one that needs none beyond the tier's own, is rejected and another attempt is made. The clue count must also fall inside a range for the tier: 36 to 42 clues for Easy, 32 to 35 for Medium and 28 to 31 for Hard.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">A week that gets harder</h2>
+<p>The daily puzzle follows a weekly rhythm. Monday is Easy, Tuesday and Wednesday are Medium, and Thursday to Sunday are Hard. That gives a gentle start to the week for newcomers and a fuller challenge for regulars toward the weekend.</p>
+<p>The browser pack currently runs from 22 November 2026 to 26 December 2027, 400 consecutive days with no gaps. Every entry in it was checked by an automated test: the dates are contiguous, the tier matches the weekday, the clue count is inside the tier's range, the hardest technique is one of the tier's techniques, the clues are symmetric, the stored solution is a valid grid that agrees with every clue, and the puzzle has exactly one solution.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Why the website uses a precomputed pack</h2>
+<p>The generator and grader are written in C# for the game engine, and generating and grading a board takes real computation. We could have run that on a server, but a server means hosting costs, something to keep running and, for a free warmup page, something that could break. This website is plain static pages with no accounts.</p>
+<p>So we generate the boards ahead of time and ship them as a single data file next to the page. When you open the warmup, your browser downloads that file, looks up today's date and shows that day's board. Nothing is sent back to us. The trade-off is that the pack has an end date. If today's date is not in it, the page does not quietly show something else. It shows a visible notice saying today's daily is not available yet and offers a practice puzzle instead.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">Today's date, on your clock</h2>
+<p>The page decides what "today" is from your device's local date, so the new puzzle appears at your own midnight, not at a fixed time in some other time zone. If you leave the page open overnight, it checks about every 15 seconds whether the date has changed. When it has, and tomorrow's board exists in the pack, the page swaps it in, but only if you have not touched the current board. We would rather leave an unfinished puzzle alone than wipe your work at midnight.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">How the smart hints work</h2>
+<p>Each day in the pack carries a ready-made first hint, written by the same solver that graded the puzzle. It names the technique, points at the target cell and explains the reasoning in English, Hebrew and Arabic. A hint is not just "put a 4 here". It says why, for example that a digit has nowhere else to go in a box.</p>
+<p>Once you start filling in cells, the first step can go stale, so the page also runs a small solver in the browser. When you press the hint button it first uses the stored hint if its target cell is still empty. Otherwise it looks at the board as it stands, checking for naked singles and then hidden singles in boxes, rows and columns, and explains the first one it finds. If neither exists, it falls back to the next cell that the verified solution says is wrong or empty, with a general explanation.</p>
+<p>The hint title shows a plain technique name and the cell in RxCy form, such as R3C7, and links to the matching guide. If you want a name explained, the <a href="../../ninely/strategy/glossary/">sudoku glossary</a> covers each term.</p>
+</div>
+
+<div class="card">
+<h2 style="margin-top:0">What we would like to improve</h2>
+<p>The pack is finite, so it has to be regenerated and published before it runs out. The in-browser hint solver is deliberately simpler than the engine's, and it only looks for singles. Pairs, triples and fish are only explained when the stored hint for the day happens to be one, which is a real limit we would like to close. If you find a puzzle that seems to have two answers or a hint that is wrong, write to <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>.</p>
+</div>
+
+<footer>© aviisr games · <a href="../../">All Games</a> · <a href="../../support/">Support</a> · <a href="../../privacy/">Privacy</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></footer>
+</main>
+</body>
+</html>

@@ -1059,6 +1059,11 @@ def render_mila(reg):
       document.title = MILA_TITLES[lang] || MILA_TITLES.he;
       var row = document.querySelector('.screenshots-row');
       if (row) row.setAttribute('aria-label', lang === 'en' ? 'App screenshots' : 'צילומי מסך מהאפליקציה');
+      var badge = document.querySelector('img[data-play-badge]');
+      if (badge) {{
+        badge.setAttribute('src', lang === 'en' ? '/assets/badges/google-play-en.png' : '/assets/badges/google-play-iw.png');
+        badge.alt = lang === 'en' ? 'Get it on Google Play: Mila' : 'השיגו ב-Google Play: מילה';
+      }}
     }},
     translations: {json.dumps(translations, ensure_ascii=False, indent=6)}
   }});

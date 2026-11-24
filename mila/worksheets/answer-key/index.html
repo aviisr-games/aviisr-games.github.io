@@ -546,7 +546,7 @@ function showKeyGrade(target, updateUrl) {
   }
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+function syncKeyFromQuery() {
   var params = new URLSearchParams(window.location.search);
   var g = params.get('grade');
   if (['2', '3', '4', '5'].indexOf(g) !== -1) {
@@ -554,7 +554,9 @@ window.addEventListener('DOMContentLoaded', function() {
   } else {
     showKeyGrade('all', false);
   }
-});
+}
+syncKeyFromQuery();
+window.addEventListener('DOMContentLoaded', syncKeyFromQuery);
 </script>
 </body>
 </html>

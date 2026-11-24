@@ -85,7 +85,7 @@ class SiteCssTests(unittest.TestCase):
     def test_home_has_exactly_one_h1_and_a_sane_outline(self):
         self.assertEqual(len(re.findall(r'<h1[\s>]', HOME)), 1)
         self.assertEqual(len(re.findall(r'<section id="[\w-]+" data-world=', HOME)), 5)
-        self.assertEqual(len(re.findall(r'<h2[\s>]', HOME)), 6)  # five bands + studio
+        self.assertEqual(len(re.findall(r'<h2[\s>]', HOME)), 3)  # play-now + collection + studio
         for m in re.finditer(r'<img[^>]*>', HOME):
             self.assertIn('width=', m.group(0))
             self.assertIn('height=', m.group(0))

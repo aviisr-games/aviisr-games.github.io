@@ -1314,13 +1314,15 @@ function setGrade(grade, updateUrl) {
   }
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+function syncGradeFromQuery() {
   var params = new URLSearchParams(window.location.search);
   var gParam = parseInt(params.get('grade'), 10);
   if ([2, 3, 4, 5].indexOf(gParam) !== -1) {
     setGrade(gParam, false);
   }
-});
+}
+syncGradeFromQuery();
+window.addEventListener('DOMContentLoaded', syncGradeFromQuery);
 </script>
 </body>
 </html>

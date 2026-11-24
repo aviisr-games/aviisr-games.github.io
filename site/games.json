@@ -1,61 +1,440 @@
 {
-  "note": "Single source for the five products, in home page band order. tools/test_site_data.py checks index.html against this file. Edit here first, then the page.",
+  "note": "Single source for the five portfolio products, in home page order. tools/build_site.py generates static HTML from this file and tools/test_site_data.py verifies parity.",
   "verifiedOn": "2026-11-24",
+  "serviceOnly": [
+    {
+      "id": "beamwise",
+      "package": "com.aviisrgames.beamwise",
+      "storeTitle": "Beamwise: Light Puzzle",
+      "publicVisibility": "service_only",
+      "promote": false,
+      "analytics": false,
+      "crossPromo": false,
+      "support": "beamwise/",
+      "privacy": "beamwise/privacy.html",
+      "verifiedOn": "2026-11-24",
+      "note": "No public store result in IL or US; keep service URLs alive and unpromoted."
+    }
+  ],
   "games": [
     {
       "id": "ninely",
       "storeTitle": "Ninely: Sudoku & Logic Puzzle",
+      "shortTitle": "Ninely",
+      "publicVisibility": "portfolio",
+      "promote": true,
+      "verifiedOn": "2026-11-24",
       "hub": "ninely/",
       "browser": "ninely/play/",
+      "support": "ninely/#h-help",
+      "privacy": "ninely/privacy.html",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=aviisrgames&utm_medium=home&utm_campaign=ninely-home",
+      "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&utm_source=aviisrgames&utm_medium=hub&utm_campaign=ninely-hub",
       "googlePlay": { "package": "com.aviisrgames.ninely", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
-      "crossPromo": true
+      "crossPromo": true,
+      "paperColor": "#adc2ff",
+      "posterLetter": "9",
+      "languages": ["en", "he", "ar"],
+      "assets": {
+        "icon": "assets/icons/ninely.webp",
+        "iconWidth": 128,
+        "iconHeight": 128,
+        "iconOrigin": "Public Google Play listing (com.aviisrgames.ninely)",
+        "screenshots": [
+          {
+            "src": "assets/screens/ninely-1.webp",
+            "width": 480,
+            "height": 853,
+            "origin": "Google Play frame 1 (com.aviisrgames.ninely)",
+            "alt": {
+              "en": "Hint: Smart Hints explain each move",
+              "he": "רמז חכם שמסביר כל צעד",
+              "ar": "تلميح ذكي يشرح كل خطوة"
+            }
+          },
+          {
+            "src": "assets/screens/ninely-2.webp",
+            "width": 480,
+            "height": 853,
+            "origin": "Google Play frame 2 (com.aviisrgames.ninely)",
+            "alt": {
+              "en": "Practice each technique in short drills",
+              "he": "תרגול כל טכניקה בתרגילים קצרים",
+              "ar": "تدرّب على كل تقنية في تمارين قصيرة"
+            }
+          },
+          {
+            "src": "assets/screens/ninely-3.webp",
+            "width": 480,
+            "height": 853,
+            "origin": "Google Play frame 3 (com.aviisrgames.ninely)",
+            "alt": {
+              "en": "Track your mastery as you climb",
+              "he": "מעקב אחר השליטה שלך בטכניקות",
+              "ar": "تابع إتقانك للتقنيات"
+            }
+          }
+        ]
+      },
+      "copy": {
+        "en": {
+          "tag": "Logic puzzle",
+          "shortCategory": "Sudoku",
+          "headline": "Sudoku that explains every move.",
+          "lead": "Smart Hints teach the logic step by step, with a new daily puzzle every day.",
+          "hubLead": "Number puzzles with Smart Hints that explain every step.",
+          "ctaBrowser": "Play today's puzzle",
+          "ctaHub": "Discover Ninely",
+          "storeStatus": "Google Play (IL, US) · Not on iPhone yet",
+          "caption": "From the app · Smart Hints"
+        },
+        "he": {
+          "tag": "פאזל היגיון",
+          "shortCategory": "סודוקו",
+          "headline": "סודוקו שמסביר כל צעד.",
+          "lead": "רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.",
+          "hubLead": "פאזלי מספרים עם רמזים חכמים שמסבירים כל צעד.",
+          "ctaBrowser": "לשחק בפאזל של היום",
+          "ctaHub": "להכיר את Ninely",
+          "storeStatus": "Google Play (ישראל וארה״ב) · עדיין לא ב-iPhone",
+          "caption": "מתוך האפליקציה · רמזים חכמים"
+        },
+        "ar": {
+          "tag": "لغز منطقي",
+          "shortCategory": "سودوكو",
+          "headline": "سودوكو يشرح كل خطوة.",
+          "lead": "تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.",
+          "hubLead": "ألغاز أرقام مع تلميحات ذكية تشرح كل خطوة.",
+          "ctaBrowser": "العب لغز اليوم",
+          "ctaHub": "تعرّف على Ninely",
+          "storeStatus": "Google Play · ليست على iPhone بعد",
+          "caption": "من التطبيق · تلميحات ذكية"
+        }
+      }
     },
     {
       "id": "middle-east-2030",
       "storeTitle": "Middle East 2030: Politics Sim",
+      "shortTitle": "Middle East 2030",
+      "publicVisibility": "portfolio",
+      "promote": true,
+      "verifiedOn": "2026-11-24",
       "hub": "middle-east-2030/",
       "browser": "middle-east-2030/briefing/",
+      "support": "middle-east-2030/support/",
+      "privacy": "middle-east-2030/privacy/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=home&utm_campaign=middle-east-2030-home",
       "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
-      "crossPromo": true
+      "crossPromo": true,
+      "paperColor": "#e1d2b7",
+      "posterLetter": "30",
+      "languages": ["en", "he"],
+      "assets": {
+        "icon": "assets/icons/middle-east-2030.webp",
+        "iconWidth": 128,
+        "iconHeight": 128,
+        "iconOrigin": "Public Google Play listing (com.aviisrgames.middleeast2030)",
+        "screenshots": [
+          {
+            "src": "assets/screens/middle-east-2030-1.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 1 (com.aviisrgames.middleeast2030)",
+            "alt": {
+              "en": "2030. Can you hold the region for one term?",
+              "he": "2030. תצליחו להחזיק את האזור קדנציה אחת?",
+              "ar": "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟"
+            }
+          }
+        ]
+      },
+      "copy": {
+        "en": {
+          "tag": "Politics sim",
+          "shortCategory": "Fictional strategy",
+          "headline": "2030. Can you hold the region for one term?",
+          "lead": "A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.",
+          "ctaBrowser": "Try the 3-month briefing",
+          "storeStatus": "Google Play (IL, US) · Fiction"
+        },
+        "he": {
+          "tag": "סימולציה פוליטית",
+          "shortCategory": "אסטרטגיה בדיונית",
+          "headline": "2030. תצליחו להחזיק את האזור קדנציה אחת?",
+          "lead": "סימולציית אסטרטגיה פוליטית בשנת 2030 בדיונית. בחרו אחת מ-8 בירות וקראו את העיתון של מחר. כל האירועים בדיוניים.",
+          "ctaBrowser": "לנסות את התדריך בן 3 החודשים",
+          "storeStatus": "Google Play (ישראל וארה״ב) · בדיוני"
+        },
+        "ar": {
+          "tag": "محاكاة سياسية",
+          "shortCategory": "استراتيجية خيالية",
+          "headline": "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟",
+          "lead": "لعبة استراتيجية سياسية في عام 2030 متخيَّل. اختر إحدى 8 عواصم واقرأ صحيفة الغد. كل الأحداث خيالية.",
+          "ctaBrowser": "جرّب إحاطة الأشهر الثلاثة",
+          "storeStatus": "Google Play · خيالي"
+        }
+      }
     },
     {
       "id": "baylight",
       "storeTitle": "Baylight: Truck Sort Puzzle",
+      "shortTitle": "Baylight",
+      "publicVisibility": "portfolio",
+      "promote": true,
+      "verifiedOn": "2026-11-24",
       "hub": "baylight/",
       "browser": "baylight/dock/",
+      "support": "baylight/#h-help",
+      "privacy": "baylight/privacy.html",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&utm_source=aviisrgames&utm_medium=home&utm_campaign=baylight-home",
       "googlePlay": { "package": "com.aviisrgames.baylight", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
-      "crossPromo": true
+      "crossPromo": true,
+      "paperColor": "#ffcf66",
+      "posterLetter": "B",
+      "languages": ["en"],
+      "assets": {
+        "icon": "assets/icons/baylight.webp",
+        "iconWidth": 128,
+        "iconHeight": 128,
+        "iconOrigin": "Public Google Play listing (com.aviisrgames.baylight)",
+        "screenshots": [
+          {
+            "src": "assets/screens/baylight-1.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Website gameplay capture (verify against Play creatives before hub redesign)",
+            "alt": {
+              "en": "Bay 4: stack three matching parcels to fill a truck",
+              "he": "רציף 4: ערמו שלושה משלוחים תואמים למילוי המשאית",
+              "ar": "الرصيف 4: كدّس ثلاثة طرود متطابقة لملء الشاحنة"
+            }
+          }
+        ]
+      },
+      "copy": {
+        "en": {
+          "tag": "Sorting puzzle",
+          "shortCategory": "Sorting puzzle",
+          "headline": "Stack three. Ship the truck.",
+          "lead": "Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.",
+          "ctaBrowser": "Load a dock in your browser",
+          "storeStatus": "Google Play (IL, US)"
+        },
+        "he": {
+          "tag": "פאזל מיון",
+          "shortCategory": "משחק מיון",
+          "headline": "ערמו שלושה. שלחו את המשאית.",
+          "lead": "הקישו על רציף, ערמו שלושה זהים ושלחו את המשאית. פאזל מיון באגודל אחת בסבבים קצרים.",
+          "ctaBrowser": "לנסות רציף בדפדפן",
+          "storeStatus": "Google Play (ישראל וארה״ב)"
+        },
+        "ar": {
+          "tag": "لغز فرز",
+          "shortCategory": "لغز فرز",
+          "headline": "كدّس ثلاثة. أرسل الشاحنة.",
+          "lead": "انقر على رصيف، كدّس ثلاثة متطابقة وأرسل الشاحنة. لغز فرز بإبهام واحد في جولات قصيرة.",
+          "ctaBrowser": "جرّب رصيفاً في المتصفح",
+          "storeStatus": "Google Play"
+        }
+      }
     },
     {
       "id": "paper-route",
       "storeTitle": "Morning Paper Route: Bike Game",
+      "shortTitle": "Morning Paper Route",
+      "publicVisibility": "portfolio",
+      "promote": true,
+      "verifiedOn": "2026-11-24",
       "hub": "paper-route/",
       "browser": null,
+      "support": "paper-route/#h-help",
+      "privacy": "paper-route/privacy/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.paperroute&utm_source=aviisrgames&utm_medium=home&utm_campaign=paper-route-home",
       "googlePlay": { "package": "com.aviisr.paperroute", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "status": "none", "markets": [] },
       "analytics": true,
-      "crossPromo": true
+      "crossPromo": true,
+      "paperColor": "#ffc383",
+      "posterLetter": "P",
+      "languages": ["en", "he", "ar"],
+      "assets": {
+        "icon": "assets/icons/paper-route.webp",
+        "iconWidth": 128,
+        "iconHeight": 128,
+        "iconOrigin": "Public Google Play listing (com.aviisr.paperroute)",
+        "screenshots": [
+          {
+            "src": "assets/screens/paper-route-1.webp",
+            "width": 480,
+            "height": 960,
+            "origin": "Google Play frame 1 (com.aviisr.paperroute)",
+            "alt": {
+              "en": "Deliver the morning paper: steer with one thumb, throw with the other",
+              "he": "חלקו את עיתון הבוקר: נווטו באגודל אחת וזרקו בשנייה",
+              "ar": "وزّع صحيفة الصباح: قُد بإبهام وارمِ بالآخر"
+            }
+          }
+        ]
+      },
+      "copy": {
+        "en": {
+          "tag": "Bike arcade",
+          "shortCategory": "Bike arcade",
+          "headline": "Deliver before sunrise.",
+          "lead": "Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.",
+          "ctaBrowser": null,
+          "storeStatus": "Google Play (IL, US)"
+        },
+        "he": {
+          "tag": "ארקייד אופניים",
+          "shortCategory": "ארקייד אופניים",
+          "headline": "חלקו את העיתונים לפני הזריחה.",
+          "lead": "רכבו במסלול הבוקר, זרקו את העיתון ומסרו לפני הזריחה. משחק ארקייד באגודל אחת, בלי פרסומות כפויות באמצע רכיבה.",
+          "ctaBrowser": null,
+          "storeStatus": "Google Play (ישראל וארה״ב)"
+        },
+        "ar": {
+          "tag": "أركيد دراجات",
+          "shortCategory": "أركيد دراجات",
+          "headline": "وزّع الصحف قبل شروق الشمس.",
+          "lead": "انطلق في جولتك الصباحية، ارمِ الصحيفة وسلّمها قبل شروق الشمس. لعبة أركيد بالدراجة بإبهام واحد، بلا إعلانات إجبارية أثناء الجولة.",
+          "ctaBrowser": null,
+          "storeStatus": "Google Play"
+        }
+      }
     },
     {
       "id": "mila",
       "storeTitle": "מילה · Mila",
+      "shortTitle": "Mila",
+      "publicVisibility": "portfolio",
+      "promote": true,
+      "verifiedOn": "2026-11-24",
       "hub": "mila/",
       "browser": "mila/worksheets/",
+      "support": "mila/support/",
+      "privacy": "mila/privacy/",
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisr.mila&utm_source=aviisrgames&utm_medium=home&utm_campaign=mila-home",
+      "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisr.mila",
       "googlePlay": { "package": "com.aviisr.mila", "status": "live", "markets": ["IL", "US"] },
       "appStore": { "id": "6827490842", "url": "https://apps.apple.com/il/app/id6827490842", "status": "live", "markets": ["IL"] },
       "analytics": false,
-      "crossPromo": false
+      "crossPromo": false,
+      "paperColor": "#d3b8fa",
+      "posterLetter": "Aa",
+      "languages": ["he", "en"],
+      "assets": {
+        "icon": "mila/assets/icon-apple-il.jpg",
+        "iconWidth": 512,
+        "iconHeight": 512,
+        "iconOrigin": "Apple App Store Israel (id6827490842) — owner-approved reading-children artwork",
+        "iconGapNote": {
+          "he": "האיור המוצג הוא האיור שאושר בחנות Apple בישראל (id6827490842). ב-Google Play מופיע כיום איור סגול עם כתר — הפער פתוח ליישור מול חנות Google Play.",
+          "en": "Icon source: approved artwork published on Apple App Store Israel (id6827490842). Google Play (com.aviisr.mila) currently shows a purple crowned character; store creative alignment is tracked on the release checklist."
+        },
+        "screenshots": [
+          {
+            "src": "mila/assets/screen-story.webp",
+            "width": 600,
+            "height": 1305,
+            "origin": "Apple App Store Israel frame 7 (matches mila/assets/screen-story.webp)",
+            "alt": {
+              "en": "Short story with read-aloud and Hebrew translation",
+              "he": "סיפור קצר עם הקראה ותרגום לעברית"
+            }
+          },
+          {
+            "src": "mila/assets/screen-home.webp",
+            "width": 600,
+            "height": 1305,
+            "origin": "Apple App Store Israel frame 1 (matches mila/assets/screen-home.webp)",
+            "alt": {
+              "en": "Mila home screen with stars and practice path",
+              "he": "מסך הבית של מילה עם כוכבים ומסלול אימון"
+            }
+          },
+          {
+            "src": "mila/assets/screen-words.webp",
+            "width": 600,
+            "height": 1305,
+            "origin": "Apple App Store Israel frame 9 (matches mila/assets/screen-words.webp)",
+            "alt": {
+              "en": "Vocabulary cards with clear pronunciation",
+              "he": "כרטיסיות מילים עם הקראה איטית"
+            }
+          }
+        ]
+      },
+      "copy": {
+        "en": {
+          "tag": "English for kids",
+          "shortCategory": "English for Hebrew speakers",
+          "headline": "A little English, at home.",
+          "lead": "English practice for Hebrew-speaking children in grades 1–6, through words, sounds and short stories. No ads or accounts.",
+          "ctaBrowser": "Printable worksheets (HE/EN)",
+          "storeStatus": "Google Play (IL, US) · App Store (Israel)"
+        },
+        "he": {
+          "tag": "אנגלית לילדים",
+          "shortCategory": "אנגלית לדוברי עברית",
+          "headline": "מתרגלים אנגלית בבית.",
+          "lead": "ילדים דוברי עברית בכיתות א׳–ו׳ מתרגלים אנגלית בעזרת מילים, צלילים וסיפורים קצרים. בלי פרסומות ובלי חשבון.",
+          "ctaBrowser": "דפי עבודה להדפסה, בחינם",
+          "storeStatus": "Google Play (ישראל וארה״ב) · App Store (ישראל)"
+        }
+      },
+      "worksheets": [
+        {
+          "grade": 2,
+          "href": "worksheets/?grade=2",
+          "answerKeyHref": "worksheets/answer-key/?grade=2",
+          "heTitle": "כיתות א׳–ב׳ · אותיות ומילים ראשונות",
+          "heDesc": "12 כרטיסיות גזירה, מילים מוחשיות עם תמונה ותרגום לעברית ותרגיל אות ראשונה.",
+          "heBtn": "🖨️ פתיחת דף עבודה (כיתות א׳–ב׳)",
+          "enTitle": "Grades 1–2 · Early Words & First Letters",
+          "enDesc": "12 cut-out picture flashcards and first-letter practice (worksheet in Hebrew & English).",
+          "enBtn": "🖨️ Print Practice Sheet (Grades 1–2)"
+        },
+        {
+          "grade": 3,
+          "href": "worksheets/?grade=3",
+          "answerKeyHref": "worksheets/answer-key/?grade=3",
+          "heTitle": "כיתה ג׳ · אוצר מילים Pre-Band I",
+          "heDesc": "12 כרטיסיות גזירה, תרגיל התאמה והשלמת משפטים לפי רשימת Pre-Band I.",
+          "heBtn": "🖨️ פתיחת דף עבודה (כיתה ג׳)",
+          "enTitle": "Grade 3 · Pre-Band I Vocabulary",
+          "enDesc": "12 cut-out cards, matching and sentence completion (worksheet in Hebrew & English).",
+          "enBtn": "🖨️ Print Practice Sheet (Grade 3)"
+        },
+        {
+          "grade": 4,
+          "href": "worksheets/?grade=4",
+          "answerKeyHref": "worksheets/answer-key/?grade=4",
+          "heTitle": "כיתה ד׳ · אוצר מילים Band I Core I",
+          "heDesc": "12 כרטיסיות גזירה, תרגיל התאמה והשלמת משפטים לפי רשימת Band I Core I.",
+          "heBtn": "🖨️ פתיחת דף עבודה (כיתה ד׳)",
+          "enTitle": "Grade 4 · Band I Core I Vocabulary",
+          "enDesc": "12 cut-out cards, matching and sentence completion (worksheet in Hebrew & English).",
+          "enBtn": "🖨️ Print Practice Sheet (Grade 4)"
+        },
+        {
+          "grade": 5,
+          "href": "worksheets/?grade=5",
+          "answerKeyHref": "worksheets/answer-key/?grade=5",
+          "heTitle": "כיתה ה׳ · אוצר מילים Band I Core II",
+          "heDesc": "12 כרטיסיות גזירה, תרגיל התאמה והשלמת משפטים לפי רשימת Band I Core II.",
+          "heBtn": "🖨️ פתיחת דף עבודה (כיתה ה׳)",
+          "enTitle": "Grade 5 · Band I Core II Vocabulary",
+          "enDesc": "12 cut-out cards, matching and sentence completion (worksheet in Hebrew & English).",
+          "enBtn": "🖨️ Print Practice Sheet (Grade 5)"
+        }
+      ]
     }
   ]
 }

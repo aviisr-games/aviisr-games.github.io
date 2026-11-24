@@ -1,0 +1,151 @@
+/* aviisr games 2.0 pilot: Edition Studio Magazine (A) + Play Now (C). Logical properties only. */
+body.edition{
+  --ink:#101426;--cream:#faf7ef;--paper-2:#f2ede1;--line:#bcbab5;--blue:#2c4696;--muted:#464c61;
+  --focus:#0b4ec2;--play-bg:#163e35;--play-ink:#f7fae9;--play-mint:#b5eccd;--play-cta:#c8f37d;--play-cta-ink:#142f20;
+  --body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Arial Hebrew",Arial,sans-serif;
+  --serif:"Iowan Old Style",Baskerville,Georgia,"Times New Roman",serif;
+  margin:0;background:var(--cream);color:var(--ink);font:400 1rem/1.55 var(--body);
+}
+body.edition :focus-visible{outline:3px solid var(--focus);outline-offset:3px;box-shadow:0 0 0 5px #fff}
+body.edition .skip-link{background:#101426;color:#fff4e4}
+
+/* Header on cream paper */
+body.edition header{background:var(--cream);border-block-end:1px solid var(--line)}
+body.edition .bar{max-width:1280px;width:min(92%,1280px);margin-inline:auto;padding-inline:0;min-height:74px;gap:8px 24px}
+body.edition .logo img{height:38px;width:auto}
+body.edition .links{gap:22px}
+body.edition .links a{color:var(--ink);font-weight:650;font-size:.96rem}
+body.edition .langbox{color:var(--muted);padding-inline-start:16px;border-inline-start:1px solid var(--line)}
+body.edition .lang-switcher{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+/* Editorial lead (Ninely featured hero on Home / spread on product hub) */
+body.edition .col{max-width:1280px;width:min(92%,1280px);padding-inline:0}
+body.edition .editionlead,body.edition .spread{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5%;align-items:center;padding-block:clamp(28px,4.2vw,58px);border-block-end:1px solid var(--ink)}
+body.edition .kicker{margin:0 0 14px;font-weight:750;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+body.edition h1{margin:0;font:600 clamp(2.8rem,6.1vw,5.4rem)/1.02 var(--serif);letter-spacing:-.045em;color:var(--ink)}
+body.edition h1 em{font-style:normal;color:var(--blue);font-weight:500}
+body.edition[dir=rtl] h1,body.edition :lang(he) h1,body.edition :lang(ar) h1{font-family:var(--body);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+body.edition .lead{margin:18px 0 0;font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.5;max-width:40ch;color:var(--ink)}
+body.edition .note{color:var(--muted);font-size:.92rem;margin:14px 0 0;max-width:48ch}
+body.edition .actions,body.edition .acts{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center;margin-top:22px}
+body.edition .btn,body.edition .action{
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.35rem;
+  border-radius:6px;background:var(--ink);border:1.5px solid var(--ink);color:#fff;font:700 .98rem/1.25 var(--body);
+  text-decoration:none;box-shadow:none;transition:transform 140ms ease;
+}
+body.edition .btn:hover,body.edition .action:hover{background:#233154;border-color:#233154;transform:translateY(-1px)}
+body.edition .action-secondary{background:transparent;color:var(--ink)}
+body.edition .action-secondary:hover{background:#fff;color:var(--ink)}
+
+/* Edition poster with real capture */
+body.edition .featureposter{margin:0}
+body.edition .poster{
+  position:relative;isolation:isolate;display:grid;place-items:center;height:clamp(290px,31vw,430px);
+  overflow:hidden;background:var(--paper,#adc2ff);border-radius:10px;border:1px solid rgba(16,20,38,.12);
+}
+body.edition .poster-letter{
+  position:absolute;inset-inline-start:-.04em;top:-.32em;font:italic 700 clamp(320px,38vw,560px)/1.1 var(--serif);
+  color:rgba(16,38,96,.18);z-index:-1;user-select:none;
+}
+body.edition .poster-ring{
+  position:absolute;inset-inline-start:46%;top:6%;height:118%;aspect-ratio:1;
+  border:1px solid rgba(255,255,255,.58);border-radius:50%;z-index:-1;
+}
+body.edition .poster .capture{
+  height:82%;width:auto;max-width:65%;object-fit:contain;transform:rotate(5deg);border-radius:14px;
+  box-shadow:8px 12px 0 rgba(16,20,38,.28);border:2px solid #0b0d12;background:#0b0d12;transition:transform 160ms ease-out;
+}
+body.edition .poster .capture:hover{transform:rotate(2deg)}
+body.edition .featureposter figcaption{display:flex;justify-content:space-between;gap:10px;margin-top:9px;font-size:.86rem;color:var(--muted)}
+body.edition .featureposter figcaption span:first-child{font-weight:750;color:var(--ink)}
+
+/* Direction C: Play Now section */
+body.edition .playhero{padding-block:clamp(28px,4vw,48px);border-block-end:1px solid var(--line)}
+body.edition .playhero>h2{margin:0 0 18px;font:780 clamp(1.7rem,3.2vw,2.6rem)/1.08 var(--body);letter-spacing:-.03em}
+body.edition .playlayout{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(260px,1fr);gap:18px}
+body.edition .playfocus{
+  display:flex;align-items:center;gap:6%;position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(22px,3vw,40px);background:var(--play-bg);color:var(--play-ink);border-radius:10px;min-height:260px;
+}
+body.edition .playfocus .kicker{color:var(--play-mint);margin-bottom:8px}
+body.edition .playfocus h3{margin:0;font:800 clamp(1.8rem,3vw,2.7rem)/1.05 var(--body);color:#fff}
+body.edition .playfocus p:not(.kicker){max-width:34ch;margin:10px 0 18px;color:#e5f2e9}
+body.edition .playfocus .action{background:var(--play-cta);color:var(--play-cta-ink);border-color:var(--play-cta)}
+body.edition .playfocus .action:hover{background:#d9fa9c;border-color:#d9fa9c}
+body.edition .playscreen{width:26%;height:auto;max-height:220px;object-fit:contain;border-radius:10px;transform:rotate(4deg);box-shadow:6px 8px 0 rgba(0,0,0,.35)}
+body.edition .playlist{border:1px solid var(--line);border-radius:10px;padding:18px 20px;background:#fbfcf8}
+body.edition .playlist h3{margin:0 0 10px;font:780 1.25rem/1.2 var(--body);color:var(--ink)}
+body.edition .decklink{display:flex;gap:12px;align-items:center;border-block-start:1px solid var(--line);padding-block:12px;text-decoration:none;color:var(--ink);min-height:64px}
+body.edition .decklink img{width:42px;height:42px;border-radius:8px;flex:none}
+body.edition .decklink strong{display:block;font-size:1rem;line-height:1.2}
+body.edition .decklink small{display:block;font-size:.87rem;color:var(--muted);margin-top:3px}
+body.edition .decklink:hover strong{text-decoration:underline}
+
+/* Portfolio collection grid (#games) */
+body.edition .block{padding-block:clamp(30px,4vw,52px)}
+body.edition .block>h2{margin:0 0 20px;font:600 clamp(1.75rem,3vw,2.5rem)/1.1 var(--serif);letter-spacing:-.03em}
+body.edition .collection{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:18px}
+body.edition [data-world].game-card{
+  --focus:#0b4ec2;background:#fff;color:var(--ink);border:1px solid var(--line);border-block-start:5px solid var(--paper,#2c4696);
+  border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px;overflow:visible;
+}
+body.edition .game-card .id{display:flex;align-items:center;gap:12px}
+body.edition .game-card .id img{width:46px;height:46px;border-radius:10px;object-fit:cover;flex:none}
+body.edition .game-card h3{margin:0;font:780 1.06rem/1.25 var(--body);color:var(--ink)}
+body.edition .game-card .tag{border-color:var(--line);color:var(--muted);font-size:.72rem;padding:4px 9px}
+body.edition .game-card .tag.flag{border-color:#9e1c16;background:#9e1c16;color:#fff}
+body.edition .game-card .card-lead{margin:0;font-size:.95rem;line-height:1.45;color:var(--muted)}
+body.edition .game-card .store-line{margin:0;font-size:.84rem;font-weight:650;color:var(--blue)}
+body.edition .game-card .acts{margin-top:auto;padding-top:6px;gap:8px 10px}
+body.edition .game-card .play-badge img{height:44px;width:auto}
+body.edition .game-card .btn{min-height:44px;padding:.5rem .95rem;font-size:.88rem}
+body.edition .appstore-badge{
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:6px 12px;border-radius:7px;
+  background:#101426;color:#fff;text-decoration:none;font:700 .86rem/1.2 var(--body);
+}
+body.edition .appstore-badge:hover{background:#263052}
+body.edition .link,body.edition .app-more{color:var(--blue);font-weight:650;font-size:.9rem;min-height:44px}
+
+/* Product Hub (ninely/) overrides on cream paper */
+body.edition .mast[data-world]{--focus:#0b4ec2;background:transparent;color:var(--ink);padding-block:0}
+body.edition .mast[data-world] .tag{color:var(--muted);border-color:var(--line)}
+body.edition .mast .wrap{display:block;padding:0}
+body.edition .mast .hl{font:500 clamp(1.35rem,2.4vw,1.9rem)/1.25 var(--serif);margin:10px 0 0;color:var(--blue);letter-spacing:-.02em}
+body.edition .mast .id{margin-top:6px}
+body.edition .mast .id img{width:44px;height:44px;border-radius:10px}
+body.edition .mast h1{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+body.edition .ios-note{color:var(--muted);font-size:.9rem}
+body.edition .hubbody{padding-block:32px 24px}
+body.edition .hubbody h2{color:var(--ink);font-family:var(--serif);font-weight:600}
+body.edition .benefits li{background:#fff;border:1px solid var(--line);color:var(--ink)}
+body.edition .hublinks a{color:var(--blue)}
+body.edition .qr-handoff{background:#fff;border-color:var(--line)}
+body.edition .qr-handoff p{color:var(--muted)}
+body.edition .screens img{border-color:#0b0d12}
+body.edition .help{border-block-start-color:var(--line);color:var(--muted)}
+body.edition .help h2,body.edition .help b,body.edition .help a{color:var(--ink)}
+body.edition .about{color:var(--ink);margin-top:28px}
+
+/* Studio contact card + dark footer */
+body.edition .studio{padding-block:12px 42px}
+body.edition .studio .card{background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink)}
+body.edition .studio a{color:var(--blue)}
+body.edition footer{background:#101426;color:#e7dfd1;padding-block:28px 34px;margin-top:24px}
+body.edition footer .col{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+body.edition footer .foot-brand{height:30px;width:auto}
+body.edition footer a{color:#fff4e4;text-decoration:none;padding-inline:4px}
+body.edition footer a:hover{text-decoration:underline}
+
+@media (max-width:860px){
+  body.edition .editionlead,body.edition .spread,body.edition .playlayout{grid-template-columns:1fr}
+  body.edition .playscreen{width:30%}
+}
+@media (max-width:759px){
+  body.edition .bar{padding-block:8px;gap:6px 10px}
+  body.edition .links{border-block-start-color:var(--line)}
+  body.edition .langbox{border-inline-start:0;padding-inline-start:0}
+  body.edition .poster{height:clamp(240px,62vw,330px)}
+}
+@media (prefers-reduced-motion:reduce){
+  body.edition .poster .capture:hover,body.edition .btn:hover,body.edition .action:hover{transform:none}
+}

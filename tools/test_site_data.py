@@ -98,7 +98,7 @@ class SiteDataTests(unittest.TestCase):
         self.assertEqual(srcs, ['assets/i18n.js', '/assets/play-badge.js', '/assets/count.js', 'assets/site.js'])
         self.assertEqual(len(re.findall(r'<script(?![^>]*(?:src=|ld\+json))[^>]*>', HOME)), 1)
         self.assertNotRegex(HOME, r'\son[a-z]+=')
-        self.assertNotRegex(HOME.split('<body>')[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/|apps\.apple\.com/)')
+        self.assertNotRegex(re.split(r'<body[^>]*>', HOME, maxsplit=1)[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/|apps\.apple\.com/)')
 
 
 if __name__ == '__main__':

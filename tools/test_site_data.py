@@ -67,6 +67,7 @@ class SiteDataTests(unittest.TestCase):
         expected_ios = {
             'baylight': ('6826672657', ['IL', 'US'], 'apps.apple.com/app/id6826672657'),
             'mila': ('6827490842', ['IL'], 'apps.apple.com/il/app/id6827490842'),
+            'middle-east-2030': ('6820597256', ['IL', 'US'], 'apps.apple.com/app/id6820597256'),
         }
         for g in GAMES:
             self.assertEqual(g['googlePlay'].get('markets'), ['IL', 'US'], g['id'])

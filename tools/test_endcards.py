@@ -52,8 +52,8 @@ class EndCardTests(unittest.TestCase):
 
     def test_no_app_store_and_iphone_note(self):
         me = read('middle-east-2030/briefing/index.html')
-        self.assertNotIn('apps.apple.com', me)
-        self.assertIn('Not on iPhone yet', me)
+        self.assertIn('https://apps.apple.com/app/id6820597256', me)
+        self.assertNotIn('Not on iPhone yet', me)
         dock = read('baylight/dock/index.html')
         self.assertIn('https://apps.apple.com/app/id6826672657', dock)
         self.assertNotIn('Not on iPhone yet', dock)

@@ -51,7 +51,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
                     'middle-east-2030/briefing/index.html', 'middle-east-2030/guide/index.html',
                     'redline-2030/index.html'):
             text = (ROOT / rel).read_text(encoding='utf-8')
-            self.assertIn('https://apps.apple.com/app/id6820597256', text, rel)
+            self.assertIn('https://apps.apple.com/app/middle-east-2030/id6820597256', text, rel)
             self.assertNotIn('Not on iPhone yet', text, rel)
         for rel in ('baylight/index.html', 'baylight/dock/index.html'):
             text = (ROOT / rel).read_text(encoding='utf-8')

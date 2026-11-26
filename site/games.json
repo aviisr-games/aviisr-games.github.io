@@ -130,7 +130,7 @@
       "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live", "markets": ["IL", "US"] },
       "appStore": {
         "id": "6820597256",
-        "url": "https://apps.apple.com/app/id6820597256",
+        "url": "https://apps.apple.com/app/middle-east-2030/id6820597256",
         "status": "live",
         "markets": ["IL", "US"],
         "territoriesCount": 172

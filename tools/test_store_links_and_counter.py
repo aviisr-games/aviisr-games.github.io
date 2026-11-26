@@ -18,7 +18,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
 
     def test_no_app_store_links_while_no_app_is_live(self):
         """Only verified live App Store IDs may appear across allowlisted pages."""
-        live_app_store_ids = {'6826672657', '6827490842'}
+        live_app_store_ids = {'6826672657', '6827490842', '6820597256'}
         _, apple = links.collect()
         self.assertEqual(set(apple) - live_app_store_ids, set(),
                          f"App Store links to apps that are not live: {apple}")
@@ -44,11 +44,15 @@ class StoreLinksAndCounterTests(unittest.TestCase):
             self.assertIn('(ישראל / Israel)', text, rel)
 
     def test_iphone_fallback_shown_where_app_store_links_were(self):
-        for rel in ['middle-east-2030/index.html', 'middle-east-2030/briefing/index.html',
-                    'middle-east-2030/guide/index.html', 'redline-2030/index.html',
-                    'ninely/play/index.html', 'ninely/duel/index.html']:
+        for rel in ['ninely/play/index.html', 'ninely/duel/index.html']:
             self.assertIn('class="store-note"', (ROOT / rel).read_text(encoding='utf-8'), rel)
         self.assertIn('appstore-badge', (ROOT / 'mila/index.html').read_text(encoding='utf-8'))
+        for rel in ('middle-east-2030/index.html', 'middle-east-2030/he/index.html',
+                    'middle-east-2030/briefing/index.html', 'middle-east-2030/guide/index.html',
+                    'redline-2030/index.html'):
+            text = (ROOT / rel).read_text(encoding='utf-8')
+            self.assertIn('https://apps.apple.com/app/middle-east-2030/id6820597256', text, rel)
+            self.assertNotIn('Not on iPhone yet', text, rel)
         for rel in ('baylight/index.html', 'baylight/dock/index.html'):
             text = (ROOT / rel).read_text(encoding='utf-8')
             self.assertIn('https://apps.apple.com/app/id6826672657', text, rel)
@@ -79,7 +83,7 @@ class StoreLinksAndCounterTests(unittest.TestCase):
         """Scans EVERY *.html in the repo, not only allowlisted folders (legacy casino ids bit us)."""
         known = {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
                  'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'}
-        allowed_apple = {'6826672657', '6827490842'}
+        allowed_apple = {'6826672657', '6827490842', '6820597256'}
         problems = []
         for path in ROOT.rglob('*.html'):
             if '.git' in path.relative_to(ROOT).parts:

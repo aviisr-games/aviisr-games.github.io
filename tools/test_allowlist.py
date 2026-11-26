@@ -73,7 +73,7 @@ class AllowlistTests(unittest.TestCase):
         self.assertEqual(pkgs, {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
                                 'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'})
         apple_ids = set(re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', html))
-        self.assertEqual(apple_ids, {'6827490842', '6826672657'})
+        self.assertEqual(apple_ids, {'6827490842', '6826672657', '6820597256'})
 
     def test_sitemap_is_generated_from_the_allowlist(self):
         self.assertEqual((ROOT / 'sitemap.xml').read_text(encoding='utf-8'), sm.render(),

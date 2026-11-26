@@ -73,12 +73,14 @@ class MiddleEastHubTests(unittest.TestCase):
         self.assertRegex(read(EN), r'<a id="he" href="he/" hreflang="he" lang="he">')
         self.assertIn('href="/middle-east-2030/" hreflang="en"', read(HE))
 
-    def test_play_link_is_unchanged_and_no_app_store(self):
+    def test_play_link_is_unchanged_and_app_store_link_is_the_registry_url(self):
         for rel in PAGES:
             html = read(rel)
             self.assertEqual(re.findall(r'<a class="play-badge" href="([^"]+)"', html), [PLAY], rel)
-            self.assertNotIn('apps.apple.com', html, rel)
-            self.assertIn('class="store-note"', html, rel)
+            self.assertEqual(re.findall(r'<a class="appstore-badge" href="([^"]+)"', html),
+                             ['https://apps.apple.com/app/middle-east-2030/id6820597256'], rel)
+            self.assertNotIn('Not on iPhone yet', html, rel)
+            self.assertNotIn('class="store-note"', html, rel)
         self.assertIn('src="/assets/badges/google-play-iw.png"', read(HE))
         self.assertIn('<script src="/assets/play-badge.js"></script>', read(HE))
 

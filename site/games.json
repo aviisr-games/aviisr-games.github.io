@@ -120,7 +120,7 @@
       "shortTitle": "Middle East 2030",
       "publicVisibility": "portfolio",
       "promote": true,
-      "verifiedOn": "2026-11-24",
+      "verifiedOn": "2026-11-26",
       "hub": "middle-east-2030/",
       "browser": "middle-east-2030/briefing/",
       "support": "middle-east-2030/support/",
@@ -128,7 +128,13 @@
       "playLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=home&utm_campaign=middle-east-2030-home",
       "hubPlayLink": "https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&utm_source=aviisrgames&utm_medium=hub&utm_campaign=middle-east-2030-hub",
       "googlePlay": { "package": "com.aviisrgames.middleeast2030", "status": "live", "markets": ["IL", "US"] },
-      "appStore": { "status": "none", "markets": [] },
+      "appStore": {
+        "id": "6820597256",
+        "url": "https://apps.apple.com/app/middle-east-2030/id6820597256",
+        "status": "live",
+        "markets": ["IL", "US"],
+        "territoriesCount": 172
+      },
       "analytics": true,
       "crossPromo": true,
       "paperColor": "#e1d2b7",
@@ -182,7 +188,7 @@
           "headline": "2030. Can you hold the region for one term?",
           "lead": "A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.",
           "ctaBrowser": "Try the 3-month briefing",
-          "storeStatus": "Google Play (IL, US) · Fiction"
+          "storeStatus": "Google Play (IL, US) & App Store · Fiction"
         },
         "he": {
           "tag": "סימולציה פוליטית",
@@ -190,7 +196,7 @@
           "headline": "2030. תצליחו להחזיק את האזור קדנציה אחת?",
           "lead": "סימולציית אסטרטגיה פוליטית בשנת 2030 בדיונית. בחרו אחת מ-8 בירות וקראו את העיתון של מחר. כל האירועים בדיוניים.",
           "ctaBrowser": "לנסות את התדריך בן 3 החודשים",
-          "storeStatus": "Google Play (ישראל וארה״ב) · בדיוני"
+          "storeStatus": "Google Play (ישראל וארה״ב) ו-App Store · בדיוני"
         },
         "ar": {
           "tag": "محاكاة سياسية",
@@ -198,7 +204,7 @@
           "headline": "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟",
           "lead": "لعبة استراتيجية سياسية في عام 2030 متخيَّل. اختر إحدى 8 عواصم واقرأ صحيفة الغد. كل الأحداث خيالية.",
           "ctaBrowser": "جرّب إحاطة الأشهر الثلاثة",
-          "storeStatus": "Google Play · خيالي"
+          "storeStatus": "Google Play و App Store · خيالي"
         }
       }
     },

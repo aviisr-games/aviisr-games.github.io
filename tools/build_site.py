@@ -41,9 +41,12 @@ def platform_lines(games):
             scope = 'إسرائيل' if mkts == ['IL'] else 'متاح عالمياً'
         return f'{name} ({scope})' if scope else name
 
-    ios_en = ' and '.join(fmt_ios(g, 'en') for g in ios_apps) if len(ios_apps) == 2 else ', '.join(fmt_ios(g, 'en') for g in ios_apps)
-    ios_he = ' ו-'.join(fmt_ios(g, 'he') for g in ios_apps) if len(ios_apps) == 2 else ', '.join(fmt_ios(g, 'he') for g in ios_apps)
-    ios_ar = ' و'.join(fmt_ios(g, 'ar') for g in ios_apps) if len(ios_apps) == 2 else '، '.join(fmt_ios(g, 'ar') for g in ios_apps)
+    def join_list(items, sep, last):
+        return items[0] if len(items) == 1 else sep.join(items[:-1]) + last + items[-1]
+
+    ios_en = join_list([fmt_ios(g, 'en') for g in ios_apps], ', ', ' and ')
+    ios_he = join_list([fmt_ios(g, 'he') for g in ios_apps], ', ', ' ו-')
+    ios_ar = join_list([fmt_ios(g, 'ar') for g in ios_apps], '، ', ' و')
 
     en = (
         f'{gp_live} apps on Google Play (IL, US). '
@@ -55,7 +58,7 @@ def platform_lines(games):
     )
     ar = (
         f'{gp_live} تطبيقات على Google Play. '
-        f'{ios_ar} متوفرتان أيضاً على App Store؛ والألعاب الـ{android_only} الأخرى لنظام Android حالياً مع نسخ متصفح أدناه.'
+        f'{ios_ar} متوفرة أيضاً على App Store؛ والألعاب الـ{android_only} الأخرى لنظام Android حالياً مع نسخ متصفح أدناه.'
     )
     return {'en': en, 'he': he, 'ar': ar}
 
@@ -308,7 +311,7 @@ def render_home(reg):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>aviisr games · Small mobile games, made with care</title>
-<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Baylight and Mila (Israel) also on iPhone.">
+<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Middle East 2030, Baylight and Mila (Israel) also on iPhone.">
 <meta name="google-site-verification" content="oh0yHwl6YiX3dvIZYH5wIyc5pM6vJMYK3q-frBAYXlY">
 <meta name="google-site-verification" content="oOOd1kEtVYr2Y1KLxcsYjZZEJLcLkjKQKhZO3RPxahU">
 <meta name="facebook-domain-verification" content="ujlw9q4t20ufpcquni2zjk27ozhi6c">
@@ -1525,7 +1528,7 @@ def render_me2030_en(reg):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(me["storeTitle"])}</title>
-<meta name="description" content="Middle East 2030 is a geopolitical strategy game and political simulator for Android. A work of fiction. Lead a nation and see tomorrow's front page.">
+<meta name="description" content="Middle East 2030 is a geopolitical strategy game and political simulator for Android and iPhone. A work of fiction. Lead a nation and see tomorrow's front page.">
 <link rel="canonical" href="https://aviisrgames.com/middle-east-2030/">
 <link rel="alternate" hreflang="en" href="https://aviisrgames.com/middle-east-2030/">
 <link rel="alternate" hreflang="he" href="https://aviisrgames.com/middle-east-2030/he/">
@@ -1549,12 +1552,16 @@ def render_me2030_en(reg):
   "description": "Deep political strategy simulation set in 2030. Choose from 8 regional capitals and read tomorrow's morning front page.",
   "url": "https://aviisrgames.com/middle-east-2030/",
   "genre": ["Strategy", "Simulation"],
-  "gamePlatform": ["Android"],
+  "gamePlatform": ["Android", "iOS"],
   "applicationCategory": "GameApplication",
-  "operatingSystem": "Android",
+  "operatingSystem": "Android, iOS",
   "inLanguage": ["en", "he", "ar", "tr", "de", "fr", "es", "ja", "ko", "pt-BR", "ru", "nl", "it", "zh-TW"],
   "offers": {{ "@type": "Offer", "price": "0", "priceCurrency": "USD" }},
-  "author": {{ "@type": "Organization", "name": "aviisr games", "email": "aviisr@aviisrgames.com" }}
+  "author": {{ "@type": "Organization", "name": "aviisr games", "email": "aviisr@aviisrgames.com" }},
+  "sameAs": [
+    "https://play.google.com/store/apps/details?id={esc(me["googlePlay"]["package"])}",
+    "{esc(me["appStore"]["url"])}"
+  ]
 }}
 </script>
 </head>
@@ -1574,17 +1581,17 @@ def render_me2030_en(reg):
       <h1 id="h-hub">{esc(me["storeTitle"])}</h1>
       <p class="dateline"><span>Morning edition</span><span>An invented 2030</span><span>aviisr games</span></p>
     </div>
-    <p class="fiction" role="note">A political strategy game for Android. A work of fiction set in an invented 2030: no event, headline or leader in it is real.</p>
+    <p class="fiction" role="note">A political strategy game for Android and iPhone. A work of fiction set in an invented 2030: no event, headline or leader in it is real.</p>
     <div class="wrap">
       <div class="copy">
         <p class="hl">{esc(me["copy"]["en"]["headline"])}</p>
         <p class="lead">Pick one of eight capitals, take the chair, and govern one month at a time through a term of six to eight months. Each month one decision is enough (a second is optional), then one tap prints the morning paper and tomorrow's front page shows what your choices did.</p>
         <p class="lead">New players get a short guided first term that ends at their first paper, and every finished term builds a career: Rising Leader, Negotiator, Strategist, Veteran, Statesman.</p>
-        <p class="note">Google Play (IL, US) - Verified {esc(me["verifiedOn"])}</p>
+        <p class="note">Google Play (IL, US) &amp; App Store - Verified {esc(me["verifiedOn"])}</p>
         <div class="acts">
           <a class="btn" href="briefing/">Play the 3-month briefing</a>
           <a class="play-badge" href="{esc(me["hubPlayLink"])}"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-          <p class="store-note">Not on iPhone yet</p>
+          <a class="appstore-badge" href="{esc(me["appStore"]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="Download Middle East 2030 on the App Store">{appstore_svg(18)}<bdi>App Store</bdi></a>
         </div>
         <p class="guide"><a class="link" href="guide/">Coalition Strategy &amp; Chair Guide</a></p>
       </div>
@@ -1602,7 +1609,7 @@ def render_me2030_en(reg):
 
 <div class="col hubbody">
   <ul class="hublinks"><li><a href="guide/">Scenario Timeline &amp; Chair Guide</a></li><li><a href="support/">Support &amp; Help</a></li><li><a href="privacy/">Privacy Policy</a></li></ul>
-  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p>On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.</p></div>
+  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p>On a computer? Point your phone camera at the code to open this page on your phone, then tap Google Play or App Store.</p></div>
 
   <section class="more" aria-labelledby="h-more">
     <h2 id="h-more">More from aviisr games</h2>
@@ -1662,7 +1669,7 @@ def render_me2030_he(reg):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>המזרח התיכון 2030: משחק פוליטי</title>
-<meta name="description" content="משחק אסטרטגיה וסימולציה פוליטית ל-Android. יצירת בדיון המתרחשת בשנת 2030 מומצאת. בחרו אחת משמונה בירות, החליטו חודש אחר חודש וקראו את עיתון הבוקר.">
+<meta name="description" content="משחק אסטרטגיה וסימולציה פוליטית ל-Android ול-iPhone. יצירת בדיון המתרחשת בשנת 2030 מומצאת. בחרו אחת משמונה בירות, החליטו חודש אחר חודש וקראו את עיתון הבוקר.">
 <link rel="canonical" href="https://aviisrgames.com/middle-east-2030/he/">
 <link rel="alternate" hreflang="en" href="https://aviisrgames.com/middle-east-2030/">
 <link rel="alternate" hreflang="he" href="https://aviisrgames.com/middle-east-2030/he/">
@@ -1696,17 +1703,17 @@ def render_me2030_he(reg):
       <h1 id="h-hub">המזרח התיכון 2030: משחק פוליטי</h1>
       <p class="dateline"><span>מהדורת הבוקר</span><span>2030 מומצאת</span><span><bdi>aviisr games</bdi></span></p>
     </div>
-    <p class="fiction" role="note">משחק אסטרטגיה וסימולציה פוליטית ל-<bdi>Android</bdi>. יצירת בדיון המתרחשת בשנת 2030 מומצאת. שום אירוע, כותרת או מנהיג במשחק אינם אמיתיים.</p>
+    <p class="fiction" role="note">משחק אסטרטגיה וסימולציה פוליטית ל-<bdi>Android</bdi> ול-<bdi>iPhone</bdi>. יצירת בדיון המתרחשת בשנת 2030 מומצאת. שום אירוע, כותרת או מנהיג במשחק אינם אמיתיים.</p>
     <div class="wrap">
       <div class="copy">
         <p class="hl">{esc(me["copy"]["he"]["headline"])}</p>
         <p class="lead">בחרו אחת משמונה בירות, שבו בכיסא המנהיג והובילו את המדינה חודש אחר חודש לאורך קדנציה מלאה. בכל חודש מספיקה החלטה אחת (השנייה רשות), ואז הקשה אחת מדפיסה את עיתון הבוקר, והכותרת של מחר מראה את ההשפעה של ההחלטות שלכם.</p>
         <p class="lead">שחקנים חדשים מקבלים קדנציה ראשונה מודרכת וקצרה שמסתיימת בעיתון הראשון, וכל קדנציה שמסתיימת בונה קריירה: כוכב עולה, מגשר, אסטרטג, ותיק, מדינאי.</p>
-        <p class="note">Google Play (IL, US) - אומת {esc(me["verifiedOn"])}</p>
+        <p class="note"><bdi>Google Play</bdi> ו-<bdi>App Store</bdi> - אומת {esc(me["verifiedOn"])}</p>
         <div class="acts">
           <a class="btn" href="/middle-east-2030/briefing/">שחקו בתדרוך המשברים</a>
           <a class="play-badge" href="{esc(me["hubPlayLink"])}"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-iw.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-          <p class="store-note">עדיין לא ב-<bdi>iPhone</bdi></p>
+          <a class="appstore-badge" href="{esc(me["appStore"]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="הורדה ב-App Store">{appstore_svg(18)}<bdi>App Store</bdi></a>
         </div>
         <p class="guide"><a class="link" href="/middle-east-2030/guide/">מדריך אסטרטגיה וכיסאות (<bdi>EN</bdi>)</a></p>
       </div>
@@ -1724,7 +1731,7 @@ def render_me2030_he(reg):
 
 <div class="col hubbody">
   <ul class="hublinks"><li><a href="/middle-east-2030/guide/">מדריך אסטרטגיה</a></li><li><a href="/middle-east-2030/support/#he">תמיכה ושירות</a></li><li><a href="/middle-east-2030/privacy/">מדיניות פרטיות</a></li></ul>
-  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="קוד QR שפותח את דף המשחק בטלפון" width="112" height="112"><p>במחשב? כוונו את מצלמת הטלפון לקוד כדי לפתוח את הדף הזה בטלפון, ואז הקישו על כפתור <bdi>Google Play</bdi>.</p></div>
+  <div class="qr-handoff"><img src="/assets/qr/middle-east-2030.svg" alt="קוד QR שפותח את דף המשחק בטלפון" width="112" height="112"><p>במחשב? כוונו את מצלמת הטלפון לקוד כדי לפתוח את הדף הזה בטלפון, ואז הקישו על <bdi>Google Play</bdi> או על <bdi>App Store</bdi>.</p></div>
 
   <section class="more" aria-labelledby="h-more">
     <h2 id="h-more">עוד מ-<bdi>aviisr games</bdi></h2>
@@ -1777,7 +1784,7 @@ def render_about(reg):
             'h1': 'About aviisr games',
             'sub': 'An independent studio making small mobile games, and writing about how they work.',
             'whoH': 'Who we are',
-            'who1': 'aviisr games is a one-person studio run by Avi Israeli. We publish all five titles on Google Play (IL, US), with Baylight (IL, US) and Mila (on the App Store in Israel) also available on the App Store: Ninely (a sudoku game that explains every move), Middle East 2030 (a political strategy simulation set in an invented 2030), Baylight (a one-thumb truck-sorting puzzle), Morning Paper Route (a bike arcade game) and Mila (an English-learning app for children in Hebrew-speaking families).',
+            'who1': 'aviisr games is a one-person studio run by Avi Israeli. We publish all five titles on Google Play (IL, US), with Middle East 2030, Baylight (IL, US) and Mila (on the App Store in Israel) also available on the App Store: Ninely (a sudoku game that explains every move), Middle East 2030 (a political strategy simulation set in an invented 2030), Baylight (a one-thumb truck-sorting puzzle), Morning Paper Route (a bike arcade game) and Mila (an English-learning app for children in Hebrew-speaking families).',
             'who2': 'The games are small on purpose. Each one tries to do one thing well, to start fast and to respect the player\'s time and privacy. This website follows the same rule: static pages, no accounts, no sign-up forms, and an aggregate visit counter that excludes children\'s and policy pages.',
             'whatH': 'What you will find here',
             'what1': 'Game pages: each public title has its own hub with verified store links, real screenshots and, where available, a browser version you can try without installing anything.',
@@ -1786,7 +1793,7 @@ def render_about(reg):
             'what4': 'Devlog notes: short notes on how we generate puzzles, verify browser solvers and design game rules.',
             'what5': 'Printable worksheets: free Hebrew and English flashcards and practice sheets for Mila learners, with matched answer keys.',
             'adsH': 'Advertising and privacy',
-            'adsP': 'Our mobile games on Google Play (and Baylight on the App Store) are free and may show ads or offer optional purchases, as described in each game\'s privacy policy; Mila is available on Google Play and the App Store in Israel with no ads and a one-time unlock. On this website, only the 12 Sudoku strategy guide pages and the Middle East 2030 strategy guide load advertising via Google AdSense (when permitted by consent and Global Privacy Control). Game hubs, browser playables, notes, About, support pages, privacy pages and every Mila page are ad-free.',
+            'adsP': 'Our mobile games on Google Play (and Middle East 2030 and Baylight on the App Store) are free and may show ads or offer optional purchases, as described in each game\'s privacy policy; Mila is available on Google Play and the App Store in Israel with no ads and a one-time unlock. On this website, only the 12 Sudoku strategy guide pages and the Middle East 2030 strategy guide load advertising via Google AdSense (when permitted by consent and Global Privacy Control). Game hubs, browser playables, notes, About, support pages, privacy pages and every Mila page are ad-free.',
             'contactH': 'Contact',
             'contactP': 'Questions, bug reports, corrections to a guide, or business enquiries are all welcome. Tell us the page or app, your device and what happened. We reply by email.',
         },
@@ -1796,7 +1803,7 @@ def render_about(reg):
             'h1': 'אודות aviisr games',
             'sub': 'סטודיו עצמאי שיוצר משחקי מובייל קטנים וכותב בשקיפות על אופן הפיתוח שלהם.',
             'whoH': 'מי אנחנו',
-            'who1': 'aviisr games הוא סטודיו עצמאי של אבי ישראלי. חמשת הכותרים הפומביים שלנו זמינים ב-Google Play (ישראל וארה״ב), כאשר Baylight (ישראל וארה״ב) ומילה (ב-App Store בישראל) זמינות גם ב-App Store: Ninely (סודוקו שמסביר כל צעד), Middle East 2030 (סימולציית אסטרטגיה בדיונית), Baylight (פאזל מיון משלוחים), Morning Paper Route (ארקייד אופניים) ומילה (לימוד אנגלית לילדים דוברי עברית).',
+            'who1': 'aviisr games הוא סטודיו עצמאי של אבי ישראלי. חמשת הכותרים הפומביים שלנו זמינים ב-Google Play (ישראל וארה״ב), כאשר Middle East 2030, Baylight (ישראל וארה״ב) ומילה (ב-App Store בישראל) זמינות גם ב-App Store: Ninely (סודוקו שמסביר כל צעד), Middle East 2030 (סימולציית אסטרטגיה בדיונית), Baylight (פאזל מיון משלוחים), Morning Paper Route (ארקייד אופניים) ומילה (לימוד אנגלית לילדים דוברי עברית).',
             'who2': 'המשחקים קצרים וממוקדים בכוונה. גם האתר בנוי באותה גישה: דפים סטטיים, בלי חשבונות משתמש, בלי טפסי הרשמה ועם מונה כללי שמחריג לחלוטין דפי ילדים, תמיכה ופרטיות.',
             'whatH': 'מה תמצאו באתר',
             'what1': 'דפי משחקים: דף ייעודי לכל כותר עם קישורי חנויות מאומתים, צילומי מסך אמיתיים וגרסאות דפדפן להתנסות מיידית.',
@@ -1815,7 +1822,7 @@ def render_about(reg):
             'h1': 'عن aviisr games',
             'sub': 'استوديو مستقل يصنع ألعاب هاتف صغيرة ويشرح آلية عملها بوضوح.',
             'whoH': 'من نحن',
-            'who1': 'aviisr games استوديو مستقل يديره آفي إسرائيلي. تتوفر عناويننا الخمسة على Google Play، كما تتوفر Baylight (عالمياً وإسرائيل والولايات المتحدة) وميلا (في إسرائيل) على App Store أيضاً: Ninely وMiddle East 2030 وBaylight وMorning Paper Route وميلا.',
+            'who1': 'aviisr games استوديو مستقل يديره آفي إسرائيلي. تتوفر عناويننا الخمسة على Google Play، كما تتوفر Middle East 2030 وBaylight (عالمياً وإسرائيل والولايات المتحدة) وميلا (في إسرائيل) على App Store أيضاً: Ninely وMiddle East 2030 وBaylight وMorning Paper Route وميلا.',
             'who2': 'صُممت الألعاب لتكون خفيفة وسريعة وتحترم وقت اللاعب وخصوصيته. وهذا الموقع يتبع المبدأ نفسه: صفحات ثابتة بلا حسابات وبلا تتبع شخصي.',
             'whatH': 'ماذا ستجد هنا',
             'what1': 'صفحات الألعاب: صفحة لكل عنوان مع روابط متاجر موثقة ولقطات حقيقية وتجارب متصفح.',

@@ -18,12 +18,12 @@ def read(rel):
 class R2AcquisitionTests(unittest.TestCase):
 
     def test_structured_data_claims_only_live_platforms(self):
-        # Only Baylight claims Android + iOS structured data globally; Play-only hubs must not claim iOS.
+        # Only Baylight and Middle East 2030 claim Android + iOS structured data globally; Play-only hubs must not claim iOS.
         for rel in HUBS + ['morning-route/index.html', 'redline-2030/index.html', 'mila/index.html']:
             for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', read(rel), re.S):
                 data = json.loads(block)
                 text = json.dumps({k: data.get(k) for k in ('gamePlatform', 'operatingSystem')})
-                if rel == 'baylight/index.html':
+                if rel in ('baylight/index.html', 'middle-east-2030/index.html', 'redline-2030/index.html'):
                     self.assertIn('iOS', text, rel)
                 else:
                     self.assertNotIn('iOS', text, rel)

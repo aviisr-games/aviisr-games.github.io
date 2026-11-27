@@ -33,7 +33,7 @@
 <body>
   <nav class="lang"><a href="../">Morning Paper Route</a> <a href="../../">All Games</a></nav>
   <h1 data-i18n="navPrivacy">Privacy Policy: Morning Paper Route</h1>
-  <p><strong>Last updated:</strong> November 24, 2026</p>
+  <p><strong>Last updated:</strong> November 27, 2026</p>
   <p>This Privacy Policy explains how "Morning Paper Route" (the "Game"), developed and published by Aviisr ("we", "us", or "our"), handles your information. Morning Paper Route has no user accounts, no sign-in requirements, no chat functionality, and operates without custom remote game servers.</p>
 
   <h2>1. Information Stored Locally on Your Device</h2>
@@ -43,7 +43,8 @@
     <li>Gameplay progress, unlocked routes (Days 1 to 7), and best star ratings;</li>
     <li>Earned in-game route coins and unlocked bike and rider cosmetics;</li>
     <li>Input sensitivity, handedness, and accessibility settings (such as Reduced Motion);</li>
-    <li>Advertising privacy consent preferences.</li>
+    <li>Advertising privacy consent preferences;</li>
+    <li>A random support ID, and, if you have turned on "Share gameplay statistics", the random Firebase analytics IDs your installation has used.</li>
   </ul>
   <p>Uninstalling the Game or clearing application data removes this information from your device.</p>
 
@@ -79,26 +80,72 @@
     <li>Liftoff Monetize: <a href="https://liftoff.ai/privacy-policy/" target="_blank" rel="noopener noreferrer">https://liftoff.ai/privacy-policy/</a></li>
     <li>InMobi: <a href="https://www.inmobi.com/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.inmobi.com/privacy-policy</a></li>
     <li>Chartboost (LoopMe): <a href="https://legal.loopme.com/privacy-center" target="_blank" rel="noopener noreferrer">https://legal.loopme.com/privacy-center</a></li>
-    <li>Moloco (earlier versions): <a href="https://www.moloco.com/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.moloco.com/privacy-policy</a></li>
-    <li>Moloco Inc. (Moloco Ads): <a href="https://www.moloco.com/terms-and-policies/privacy-portal" target="_blank" rel="noopener noreferrer">https://www.moloco.com/terms-and-policies/privacy-portal</a></li>
+    <li>Moloco Inc. (Moloco Ads, and Moloco in earlier versions): <a href="https://www.moloco.com/terms-and-policies/privacy-portal" target="_blank" rel="noopener noreferrer">https://www.moloco.com/terms-and-policies/privacy-portal</a></li>
   </ul>
 
   <h2>Leaderboards</h2>
   <p>The Game has a weekly leaderboard through <strong>Game Center</strong> (Apple, on iOS) or <strong>Google Play Games</strong> (Google, on Android). If you are signed in to that service, your weekly score is sent to it and shown with your player name from that service; Apple or Google handle that account under their own privacy policies. If you are not signed in, no score is sent.</p>
 
-  <h2>Remote configuration and optional analytics</h2>
-  <p>The Game uses <strong>Unity Remote Config</strong> (Unity Technologies) to switch a small number of finished game features on or off without requiring an app update. Once per launch, after your first-launch privacy choice, it connects with an anonymous Unity installation identifier (and an anonymous Unity sign-in) to retrieve these settings. This configuration request is not used to collect gameplay analytics.</p>
-  <p>When "Share gameplay statistics" is enabled (on the first-launch privacy screen it starts on where Google's consent check says no consent is needed, and off in the EEA, the UK and Switzerland or when the region is unknown; you can turn it off there or in Settings at any time), the Game sends limited gameplay events to <strong>Unity Analytics</strong> (Unity Technologies). Examples include day start/end, tutorial completion, ad offers, and in-app purchase entitlements. This can include device or other identifiers and app interaction data. It is optional, not used to personalize ads, and opting out stops collection and requests deletion of that player's collected analytics data.</p>
+  <h2>Remote configuration</h2>
+  <p>The Game uses <strong>Unity Remote Config</strong> (Unity Technologies) to switch a small number of finished game features on or off without requiring an app update. Once per launch, after your first-launch privacy choice, it connects with an anonymous Unity installation identifier (and an anonymous Unity sign-in) to retrieve these settings. This configuration request is not used to collect gameplay analytics. One of these settings is a switch that tells the Game whether it may start the Google Firebase services described below; it has the same value for every player and the request sends no player attributes, so it cannot be used to single out or target a player. If the switch cannot be read, the Game does not start those services.</p>
 
-  <h2>Support ID for ad quality</h2>
-  <p>The Game creates a random per-install support ID (not your name or email). Earlier versions may pass the support ID to LevelPlay Ad Quality so we can look up which ad a player saw when you report a problem. It is stored only on your device with your save data.</p>
+  <h2>Gameplay statistics (Unity Analytics)</h2>
+  <p>The Game has one switch, "Share gameplay statistics", on the first-launch privacy screen and in Settings &gt; Privacy and data. You can turn it off at any time. On the first-launch screen the switch starts on where Google's consent check says no consent is needed, and off in the EEA, the UK and Switzerland or when the region is unknown. Google Firebase (below) starts only if you have turned the switch on yourself.</p>
+  <p>When it is on, the Game sends limited gameplay events to <strong>Unity Analytics</strong> (Unity Technologies): for example day start and end, tutorial completion, ad offers and in-app purchase attempts. This can include device or other identifiers and app interaction data. Unity keeps this data for 13 months. It is optional and not used to personalize ads.</p>
+  <p>Unity Analytics is not used for a player whom the app store has identified as under 13 (today Google Play only), even if the switch is on.</p>
+
+  <h2>Google Firebase Analytics (Google)</h2>
+  <p>When you have turned on "Share gameplay statistics" yourself, the Game also sends gameplay events to <strong>Firebase Analytics</strong>, a service of Google LLC and its group, to help us understand how the Game is used and to fix problems.</p>
+  <ul>
+    <li>What is sent: gameplay and app events (for example day start, tutorial steps, ad offers, purchase events), a random Firebase app instance ID, app version, device model, operating system and language, and an approximate location (country or city level) that Google derives from your IP address. We do not send your name, email address or location from your device, and we do not give Firebase your advertising ID. Google signals are off, all Google Analytics data sharing settings with Google are off, and we have accepted the Google Ads Data Processing Terms.</li>
+    <li>Ad data combined with Firebase: our Firebase project is linked to our Google AdMob account, so that ad impressions and ad revenue from the Game (which ad was shown, its network and the revenue it earned, not who you are) are combined with the Firebase Analytics events of the same app installation. We use this to see how ads affect play and revenue. It is not used to show you ads or to personalize ads.</li>
+    <li>Purpose: statistics about use of the Game and about how our ads perform (analytics). It is not used to show or personalize ads.</li>
+    <li>Export to BigQuery: Firebase Analytics events are exported daily to a Google BigQuery project (Google Cloud) that we control, so that we can analyze them with our own queries. The export contains the same data as above (events, the random app instance ID, device and app details, approximate location, the combined ad impression and revenue events) and is used only by us, only for analysis. It is stored in the United States and kept for 60 days.</li>
+    <li>Only after you allow it: Firebase does not start, and sends nothing, until you have turned on "Share gameplay statistics" yourself on a device where the Game may use it. A switch that was on by regional default, or carried over from an earlier version, does not start Firebase.</li>
+    <li>Not for children under 13: the Game is not for children under 13. Firebase is not started for a player whom the app store has identified as under 13 (today this signal exists on Google Play only; Apple does not give the Game an age signal in this version).</li>
+    <li>Where processed: Google may process the data in the United States and other countries where Google operates.</li>
+    <li>How long: event data and user-level data are each kept for 2 months in Google Analytics. Exported BigQuery tables are kept for 60 days.</li>
+    <li>Provider's policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a> and <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a></li>
+  </ul>
+
+  <h2>Google Firebase Crashlytics (Google)</h2>
+  <p>When you have turned on "Share gameplay statistics" yourself, the Game also sends crash reports to <strong>Firebase Crashlytics</strong> so we can find and fix crashes.</p>
+  <ul>
+    <li>What is sent: the crash report (stack trace of the code that crashed), app version, device model, operating system version and memory and storage state at the time, and a random installation ID. We do not add your name, email address or advertising ID.</li>
+    <li>Purpose: finding and fixing crashes (app functionality and diagnostics). Not used for advertising.</li>
+    <li>Same conditions as Firebase Analytics: only after you turn the switch on yourself, and not started for a player whom the app store has identified as under 13.</li>
+    <li>Export to BigQuery: crash reports are also exported to the same Google BigQuery project that we control, used only by us, only for analysis. They are stored in the United States and kept for 60 days.</li>
+    <li>How long: Crashlytics keeps crash data for 90 days, after which Google starts removing it.</li>
+    <li>Where processed: as for Firebase Analytics.</li>
+  </ul>
+
+  <h2>Firebase installation ID</h2>
+  <p>Firebase creates a random installation ID on your device so that Analytics and Crashlytics can tell installs apart. It is kept until it is deleted, and Google removes it automatically after 270 days without use. It is not your name or your advertising ID.</p>
+
+  <h2>Retention at a glance</h2>
+  <ul>
+    <li>Unity Analytics: 13 months.</li>
+    <li>Firebase Analytics events and user-level data: 2 months.</li>
+    <li>BigQuery export (stored in the United States): 60 days.</li>
+    <li>Firebase Crashlytics: 90 days.</li>
+    <li>Firebase installation ID: until it is deleted, or removed by Google after 270 days without use.</li>
+  </ul>
+
+  <h2>What happens when you turn "Share gameplay statistics" off</h2>
+  <ul>
+    <li>Unity Analytics: collection stops and the Game asks Unity to delete the data collected for your installation.</li>
+    <li>Firebase Analytics and Crashlytics: collection stops at once and the Game resets Firebase's analytics ID on your device. Data already sent is not deleted by turning the switch off: it expires on its own (2 months for events in Google Analytics, 60 days in BigQuery, 90 days for crash reports). You can ask us to delete it sooner, see <a href="#delete-your-data">Delete Your Data</a>.</li>
+  </ul>
+
+  <h2>Support ID</h2>
+  <p>The Game creates a random support ID for your installation (not your name or email) and stores it on your device with your save data. In Settings &gt; Privacy and data it is shown as one string that you can copy. If you have turned on "Share gameplay statistics", the string also contains the random Firebase analytics IDs your installation has used, including earlier ones, so that we can find and delete your Firebase data when you ask. Nothing is sent to us unless you choose to send it: you can include the Support ID in an email, a feedback message or an ad report. We use it only to answer your request, to look up which ad you saw (earlier versions may pass it to LevelPlay Ad Quality) and to delete your data. Resetting or withdrawing does not remove the string from the screen, so you can still ask for deletion afterwards.</p>
 
   <h2>Local reminders</h2>
   <p>If you allow notifications, the Game can schedule local reminders on your device (for example a morning route reminder). These stay on the device; we do not operate a push server for them.</p>
 
   <h2>Feedback and ad reports</h2>
-  <p>Send feedback opens an in-game form that posts to a Google Form we operate. You can include a message and an optional email address. The form also receives device and build details (version, model, OS, language) so we can reproduce problems. We use feedback only to answer you and improve the Game. Google processes the form submission under its own terms.</p>
-  <p>Report an ad opens your email app with a pre-filled message to us (including a short support ID when available). Nothing is sent unless you choose to send the email.</p>
+  <p>Send feedback opens an in-game form that posts to a Google Form we operate. You can include a message and an optional email address. The form also receives device and build details (version, model, OS, language) so we can reproduce problems. It may also include the Support ID string. We use feedback only to answer you and improve the Game. Google processes the form submission under its own terms.</p>
+  <p>Report an ad opens your email app with a pre-filled message to us (including the Support ID string when available). Nothing is sent unless you choose to send the email.</p>
 
   <h2>3. In-App Purchases and Payments</h2>
   <p>Morning Paper Route offers optional one-time, non-consumable purchases processed by Google Play or the App Store. We do not receive or store your payment details, only whether each purchase is active on your store account:</p>
@@ -112,16 +159,19 @@
     <li>We do not require names, email addresses, phone numbers, contact lists, or physical addresses to play. If you include an email in feedback or email us directly, we receive that address and message only to reply.</li>
     <li>We do not request access to camera, microphone, or photo library.</li>
     <li>We do not track precise GPS location.</li>
+    <li>We do not use Firebase with your advertising ID, and we do not use it to show or personalize ads.</li>
+    <li>We do not use Google signals, and all Google Analytics data sharing with Google is switched off.</li>
     <li>We do not sell personal information to third parties.</li>
   </ul>
 
   <h2>5. Children and Age Rating</h2>
-  <p>Morning Paper Route is a general-audience mobile arcade game made for teens and adults. The Game is not directed to children under 13 years of age, and we do not knowingly collect personal data from children under 13. If you believe that an ad provider has collected data from a child under 13, please contact us immediately and we will coordinate deletion with the provider.</p>
+  <p>Morning Paper Route is a general-audience mobile arcade game made for teens and adults. The Game is not directed to children under 13 years of age, and we do not knowingly collect personal data from children under 13. If you believe that an ad provider has collected data from a child under 13, please contact us immediately and we will coordinate deletion with the provider. The Game does not start Unity Analytics, Firebase Analytics or Firebase Crashlytics for a player whom the app store has identified as under 13. Today only Google Play gives the Game this signal; on iPhone and iPad the Game has no age signal. If you believe a child under 13 has used the Game, contact us and we will delete what we can and coordinate with the providers.</p>
 
   <h2>6. Your Privacy Rights (GDPR, UK GDPR, CCPA / CPRA)</h2>
-  <p>Depending on your jurisdiction, you may have legal rights to access, delete, or limit the processing and sharing of your personal data for targeted advertising. Because we do not operate user accounts or retain user data on remote servers, you can exercise these rights directly by:</p>
+  <p>Depending on your jurisdiction, you may have legal rights to access, delete, or limit the processing and sharing of your personal data for targeted advertising. Because we do not operate user accounts or our own servers, you can exercise these rights through the Game, your device and the providers, or by contacting us:</p>
   <ul>
     <li>Adjusting your privacy, ad consent, and "Share gameplay statistics" choices inside the in-game Settings menu;</li>
+    <li>Asking us to delete Firebase data using your Support ID (see <a href="#delete-your-data">Delete Your Data</a>);</li>
     <li>Resetting or deleting your Advertising ID via your device settings (Android: Settings &gt; Google &gt; Ads; iOS: Settings &gt; Privacy &amp; Security &gt; Tracking);</li>
     <li>Deleting the application to clear all local device storage;</li>
     <li>Contacting us at the email address below for any privacy inquiries.</li>
@@ -132,7 +182,7 @@
   <p>To delete your data from Morning Paper Route, use whichever of these applies to you:</p>
   <ol>
     <li><strong>Data stored on your device</strong> (saves, settings, reminders): delete the app. We do not keep a copy on our servers.</li>
-    <li><strong>Gameplay statistics</strong> (if "Share gameplay statistics" was on): open Settings in the Game and turn "Share gameplay statistics" off. This stops collection and requests deletion of the analytics data collected for your installation.</li>
+    <li><strong>Gameplay statistics and crash reports</strong> (if "Share gameplay statistics" was on): turn "Share gameplay statistics" off in Settings. For Unity Analytics this also requests deletion. For Firebase it stops collection and the data expires as described above. To have Firebase data deleted sooner, email <a href="mailto:aviisr@aviisrgames.com?subject=Delete%20my%20data">aviisr@aviisrgames.com</a> with the subject "Delete my data" and the Support ID shown in Settings &gt; Privacy and data (tap Copy). We delete the Firebase Analytics data for each ID in your Support ID, and the matching rows in our BigQuery export, and reply to confirm. Google processes deletion requests in its own time and we cannot make it faster. Crash reports are not deleted individually: they expire after 90 days.</li>
     <li><strong>Feedback you sent</strong> (your message, the optional email address, device details and a random support ID): email <a href="mailto:aviisr@aviisrgames.com?subject=Delete%20my%20data">aviisr@aviisrgames.com</a> with the subject "Delete my data" and tell us which feedback to delete (for example, the email address you wrote in it). We delete that feedback and reply to confirm.</li>
     <li><strong>Advertising data held by ad partners:</strong> reset or delete your Advertising ID in your device settings (see section 6). If you want us to ask an ad provider to delete data, email us at the address above and we will coordinate with the provider.</li>
     <li><strong>Leaderboard scores and purchases</strong> are held by Google Play Games or Game Center, and by Google Play or the App Store, under your platform account. Manage or delete them in your Google or Apple account settings.</li>

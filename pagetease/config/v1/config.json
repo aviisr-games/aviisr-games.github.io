@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "issued_at": "2026-11-27T14:36:12Z",
+  "expires_at": "2027-02-25T14:36:12Z",
+  "ads_enabled": false,
+  "kill_switch": false,
+  "pacing": {
+    "first_chapter_min": 2,
+    "min_chapters_between": 2,
+    "min_seconds_between": 180,
+    "session_cap": 2,
+    "new_user_cap": 1,
+    "new_user_sessions": 3
+  },
+  "networks": {
+    "admob": {
+      "enabled": false
+    }
+  }
+}

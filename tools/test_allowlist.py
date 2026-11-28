@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'tools'))
 import build_sitemap as sm  # noqa: E402
 
-STUDIO_FILES = ['/', 'about/', 'notes/', 'support/', 'privacy/', 'app-ads.txt', 'ads.txt', '.well-known/security.txt',
+STUDIO_FILES = ['/', 'about/', 'notes/', 'support/', 'privacy/', 'terms/', 'accessibility/', 'app-ads.txt', 'ads.txt', '.well-known/security.txt',
                 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'style.css', 'assets/']
 APP_NAMES = {name for name, _ in sm.ALLOWLIST}
 

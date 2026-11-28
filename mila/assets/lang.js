@@ -80,9 +80,15 @@
     } catch (e) {}
 
     // Synchronize select dropdowns if present
+    var label = (lang === 'he') ? 'בחירת שפה' : 'Language';
     var selectElements = document.querySelectorAll('.lang-switcher, #lang-switcher');
     for (var i = 0; i < selectElements.length; i++) {
       selectElements[i].value = lang;
+      selectElements[i].setAttribute('aria-label', label);
+    }
+    var langGroups = document.querySelectorAll('.lang[role="group"]');
+    for (var g = 0; g < langGroups.length; g++) {
+      langGroups[g].setAttribute('aria-label', label);
     }
 
     // Merge global strings + page-specific strings for active language and fallback
@@ -148,7 +154,7 @@
     var select = document.createElement('select');
     select.id = 'lang-switcher';
     select.className = 'lang-switcher';
-    select.setAttribute('aria-label', 'Language');
+    select.setAttribute('aria-label', current === 'he' ? 'בחירת שפה' : 'Language');
 
     for (var i = 0; i < supported.length; i++) {
       var code = supported[i];
@@ -187,7 +193,7 @@
       options.current = currentLang;
 
       // Mount switcher if container exists
-      var navContainer = document.querySelector('nav.lang') || document.querySelector('.lang-nav');
+      var navContainer = document.querySelector('nav.lang, .lang, .lang-nav');
       if (navContainer) {
         renderSwitcher(navContainer, options);
       }

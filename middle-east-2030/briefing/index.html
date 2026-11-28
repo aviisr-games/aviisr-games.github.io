@@ -34,7 +34,7 @@
   .choice-impact { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
   .stats-bar { display: flex; justify-content: space-around; background: #e8dfcf; border: 1px solid #c9bfa8; border-radius: 4px; padding: 10px; margin-bottom: 16px; font-family: sans-serif; font-weight: bold; font-size: 0.95rem; }
   .headline-result { font-family: 'Times New Roman', serif; font-size: 1.6rem; font-weight: bold; line-height: 1.25; margin: 12px 0; color: #1a1a1a; }
-  .guide-callout { background: #faf8f5; border-left: 4px solid #7f1d1d; padding: 12px 14px; margin: 14px 0; font-size: 0.95rem; }
+  .guide-callout { background: #faf8f5; border-inline-start: 4px solid #7f1d1d; padding: 12px 14px; margin: 14px 0; font-size: 0.95rem; }
   .guide-callout a { color: #7f1d1d; font-weight: bold; }
   .store-banner { background: #1a1a1a; color: #fff; padding: 20px; border-radius: 6px; text-align: center; margin-top: 24px; }
   .store-banner:focus { outline: 2px solid #fff; outline-offset: 3px; }
@@ -42,21 +42,21 @@
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
 <main id="main">
-<nav class="lang" style="margin-bottom: 12px;"><a href="../">Middle East 2030</a> · <a href="../guide/">Strategy &amp; Chair Guide</a> · <a href="../../">All Games</a></nav>
+<nav class="lang" style="margin-bottom: 12px;"><a href="../" data-i18n="navMe2030">Middle East 2030</a> · <a href="../guide/" data-i18n="navGuide">Strategy &amp; Chair Guide</a> · <a href="../../" data-i18n="navAllGames">All Games</a></nav>
 
 <div class="newspaper-header">
-  <h1 class="newspaper-title">The Morning Edition</h1>
+  <h1 class="newspaper-title" data-i18n="paperTitle">The Morning Edition</h1>
   <div class="newspaper-meta">
-    <span>Vol. XLVI No. 12</span>
+    <span data-i18n="paperVol">Vol. XLVI No. 12</span>
     <span data-i18n="metaDate">Regional Desk · Crisis Simulation</span>
-    <span>3-Month Preview</span>
+    <span data-i18n="paperPreview">3-Month Preview</span>
   </div>
 </div>
 
 <div class="fiction-banner" role="note" data-i18n="fictionNotice">
-  <strong>Work of Fiction:</strong> Fictional political strategy simulation set in an invented 2030. Read the <a href="../guide/" style="color:#7f1d1d; font-weight:bold;">Coalition Strategy &amp; Chair Guide</a>.
+  <strong data-i18n="fictionLabel">Work of Fiction:</strong> <span data-i18n="fictionBody">Fictional political strategy simulation set in an invented 2030. Read the</span> <a href="../guide/" data-i18n="navGuide" style="color:#7f1d1d; font-weight:bold;">Coalition Strategy &amp; Chair Guide</a>.
 </div>
 
 <div class="stats-bar">
@@ -84,13 +84,13 @@
     <a id="guide-outcome-link" href="../guide/#path-AAA">Read Strategic Analysis for Path AAA in the Companion Guide ➔</a>
   </div>
   
-  <div class="store-banner" id="end-card" role="region" aria-label="Middle East 2030 on Google Play">
+  <div class="store-banner" id="end-card" role="region" aria-label="Middle East 2030 on Google Play and the App Store">
     <h3 style="margin-bottom: 6px; color: #fff;" data-i18n="fullGameTitle">Govern a full term in Middle East 2030</h3>
     <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="fullGameSub">8 playable capitals, dozens of crises, daily newspaper printouts and deep geopolitical simulation.</p>
     <p style="font-size: 0.95rem; margin-bottom: 12px; color: #d4d4d8;" data-i18n="endCardLine">In the full game you pick one of eight capitals, govern a term of six to eight months with one decision a month, read tomorrow's front page to see what your choices did, and build a career of ranks.</p>
     <div>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=playable-win&amp;utm_campaign=middle-east-2030-playable-win"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-      <span class="store-note" data-i18n="iphoneSoon">Not on iPhone yet</span>
+      <a class="appstore-badge" href="https://apps.apple.com/app/middle-east-2030/id6820597256" target="_blank" rel="noopener noreferrer" aria-label="Download Middle East 2030 on the App Store"><svg viewBox="0 0 170 170" aria-hidden="true" width="18" height="18" style="fill:currentColor;flex:none;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.96-12.04-14.64-5.99-9.28-10.66-19.82-13.99-31.62-3.33-11.79-5-23.01-5-33.64 0-14.35 3.58-26.43 10.74-36.24 7.16-9.81 16.27-14.77 27.34-14.88 4.89 0 10.25 1.25 16.08 3.75 5.83 2.5 9.77 3.79 11.83 3.87 1.85-.08 5.86-1.39 12.04-3.95 6.18-2.55 11.58-3.73 16.2-3.53 12.63.76 22.84 5.37 30.64 13.84-11.09 6.74-16.53 16.08-16.32 28.02.22 9.57 3.97 17.56 11.24 23.97 7.28 6.41 15.93 10.05 25.96 10.92-2.39 7.4-5.33 14.78-8.81 22.15zM119.22 31.84c0-7.39 2.66-14.42 7.98-21.09 5.33-6.67 11.96-10.75 19.89-12.25.33 1.2.54 2.39.65 3.59.11 1.19.16 2.39.16 3.59 0 7.39-2.82 14.6-8.47 21.63-5.65 7.03-12.28 11-19.89 11.9-.32-.98-.49-2.12-.49-3.42 0-1.3.06-2.62.17-3.95z"/></svg><bdi>App Store</bdi></a>
     </div>
   </div>
   
@@ -100,7 +100,7 @@
 </div>
 
 <footer style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #71717a;">
-  <a href="../">Middle East 2030</a> · <a href="../guide/">Strategy Guide</a> · <a href="../privacy/">Privacy Policy</a> · <a href="../support/">Support</a> · <a href="mailto:aviisr@aviisrgames.com">Contact</a>
+  <a href="../" data-i18n="navMe2030">Middle East 2030</a> · <a href="../guide/" data-i18n="navGuideShort">Strategy Guide</a> · <a href="../privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="../support/" data-i18n="navSupport">Support</a> · <a href="mailto:aviisr@aviisrgames.com" data-i18n="navContact">Contact</a>
 </footer>
 </main>
 
@@ -111,6 +111,19 @@
 
   var translations = {
     en: {
+      skipLink: "Skip to content",
+      navMe2030: "Middle East 2030",
+      navGuide: "Coalition Strategy & Chair Guide",
+      navGuideShort: "Strategy Guide",
+      navAllGames: "All Games",
+      navPrivacy: "Privacy Policy",
+      navSupport: "Support",
+      navContact: "Contact",
+      paperTitle: "The Morning Edition",
+      paperVol: "Vol. XLVI No. 12",
+      paperPreview: "3-Month Preview",
+      fictionLabel: "Work of Fiction:",
+      fictionBody: "Fictional political strategy simulation set in an invented 2030. Read the",
       metaDate: "Regional Desk · Crisis Simulation",
       statCoalition: "Coalition",
       statEconomy: "Economy",
@@ -122,6 +135,19 @@
       endCardLine: "In the full game you pick one of eight capitals, govern a term of six to eight months with one decision a month, read tomorrow's front page to see what your choices did, and build a career of ranks."
     },
     he: {
+      skipLink: "דלגו לתוכן",
+      navMe2030: "המזרח התיכון 2030",
+      navGuide: "מדריך אסטרטגיה וכסאות",
+      navGuideShort: "מדריך אסטרטגיה",
+      navAllGames: "כל המשחקים",
+      navPrivacy: "מדיניות פרטיות",
+      navSupport: "תמיכה",
+      navContact: "יצירת קשר",
+      paperTitle: "מהדורת הבוקר",
+      paperVol: "גיליון 46 מס׳ 12",
+      paperPreview: "תצוגת 3 חודשים",
+      fictionLabel: "יצירת בדיון:",
+      fictionBody: "סימולציית אסטרטגיה פוליטית בדיונית לשנת 2030. קראו את",
       metaDate: "דסק אזורי · סימולציית משברים",
       statCoalition: "קואליציה",
       statEconomy: "כלכלה",
@@ -133,6 +159,19 @@
       endCardLine: "במשחק המלא בוחרים אחת מ-8 בירות, מנהלים קדנציה של שישה עד שמונה חודשים עם החלטה אחת בחודש, קוראים בעיתון של מחר את ההשפעה של הבחירות שלכם, ובונים קריירה של דרגות."
     },
     ar: {
+      skipLink: "تخطَّ إلى المحتوى",
+      navMe2030: "الشرق الأوسط 2030",
+      navGuide: "دليل الاستراتيجية والمقاعد",
+      navGuideShort: "دليل الاستراتيجية",
+      navAllGames: "جميع الألعاب",
+      navPrivacy: "سياسة الخصوصية",
+      navSupport: "الدعم",
+      navContact: "التواصل",
+      paperTitle: "طبعة الصباح",
+      paperVol: "المجلد 46 العدد 12",
+      paperPreview: "معاينة 3 أشهر",
+      fictionLabel: "عمل خيالي:",
+      fictionBody: "محاكاة استراتيجية سياسية خيالية لعام 2030. اقرأ",
       metaDate: "مكتب إقليمي · محاكاة الأزمات",
       statCoalition: "الائتلاف",
       statEconomy: "الاقتصاد",
@@ -145,38 +184,187 @@
     }
   };
 
-  AviisrI18n.init({
-    supported: ['en', 'he', 'ar'],
-    translations: translations,
-    defaultLang: 'en'
-  });
+  var BRIEFING_TEXT = {
+    en: {
+      pageTitle: "Middle East 2030: Crisis Briefing Teaser",
+      monthFmt: function (m, total) { return 'Month ' + m + ' of ' + total; },
+      fallbackHeadline: "CABINET WEATHERS REGIONAL HEADWINDS",
+      editorial: function (s) {
+        return "After 90 turbulent days in the executive chair, your government closed the quarter with " +
+          s.coalition + "% coalition cohesion, " + s.economy + "% economic resilience, and " +
+          s.stability + "% geopolitical stability. " +
+          (s.stability > 60
+            ? "Diplomatic partners express confidence in regional de-escalation."
+            : "Tensions remain elevated across borders, and parliamentary observers forecast early elections unless bold reforms follow.");
+      },
+      pathLabel: function (code) { return 'Decision Path: ' + code; },
+      guideLink: function (code) { return 'Read Strategic Analysis for Path ' + code + ' in the Companion Guide ➔'; }
+    },
+    he: {
+      pageTitle: "המזרח התיכון 2030: תדריך משבר אינטראקטיבי",
+      monthFmt: function (m, total) { return 'חודש ' + m + ' מתוך ' + total; },
+      fallbackHeadline: "הקבינט צולח רוחות נגדיות באזור",
+      editorial: function (s) {
+        return "לאחר 90 ימים סוערים בכיסא ההנהגה, ממשלתכם סיימה את הרבעון עם " +
+          s.coalition + "% לכידות קואליציונית, " + s.economy + "% חוסן כלכלי ו-" +
+          s.stability + "% יציבות אזורית. " +
+          (s.stability > 60
+            ? "שותפים דיפלומטיים מביעים אמון בהרגעת המתיחות האזורית."
+            : "המתיחות בגבולות נותרת גבוהה, ופרשנים בפרלמנט מעריכים כי יוקדמו הבחירות אם לא יינקטו רפורמות אמיצות.");
+      },
+      pathLabel: function (code) { return 'מסלול החלטות: ' + code; },
+      guideLink: function (code) { return 'לקריאת הניתוח האסטרטגי של מסלול ' + code + ' במדריך המלווה (באנגלית) ➔'; }
+    },
+    ar: {
+      pageTitle: "الشرق الأوسط 2030: إحاطة الأزمة التفاعلية",
+      monthFmt: function (m, total) { return 'الشهر ' + m + ' من ' + total; },
+      fallbackHeadline: "الحكومة تصمد أمام التحديات الإقليمية",
+      editorial: function (s) {
+        return "بعد 90 يوماً حافلاً في منصب القيادة، أنهت حكومتكم الربع بنسبة " +
+          s.coalition + "% تماسك الائتلاف، و" + s.economy + "% مرونة الاقتصاد، و" +
+          s.stability + "% استقرار إقليمي. " +
+          (s.stability > 60
+            ? "يعرب الشركاء الدبلوماسيون عن ثقتهم في خفض التصعيد الإقليمي."
+            : "تبقى التوترات مرتفعة عبر الحدود، ويتوقع مراقبو البرلمان انتخابات مبكرة ما لم تتبعها إصلاحات جريئة.");
+      },
+      pathLabel: function (code) { return 'مسار القرارات: ' + code; },
+      guideLink: function (code) { return 'اقرأ التحليل الاستراتيجي للمسار ' + code + ' في الدليل المرافق ➔'; }
+    }
+  };
+
+  function activeLang() {
+    var l = document.documentElement.lang || 'en';
+    return BRIEFING_TEXT[l] ? l : 'en';
+  }
 
   var crises = [
     {
       month: 1,
-      title: "Cross-Border Energy Pipeline Accord",
-      desc: "Neighbors propose an expedited joint natural gas & solar grid. Coalition hardliners demand sovereign control, while industrialists warn of rising brownouts.",
+      title: {
+        en: "Cross-Border Energy Pipeline Accord",
+        he: "הסכם צנרת אנרגיה חוצת-גבולות",
+        ar: "اتفاقية خط أنابيب الطاقة العابر للحدود"
+      },
+      desc: {
+        en: "Neighbors propose an expedited joint natural gas & solar grid. Coalition hardliners demand sovereign control, while industrialists warn of rising brownouts.",
+        he: "מדינות שכנות מציעות רשת משותפת ומהירה של גז טבעי ואנרגיה סולארית. הנצים בקואליציה דורשים שליטה מלאה, בעוד התעשיינים מזהירים מהפסקות חשמל גוברות.",
+        ar: "تقترح الدول المجاورة شبكة مشتركة عاجلة للغاز الطبيعي والطاقة الشمسية. يطالب المتشددون في الائتلاف بسيطرة سيادية كاملة، بينما يحذر الصناعيون من انقطاع الكهرباء."
+      },
       choices: [
-        { code: "A", text: "Sign the regional energy treaty with security guarantees", dC: -5, dE: +12, dS: +8, headline: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW" },
-        { code: "B", text: "Reject multilateral terms and fund emergency domestic coal/gas", dC: +8, dE: -8, dS: -4, headline: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS" }
+        {
+          code: "A",
+          text: {
+            en: "Sign the regional energy treaty with security guarantees",
+            he: "חתימה על אמנת האנרגיה האזורית עם ערבויות ביטחוניות",
+            ar: "توقيع معاهدة الطاقة الإقليمية مع ضمانات أمنية"
+          },
+          dC: -5, dE: +12, dS: +8,
+          headline: {
+            en: "HISTORIC POWER GRID ACCORD SIGNED DESPITE PARLIAMENT ROW",
+            he: "הסכם רשת החשמל ההיסטורי נחתם חרף הסערה בפרלמנט",
+            ar: "توقيع اتفاقية شبكة الكهرباء التاريخية رغم الجدل البرلماني"
+          }
+        },
+        {
+          code: "B",
+          text: {
+            en: "Reject multilateral terms and fund emergency domestic coal/gas",
+            he: "דחיית ההסכם הרב-צדדי ומימון חירום לדלק מקומי",
+            ar: "رفض الشروط متعددة الأطراف وتمويل طارئ للطاقة المحلية"
+          },
+          dC: +8, dE: -8, dS: -4,
+          headline: {
+            en: "CABINET REJECTS REGIONAL GRID AS COMMERCE WARNS OF POWER CUTS",
+            he: "הקבינט דחה את הרשת האזורית; התעשייה מזהירה מקיצוצי חשמל",
+            ar: "الحكومة ترفض الشبكة الإقليمية وسط تحذيرات تجارية من انقطاع الكهرباء"
+          }
+        }
       ]
     },
     {
       month: 2,
-      title: "Currency Pressure & Foreign Reserve Crisis",
-      desc: "Speculative currency runs threaten import prices on food and grain. The Central Bank requests immediate interest rate hikes and subsidy trimming.",
+      title: {
+        en: "Currency Pressure & Foreign Reserve Crisis",
+        he: "לחץ על המטבע ומשבר יתרות מט״ח",
+        ar: "ضغط العملة وأزمة الاحتياطيات الأجنبية"
+      },
+      desc: {
+        en: "Speculative currency runs threaten import prices on food and grain. The Central Bank requests immediate interest rate hikes and subsidy trimming.",
+        he: "תנודות חריפות בשער המטבע מאיימות על מחירי היבוא של מזון ותבואה. הבנק המרכזי מבקש העלאת ריבית מיידית וצמצום סובסידיות.",
+        ar: "تهدد المضاربات على العملة أسعار استيراد الغذاء والحبوب. يطلب البنك المركزي رفع أسعار الفائدة فوراً وتقليص الدعم."
+      },
       choices: [
-        { code: "A", text: "Authorize aggressive rate hike and target emergency food vouchers", dC: -4, dE: +10, dS: -2, headline: "INTEREST RATES HIKED TO DEFEND CURRENCY AS SHOPS FEEL SQUEEZE" },
-        { code: "B", text: "Cap retail prices and draw down sovereign wealth reserves", dC: +6, dE: -12, dS: +4, headline: "GOVERNMENT CAPS FOOD PRICES DRAWING ON STRATEGIC RESERVES" }
+        {
+          code: "A",
+          text: {
+            en: "Authorize aggressive rate hike and target emergency food vouchers",
+            he: "אישור העלאת ריבית חדה והקצאת שוברי מזון ממוקדים לחירום",
+            ar: "اعتماد رفع حاد للفائدة وتخصيص قسائم غذاء طارئة"
+          },
+          dC: -4, dE: +10, dS: -2,
+          headline: {
+            en: "INTEREST RATES HIKED TO DEFEND CURRENCY AS SHOPS FEEL SQUEEZE",
+            he: "הריבית הועלתה להגנת המטבע; החנויות מדווחות על האטה חדה",
+            ar: "رفع أسعار الفائدة لحماية العملة والأسواق تشعر بالضغط"
+          }
+        },
+        {
+          code: "B",
+          text: {
+            en: "Cap retail prices and draw down sovereign wealth reserves",
+            he: "קביעת תקרת מחירים לצרכן ומשיכה מיתרות החירום הלאומיות",
+            ar: "تحديد سقف للأسعار والسحب من الاحتياطيات السيادية"
+          },
+          dC: +6, dE: -12, dS: +4,
+          headline: {
+            en: "GOVERNMENT CAPS FOOD PRICES DRAWING ON STRATEGIC RESERVES",
+            he: "הממשלה הגבילה את מחירי המזון ונשענת על הרזרבות האסטרטגיות",
+            ar: "الحكومة تحدد سقفا لأسعار الغذاء بالسحب من الاحتياطي الاستراتيجي"
+          }
+        }
       ]
     },
     {
       month: 3,
-      title: "Diplomatic Summit on Maritime Boundaries",
-      desc: "A disputed offshore maritime corridor risks naval friction or an economic opening with rival maritime neighbors.",
+      title: {
+        en: "Diplomatic Summit on Maritime Boundaries",
+        he: "פסגה דיפלומטית על גבולות ימיים",
+        ar: "قمة دبلوماسية حول الحدود البحرية"
+      },
+      desc: {
+        en: "A disputed offshore maritime corridor risks naval friction or an economic opening with rival maritime neighbors.",
+        he: "מסדרון ימי שנוי במחלוקת מעמיד בפניכם סיכון לחיכוך ימי או פתח לשיתוף פעולה כלכלי עם השכנים מעבר לים.",
+        ar: "ممر بحري متنازع عليه يهدد باحتكاك بحري أو يفتح باباً لتعاون اقتصادي مع الجيران المنافسين."
+      },
       choices: [
-        { code: "A", text: "Negotiate shared exploration zones under neutral mediator arbitration", dC: -6, dE: +8, dS: +12, headline: "MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT" },
-        { code: "B", text: "Deploy coast guard escorts and declare unilateral maritime boundary", dC: +10, dE: -6, dS: -10, headline: "NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS" }
+        {
+          code: "A",
+          text: {
+            en: "Negotiate shared exploration zones under neutral mediator arbitration",
+            he: "משא ומתן על אזורי חיפוש משותפים תחת בוררות של מתווך ניטרלי",
+            ar: "التفاوض على مناطق استكشاف مشتركة تحت تحكيم وسيط محايد"
+          },
+          dC: -6, dE: +8, dS: +12,
+          headline: {
+            en: "MARITIME PACT OPENS OFFSHORE WEALTH; OPPOSITION CRIES SELLOUT",
+            he: "הסכם הגבול הימי פותח מאגרי אנרגיה; האופוזיציה זועקת ויתור",
+            ar: "اتفاق بحري يفتح ثروات الطاقة والمعارضة تتهم بالتنازل"
+          }
+        },
+        {
+          code: "B",
+          text: {
+            en: "Deploy coast guard escorts and declare unilateral maritime boundary",
+            he: "שליחת ספינות משמר חופים והכרזה חד-צדדית על הגבול הימי",
+            ar: "نشر دوريات خفر السواحل وإعلان حدود بحرية من جانب واحد"
+          },
+          dC: +10, dE: -6, dS: -10,
+          headline: {
+            en: "NAVAL PATROLS DISPATCHED TO DISPUTED OFFSHORE WATERS",
+            he: "סיורי משמר החופים הוזנקו למים הכלכליים שבמחלוקת",
+            ar: "إرسال دوريات بحرية إلى المياه المتنازع عليها"
+          }
+        }
       ]
     }
   ];
@@ -198,10 +386,12 @@
       return;
     }
 
+    var lang = activeLang();
+    var ui = BRIEFING_TEXT[lang];
     var c = crises[currentMonth];
-    document.getElementById('month-tag').textContent = 'Month ' + (currentMonth + 1) + ' of 3';
-    document.getElementById('dilemma-title').textContent = c.title;
-    document.getElementById('dilemma-desc').textContent = c.desc;
+    document.getElementById('month-tag').textContent = ui.monthFmt(currentMonth + 1, crises.length);
+    document.getElementById('dilemma-title').textContent = c.title[lang] || c.title.en;
+    document.getElementById('dilemma-desc').textContent = c.desc[lang] || c.desc.en;
 
     var container = document.getElementById('choices-container');
     container.replaceChildren();
@@ -210,7 +400,7 @@
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'choice-btn';
-      btn.textContent = choice.text;
+      btn.textContent = choice.text[lang] || choice.text.en;
 
       btn.addEventListener('click', function () {
         if (window.aviisrCount) window.aviisrCount('play_start/me2030');
@@ -228,34 +418,49 @@
     });
   }
 
-  function showSummary() {
+  function showSummary(skipCount) {
     document.getElementById('game-container').style.display = 'none';
     var resEl = document.getElementById('result-container');
     resEl.style.display = 'block';
 
-    var finalHeadline = history[history.length - 1] || "CABINET WEATHERS REGIONAL HEADWINDS";
+    var lang = activeLang();
+    var ui = BRIEFING_TEXT[lang];
+    var lastEntry = history[history.length - 1];
+    var finalHeadline = (lastEntry && (lastEntry[lang] || lastEntry.en)) || ui.fallbackHeadline;
     document.getElementById('final-headline').textContent = finalHeadline;
 
-    var editorial = "After 90 turbulent days in the executive chair, your government closed the quarter with " +
-      stats.coalition + "% coalition cohesion, " + stats.economy + "% economic resilience, and " +
-      stats.stability + "% geopolitical stability. " +
-      (stats.stability > 60 ? "Diplomatic partners express confidence in regional de-escalation." : "Tensions remain elevated across borders, and parliamentary observers forecast early elections unless bold reforms follow.");
-    
-    document.getElementById('final-editorial').textContent = editorial;
+    document.getElementById('final-editorial').textContent = ui.editorial(stats);
 
     var pathCode = choiceCodes.join('') || 'AAA';
-    if (/^[A-Z0-9_]{1,16}$/.test(pathCode) && window.aviisrCount) window.aviisrCount('play_complete/me2030/' + pathCode);
+    if (!skipCount && /^[A-Z0-9_]{1,16}$/.test(pathCode) && window.aviisrCount) window.aviisrCount('play_complete/me2030/' + pathCode);
     var labelEl = document.getElementById('path-summary-label');
     var linkEl = document.getElementById('guide-outcome-link');
-    if (labelEl) labelEl.textContent = 'Decision Path: ' + pathCode;
+    if (labelEl) labelEl.textContent = ui.pathLabel(pathCode);
     if (linkEl) {
       linkEl.href = '../guide/#path-' + pathCode;
-      linkEl.textContent = 'Read Strategic Analysis for Path ' + pathCode + ' in the Companion Guide ➔';
+      linkEl.textContent = ui.guideLink(pathCode);
     }
-    // Focus the result first, so a screen-reader user hears how the term ended before the store card.
-    var result = document.getElementById('final-headline');
-    if (result) result.focus();
+    if (!skipCount) {
+      // Focus the result first, so a screen-reader user hears how the term ended before the store card.
+      var result = document.getElementById('final-headline');
+      if (result) result.focus();
+    }
   }
+
+  AviisrI18n.init({
+    supported: ['en', 'he', 'ar'],
+    translations: translations,
+    defaultLang: 'en',
+    onLanguageChange: function (lang) {
+      var ui = BRIEFING_TEXT[lang] || BRIEFING_TEXT.en;
+      document.title = ui.pageTitle;
+      if (currentMonth >= crises.length) {
+        showSummary(true);
+      } else {
+        renderCurrentCrisis();
+      }
+    }
+  });
 
   document.getElementById('replay-btn').addEventListener('click', function () {
     currentMonth = 0;

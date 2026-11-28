@@ -35,12 +35,31 @@
     img.src = ENDPOINT + '?' + q;
   }
 
+  // Product and destination exclusions (Mila is COPPA-protected and never tracked from any surface).
+  var EXCLUDED_PACKAGES = { 'com.aviisr.mila': true };
+  var EXCLUDED_APPLE_IDS = { '6827490842': true };
+  function isExcludedLink(a) {
+    if (!a) return false;
+    if (a.closest && a.closest('[data-world="mila"], [data-no-count]')) return true;
+    var href = a.getAttribute('href') || a.href || '';
+    var pm = /[?&]id=([\w.]+)/.exec(href);
+    if (pm && EXCLUDED_PACKAGES[pm[1]]) return true;
+    var am = /apps\.apple\.com\/(?:[a-z]{2}\/)?app\/(?:[\w-]+\/)?id(\d+)/i.exec(href);
+    if (am && EXCLUDED_APPLE_IDS[am[1]]) return true;
+    try {
+      var u = new URL(href, location.href);
+      if (u.origin === location.origin && /^\/mila(\/|$)/.test(u.pathname)) return true;
+    } catch (e) { /* ignore */ }
+    return false;
+  }
+
   // Named events: path-like names only (no ids, no free text), each sent at most once per page view.
   var NAME_RE = /^[a-z_]+(\/[A-Za-z0-9_-][A-Za-z0-9_.-]*){1,3}$/;
   var seen = {};
   function count(name) {
     try {
       if (typeof name !== 'string' || name.length > 80 || !NAME_RE.test(name)) return;
+      if (/mila|6827490842/i.test(name)) return;
       if (seen[name]) return;
       seen[name] = true;
       send(name, true);
@@ -55,16 +74,19 @@
   // yt_land/<page>: the visitor came from a link on the aviisr games YouTube channel (?src=yt).
   if (/[?&]src=yt(&|$)/.test(location.search)) send('yt_land' + location.pathname, true);
 
-  // store_click/<package>/<page>: counted once per link per page view.
+  // store_click/<package>/<page>: counted once per link per page view (excluding Mila).
   var clicked = {};
   document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="play.google.com/store/apps/details"]') : null;
-    if (!a) return;
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="play.google.com/store/apps/details"], a[href*="apps.apple.com/"]') : null;
+    if (!a || isExcludedLink(a)) return;
+    if (a.href.indexOf('play.google.com/store/apps/details') === -1) return;
     var m = /[?&]id=([\w.]+)/.exec(a.href);
-    var key = (m ? m[1] : 'unknown') + location.pathname;
+    var pkg = m ? m[1] : 'unknown';
+    if (EXCLUDED_PACKAGES[pkg]) return;
+    var key = pkg + location.pathname;
     if (clicked[key]) return;
     clicked[key] = true;
-    send('store_click/' + (m ? m[1] : 'unknown') + location.pathname, true);
+    send('store_click/' + pkg + location.pathname, true);
   }, true);
 
   // card_click/<game>/<play|hub>: home page cards, derived from the link target (never /mila/).
@@ -80,7 +102,7 @@
   document.addEventListener('click', function (e) {
     try {
       var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-      if (!a) return;
+      if (!a || isExcludedLink(a)) return;
       var href = a.getAttribute('href') || '';
       if (/^mailto:/i.test(href)) {
         var page = location.pathname.replace(/index\.html$/, '').replace(/^\/+|\/+$/g, '').replace(/[^A-Za-z0-9_.\/-]/g, '_');

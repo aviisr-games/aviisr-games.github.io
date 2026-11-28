@@ -318,6 +318,7 @@
 <header>
   <h1 id="header-title">מילה (Mila) — ערכת לימוד אנגלית לכיתה ג׳</h1>
   <p class="sub" id="header-sub">12 כרטיסיות גזירה ודפי עבודה מודפסים ללימוד ותרגול אוצר מילים ראשוני באנגלית ללא מסכים.</p>
+  <p class="no-print" lang="en" dir="ltr" style="font-size: 0.85rem; color: #475569; margin: 4px 0 12px;">Adult note: these printable study sheets and answer keys are intentionally written in Hebrew and English for Hebrew-speaking learners.</p>
 </header>
 
 <div class="grade-switcher no-print" role="tablist" aria-label="בחירת שכבת כיתה">
@@ -1313,13 +1314,15 @@ function setGrade(grade, updateUrl) {
   }
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+function syncGradeFromQuery() {
   var params = new URLSearchParams(window.location.search);
   var gParam = parseInt(params.get('grade'), 10);
   if ([2, 3, 4, 5].indexOf(gParam) !== -1) {
     setGrade(gParam, false);
   }
-});
+}
+syncGradeFromQuery();
+window.addEventListener('DOMContentLoaded', syncGradeFromQuery);
 </script>
 </body>
 </html>

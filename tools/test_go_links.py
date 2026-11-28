@@ -101,6 +101,11 @@ class GoLinksValidationTests(unittest.TestCase):
                     go_links.validate_entry(entry)
 
 
+_W01_TOKENS = ('site', 'r-playmygame', 'r-puzzlevideogames', 'r-androidgaming', 'r-iosgaming',
+               'ytshorts', 'il-gaming', 'press', 'playtest', 'featuring', 'dock')
+BAYLIGHT_W01_SLUGS = {f'baylight-{t}-w01{sfx}' for t in _W01_TOKENS for sfx in ('', '-ios')}
+
+
 class GoLinksGeneratedPagesTests(unittest.TestCase):
 
     def test_config_has_expected_live_non_mila_slugs(self):
@@ -112,11 +117,18 @@ class GoLinksGeneratedPagesTests(unittest.TestCase):
             'ninely-yt', 'ninely-reddit',
             'baylight-yt',
             'mpr-yt',
-        })
+        } | BAYLIGHT_W01_SLUGS)
         for slug, _, _, target in entries:
             self.assertNotIn('com.aviisr.mila', target.lower(), slug)
             self.assertNotIn('6827490842', target, slug)
-            self.assertIn('utm_medium=organic', target, slug)
+            if slug.endswith('-ios'):
+                self.assertRegex(target, r'^https://apps\.apple\.com/app/id6826672657\?ct=baylight-[a-z0-9-]+-w01&mt=8$', slug)
+                self.assertLessEqual(len(target.split('ct=')[1].split('&')[0]), 40, slug)
+            elif slug.startswith('baylight-') and slug.endswith('-w01'):
+                self.assertIn('referrer=utm_source%3D', target, slug)
+                self.assertIn('%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-w01', target, slug)
+            else:
+                self.assertIn('utm_medium=organic', target, slug)
 
     def test_generated_pages_match_config_and_enforce_safety_invariants(self):
         data = json.loads(go_links.CONFIG_PATH.read_text(encoding='utf-8'))

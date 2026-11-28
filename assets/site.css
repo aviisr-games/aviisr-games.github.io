@@ -55,6 +55,8 @@ a{color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding-inline:22px;border-radius:14px;background:var(--w-accent);color:var(--w-on-accent);font:800 1.05rem var(--round);text-decoration:none;box-shadow:var(--e-1);transition:transform var(--m-fast) var(--ease)}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(2px);box-shadow:none}
+.appstore-badge{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:0 16px;border-radius:10px;background:#000;color:#fff;border:1px solid #a6a6a6;font-weight:600;text-decoration:none;box-sizing:border-box}
+.appstore-badge svg{flex:none}
 .play-badge{display:block}
 .play-badge img{display:block;width:auto;height:54px}
 .link,.app-more{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
@@ -78,7 +80,7 @@ a{color:inherit}
 footer{padding-block:20px 56px;color:var(--studio-dim);font-size:.9rem}
 footer a{display:inline-block;padding-block:6px}
 
-@media (max-width:759px){.links{display:none}.langbox{margin-inline-start:auto}.lang-switcher{max-width:none}.bar{gap:0 12px}.btn{min-height:48px;padding-inline:16px;font-size:.98rem}.play-badge img{height:48px}.phones{justify-content:flex-end;pointer-events:none}.phone{width:160px}[data-world] h2{margin:10px 0 10px}.lead{font-size:1rem}}
+@media (max-width:759px){.links{order:3;width:100%;flex-wrap:wrap;gap:2px 14px;margin-inline-start:0;padding-block:4px;border-block-start:1px solid rgba(151,160,191,.28)}.links a{font-size:.94rem}.langbox{margin-inline-start:auto;max-width:100%}.langbox .lang{min-width:0}.lang-switcher{max-width:165px}.bar{gap:4px 10px}.logo img{height:30px}.btn{min-height:48px;padding-inline:16px;font-size:.98rem}.play-badge img{height:48px}.phones{justify-content:flex-end;pointer-events:none}.phone{width:160px}[data-world] h2{margin:10px 0 10px}.lead{font-size:1rem}}
 @media (min-width:380px) and (max-width:759px){.phones{margin-top:-44px}}
 @media (min-width:760px){
 .bar{min-height:72px}

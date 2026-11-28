@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://*.goatcounter.com; object-src 'none'; base-uri 'self';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +13,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aviisrgames.com/paper-route/">
 <meta property="og:image" content="https://aviisrgames.com/assets/og/paper-route.jpg">
-<meta property="og:description" content="Ride your morning route, throw the paper and deliver before sunrise.">
+<meta property="og:description" content="Deliver before sunrise.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/hub.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,11 +35,11 @@
 }
 </script>
 </head>
-<body>
+<body class="edition page-game">
 <a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
 <header>
 <div class="col bar">
-  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-dark.svg" alt="" width="128" height="36"></a>
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
   <nav class="links" aria-label="Main"><a href="/" data-i18n="w_games">Games</a><a href="/support/" data-i18n="navSupport">Support</a></nav>
   <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
 </div>
@@ -46,18 +47,21 @@
 <main id="main">
 <section class="mast" data-world="paper-route" aria-labelledby="h-hub">
   <div class="col wrap">
-    <div class="copy">
-      <span class="tag" data-i18n="w_tagMpr">Bike arcade</span>
-      <div class="id"><img src="/assets/icons/paper-route.webp" alt="" width="128" height="128"><h1 id="h-hub">Morning Paper Route: Bike Game</h1></div>
-      <p class="hl" data-i18n="w_mprH">Deliver before sunrise.</p>
-      <p class="lead" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
-      <div class="acts">
-        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=hub&amp;utm_campaign=paper-route-hub"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
-        <p class="ios-note" data-i18n="iphoneSoon">Not on iPhone yet</p>
+    <div class="spread">
+      <div class="copy">
+        <span class="tag" data-i18n="w_tagMpr">Bike arcade</span>
+        <div class="id"><img src="/assets/icons/paper-route.webp" alt="" width="128" height="128"><h1 id="h-hub">Morning Paper Route: Bike Game</h1></div>
+        <p class="hl" data-i18n="w_mprH">Deliver before sunrise.</p>
+        <p class="lead" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
+        <p class="note" data-i18n="w_storeStatus">Google Play (IL, US) · Not on iPhone yet · Verified 2026-11-24</p>
+        <div class="acts">
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=hub&amp;utm_campaign=paper-route-hub"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
+          <p class="ios-note" data-i18n="iphoneSoon">Not on iPhone yet</p>
+        </div>
       </div>
-    </div>
-    <div class="shots">
-      <div class="screens" role="region" aria-label="Morning Paper Route screenshots" tabindex="0"><img src="/assets/screens/paper-route-1.webp" width="480" height="960" fetchpriority="high" decoding="async" alt="Deliver the morning paper: steer with one thumb, throw with the other"><img src="/assets/screens/paper-route-2.webp" width="480" height="960" loading="lazy" decoding="async" alt="Dodge dogs, cars and drones, with something new every day of the week"><img src="/assets/screens/paper-route-3.webp" width="480" height="960" loading="lazy" decoding="async" alt="Ride four living cities: London, Tokyo, New York and San Francisco"></div>
+      <div class="shots">
+        <div class="screens" role="region" aria-label="Morning Paper Route screenshots" tabindex="0"><img src="/assets/screens/paper-route-1.webp" width="480" height="960" fetchpriority="high" decoding="async" alt="Deliver the morning paper: steer with one thumb, throw with the other"><img src="/assets/screens/paper-route-2.webp" width="480" height="960" loading="lazy" decoding="async" alt="Dodge dogs, cars and drones, with something new every day of the week"><img src="/assets/screens/paper-route-3.webp" width="480" height="960" loading="lazy" decoding="async" alt="Ride four living cities: London, Tokyo, New York and San Francisco"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -96,6 +100,7 @@
       <li>معاينة مسار الرمي، وتحكم بيد واحدة ووضع لمستخدمي اليد اليسرى، واهتزاز لمسي، وتقليل الحركة، و11 لغة</li>
     </ul>
   </div>
+  <ul class="hublinks"><li><a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a></li></ul>
   <div class="qr-handoff"><img src="/assets/qr/paper-route.svg" alt="QR code that opens this page on your phone" width="112" height="112"><p data-i18n="qrText">On a computer? Point your phone camera at the code to open this page on your phone, then tap the Google Play button.</p></div>
 
   <section class="more" aria-labelledby="h-more">
@@ -150,8 +155,11 @@
   </section>
 </div>
 
-<footer class="col">
-  <div>© aviisr games · <a href="/support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="/" data-i18n="navAllGames">All Games</a></div>
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="/support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="/" data-i18n="navAllGames">All Games</a></div>
+  </div>
 </footer>
 </main>
 <script src="../assets/i18n.js"></script>
@@ -160,10 +168,55 @@
     supported: ['en', 'he', 'ar'],
     defaultLang: 'en',
     translations: {
-      en: { w_skip: "Skip to content", w_games: "Games", w_lang: "Language", w_tagMpr: "Bike arcade", w_mprH: "Deliver before sunrise.", w_ninelyH: "Sudoku that explains every move.", w_bayH: "Stack three. Ship the truck.", w_more: "More from aviisr games" },
-      he: { w_skip: "דלגו לתוכן", w_games: "משחקים", w_lang: "שפה", w_tagMpr: "ארקייד אופניים", w_mprH: "חלקו את העיתונים לפני הזריחה.", w_ninelyH: "סודוקו שמסביר כל צעד.", w_bayH: "ערמו שלושה. שלחו את המשאית.", w_more: "עוד מ-aviisr games" },
-      ar: { w_skip: "تخطَّ إلى المحتوى", w_games: "الألعاب", w_lang: "اللغة", w_tagMpr: "أركيد دراجات", w_mprH: "وزّع الصحف قبل شروق الشمس.", w_ninelyH: "سودوكو يشرح كل خطوة.", w_bayH: "كدّس ثلاثة. أرسل الشاحنة.", w_more: "المزيد من aviisr games" }
-    }
+      "en": {
+            "w_skip": "Skip to content",
+            "w_games": "Games",
+            "navSupport": "Support",
+            "w_lang": "Language",
+            "w_tagMpr": "Bike arcade",
+            "w_mprH": "Deliver before sunrise.",
+            "mprDesc": "Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.",
+            "w_storeStatus": "Google Play (IL, US) · Not on iPhone yet · Verified 2026-11-24",
+            "iphoneSoon": "Not on iPhone yet",
+            "w_ninelyH": "Sudoku that explains every move.",
+            "w_bayH": "Stack three. Ship the truck.",
+            "w_more": "More from aviisr games",
+            "navPrivacy": "Privacy Policy",
+            "navAllGames": "All Games"
+      },
+      "he": {
+            "w_skip": "דלגו לתוכן",
+            "w_games": "משחקים",
+            "navSupport": "תמיכה",
+            "w_lang": "שפה",
+            "w_tagMpr": "ארקייד אופניים",
+            "w_mprH": "חלקו את העיתונים לפני הזריחה.",
+            "mprDesc": "רכבו במסלול הבוקר, זרקו את העיתון ומסרו לפני הזריחה. משחק ארקייד באגודל אחת, בלי פרסומות כפויות באמצע רכיבה.",
+            "w_storeStatus": "Google Play (ישראל וארה״ב) · עדיין לא ב-iPhone · אומת 2026-11-24",
+            "iphoneSoon": "עדיין לא ב-iPhone",
+            "w_ninelyH": "סודוקו שמסביר כל צעד.",
+            "w_bayH": "ערמו שלושה. שלחו את המשאית.",
+            "w_more": "עוד מ-aviisr games",
+            "navPrivacy": "מדיניות פרטיות",
+            "navAllGames": "כל המשחקים"
+      },
+      "ar": {
+            "w_skip": "تخطَّ إلى المحتوى",
+            "w_games": "الألعاب",
+            "navSupport": "الدعم",
+            "w_lang": "اللغة",
+            "w_tagMpr": "أركيد دراجات",
+            "w_mprH": "وزّع الصحف قبل شروق الشمس.",
+            "mprDesc": "انطلق في جولتك الصباحية، ارمِ الصحيفة وسلّمها قبل شروق الشمس. لعبة أركيد بالدراجة بإبهام واحد، بلا إعلانات إجبارية أثناء الجولة.",
+            "w_storeStatus": "Google Play · ليست على iPhone بعد · 2026-11-24",
+            "iphoneSoon": "ليست على iPhone بعد",
+            "w_ninelyH": "سودوكو يشرح كل خطوة.",
+            "w_bayH": "كدّس ثلاثة. أرسل الشاحنة.",
+            "w_more": "المزيد من aviisr games",
+            "navPrivacy": "سياسة الخصوصية",
+            "navAllGames": "جميع الألعاب"
+      }
+}
   });
 </script>
 <script src="/assets/play-badge.js"></script>

@@ -55,7 +55,10 @@ class HubTemplateTests(unittest.TestCase):
             page = read(rel)
             self.assertEqual(page.count('href="%s"' % EXPECTED_PLAY[rel]), 1, rel)
             self.assertEqual(len(re.findall(r'class="play-badge"', page)), 1, rel)
-            self.assertNotIn('apps.apple.com', page, rel)
+            if rel == 'baylight/index.html':
+                self.assertIn('https://apps.apple.com/app/id6826672657', page, rel)
+            else:
+                self.assertNotIn('apps.apple.com', page, rel)
 
     def test_more_from_has_exactly_two_other_hubs_and_never_mila(self):
         for rel in HUBS:

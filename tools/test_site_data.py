@@ -64,12 +64,33 @@ class SiteDataTests(unittest.TestCase):
         self.assertEqual(on_page, live)
 
     def test_no_app_store_link_anywhere_and_statuses_say_none(self):
+        expected_ios = {
+            'baylight': ('6826672657', ['IL', 'US'], 'apps.apple.com/app/id6826672657'),
+            'mila': ('6827490842', ['IL'], 'apps.apple.com/il/app/id6827490842'),
+            'middle-east-2030': ('6820597256', ['IL', 'US'], 'apps.apple.com/app/middle-east-2030/id6820597256'),
+        }
         for g in GAMES:
-            if g['id'] == 'mila' and g['appStore'].get('status') == 'live':
-                self.assertEqual(g['appStore']['id'], '6827490842')
-                self.assertIn('apps.apple.com/il/app/id6827490842', HOME)
+            self.assertEqual(g['googlePlay'].get('markets'), ['IL', 'US'], g['id'])
+            if g['id'] in expected_ios and g['appStore'].get('status') == 'live':
+                aid, mkts, url_sub = expected_ios[g['id']]
+                self.assertEqual(g['appStore']['id'], aid)
+                self.assertEqual(g['appStore'].get('markets'), mkts)
+                self.assertIn(url_sub, HOME)
             else:
                 self.assertEqual(g['appStore']['status'], 'none', g['id'])
+                self.assertEqual(g['appStore'].get('markets'), [], g['id'])
+
+    def test_store_availability_claims_consistent_without_blanket_denial(self):
+        self.assertNotIn('Our games are not on the App Store yet', HOME)
+        self.assertNotIn('המשחקים שלנו עדיין לא ב-App Store', HOME)
+        self.assertIn('Baylight (IL, US) and Mila (Israel)', HOME)
+        about = (ROOT / 'about/index.html').read_text(encoding='utf-8')
+        self.assertIn('App Store in Israel', about)
+        self.assertIn('Baylight (IL, US)', about)
+        self.assertNotIn('beamwise', HOME.lower())
+        self.assertNotIn('beamwise', about.lower())
+        self.assertTrue((ROOT / 'beamwise/index.html').is_file())
+        self.assertTrue((ROOT / 'beamwise/privacy.html').is_file())
 
     def test_mila_is_isolated(self):
         g = next(x for x in GAMES if x['id'] == 'mila')
@@ -84,7 +105,7 @@ class SiteDataTests(unittest.TestCase):
         self.assertEqual(srcs, ['assets/i18n.js', '/assets/play-badge.js', '/assets/count.js', 'assets/site.js'])
         self.assertEqual(len(re.findall(r'<script(?![^>]*(?:src=|ld\+json))[^>]*>', HOME)), 1)
         self.assertNotRegex(HOME, r'\son[a-z]+=')
-        self.assertNotRegex(HOME.split('<body>')[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/|apps\.apple\.com/)')
+        self.assertNotRegex(re.split(r'<body[^>]*>', HOME, maxsplit=1)[1], r'(?:href|src)="https?://(?!play\.google\.com/store/apps/|apps\.apple\.com/)')
 
 
 if __name__ == '__main__':

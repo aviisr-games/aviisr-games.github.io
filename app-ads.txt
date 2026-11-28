@@ -1192,3 +1192,4 @@ sharethrough.com, 4194, RESELLER, 060d053dcf45cbf3
 rubiconproject.com, 22884, DIRECT, 0bfd66d529a55807
 # OpenX (Google Open Bidding, onboarding email 2026-11-16)
 openx.com, 660220837, DIRECT, 6a698e2ec38604c6
+playdigo.com, 1965, RESELLER

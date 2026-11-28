@@ -48,6 +48,9 @@ class MeasurementTests(unittest.TestCase):
     def test_counter_guards_remain(self):
         js = read('assets/count.js')
         self.assertIn(r"/^\/mila(\/|$)/.test(location.pathname)", js)
+        self.assertIn("'com.aviisr.mila'", js)
+        self.assertIn("'6827490842'", js)
+        self.assertIn('isExcludedLink(a)', js)
         self.assertIn("navigator.doNotTrack === '1'", js)
         self.assertIn('navigator.globalPrivacyControl === true', js)
         self.assertIn(r"/^[a-z_]+(\/[A-Za-z0-9_-][A-Za-z0-9_.-]*){1,3}$/", js)

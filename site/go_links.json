@@ -169,5 +169,21 @@
       "storeName": "App Store",
       "target": "https://apps.apple.com/app/id6826672657?ct=baylight-dock-w01&mt=8"
     }
+  ],
+  "groups": [
+    {"slug": "nfb-en-site", "lang": "en"},
+    {"slug": "nfb-en-hub", "lang": "en"},
+    {"slug": "nfb-en-playable", "lang": "en"},
+    {"slug": "nfb-en-page", "lang": "en"},
+    {"slug": "nfb-en-play", "lang": "en"},
+    {"slug": "nfb-en-app", "lang": "en"},
+    {"slug": "nfb-en-yt", "lang": "en"},
+    {"slug": "nfb-en-reply", "lang": "en"},
+    {"slug": "nfb-de-site", "lang": "de"},
+    {"slug": "nfb-de-page", "lang": "de"},
+    {"slug": "nfb-de-play", "lang": "de"},
+    {"slug": "nfb-de-app", "lang": "de"},
+    {"slug": "nfb-de-yt", "lang": "de"},
+    {"slug": "nfb-de-reply", "lang": "de"}
   ]
 }

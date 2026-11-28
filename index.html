@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>aviisr games · Small mobile games, made with care</title>
-<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Mila also on iPhone.">
+<meta name="description" content="aviisr games makes Ninely, Middle East 2030, Morning Paper Route, Baylight and Mila. Five games on Google Play now; Middle East 2030, Baylight and Mila (Israel) also on iPhone.">
 <meta name="google-site-verification" content="oh0yHwl6YiX3dvIZYH5wIyc5pM6vJMYK3q-frBAYXlY">
 <meta name="google-site-verification" content="oOOd1kEtVYr2Y1KLxcsYjZZEJLcLkjKQKhZO3RPxahU">
 <meta name="facebook-domain-verification" content="ujlw9q4t20ufpcquni2zjk27ozhi6c">
@@ -21,6 +21,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pilot-2.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,147 +36,128 @@
   ]
 }
 </script>
+<script src="assets/i18n.js"></script>
 </head>
-<body>
+<body class="edition page-home">
 <a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
 <header>
 <div class="col bar">
-  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-dark.svg" alt="" width="128" height="36"></a>
-  <nav class="links" aria-label="Main"><a href="#games" data-i18n="w_games">Games</a><a href="ninely/strategy/">Guides</a><a href="about/">About</a><a href="support/" data-i18n="navSupport">Support</a></nav>
+  <a class="logo" href="/" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="#games" data-i18n="w_games">Games</a><a href="ninely/strategy/" data-i18n="w_guides">Guides</a><a href="notes/" data-i18n="w_notes">Notes</a><a href="about/" data-i18n="w_about">About</a><a href="support/" data-i18n="navSupport">Support</a></nav>
   <div class="langbox"><label for="lang-switcher" data-i18n="w_lang">Language</label><nav class="lang"></nav></div>
 </div>
 </header>
 <main id="main">
-<div class="col hero">
-  <h1><span data-i18n="w_pick">Pick a</span> <em data-i18n="w_world">world</em>.</h1>
-  <p data-i18n="w_heroLine">Small mobile games, made with care: Ninely, Middle East 2030, Baylight, Morning Paper Route and Mila.</p>
-  <ul class="rail">
-    <li><a href="#ninely"><img src="assets/icons/ninely.webp" alt="" width="128" height="128"><span>Ninely</span></a></li>
-    <li><a href="#middle-east-2030"><img src="assets/icons/middle-east-2030.webp" alt="" width="128" height="128"><span>Middle East 2030</span></a></li>
-    <li><a href="#baylight"><img src="assets/icons/baylight.webp" alt="" width="128" height="128"><span>Baylight</span></a></li>
-    <li><a href="#paper-route"><img src="assets/icons/paper-route.webp" alt="" width="128" height="128"><span>Paper Route</span></a></li>
-    <li><a href="#mila"><img src="assets/icons/mila.webp" alt="" width="256" height="256"><span>Mila</span></a></li>
-  </ul>
-  <p class="note" data-i18n="platformLine">On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.</p>
-</div>
 
-<div id="games">
-<section id="ninely" data-world="ninely" aria-labelledby="h-ninely">
-  <div class="col wrap">
-    <div class="copy">
-      <span class="tag" data-i18n="w_tagNinely">Logic puzzle</span>
-      <h2 id="h-ninely" data-i18n="w_ninelyH">Sudoku that explains every move.</h2>
-      <p class="lead" data-i18n="w_ninelyP">Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
-      <div class="get">
-        <div class="id"><img src="assets/icons/ninely.webp" alt="" width="28" height="28"><h3>Ninely: Sudoku &amp; Logic Puzzle</h3></div>
-        <div class="acts">
-          <a class="btn" href="ninely/play/" data-i18n="w_ninelyBtn">Play today's puzzle</a>
+<section class="col editionlead" aria-labelledby="h-hero">
+  <div>
+    <p class="kicker" data-i18n="w_featured">Featured game  /  Ninely</p>
+    <h1 id="h-hero"><span data-i18n="w_heroStart">A little more</span><br><em data-i18n="w_heroAccent">logic.</em></h1>
+    <p class="lead" data-i18n="w_ninelyLead">Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
+    <div class="actions">
+      <a class="action" href="ninely/" data-i18n="w_ninelyHub">Discover Ninely</a>
+      <a class="action action-secondary" href="ninely/play/" data-i18n="w_ninelyBtn">Play today&#x27;s puzzle</a>
+    </div>
+    <p class="note" data-i18n="platformLine">5 apps on Google Play (IL, US). Middle East 2030 (IL, US), Baylight (IL, US) and Mila (Israel) are also on the App Store; the other 2 games are Android-only for now, with browser previews below.</p>
+  </div>
+  <figure class="featureposter">
+    <div class="poster" style="--paper:#adc2ff">
+      <span class="poster-letter" aria-hidden="true" dir="ltr">9</span>
+      <span class="poster-ring" aria-hidden="true"></span>
+      <img class="capture" src="assets/screens/ninely-1.webp" alt="Hint: Smart Hints explain each move" width="480" height="853" fetchpriority="high">
+    </div>
+    <figcaption><span data-i18n="w_heroCaption">Ninely</span><span data-i18n="w_heroCaptionSub">From the app · Smart Hints</span></figcaption>
+  </figure>
+</section>
+
+<section id="play-now" class="col playhero" aria-labelledby="h-play">
+  <p class="kicker" data-i18n="w_playKicker">Browser games</p>
+  <h2 id="h-play" data-i18n="w_playTitle">Play in your browser</h2>
+  <div class="playlayout">
+    <div class="playfocus">
+      <div>
+        <p class="kicker" data-i18n="w_dailyKicker">Daily Sudoku  /  Ninely</p>
+        <h3 data-i18n="w_dailyTitle">Today’s puzzle</h3>
+        <p data-i18n="w_dailyDesc">Open the board in your browser. A new puzzle arrives each day.</p>
+        <a class="action" href="ninely/play/" data-i18n="w_ninelyBtn">Play today&#x27;s puzzle</a>
+      </div>
+      <img class="playscreen" src="assets/screens/ninely-1.webp" alt="" width="480" height="853" loading="lazy" decoding="async">
+    </div>
+    <div class="playlist">
+      <h3 data-i18n="w_alsoPlay">Also playable</h3>
+      <a class="decklink" href="baylight/dock/"><img src="assets/icons/baylight.webp" alt="" width="128" height="128"><span><strong><bdi>Baylight</bdi></strong><small data-i18n="w_deckBay">Load a dock in your browser</small></span></a>
+      <a class="decklink" href="middle-east-2030/briefing/"><img src="assets/icons/middle-east-2030.webp" alt="" width="128" height="128"><span><strong><bdi>Middle East 2030</bdi></strong><small data-i18n="w_deckMe">Try the 3-month briefing</small></span></a>
+      <a class="decklink" href="ninely/strategy/"><img src="assets/icons/ninely.webp" alt="" width="128" height="128"><span><strong data-i18n="w_deckGuide">Sudoku workshop</strong><small data-i18n="w_deckGuideSub">Learn a solving technique</small></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="col block" id="games" aria-labelledby="h-collection">
+  <h2 id="h-collection" data-i18n="w_collection">The collection</h2>
+  <div class="collection">
+<section id="ninely" data-world="ninely" class="game-card" style="--paper:#adc2ff" aria-label="Ninely: Sudoku &amp; Logic Puzzle">
+  <div><span class="tag" data-i18n="card_tag_ninely">Logic puzzle</span></div>
+  <div class="id"><img src="assets/icons/ninely.webp" alt="" width="128" height="128"><h3>Ninely: Sudoku &amp; Logic Puzzle</h3></div>
+  <p class="card-lead" data-i18n="card_lead_ninely">Smart Hints teach the logic step by step, with a new daily puzzle every day.</p>
+  <p class="store-line" data-i18n="card_status_ninely">Google Play (IL, US) · Not on iPhone yet</p>
+  <div class="acts">
+          <a class="btn" href="ninely/play/" data-i18n="card_browser_ninely">Play today&#x27;s puzzle</a>
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.ninely&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=ninely-home"><img data-play-badge data-app="Ninely" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Ninely" width="150" height="58"></a>
           <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
-        </div>
-      </div>
-      <a class="app-more" href="ninely/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Ninely</span></a>
-    </div>
-    <div class="phones">
-      <div class="phone"><img src="assets/screens/ninely-1.webp" alt="Hint: Smart Hints explain each move" width="480" height="853" fetchpriority="high" decoding="async"></div>
-      <div class="phone"><img src="assets/screens/ninely-2.webp" alt="Practice each technique in short drills" width="480" height="853" loading="lazy" decoding="async"></div>
-    </div>
   </div>
+  <a class="app-more" href="ninely/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Ninely</span></a>
 </section>
-
-<section id="middle-east-2030" data-world="middle-east-2030" aria-labelledby="h-me">
-  <div class="col wrap">
-    <div class="copy">
-      <span class="tag" data-i18n="w_tagMe">Politics sim</span><span class="tag flag" data-i18n="w_fiction">Fiction</span>
-      <h2 id="h-me" data-i18n="w_meH">2030. Can you hold the region for one term?</h2>
-      <p class="lead" data-i18n="me2030Desc">A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.</p>
-      <div class="get">
-        <div class="id"><img src="assets/icons/middle-east-2030.webp" alt="" width="28" height="28"><h3>Middle East 2030: Politics Sim</h3></div>
-        <div class="acts">
-          <a class="btn" href="middle-east-2030/briefing/" data-i18n="w_meBtn">Try the 3-month briefing</a>
+<section id="middle-east-2030" data-world="middle-east-2030" class="game-card" style="--paper:#e1d2b7" aria-label="Middle East 2030: Politics Sim">
+  <div><span class="tag" data-i18n="card_tag_middle-east-2030">Politics sim</span><span class="tag flag" data-i18n="w_fiction">Fiction</span></div>
+  <div class="id"><img src="assets/icons/middle-east-2030.webp" alt="" width="128" height="128"><h3>Middle East 2030: Politics Sim</h3></div>
+  <p class="card-lead" data-i18n="card_lead_middle-east-2030">A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow&#x27;s front page. All events are fiction.</p>
+  <p class="store-line" data-i18n="card_status_middle-east-2030">Google Play (IL, US) &amp; App Store · Fiction</p>
+  <div class="acts">
+          <a class="btn" href="middle-east-2030/briefing/" data-i18n="card_browser_middle-east-2030">Try the 3-month briefing</a>
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.middleeast2030&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=middle-east-2030-home"><img data-play-badge data-app="Middle East 2030" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Middle East 2030" width="150" height="58"></a>
-          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
-        </div>
-      </div>
-      <a class="app-more" href="middle-east-2030/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Middle East 2030</span></a>
-    </div>
-    <div class="phones">
-      <div class="phone"><img src="assets/screens/middle-east-2030-1.webp" alt="2030. Can you hold the region for one term?" width="480" height="960" loading="lazy" decoding="async"></div>
-      <div class="phone"><img src="assets/screens/middle-east-2030-2.webp" alt="Every month opens with its biggest problem" width="480" height="960" loading="lazy" decoding="async"></div>
-    </div>
+          <a class="appstore-badge" href="https://apps.apple.com/app/middle-east-2030/id6820597256" target="_blank" rel="noopener noreferrer" aria-label="Download Middle East 2030 on the App Store"><svg viewBox="0 0 170 170" aria-hidden="true" width="18" height="18" style="fill:currentColor;flex:none;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.96-12.04-14.64-5.99-9.28-10.66-19.82-13.99-31.62-3.33-11.79-5-23.01-5-33.64 0-14.35 3.58-26.43 10.74-36.24 7.16-9.81 16.27-14.77 27.34-14.88 4.89 0 10.25 1.25 16.08 3.75 5.83 2.5 9.77 3.79 11.83 3.87 1.85-.08 5.86-1.39 12.04-3.95 6.18-2.55 11.58-3.73 16.2-3.53 12.63.76 22.84 5.37 30.64 13.84-11.09 6.74-16.53 16.08-16.32 28.02.22 9.57 3.97 17.56 11.24 23.97 7.28 6.41 15.93 10.05 25.96 10.92-2.39 7.4-5.33 14.78-8.81 22.15zM119.22 31.84c0-7.39 2.66-14.42 7.98-21.09 5.33-6.67 11.96-10.75 19.89-12.25.33 1.2.54 2.39.65 3.59.11 1.19.16 2.39.16 3.59 0 7.39-2.82 14.6-8.47 21.63-5.65 7.03-12.28 11-19.89 11.9-.32-.98-.49-2.12-.49-3.42 0-1.3.06-2.62.17-3.95z"/></svg><bdi>App Store</bdi></a>
   </div>
+  <a class="app-more" href="middle-east-2030/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Middle East 2030</span></a>
 </section>
-
-<section id="baylight" data-world="baylight" aria-labelledby="h-bay">
-  <div class="col wrap">
-    <div class="copy">
-      <span class="tag" data-i18n="w_tagBay">Sorting puzzle</span>
-      <h2 id="h-bay" data-i18n="w_bayH">Stack three. Ship the truck.</h2>
-      <p class="lead" data-i18n="baylightDesc">Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.</p>
-      <div class="get">
-        <div class="id"><img src="assets/icons/baylight.webp" alt="" width="28" height="28"><h3>Baylight: Truck Sort Puzzle</h3></div>
-        <div class="acts">
+<section id="baylight" data-world="baylight" class="game-card" style="--paper:#ffcf66" aria-label="Baylight: Truck Sort Puzzle">
+  <div><span class="tag" data-i18n="card_tag_baylight">Sorting puzzle</span></div>
+  <div class="id"><img src="assets/icons/baylight.webp" alt="" width="128" height="128"><h3>Baylight: Truck Sort Puzzle</h3></div>
+  <p class="card-lead" data-i18n="card_lead_baylight">Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.</p>
+  <p class="store-line" data-i18n="card_status_baylight">Google Play &amp; App Store (IL, US)</p>
+  <div class="acts">
+          <a class="link" href="baylight/dock/" data-i18n="card_browser_baylight">Load a dock in your browser</a>
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=baylight-home"><img data-play-badge data-app="Baylight" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Baylight" width="150" height="58"></a>
-          <a class="link" href="baylight/dock/" data-i18n="baylightTry">Load a dock in your browser</a>
-          <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
-        </div>
-      </div>
-      <a class="app-more" href="baylight/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Baylight</span></a>
-    </div>
-    <div class="phones">
-      <div class="phone"><img src="assets/screens/baylight-1.webp" alt="Bay 4: stack three matching parcels to fill a truck" width="480" height="960" loading="lazy" decoding="async"></div>
-      <div class="phone"><img src="assets/screens/baylight-3.webp" alt="Tap the pallet to park a parcel until a bay frees up" width="480" height="960" loading="lazy" decoding="async"></div>
-    </div>
+          <a class="appstore-badge" href="https://apps.apple.com/app/id6826672657" target="_blank" rel="noopener noreferrer" aria-label="Download Baylight on the App Store"><svg viewBox="0 0 170 170" aria-hidden="true" width="18" height="18" style="fill:currentColor;flex:none;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.96-12.04-14.64-5.99-9.28-10.66-19.82-13.99-31.62-3.33-11.79-5-23.01-5-33.64 0-14.35 3.58-26.43 10.74-36.24 7.16-9.81 16.27-14.77 27.34-14.88 4.89 0 10.25 1.25 16.08 3.75 5.83 2.5 9.77 3.79 11.83 3.87 1.85-.08 5.86-1.39 12.04-3.95 6.18-2.55 11.58-3.73 16.2-3.53 12.63.76 22.84 5.37 30.64 13.84-11.09 6.74-16.53 16.08-16.32 28.02.22 9.57 3.97 17.56 11.24 23.97 7.28 6.41 15.93 10.05 25.96 10.92-2.39 7.4-5.33 14.78-8.81 22.15zM119.22 31.84c0-7.39 2.66-14.42 7.98-21.09 5.33-6.67 11.96-10.75 19.89-12.25.33 1.2.54 2.39.65 3.59.11 1.19.16 2.39.16 3.59 0 7.39-2.82 14.6-8.47 21.63-5.65 7.03-12.28 11-19.89 11.9-.32-.98-.49-2.12-.49-3.42 0-1.3.06-2.62.17-3.95z"/></svg><bdi>App Store</bdi></a>
   </div>
+  <a class="app-more" href="baylight/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Baylight</span></a>
 </section>
-
-<section id="paper-route" data-world="paper-route" aria-labelledby="h-mpr">
-  <div class="col wrap">
-    <div class="copy">
-      <span class="tag" data-i18n="w_tagMpr">Bike arcade</span>
-      <h2 id="h-mpr" data-i18n="w_mprH">Deliver before sunrise.</h2>
-      <p class="lead" data-i18n="mprDesc">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
-      <div class="get">
-        <div class="id"><img src="assets/icons/paper-route.webp" alt="" width="28" height="28"><h3>Morning Paper Route: Bike Game</h3></div>
-        <div class="acts">
+<section id="paper-route" data-world="paper-route" class="game-card" style="--paper:#ffc383" aria-label="Morning Paper Route: Bike Game">
+  <div><span class="tag" data-i18n="card_tag_paper-route">Bike arcade</span></div>
+  <div class="id"><img src="assets/icons/paper-route.webp" alt="" width="128" height="128"><h3>Morning Paper Route: Bike Game</h3></div>
+  <p class="card-lead" data-i18n="card_lead_paper-route">Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.</p>
+  <p class="store-line" data-i18n="card_status_paper-route">Google Play (IL, US)</p>
+  <div class="acts">
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.paperroute&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=paper-route-home"><img data-play-badge data-app="Morning Paper Route" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: Morning Paper Route" width="150" height="58"></a>
           <p class="ios-note" data-i18n="w_ios" hidden>Not on the App Store yet.</p>
-        </div>
-      </div>
-      <a class="app-more" href="paper-route/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Morning Paper Route</span></a>
-    </div>
-    <div class="phones">
-      <div class="phone"><img src="assets/screens/paper-route-1.webp" alt="Deliver the morning paper: steer with one thumb, throw with the other" width="480" height="960" loading="lazy" decoding="async"></div>
-      <div class="phone"><img src="assets/screens/paper-route-2.webp" alt="Dodge dogs, cars and drones, with something new every day of the week" width="480" height="960" loading="lazy" decoding="async"></div>
-    </div>
   </div>
+  <a class="app-more" href="paper-route/"><span data-i18n="moreAbout">About, help and privacy</span><span class="sr-only">: Morning Paper Route</span></a>
 </section>
-
-<section id="mila" data-world="mila" lang="he" dir="rtl" aria-labelledby="h-mila">
-  <div class="col wrap">
-    <div class="copy">
-      <span class="tag">אנגלית לילדים</span>
-      <h2 id="h-mila">אנגלית לילדים דוברי עברית בכיתות א׳-ו׳.</h2>
-      <p class="lead">בלי פרסומות ובלי חשבון. התרגול עובד גם בלי אינטרנט.</p>
-      <div class="get">
-        <div class="id"><img src="assets/icons/mila.webp" alt="" width="28" height="28"><h3>מילה · <bdi>Mila</bdi></h3></div>
-        <div class="acts">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.mila&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=mila-home"><img data-play-badge data-app="מילה · Mila" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: מילה · Mila" width="150" height="58"></a>
-          <a class="appstore-badge" href="https://apps.apple.com/il/app/id6827490842" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" aria-label="הורדה ב-App Store (ישראל)"><svg viewBox="0 0 170 170" aria-hidden="true" style="width:20px;height:20px;fill:currentColor;vertical-align:middle;margin-left:6px;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.96-12.04-14.64-5.99-9.28-10.66-19.82-13.99-31.62-3.33-11.79-5-23.01-5-33.64 0-14.35 3.58-26.43 10.74-36.24 7.16-9.81 16.27-14.77 27.34-14.88 4.89 0 10.25 1.25 16.08 3.75 5.83 2.5 9.77 3.79 11.83 3.87 1.85-.08 5.86-1.39 12.04-3.95 6.18-2.55 11.58-3.73 16.2-3.53 12.63.76 22.84 5.37 30.64 13.84-11.09 6.74-16.53 16.08-16.32 28.02.22 9.57 3.97 17.56 11.24 23.97 7.28 6.41 15.93 10.05 25.96 10.92-2.39 7.4-5.33 14.78-8.81 22.15zM119.22 31.84c0-7.39 2.66-14.42 7.98-21.09 5.33-6.67 11.96-10.75 19.89-12.25.33 1.2.54 2.39.65 3.59.11 1.19.16 2.39.16 3.59 0 7.39-2.82 14.6-8.47 21.63-5.65 7.03-12.28 11-19.89 11.9-.32-.98-.49-2.12-.49-3.42 0-1.3.06-2.62.17-3.95z"/></svg><bdi>App Store</bdi> <bdi class="store-note" style="font-size:.75em;opacity:.85">(ישראל / Israel)</bdi></a>
+<section id="mila" data-world="mila" class="game-card" lang="he" dir="rtl" style="--paper:#d3b8fa" aria-label="מילה · Mila">
+  <div><span class="tag">אנגלית לילדים</span></div>
+  <div class="id"><img src="mila/assets/icon-apple-il.jpg" alt="" width="512" height="512"><h3>מילה · <bdi>Mila</bdi></h3></div>
+  <p class="card-lead">ילדים דוברי עברית בכיתות א׳–ו׳ מתרגלים אנגלית בעזרת מילים, צלילים וסיפורים קצרים. בלי פרסומות ובלי חשבון.</p>
+  <p class="store-line">Google Play (ישראל וארה״ב) · App Store (ישראל)</p>
+  <div class="acts">
           <a class="btn" href="mila/worksheets/">דפי עבודה להדפסה, בחינם</a>
-        </div>
-      </div>
-      <a class="app-more" href="mila/">מידע להורים<span class="sr-only">: מילה</span></a>
-    </div>
-    <div class="phones">
-      <div class="phone"><img src="mila/assets/screen-home.webp" alt="מסך הבית של מילה עם כוכבים ומסלול אימון" width="600" height="1305" loading="lazy" decoding="async"></div>
-      <div class="phone"><img src="mila/assets/screen-story.webp" alt="סיפור קצר עם הקראה ותרגום לעברית" width="600" height="1298" loading="lazy" decoding="async"></div>
-    </div>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.aviisr.mila&amp;utm_source=aviisrgames&amp;utm_medium=home&amp;utm_campaign=mila-home"><img data-play-badge data-app="מילה · Mila" src="/assets/badges/google-play-en.png" alt="Get it on Google Play: מילה · Mila" width="150" height="58"></a>
+          <a class="appstore-badge" href="https://apps.apple.com/il/app/id6827490842" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" aria-label="הורדה ב-App Store (ישראל)"><svg viewBox="0 0 170 170" aria-hidden="true" width="18" height="18" style="fill:currentColor;flex:none;"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.96-12.04-14.64-5.99-9.28-10.66-19.82-13.99-31.62-3.33-11.79-5-23.01-5-33.64 0-14.35 3.58-26.43 10.74-36.24 7.16-9.81 16.27-14.77 27.34-14.88 4.89 0 10.25 1.25 16.08 3.75 5.83 2.5 9.77 3.79 11.83 3.87 1.85-.08 5.86-1.39 12.04-3.95 6.18-2.55 11.58-3.73 16.2-3.53 12.63.76 22.84 5.37 30.64 13.84-11.09 6.74-16.53 16.08-16.32 28.02.22 9.57 3.97 17.56 11.24 23.97 7.28 6.41 15.93 10.05 25.96 10.92-2.39 7.4-5.33 14.78-8.81 22.15zM119.22 31.84c0-7.39 2.66-14.42 7.98-21.09 5.33-6.67 11.96-10.75 19.89-12.25.33 1.2.54 2.39.65 3.59.11 1.19.16 2.39.16 3.59 0 7.39-2.82 14.6-8.47 21.63-5.65 7.03-12.28 11-19.89 11.9-.32-.98-.49-2.12-.49-3.42 0-1.3.06-2.62.17-3.95z"/></svg><bdi>App Store</bdi> <bdi class="store-note">(ישראל / Israel)</bdi></a>
+  </div>
+  <a class="app-more" href="mila/"><span>מידע להורים</span><span class="sr-only">: מילה</span></a>
+</section>
   </div>
 </section>
-</div>
 
-<section class="col studio" aria-labelledby="h-studio">
+<section id="studio" class="col studio" aria-labelledby="h-studio">
   <div class="card">
     <h2 id="h-studio" data-i18n="contactTitle">Studio Contact &amp; Support</h2>
     <p data-i18n="contactSub">Player inquiries, bug reports, ad privacy requests, or business correspondence:</p>
@@ -183,118 +165,187 @@
   </div>
 </section>
 
-<footer class="col">
-  <div>© aviisr games · <a href="about/">About</a> · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="terms/">Terms</a> · <a href="accessibility/">Accessibility</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt">Security</a></div>
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="about/" data-i18n="w_about">About</a> · <a href="notes/" data-i18n="w_notes">Notes</a> · <a href="support/" data-i18n="navSupport">Support</a> · <a href="privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="terms/">Terms</a> · <a href="accessibility/">Accessibility</a> · <a href="app-ads.txt">app-ads.txt</a> · <a href="ads.txt">ads.txt</a> · <a href=".well-known/security.txt" data-i18n="w_security">Security</a></div>
+  </div>
 </footer>
 </main>
-
-<script src="assets/i18n.js"></script>
 <script>
 (function () {
   'use strict';
 
   var translations = {
-    en: {
-      heroSub2: "Small mobile games, made with care. Five games on Google Play now; Mila also on iPhone.",
-      gamesTitle: "Our Games",
-      platformLine: "On iPhone? Our games are not on the App Store yet. Meanwhile, try the browser versions below.",
-      ninelyTry: "Play today's puzzle in your browser",
-      meTry: "Try the 3-month briefing in your browser",
-      baylightTry: "Load a dock in your browser",
-      me2030Desc: "A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.",
-      moreAbout: "About, help and privacy",
-      contactTitle: "Studio Contact & Support",
-      contactSub: "Player inquiries, bug reports, ad privacy requests, or business correspondence:",
-      w_skip: "Skip to content",
-      w_games: "Games",
-      w_lang: "Language",
-      w_pick: "Pick a",
-      w_world: "world",
-      w_heroLine: "Small mobile games, made with care: Ninely, Middle East 2030, Baylight, Morning Paper Route and Mila.",
-      w_ios: "Not on the App Store yet.",
-      w_tagNinely: "Logic puzzle",
-      w_ninelyH: "Sudoku that explains every move.",
-      w_ninelyP: "Smart Hints teach the logic step by step, with a new daily puzzle every day.",
-      w_ninelyBtn: "Play today's puzzle",
-      w_tagMe: "Politics sim",
-      w_fiction: "Fiction",
-      w_meH: "2030. Can you hold the region for one term?",
-      w_meBtn: "Try the 3-month briefing",
-      w_tagBay: "Sorting puzzle",
-      w_bayH: "Stack three. Ship the truck.",
-      w_tagMpr: "Bike arcade",
-      w_mprH: "Deliver before sunrise."
-    },
-    he: {
-      heroSub2: "משחקי מובייל קטנים שנוצרו בקפידה. חמישה משחקים ב-Google Play עכשיו; מילה גם ב-iPhone.",
-      gamesTitle: "המשחקים שלנו",
-      platformLine: "ב-iPhone? המשחקים שלנו עדיין לא ב-App Store. בינתיים אפשר לנסות את הגרסאות לדפדפן.",
-      ninelyTry: "לשחק בפאזל של היום בדפדפן",
-      meTry: "לנסות את התדריך בן 3 החודשים בדפדפן",
-      baylightTry: "לנסות רציף בדפדפן",
-      me2030Desc: "סימולציית אסטרטגיה פוליטית בשנת 2030 בדיונית. בחרו אחת מ-8 בירות וקראו את העיתון של מחר. כל האירועים בדיוניים.",
-      moreAbout: "מידע, עזרה ופרטיות",
-      contactTitle: "יצירת קשר ותמיכה",
-      contactSub: "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:",
-      w_skip: "דלגו לתוכן",
-      w_games: "משחקים",
-      w_lang: "שפה",
-      w_pick: "בחרו",
-      w_world: "עולם",
-      w_heroLine: "משחקי מובייל קטנים שנוצרו בקפידה: ⁦Ninely, Middle East 2030, Baylight, Morning Paper Route⁩ ו-⁦Mila⁩.",
-      w_ios: "עדיין לא ב-App Store.",
-      w_tagNinely: "פאזל היגיון",
-      w_ninelyH: "סודוקו שמסביר כל צעד.",
-      w_ninelyP: "רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.",
-      w_ninelyBtn: "לשחק בפאזל של היום",
-      w_tagMe: "סימולציה פוליטית",
-      w_fiction: "בדיוני",
-      w_meH: "2030. תצליחו להחזיק את האזור קדנציה אחת?",
-      w_meBtn: "לנסות את התדריך בן 3 החודשים",
-      w_tagBay: "פאזל מיון",
-      w_bayH: "ערמו שלושה. שלחו את המשאית.",
-      w_tagMpr: "ארקייד אופניים",
-      w_mprH: "חלקו את העיתונים לפני הזריחה."
-    },
-    ar: {
-      heroSub2: "ألعاب صغيرة للهواتف مصنوعة بعناية. خمس ألعاب على Google Play الآن، وMila أيضاً على iPhone.",
-      gamesTitle: "ألعابنا",
-      platformLine: "تستخدم iPhone؟ ألعابنا ليست على App Store بعد. جرّب نسخ المتصفح أدناه في الأثناء.",
-      ninelyTry: "العب لغز اليوم في المتصفح",
-      meTry: "جرّب الإحاطة لثلاثة أشهر في المتصفح",
-      baylightTry: "جرّب رصيفاً في المتصفح",
-      me2030Desc: "لعبة استراتيجية سياسية في عام 2030 متخيَّل. اختر إحدى 8 عواصم واقرأ صحيفة الغد. كل الأحداث خيالية.",
-      moreAbout: "معلومات ومساعدة وخصوصية",
-      contactTitle: "التواصل والدعم",
-      contactSub: "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:",
-      w_skip: "تخطَّ إلى المحتوى",
-      w_games: "الألعاب",
-      w_lang: "اللغة",
-      w_pick: "اختر",
-      w_world: "عالماً",
-      w_heroLine: "ألعاب صغيرة للهواتف مصنوعة بعناية: ⁦Ninely, Middle East 2030, Baylight, Morning Paper Route⁩ و⁦Mila⁩.",
-      w_ios: "ليست على App Store بعد.",
-      w_tagNinely: "لغز منطقي",
-      w_ninelyH: "سودوكو يشرح كل خطوة.",
-      w_ninelyP: "تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.",
-      w_ninelyBtn: "العب لغز اليوم",
-      w_tagMe: "محاكاة سياسية",
-      w_fiction: "خيالي",
-      w_meH: "2030. هل تستطيع الحفاظ على استقرار المنطقة طوال ولاية واحدة؟",
-      w_meBtn: "جرّب إحاطة الأشهر الثلاثة",
-      w_tagBay: "لغز فرز",
-      w_bayH: "كدّس ثلاثة. أرسل الشاحنة.",
-      w_tagMpr: "أركيد دراجات",
-      w_mprH: "وزّع الصحف قبل شروق الشمس."
-    }
+  "en": {
+    "w_skip": "Skip to content",
+    "w_games": "Games",
+    "w_guides": "Guides",
+    "w_notes": "Notes",
+    "w_about": "About",
+    "w_security": "Security",
+    "w_lang": "Language",
+    "navSupport": "Support",
+    "navPrivacy": "Privacy Policy",
+    "w_featured": "Featured game  /  Ninely",
+    "w_heroStart": "A little more",
+    "w_heroAccent": "logic.",
+    "w_heroCaption": "Ninely",
+    "w_playKicker": "Browser games",
+    "w_playTitle": "Play in your browser",
+    "w_dailyKicker": "Daily Sudoku  /  Ninely",
+    "w_dailyTitle": "Today’s puzzle",
+    "w_dailyDesc": "Open the board in your browser. A new puzzle arrives each day.",
+    "w_alsoPlay": "Also playable",
+    "w_deckGuide": "Sudoku workshop",
+    "w_deckGuideSub": "Learn a solving technique",
+    "w_collection": "The collection",
+    "w_fiction": "Fiction",
+    "w_ios": "Not on the App Store yet.",
+    "moreAbout": "About, help and privacy",
+    "contactTitle": "Studio Contact & Support",
+    "contactSub": "Player inquiries, bug reports, ad privacy requests, or business correspondence:",
+    "platformLine": "5 apps on Google Play (IL, US). Middle East 2030 (IL, US), Baylight (IL, US) and Mila (Israel) are also on the App Store; the other 2 games are Android-only for now, with browser previews below.",
+    "w_deckBay": "Load a dock in your browser",
+    "w_deckMe": "Try the 3-month briefing",
+    "w_ninelyLead": "Smart Hints teach the logic step by step, with a new daily puzzle every day.",
+    "w_ninelyHub": "Discover Ninely",
+    "w_ninelyBtn": "Play today's puzzle",
+    "w_heroCaptionSub": "From the app · Smart Hints",
+    "card_tag_ninely": "Logic puzzle",
+    "card_lead_ninely": "Smart Hints teach the logic step by step, with a new daily puzzle every day.",
+    "card_status_ninely": "Google Play (IL, US) · Not on iPhone yet",
+    "card_browser_ninely": "Play today's puzzle",
+    "card_tag_middle-east-2030": "Politics sim",
+    "card_lead_middle-east-2030": "A political strategy sim, set in an invented 2030. Pick one of 8 capitals and read tomorrow's front page. All events are fiction.",
+    "card_status_middle-east-2030": "Google Play (IL, US) & App Store · Fiction",
+    "card_browser_middle-east-2030": "Try the 3-month briefing",
+    "card_tag_baylight": "Sorting puzzle",
+    "card_lead_baylight": "Tap a bay, stack three of a kind, ship the truck. A one-thumb sorting puzzle in short rounds.",
+    "card_status_baylight": "Google Play & App Store (IL, US)",
+    "card_browser_baylight": "Load a dock in your browser",
+    "card_tag_paper-route": "Bike arcade",
+    "card_lead_paper-route": "Ride your morning route, throw the paper and deliver before sunrise. A one-thumb bike arcade game with no forced ads during rides.",
+    "card_status_paper-route": "Google Play (IL, US)"
+  },
+  "he": {
+    "w_skip": "דלגו לתוכן",
+    "w_games": "משחקים",
+    "w_guides": "מדריכים",
+    "w_notes": "רשימות",
+    "w_about": "אודות",
+    "w_security": "אבטחה",
+    "w_lang": "שפה",
+    "navSupport": "תמיכה",
+    "navPrivacy": "מדיניות פרטיות",
+    "w_featured": "המשחק הנבחר  /  Ninely",
+    "w_heroStart": "עוד רגע של",
+    "w_heroAccent": "היגיון.",
+    "w_heroCaption": "Ninely",
+    "w_playKicker": "משחקי דפדפן",
+    "w_playTitle": "משחקים בדפדפן",
+    "w_dailyKicker": "סודוקו יומי  /  Ninely",
+    "w_dailyTitle": "החידה של היום",
+    "w_dailyDesc": "פותחים את הלוח בדפדפן. בכל יום מחכה חידה חדשה.",
+    "w_alsoPlay": "עוד בדפדפן",
+    "w_deckGuide": "סדנת סודוקו",
+    "w_deckGuideSub": "ללימוד שיטת פתרון",
+    "w_collection": "המשחקים והאפליקציות",
+    "w_fiction": "בדיוני",
+    "w_ios": "עדיין לא ב-App Store.",
+    "moreAbout": "מידע, עזרה ופרטיות",
+    "contactTitle": "יצירת קשר ותמיכה",
+    "contactSub": "פניות שחקנים, דיווח על תקלות, בקשות פרטיות או פניות עסקיות:",
+    "platformLine": "5 אפליקציות ב-Google Play (ישראל וארה״ב). Middle East 2030: Politics Sim (ישראל וארה״ב), Baylight: Truck Sort Puzzle (ישראל וארה״ב) ו-מילה (ישראל) זמינות גם ב-App Store; 2 המשחקים האחרים זמינים כרגע ל-Android בלבד, עם גרסאות דפדפן להלן.",
+    "w_deckBay": "לנסות רציף בדפדפן",
+    "w_deckMe": "לנסות את התדריך בן 3 החודשים",
+    "w_ninelyLead": "רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.",
+    "w_ninelyHub": "להכיר את Ninely",
+    "w_ninelyBtn": "לשחק בפאזל של היום",
+    "w_heroCaptionSub": "מתוך האפליקציה · רמזים חכמים",
+    "card_tag_ninely": "פאזל היגיון",
+    "card_lead_ninely": "רמזים חכמים מלמדים את ההיגיון שלב אחר שלב, ופאזל יומי חדש בכל יום.",
+    "card_status_ninely": "Google Play (ישראל וארה״ב) · עדיין לא ב-iPhone",
+    "card_browser_ninely": "לשחק בפאזל של היום",
+    "card_tag_middle-east-2030": "סימולציה פוליטית",
+    "card_lead_middle-east-2030": "סימולציית אסטרטגיה פוליטית בשנת 2030 בדיונית. בחרו אחת מ-8 בירות וקראו את העיתון של מחר. כל האירועים בדיוניים.",
+    "card_status_middle-east-2030": "Google Play (ישראל וארה״ב) ו-App Store · בדיוני",
+    "card_browser_middle-east-2030": "לנסות את התדריך בן 3 החודשים",
+    "card_tag_baylight": "פאזל מיון",
+    "card_lead_baylight": "הקישו על רציף, ערמו שלושה זהים ושלחו את המשאית. פאזל מיון באגודל אחת בסבבים קצרים.",
+    "card_status_baylight": "Google Play ו-App Store (ישראל וארה״ב)",
+    "card_browser_baylight": "לנסות רציף בדפדפן",
+    "card_tag_paper-route": "ארקייד אופניים",
+    "card_lead_paper-route": "רכבו במסלול הבוקר, זרקו את העיתון ומסרו לפני הזריחה. משחק ארקייד באגודל אחת, בלי פרסומות כפויות באמצע רכיבה.",
+    "card_status_paper-route": "Google Play (ישראל וארה״ב)"
+  },
+  "ar": {
+    "w_skip": "تخطَّ إلى المحتوى",
+    "w_games": "الألعاب",
+    "w_guides": "الأدلة",
+    "w_notes": "الملاحظات",
+    "w_about": "عن الاستوديو",
+    "w_security": "الأمان",
+    "w_lang": "اللغة",
+    "navSupport": "الدعم",
+    "navPrivacy": "سياسة الخصوصية",
+    "w_featured": "اللعبة المختارة  /  Ninely",
+    "w_heroStart": "لحظة أخرى من",
+    "w_heroAccent": "المنطق.",
+    "w_heroCaption": "Ninely",
+    "w_playKicker": "ألعاب المتصفح",
+    "w_playTitle": "العب في المتصفح",
+    "w_dailyKicker": "سودوكو يومي  /  Ninely",
+    "w_dailyTitle": "لغز اليوم",
+    "w_dailyDesc": "افتح اللوح في متصفحك. ينتظرك لغز جديد كل يوم.",
+    "w_alsoPlay": "متاح أيضاً في المتصفح",
+    "w_deckGuide": "ورشة السودوكو",
+    "w_deckGuideSub": "تعلّم تقنية حل",
+    "w_collection": "الألعاب والتطبيقات",
+    "w_fiction": "خيالي",
+    "w_ios": "ليست على App Store بعد.",
+    "moreAbout": "معلومات ومساعدة وخصوصية",
+    "contactTitle": "التواصل والدعم",
+    "contactSub": "استفسارات اللاعبين، تقارير الأخطاء، أو المراسلات الرسمية:",
+    "platformLine": "5 تطبيقات على Google Play. Middle East 2030 (متاح عالمياً)، Baylight (متاح عالمياً) وMila (إسرائيل) متوفرة أيضاً على App Store؛ والألعاب الـ2 الأخرى لنظام Android حالياً مع نسخ متصفح أدناه.",
+    "w_deckBay": "جرّب رصيفاً في المتصفح",
+    "w_deckMe": "جرّب إحاطة الأشهر الثلاثة",
+    "w_ninelyLead": "تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.",
+    "w_ninelyHub": "تعرّف على Ninely",
+    "w_ninelyBtn": "العب لغز اليوم",
+    "w_heroCaptionSub": "من التطبيق · تلميحات ذكية",
+    "card_tag_ninely": "لغز منطقي",
+    "card_lead_ninely": "تلميحات ذكية تعلّمك المنطق خطوة بخطوة، مع لغز يومي جديد كل يوم.",
+    "card_status_ninely": "Google Play · ليست على iPhone بعد",
+    "card_browser_ninely": "العب لغز اليوم",
+    "card_tag_middle-east-2030": "محاكاة سياسية",
+    "card_lead_middle-east-2030": "لعبة استراتيجية سياسية في عام 2030 متخيَّل. اختر إحدى 8 عواصم واقرأ صحيفة الغد. كل الأحداث خيالية.",
+    "card_status_middle-east-2030": "Google Play و App Store · خيالي",
+    "card_browser_middle-east-2030": "جرّب إحاطة الأشهر الثلاثة",
+    "card_tag_baylight": "لغز فرز",
+    "card_lead_baylight": "انقر على رصيف، كدّس ثلاثة متطابقة وأرسل الشاحنة. لغز فرز بإبهام واحد في جولات قصيرة.",
+    "card_status_baylight": "Google Play و App Store",
+    "card_browser_baylight": "جرّب رصيفاً في المتصفح",
+    "card_tag_paper-route": "أركيد دراجات",
+    "card_lead_paper-route": "انطلق في جولتك الصباحية، ارمِ الصحيفة وسلّمها قبل شروق الشمس. لعبة أركيد بالدراجة بإبهام واحد، بلا إعلانات إجبارية أثناء الجولة.",
+    "card_status_paper-route": "Google Play"
+  }
+};
+
+  var TITLES = {
+    en: "aviisr games · Small mobile games, made with care",
+    he: "aviisr games · משחקי מובייל קטנים, עשויים בקפידה",
+    ar: "aviisr games · ألعاب هاتف صغيرة، مصنوعة بعناية"
   };
 
   AviisrI18n.init({
     supported: ['en', 'he', 'ar'],
     translations: translations,
-    defaultLang: 'en'
+    defaultLang: 'en',
+    onLanguageChange: function (lang) {
+      document.title = TITLES[lang] || TITLES.en;
+    }
   });
-
 })();
 </script>
 <script src="/assets/play-badge.js"></script>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes from aviisr games · Devlogs and design notes</title>
+<meta name="description" content="Devlogs and design notes from aviisr games: how our puzzles are made, checked and designed.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+<link rel="canonical" href="https://aviisrgames.com/notes/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/pilot-2.css">
+</head>
+<body class="edition page-studio">
+<a class="skip-link" href="#main" data-i18n="w_skip">Skip to content</a>
+<header>
+<div class="col bar">
+  <a class="logo" href="../" aria-label="aviisr games"><img src="/assets/logo/wordmark-light.svg" alt="" width="128" height="36"></a>
+  <nav class="links" aria-label="Main"><a href="../" data-i18n="w_games">Games</a><a href="../ninely/strategy/" data-i18n="w_guides">Guides</a><a href="../notes/" data-i18n="w_notes">Notes</a><a href="../about/" data-i18n="w_about">About</a><a href="../support/" data-i18n="navSupport">Support</a></nav>
+  
+</div>
+</header>
+<main id="main" class="col studio" style="max-width:920px;padding-block:32px 48px">
+  <h1 style="font-size:clamp(2rem,4.5vw,3.1rem)">Notes from aviisr games</h1>
+  <p class="lead" style="margin-bottom:24px">Devlogs and design notes from a small studio.</p>
+
+  <section class="card">
+    <h2>About these notes</h2>
+    <p>We make small mobile games, and we like to explain how they work. These notes cover real engineering and design decisions in more detail than a store listing allows.</p>
+    <p>They are written in plain language about what our puzzle generators, browser solvers and game rules actually do. Spot an error or want a note on a topic? Write to <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Notes</h2>
+    <ul>
+      <li><a href="./ninely-daily-puzzle/"><b>How the Ninely daily puzzle is made</b></a><br>How each day's Ninely puzzle is generated, verified for a unique solution, and graded by solver technique tier.</li>
+      <li><a href="./baylight-dock-solver/"><b>Building a solver-checked puzzle for the browser</b></a><br>How the Baylight browser dock uses a BFS state solver to validate winnable docks and step hints.</li>
+      <li><a href="./middle-east-2030-design/"><b>Designing Middle East 2030: one decision a month and a morning paper</b></a><br>Why the game is set in an invented 2030, its monthly decision loop, and the guided first term.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>More to read</h2>
+    <p>Explore the <a href="../ninely/strategy/">Sudoku guides hub</a> and the <a href="../ninely/strategy/glossary/">Sudoku glossary</a>, or read the <a href="../middle-east-2030/guide/">Middle East 2030 strategy guide</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="col">
+    <img class="foot-brand" src="/assets/logo/wordmark-dark.svg" alt="aviisr games" width="128" height="36">
+    <div>© aviisr games · <a href="../" data-i18n="w_games">Games</a> · <a href="../about/" data-i18n="w_about">About</a> · <a href="../notes/" data-i18n="w_notes">Notes</a> · <a href="../support/" data-i18n="navSupport">Support</a> · <a href="../privacy/" data-i18n="navPrivacy">Privacy Policy</a> · <a href="/terms/">Terms</a> · <a href="/accessibility/">Accessibility</a> · <a href="mailto:aviisr@aviisrgames.com">aviisr@aviisrgames.com</a></div>
+  </div>
+</footer>
+</body>
+</html>

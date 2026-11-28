@@ -178,6 +178,8 @@ main, footer, nav.lang { overflow-wrap: anywhere; }
 
 /* Store call to action on app hubs and playables (official badge + honest iPhone note). */
 .store-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 14px 0 18px; }
+.appstore-badge{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:0 16px;border-radius:10px;background:#000;color:#fff;border:1px solid #a6a6a6;font-weight:600;text-decoration:none;box-sizing:border-box}
+.appstore-badge svg{flex:none}
 .play-badge img { height: 58px; width: auto; display: block; } /* the official PNG includes its clear space */
 
 /* Text for screen readers only (e.g. which app a repeated link belongs to). */

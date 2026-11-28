@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'tools'))
 import build_sitemap as sm  # noqa: E402
 
-STUDIO_FILES = ['/', 'about/', 'support/', 'privacy/', 'terms/', 'accessibility/', 'app-ads.txt', 'ads.txt', '.well-known/security.txt',
+STUDIO_FILES = ['/', 'about/', 'notes/', 'support/', 'privacy/', 'terms/', 'accessibility/', 'app-ads.txt', 'ads.txt', '.well-known/security.txt',
                 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'style.css', 'assets/']
 APP_NAMES = {name for name, _ in sm.ALLOWLIST}
 
@@ -73,7 +73,7 @@ class AllowlistTests(unittest.TestCase):
         self.assertEqual(pkgs, {'com.aviisrgames.ninely', 'com.aviisrgames.middleeast2030',
                                 'com.aviisrgames.baylight', 'com.aviisr.paperroute', 'com.aviisr.mila'})
         apple_ids = set(re.findall(r'apps\.apple\.com/(?:[a-z]{2}/)?app/(?:[\w-]+/)?id(\d+)', html))
-        self.assertEqual(apple_ids, {'6827490842'})
+        self.assertEqual(apple_ids, {'6827490842', '6826672657', '6820597256'})
 
     def test_sitemap_is_generated_from_the_allowlist(self):
         self.assertEqual((ROOT / 'sitemap.xml').read_text(encoding='utf-8'), sm.render(),

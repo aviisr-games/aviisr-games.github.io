@@ -18,19 +18,22 @@ def read(rel):
 class R2AcquisitionTests(unittest.TestCase):
 
     def test_structured_data_claims_only_live_platforms(self):
-        # No app is on the App Store yet, so no page may tell search engines it runs on iOS.
+        # Only Baylight and Middle East 2030 claim Android + iOS structured data globally; Play-only hubs must not claim iOS.
         for rel in HUBS + ['morning-route/index.html', 'redline-2030/index.html', 'mila/index.html']:
             for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', read(rel), re.S):
                 data = json.loads(block)
                 text = json.dumps({k: data.get(k) for k in ('gamePlatform', 'operatingSystem')})
-                self.assertNotIn('iOS', text, rel)
+                if rel in ('baylight/index.html', 'middle-east-2030/index.html', 'redline-2030/index.html'):
+                    self.assertIn('iOS', text, rel)
+                else:
+                    self.assertNotIn('iOS', text, rel)
 
     def test_no_page_claims_ios_availability(self):
-        # Covers visible copy and meta/OG descriptions, in every language, outside policy pages.
+        # Play-only hubs must never claim Android + iOS availability outside Baylight and policy pages.
         pat = re.compile(r'(iOS (and|&amp;|&) Android|Android (and|&amp;|&) iOS|ל-iOS|closed test builds)')
         for page in ROOT.rglob('*.html'):
             rel = page.relative_to(ROOT).as_posix()
-            if rel.startswith('casino/') or 'privacy' in rel or 'support' in rel or rel in ('privacy.html', 'support.html'):
+            if rel.startswith(('casino/', 'baylight/')) or 'privacy' in rel or 'support' in rel or rel in ('privacy.html', 'support.html'):
                 continue
             self.assertIsNone(pat.search(page.read_text(encoding='utf-8')), rel)
 

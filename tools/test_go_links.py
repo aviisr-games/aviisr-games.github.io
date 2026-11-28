@@ -105,7 +105,7 @@ _W01_TOKENS = ('site', 'r-playmygame', 'r-puzzlevideogames', 'r-androidgaming', 
                'ytshorts', 'il-gaming', 'press', 'playtest', 'featuring', 'dock')
 BAYLIGHT_W01_SLUGS = {f'baylight-{t}-w01{sfx}' for t in _W01_TOKENS for sfx in ('', '-ios')}
 # Social waves 2026-11-28: one wave per clip (w02 H1, w03 H2, w04 H3) per short-video channel.
-BAYLIGHT_SOCIAL_SLUGS = {f'baylight-{c}-{w}{sfx}' for c in ('ytshorts', 'tiktok', 'reels')
+BAYLIGHT_SOCIAL_SLUGS = {f'baylight-{c}-{w}{sfx}' for c in ('ytshorts', 'tiktok', 'reels', 'fbpage')
                          for w in ('w02', 'w03', 'w04') for sfx in ('', '-ios')}
 
 

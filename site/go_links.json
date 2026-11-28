@@ -218,6 +218,42 @@
       "target": "https://apps.apple.com/app/id6826672657?ct=baylight-reels-w04&mt=8"
     },
     {
+      "slug": "baylight-fbpage-w02",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&referrer=utm_source%3Dfbpage%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-w02"
+    },
+    {
+      "slug": "baylight-fbpage-w02-ios",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "App Store",
+      "target": "https://apps.apple.com/app/id6826672657?ct=baylight-fbpage-w02&mt=8"
+    },
+    {
+      "slug": "baylight-fbpage-w03",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&referrer=utm_source%3Dfbpage%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-w03"
+    },
+    {
+      "slug": "baylight-fbpage-w03-ios",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "App Store",
+      "target": "https://apps.apple.com/app/id6826672657?ct=baylight-fbpage-w03&mt=8"
+    },
+    {
+      "slug": "baylight-fbpage-w04",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "Google Play",
+      "target": "https://play.google.com/store/apps/details?id=com.aviisrgames.baylight&referrer=utm_source%3Dfbpage%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-w04"
+    },
+    {
+      "slug": "baylight-fbpage-w04-ios",
+      "appName": "Baylight: Truck Sort Puzzle",
+      "storeName": "App Store",
+      "target": "https://apps.apple.com/app/id6826672657?ct=baylight-fbpage-w04&mt=8"
+    },
+    {
       "slug": "baylight-il-gaming-w01",
       "appName": "Baylight: Truck Sort Puzzle",
       "storeName": "Google Play",

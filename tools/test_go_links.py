@@ -104,6 +104,9 @@ class GoLinksValidationTests(unittest.TestCase):
 _W01_TOKENS = ('site', 'r-playmygame', 'r-puzzlevideogames', 'r-androidgaming', 'r-iosgaming',
                'ytshorts', 'il-gaming', 'press', 'playtest', 'featuring', 'dock')
 BAYLIGHT_W01_SLUGS = {f'baylight-{t}-w01{sfx}' for t in _W01_TOKENS for sfx in ('', '-ios')}
+# Social waves 2026-11-28: one wave per clip (w02 H1, w03 H2, w04 H3) per short-video channel.
+BAYLIGHT_SOCIAL_SLUGS = {f'baylight-{c}-{w}{sfx}' for c in ('ytshorts', 'tiktok', 'reels')
+                         for w in ('w02', 'w03', 'w04') for sfx in ('', '-ios')}
 
 
 class GoLinksGeneratedPagesTests(unittest.TestCase):
@@ -117,16 +120,16 @@ class GoLinksGeneratedPagesTests(unittest.TestCase):
             'ninely-yt', 'ninely-reddit',
             'baylight-yt',
             'mpr-yt',
-        } | BAYLIGHT_W01_SLUGS)
+        } | BAYLIGHT_W01_SLUGS | BAYLIGHT_SOCIAL_SLUGS)
         for slug, _, _, target in entries:
             self.assertNotIn('com.aviisr.mila', target.lower(), slug)
             self.assertNotIn('6827490842', target, slug)
             if slug.endswith('-ios'):
-                self.assertRegex(target, r'^https://apps\.apple\.com/app/id6826672657\?ct=baylight-[a-z0-9-]+-w01&mt=8$', slug)
+                self.assertRegex(target, r'^https://apps\.apple\.com/app/id6826672657\?ct=baylight-[a-z0-9-]+-w0[1-4]&mt=8$', slug)
                 self.assertLessEqual(len(target.split('ct=')[1].split('&')[0]), 40, slug)
-            elif slug.startswith('baylight-') and slug.endswith('-w01'):
+            elif slug.startswith('baylight-') and slug[-4:] in ('-w01', '-w02', '-w03', '-w04'):
                 self.assertIn('referrer=utm_source%3D', target, slug)
-                self.assertIn('%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-w01', target, slug)
+                self.assertIn('%26utm_medium%3Dorganic%26utm_campaign%3Dbaylight-' + slug[-3:], target, slug)
             else:
                 self.assertIn('utm_medium=organic', target, slug)
 

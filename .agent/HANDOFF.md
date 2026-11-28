@@ -1,3 +1,9 @@
+## PR #77 integration review — 2026-11-28
+
+- Integrated current main; preserved the Ninely group invitation in `tools/build_site.py` and added it to the newer glossary.
+- Website privacy notice explicitly covers aggregate `/go/nfb-*` page views, distinguishes them from joins, and notes Facebook processing after redirect. No shared counter behavior changed.
+- Validation: 147 Python tests passed; site/go/sitemap generators and workflow structure checks passed. Node VM: 42 scenarios across all 14 hops verified normal/DNT/GPC behavior, origin-only referrers, and fixed redirects. Chrome preview verified English/German hops reached the intended groups and the hub invitation rendered correctly.
+
 # Claude Handoff: Audit of Gemini 3.8 Work & Remaining Roadmap
 
 **Last Updated:** 2026-11-08  
